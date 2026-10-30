@@ -72,6 +72,37 @@ python scripts/run_study.py --phase baseline --study-id local-qualification --co
 
 Artifacts include the protocol, source identity, raw replay observations and failure details. A failed noise gate stops the attempt; a new host or explicitly changed protocol requires a new study ID.
 
+### Focused speedup confirmation
+
+`--scope agent-speedup` asks whether one real agent run can find a confirmed compiler improvement on the declared workload. It runs E1, the live semantic-mutation correctness check, **one seed-0 agent search with 40 unique candidate builds**, and E5. It skips the knob sweep, other policies/seeds and E4 predictor evaluation. The default `--scope full` retains the original four-policy × three-seed × 40-build comparison. A focused result does not establish that the agent beats random, genetic or surrogate search.
+
+Qualify the focused protocol without a credential first:
+
+```bash
+python scripts/run_study.py --phase baseline --scope agent-speedup \
+  --study-id agent-speedup-01 --commands 5000000 --throughput-replays 5 --cpu 0 --jobs 2
+```
+
+After that attempt passes, securely supply the existing provider key and resume on the **same source, host boot, input and protocol**, using the existing shared allocation:
+
+```bash
+python scripts/run_study.py --phase study --scope agent-speedup --resume \
+  --study-id agent-speedup-01 --commands 5000000 --throughput-replays 5 --cpu 0 --jobs 2 \
+  --provider openai --model gpt-4.1-mini-2025-04-14 \
+  --api-budget-file data/api-allocation.json --api-budget-usd 9.99
+```
+
+The actual strategy plan is recorded explicitly as agent, seed 0, budget 40, regardless of unused multi-seed defaults. The scope is immutable across qualification and resumption. A completed focused run cannot be reopened as a full comparison. `speedup_confirmed` requires E5's ten interleaved rounds, an improvement above three times baseline noise, the unchanged 2% variability/drift limits, full 100-seed × one-million-command differential validation, all planned CTests and the final source/host/input checks. A lack of improvement, disabled confirmation, interrupted phase or failed gate remains explicit; no winner is invented.
+
+For a zero-inference alternative, `--scope speedup` runs E1, the same live correctness check, the complete 14-candidate one-at-a-time knob sweep and E5. For example:
+
+```bash
+python scripts/run_study.py --phase study --scope speedup --study-id sweep-speedup-01 \
+  --commands 5000000 --throughput-replays 5 --cpu 0 --jobs 2
+```
+
+This scope needs no model credential or API allocation and makes no model calls. Any confirmed result is attributed to the knob sweep. All focused scopes retain raw measurements and the same correctness, noise, drift, candidate-selection and confirmation gates; they change the requested search coverage only.
+
 ## Fixed throughput windows
 
 `--throughput-replays R` is an optional measurement setting, bounded to 1–20 and defaulting to **1**. Each reported throughput run replays the fixed input R times into R fresh empty books and divides all processed commands by the sum of **every** replay duration. Every block must match the single-input reference state and checksums. Individual durations and checksums remain in `throughput_replays.csv`; no block is removed or selected by its speed. The separate latency pass and exact latency histogram still contain one input replay.

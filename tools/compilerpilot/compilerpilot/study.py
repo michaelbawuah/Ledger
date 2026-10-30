@@ -62,6 +62,7 @@ class StudyConfig:
     data: Path
     results: Path
     phase: str = "study"
+    scope: str = "full"
     provider: str = "openai"
     model: str | None = None
     cpu: int = 0
@@ -82,6 +83,8 @@ class StudyConfig:
             raise ValueError("study-id must be 1–64 letters/numbers/dashes/underscores, starting with a letter or number")
         if self.phase not in ("baseline", "study") or self.provider not in ("openai", "anthropic"):
             raise ValueError("Unknown study phase or provider")
+        if self.scope not in ("full", "speedup", "agent-speedup"):
+            raise ValueError("Unknown study scope")
         validate_throughput_replays(self.throughput_replays)
         for name, lower, upper in (("cpu", 0, 1_000_000), ("jobs", 1, 64), ("commands", 1, 5_000_000),
                                     ("budget", 1, 40), ("seeds", 1, 3),
@@ -91,6 +94,8 @@ class StudyConfig:
                 raise ValueError(f"{name} must be in {lower}..{upper}")
         if self.evaluation_seed == self.training_seed:
             raise ValueError("Training and evaluation seeds must differ")
+        if self.scope == "agent-speedup" and self.budget != 40:
+            raise ValueError("agent-speedup requires the fixed 40-build agent budget")
         for name in ("ledger", "data", "results"):
             setattr(self, name, Path(getattr(self, name)).resolve())
         if self.api_budget_file is not None:
@@ -107,7 +112,21 @@ class StudyConfig:
 
     @property
     def full_protocol(self) -> bool:
-        return self.budget == 40 and self.seeds == 3 and self.commands >= 1_000_000
+        return (self.scope == "full" and self.budget == 40 and self.seeds == 3
+                and self.commands >= 1_000_000)
+
+    @property
+    def needs_agent(self) -> bool:
+        return self.scope in ("full", "agent-speedup")
+
+    def strategy_runs(self) -> list[dict[str, Any]]:
+        """Declare the actual search coverage independently of unused CLI defaults."""
+        if self.scope == "speedup":
+            return []
+        pairs = ([(0, "agent")] if self.scope == "agent-speedup" else
+                 [(seed, strategy) for seed in range(self.seeds) for strategy in STRATEGIES])
+        return [{"strategy": strategy, "seed": seed, "build_budget": self.budget}
+                for seed, strategy in pairs]
 
     def protocol(self) -> dict[str, Any]:
         values = asdict(self)
@@ -160,7 +179,7 @@ class StudyRunner:
 
     def _preflight(self) -> None:
         # No directory, source build, or provider request precedes credentials.
-        if self.config.phase == "study":
+        if self.config.phase == "study" and self.config.needs_agent:
             if not isinstance(self.config.model, str) or not self.config.model.strip():
                 raise ValueError("--model must pin a provider model before starting the study")
             key = "OPENAI_API_KEY" if self.config.provider == "openai" else "ANTHROPIC_API_KEY"
@@ -178,11 +197,14 @@ class StudyRunner:
             self.manifest = _read(self.path)
             recorded_protocol = dict(self.manifest.get("protocol", {}))
             recorded_protocol.setdefault("throughput_replays", 1)
+            recorded_protocol.setdefault("scope", "full")
             if recorded_protocol != self.config.protocol():
                 raise ValueError("Resume protocol differs; use a new study-id and new results directory")
             if self.manifest.get("source") != source or self.manifest.get("host") != host:
                 raise ValueError("Resume requires the same Ledger source and host boot")
-            if self.manifest.get("status") in ("complete", "smoke_complete", "provisional_unconfirmed"):
+            if self.manifest.get("status") in ("complete", "smoke_complete", "provisional_unconfirmed",
+                                               "speedup_confirmed", "speedup_no_improvement",
+                                               "speedup_unconfirmed"):
                 raise ValueError("Study attempt is already finished; it cannot be reopened or overwritten")
             if self.manifest.get("status") in ("failed", "interrupted"):
                 raise ValueError("A failed/interrupted attempt cannot be rerun under the same study-id; preserve it and use a new study-id")
@@ -190,7 +212,7 @@ class StudyRunner:
                 raise ValueError("An interrupted phase cannot be rerun under the same study-id")
             prior = self.manifest.get("agent")
             agent = self._agent_protocol()
-            if prior and self.config.phase == "study" and prior != agent:
+            if prior and self.config.phase == "study" and self.config.needs_agent and prior != agent:
                 raise ValueError("Resume cannot change the pinned provider/model")
             self._verify_inputs(required="E1" in self.manifest.get("phases", {}))
         else:
@@ -202,8 +224,9 @@ class StudyRunner:
                              "created_at": _now(), "protocol": self.config.protocol(),
                              "source": source, "host": host, "full_E3_protocol": self.config.full_protocol,
                              "phases": {}, "status": "planned", "agent": None}
-        if self.config.phase == "study":
+        if self.config.phase == "study" and self.config.needs_agent:
             self.manifest["agent"] = self._agent_protocol()
+        self.manifest["effective_strategy_runs"] = self.config.strategy_runs()
         self.manifest["requested_phase"] = self.config.phase
         self.manifest["confirmation_requested"] = self.config.confirm
         self.config.results.mkdir(parents=True, exist_ok=True)
@@ -485,10 +508,19 @@ class StudyRunner:
 
     def _summary(self) -> None:
         phases = self.manifest.get("phases", {})
+        coverage = ("yes" if self.config.full_protocol else
+                    "no — focused speedup scope" if self.config.scope != "full" else
+                    "no — smoke protocol only")
+        search = (f"four strategies × {self.config.seeds} seeds × {self.config.budget} candidate builds"
+                  if self.config.scope == "full" else
+                  "one agent run, seed 0, 40 candidate builds" if self.config.scope == "agent-speedup" else
+                  "one complete one-at-a-time knob sweep")
         lines = [f"# Study {self.config.study_id}", "", f"Status: **{self.manifest.get('status')}**.", "",
-                 f"Protocol: {self.config.commands:,} commands; four strategies × {self.config.seeds} seeds × {self.config.budget} candidate builds. "
+                 f"Scope: **{self.config.scope}**. Effective strategy runs: "
+                 f"`{json.dumps(self.config.strategy_runs(), sort_keys=True)}`.", "",
+                 f"Protocol: {self.config.commands:,} commands; {search}. "
                  f"Each throughput run replays the input {self.config.throughput_replays} time(s) from fresh books; latency replays it once. "
-                 f"Full E3 protocol: {'yes' if self.config.full_protocol else 'no — smoke protocol only'}.", "",
+                 f"Full E3 protocol: {coverage}.", "",
                  "| Phase | Status | Outcome |", "|---|---|---|"]
         for name, phase in phases.items():
             outcome = phase.get("outcome", {})
@@ -496,6 +528,11 @@ class StudyRunner:
             lines.append(f"| {name} | {phase['status']} | {str(detail).replace('|', '/')} |")
         lines.extend(["", "Every run ID names one attempt. Failed or interrupted phases are preserved and never rerun under this study ID. "
                       "Only a confirmed E5 recommendation establishes a performance winner. Smaller smoke budgets do not establish the full 4 × 3 × 40 comparison.", ""])
+        if self.config.scope != "full":
+            omitted = "E3 and E4" if self.config.scope == "speedup" else "E2, E4 and all other E3 policies/seeds"
+            lines.extend([f"{omitted} were not requested by this focused scope. "
+                          "A confirmed result measures compiler speedup on the declared workload; "
+                          "it does not establish an agent-versus-baselines ranking.", ""])
         (self.config.results / "study-summary.md").write_text("\n".join(lines))
 
     def run(self) -> int:
@@ -510,32 +547,47 @@ class StudyRunner:
                 self.manifest["status"] = "baseline_passed"
                 return 0
             self._perform("Gate", self._gate)
-            sweep_size = sum(len(values) - 1 for values in KNOBS.values())
-            self._perform("E2", lambda: self._command("E2", ["sweep", "--run-id", self._run_id("E2"), *self._common()],
-                lambda: self._validate_search("E2", sweep_size, experiment=False)))
-            for seed in range(self.config.seeds):
-                for strategy in STRATEGIES:
-                    suffix = f"E3-{strategy}-{seed}"
-                    command = ["experiment", "--strategy", strategy, "--budget", str(self.config.budget),
-                               "--seed", str(seed), "--run-id", self._run_id(suffix), *self._common()]
-                    if strategy == "agent":
-                        command += ["--provider", self.config.provider, "--model", self.config.model,
-                                    "--api-budget-file", str(self.config.api_budget_file),
-                                    "--api-budget-usd", self.config.api_budget_usd]
-                    self._perform(suffix, lambda s=suffix, c=command: self._command(s, c,
-                        lambda: self._validate_search(s, self.config.budget, experiment=True)))
-            predictor = self._perform("E4", self._report)
+            if self.config.scope != "agent-speedup":
+                sweep_size = sum(len(values) - 1 for values in KNOBS.values())
+                self._perform("E2", lambda: self._command("E2", ["sweep", "--run-id", self._run_id("E2"), *self._common()],
+                    lambda: self._validate_search("E2", sweep_size, experiment=False)))
+            for planned in self.config.strategy_runs():
+                seed, strategy = planned["seed"], planned["strategy"]
+                suffix = f"E3-{strategy}-{seed}"
+                command = ["experiment", "--strategy", strategy, "--budget", str(self.config.budget),
+                           "--seed", str(seed), "--run-id", self._run_id(suffix), *self._common()]
+                if strategy == "agent":
+                    command += ["--provider", self.config.provider, "--model", self.config.model,
+                                "--api-budget-file", str(self.config.api_budget_file),
+                                "--api-budget-usd", self.config.api_budget_usd]
+                self._perform(suffix, lambda s=suffix, c=command: self._command(s, c,
+                    lambda: self._validate_search(s, self.config.budget, experiment=True)))
+            predictor = self._perform("E4", self._report) if self.config.scope == "full" else None
             result = self._perform("E5", self._confirm)
             if result.get("status") not in ("confirmed", "no_significant_improvement", "no_provisional_improvement", "confirmation_disabled"):
                 raise RuntimeError(f"E5 did not confirm a usable result: {result.get('status')}")
-            self.manifest["status"] = ("provisional_unconfirmed" if result.get("status") == "confirmation_disabled"
-                                       else "complete" if self.config.full_protocol else "smoke_complete")
+            self._verify_context()
+            self._verify_inputs()
+            if self.config.scope != "full":
+                self.manifest["status"] = ("speedup_confirmed" if result.get("status") == "confirmed" else
+                                           "speedup_unconfirmed" if result.get("status") == "confirmation_disabled"
+                                           else "speedup_no_improvement")
+            else:
+                self.manifest["status"] = ("provisional_unconfirmed" if result.get("status") == "confirmation_disabled"
+                                           else "complete" if self.config.full_protocol else "smoke_complete")
             self.manifest["recommendation"] = result.get("recommendation")
-            if self.config.full_protocol and not predictor.get("heldout_measured"):
+            if self.config.full_protocol and (predictor is None or not predictor.get("heldout_measured")):
                 self.manifest["status"] = "incomplete_predictor"
                 return 1
             return 0
         except BaseException as error:
+            confirmation_path = self.config.results / "confirmation.json"
+            if confirmation_path.is_file():
+                recorded = _read(confirmation_path)
+                if recorded.get("status") == "confirmed":
+                    _write(confirmation_path, {"status": "invalidated_context", "recommendation": None, "winner": None,
+                        "reason": str(error)[:1000], "unvalidated_result": recorded})
+            self.manifest.pop("recommendation", None)
             self.manifest["status"] = "interrupted" if isinstance(error, KeyboardInterrupt) else "failed"
             self.manifest["error"] = str(error)[:2000]
             if isinstance(error, (KeyboardInterrupt, SystemExit)):
@@ -544,10 +596,14 @@ class StudyRunner:
         finally:
             try:
                 self._save()
-                try:
-                    self.manifest["report"] = self._report()
-                except Exception as error:
-                    self.manifest["report_error"] = str(error)[:1000]
+                if self.config.scope == "full":
+                    try:
+                        self.manifest["report"] = self._report()
+                    except Exception as error:
+                        self.manifest["report_error"] = str(error)[:1000]
+                else:
+                    self.manifest["report"] = {"status": "not_requested",
+                        "reason": "Focused speedup scope excludes E4 predictor evaluation"}
                 self._save()
                 self._summary()
             finally:
@@ -559,6 +615,8 @@ class StudyRunner:
 def run(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--phase", choices=("baseline", "study"), default="study")
+    parser.add_argument("--scope", choices=("full", "speedup", "agent-speedup"), default="full",
+                        help="Immutable objective: full comparison, zero-model sweep speedup, or one 40-build agent speedup")
     parser.add_argument("--study-id", required=True)
     parser.add_argument("--provider", choices=("openai", "anthropic"), default="openai")
     parser.add_argument("--model")
@@ -582,7 +640,7 @@ def run(argv: list[str] | None = None) -> int:
         config = StudyConfig(study_id=args.study_id, ledger=require_ledger_root(args.ledger),
                              data=args.data or PROJECT / "data" / "studies" / args.study_id,
                              results=args.results or PROJECT / "results" / "studies" / args.study_id,
-                             **{name: getattr(args, name) for name in ("phase", "provider", "model", "cpu", "jobs", "commands",
+                             **{name: getattr(args, name) for name in ("phase", "scope", "provider", "model", "cpu", "jobs", "commands",
                                  "throughput_replays",
                                  "budget", "seeds", "evaluation_seed", "training_seed", "confirm", "resume", "api_budget_file", "api_budget_usd")})
         result = StudyRunner(config).run()

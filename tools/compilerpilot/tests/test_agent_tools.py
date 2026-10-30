@@ -103,6 +103,98 @@ def test_openai_protocol_real_tool_loop_and_secret_redaction():
     assert "[REDACTED]" in json.dumps(harness.events)
 
 
+def test_budget_updates_do_not_duplicate_history_or_drop_tool_evidence():
+    class EvidenceHarness(Harness):
+        def __init__(self):
+            super().__init__()
+            self.history_requests = 0
+
+        def query_history(self, top_k=10, sort_by="throughput"):
+            self.history_requests += 1
+            return {"history_response": self.history_requests, "raw_values": [37, 39, 41]}
+
+        def run_benchmark(self, build_id):
+            return {**super().run_benchmark(build_id),
+                    "full_evidence": {"replay_durations": [37, 39, 41]}}
+
+    harness = EvidenceHarness()
+    build_id = Candidate().hash()
+    replies = iter([
+        _openai_call("build", {"candidate": Candidate().to_dict()}),
+        _openai_call("run_benchmark", {"build_id": build_id}, 2),
+        _openai_call("query_history", {"top_k": 10, "sort_by": "throughput"}, 3),
+        _openai_call("finish", {"recommendation": build_id, "rationale": "measured"}, 4),
+    ])
+    requests = []
+
+    def transport(url, headers, payload, timeout):
+        requests.append(json.loads(json.dumps(payload)))
+        return next(replies)
+
+    result = AgentRunner(harness, model="fixed-model", api_key="test",
+                         transport=transport).run(1)
+    assert result["status"] == "finished" and result["calls"] == 4
+    # Initial state and an explicit history tool remain available. Automatic
+    # follow-ups carry only current budget and instruction, even after queries.
+    assert harness.history_requests == 2
+    assert json.loads(requests[0]["messages"][1]["content"])["history"]["history_response"] == 1
+    for request in requests[1:]:
+        update = json.loads(request["messages"][-1]["content"])
+        assert set(update) == {"budget_remaining", "instruction"}
+        assert update["budget_remaining"] == 0
+        assert request["messages"][-2]["role"] == "tool"
+    measured = {"correctness": True, "throughput": 123.0,
+                "full_evidence": {"replay_durations": [37, 39, 41]}}
+    assert json.loads(requests[2]["messages"][-2]["content"]) == measured
+    assert json.loads(requests[3]["messages"][-2]["content"]) == {
+        "history_response": 2, "raw_values": [37, 39, 41]}
+    assert any(event == "tool_result" and data["result"] == measured
+               for event, data in harness.events)
+
+
+def test_noise_checkpoint_stops_remaining_tools_and_provider_requests():
+    class DriftingHarness(Harness):
+        noise_ok = True
+        builds_used = 1
+
+        def __init__(self):
+            super().__init__()
+            self.knob_reads = 0
+
+        def list_knobs(self):
+            self.knob_reads += 1
+            return super().list_knobs()
+
+        def run_benchmark(self, build_id):
+            measured = super().run_benchmark(build_id)
+            self.noise_ok = False
+            return {**measured, "measurement_valid": False, "status": "discarded_drift"}
+
+    harness = DriftingHarness()
+    build_id = Candidate().hash()
+    harness.built[build_id] = Candidate().to_dict()
+    reply = _openai_call("run_benchmark", {"build_id": build_id})
+    reply["choices"][0]["message"]["tool_calls"].extend(
+        _openai_call("list_knobs", {}, 2)["choices"][0]["message"]["tool_calls"])
+    provider_calls = []
+
+    def transport(url, headers, payload, timeout):
+        provider_calls.append(payload)
+        assert len(provider_calls) == 1, "noise failure must stop before another paid request"
+        return reply
+
+    result = AgentRunner(harness, model="fixed-model", api_key="test", max_calls=2,
+                         transport=transport).run(1)
+    assert result["status"] == "noise_stopped" and result["complete"] is False
+    assert result["recommendation"] is None and result["calls"] == 1
+    assert result["builds"] == 1 and harness.knob_reads == 1  # Initial context only.
+    assert harness.events[-1] == ("agent_stopped", result)
+    tool_results = [data for event, data in harness.events if event == "tool_result"]
+    assert len(tool_results) == 1
+    assert tool_results[0]["result"]["status"] == "discarded_drift"
+    assert tool_results[0]["result"]["measurement_valid"] is False
+
+
 def test_anthropic_parallel_tool_results_are_one_user_message():
     harness = Harness()
     requests = []

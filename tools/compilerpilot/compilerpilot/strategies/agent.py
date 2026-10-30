@@ -193,17 +193,29 @@ class AgentRunner:
                 else:
                     results.append({"type": "tool_result", "tool_use_id": call_id,
                                     "content": content, "is_error": failed})
+                if getattr(self.harness, "noise_ok", None) is False:
+                    # Checkpoints can invalidate a batch while a tool executes.
+                    # Preserve that result, then stop before another tool or paid
+                    # provider request can operate on the invalid measurement run.
+                    stopped = {"status": "noise_stopped", "complete": False,
+                               "incomplete_reason": "baseline noise or drift gate failed",
+                               "recommendation": None, "calls": calls,
+                               "builds": dispatcher.builds_used, "provider": self.provider,
+                               "model": self.model, "seed": self.seed, "sampling": self.sampling}
+                    self._trace("agent_stopped", stopped)
+                    return stopped
             if self.provider == "anthropic" and results:
                 messages.append({"role": "user", "content": results})
             if dispatcher.finished:
                 return {"status": "finished", "complete": True, "recommendation": dispatcher.recommendation,
                         "calls": calls, "builds": dispatcher.builds_used, "provider": self.provider,
                         "model": self.model, "seed": self.seed, "sampling": self.sampling}
-            # Tool results must immediately follow their calls before the next context message.
+            # Preserve every tool result in context and the audit trace. The model
+            # can query history explicitly; automatically repeating the growing
+            # snapshot after every call needlessly inflates input cost.
             messages.append({"role": "user", "content": _encode({
                 "budget_remaining": budget - dispatcher.builds_used,
-                "instruction": "Continue with tools; measure successful builds before finish.",
-                "history": self.harness.query_history(top_k=10, sort_by="throughput")})})
+                "instruction": "Continue with tools; measure successful builds before finish."})})
         result = {"status": "call_limit", "complete": False, "incomplete_reason": "maximum LLM calls reached", "recommendation": None, "calls": calls,
                   "builds": dispatcher.builds_used, "provider": self.provider,
                   "model": self.model, "seed": self.seed, "sampling": self.sampling}
