@@ -20,6 +20,16 @@ RUN_COLUMNS = (
     "p50_ns", "p99_ns", "p999_ns", "max_ns", "rejected_commands", "events",
     "trades", "event_checksum", "trade_checksum",
 )
+RUN_COLUMNS_V2 = RUN_COLUMNS + ("throughput_replays", "throughput_commands")
+REPLAY_COLUMNS = (
+    "engine", "run", "replay", "commands", "throughput_total_ns", "event_checksum", "trade_checksum",
+    "rejected_commands", "events", "submitted", "executed", "cancelled", "expired", "rejected",
+    "trades", "live_orders_final", "resting_quantity", "best_bid", "best_ask",
+)
+REPLAY_STATE = (
+    "event_checksum", "trade_checksum", "rejected_commands", "events", "submitted", "executed",
+    "cancelled", "expired", "rejected", "trades", "live_orders_final", "resting_quantity", "best_bid", "best_ask",
+)
 HISTOGRAM_COLUMNS = ("engine", "run", "latency_ns", "count")
 SUMMARY_KEYS = {
     "schema_version", "commands", "seed", "input", "runs", "warmup_commands",
@@ -31,6 +41,11 @@ ENGINE_KEYS = {
     "median_p999_ns", "median_run_max_ns", "max_ns", "rejected_commands",
     "live_orders_final", "events", "trades", "event_checksum", "trade_checksum",
 }
+SUMMARY_KEYS_V2 = SUMMARY_KEYS | {
+    "throughput_replays", "throughput_commands_per_run", "latency_commands_per_run", "throughput_replays_file",
+}
+ENGINE_KEYS_V2 = ENGINE_KEYS | {"submitted", "executed", "cancelled", "expired", "rejected",
+                                     "resting_quantity", "best_bid", "best_ask"}
 
 
 def require(condition, message):
@@ -81,14 +96,26 @@ def read_summary(path):
     with Path(path).open(encoding="utf-8") as stream:
         summary = json.load(stream, parse_float=Decimal, parse_constant=invalid_constant,
                             object_pairs_hook=unique_object)
-    exact_keys(summary, SUMMARY_KEYS, "summary")
-    require(summary["schema_version"] == 1 and type(summary["schema_version"]) is int,
+    require(isinstance(summary, dict), "summary: expected an object")
+    require(type(summary.get("schema_version")) is int and summary["schema_version"] in (1, 2),
             "summary: unsupported schema_version")
+    exact_keys(summary, SUMMARY_KEYS_V2 if summary["schema_version"] == 2 else SUMMARY_KEYS, "summary")
     for key in ("commands", "runs"):
         integer(summary[key], key, 1)
     require(summary["commands"] <= 5_000_000, "commands: exceeds benchmark's 5000000-command limit")
     require(summary["runs"] <= 31 and summary["runs"] % 2 == 1,
             "runs: benchmark requires an odd count in [1, 31]")
+    if summary["schema_version"] == 2:
+        replays = integer(summary["throughput_replays"], "throughput_replays", 1)
+        require(replays <= 20, "throughput_replays: must be in [1, 20]")
+        integer(summary["throughput_commands_per_run"], "throughput_commands_per_run", 1)
+        integer(summary["latency_commands_per_run"], "latency_commands_per_run", 1)
+        require(summary["throughput_commands_per_run"] == summary["commands"] * replays,
+                "throughput_commands_per_run: differs from all declared replays")
+        require(summary["latency_commands_per_run"] == summary["commands"],
+                "latency_commands_per_run: must equal one input stream")
+        require(summary["throughput_replays_file"] == "throughput_replays.csv",
+                "throughput_replays_file: expected throughput_replays.csv")
     require(summary["input"] is None or isinstance(summary["input"], str), "input: expected string or null")
     generated_fields = ("seed", "generated_peak_live_orders", "generated_empty_book_cancels",
                         "generated_capacity_ioc_limits")
@@ -117,7 +144,7 @@ def read_summary(path):
     validate_metadata(summary)
     exact_keys(summary["engines"], ENGINES, "engines")
     for engine, metrics in summary["engines"].items():
-        exact_keys(metrics, ENGINE_KEYS, engine)
+        exact_keys(metrics, ENGINE_KEYS_V2 if summary["schema_version"] == 2 else ENGINE_KEYS, engine)
         for key, value in metrics.items():
             if key == "median_commands_per_second":
                 positive_decimal(value, f"{engine}.{key}")
@@ -164,14 +191,15 @@ def expected_runs(summary):
 
 def read_runs(path, summary):
     runs = {}
-    for row in read_csv(path, RUN_COLUMNS):
+    columns = RUN_COLUMNS_V2 if summary["schema_version"] == 2 else RUN_COLUMNS
+    for row in read_csv(path, columns):
         engine = row["engine"]
         require(engine in ENGINES, f"runs: unknown engine {engine}")
         run = csv_integer(row["run"], "run", 1)
         key = (engine, run)
         require(key not in runs, f"runs: duplicate engine/run {key}")
         values = {}
-        for field in RUN_COLUMNS[2:]:
+        for field in columns[2:]:
             if field == "commands_per_second":
                 try:
                     values[field] = positive_decimal(Decimal(row[field]), f"{key}.{field}")
@@ -181,9 +209,42 @@ def read_runs(path, summary):
                 values[field] = csv_integer(row[field], f"{key}.{field}")
         require(values["commands"] == summary["commands"], f"{key}: command count differs from summary")
         require(values["throughput_total_ns"] > 0, f"{key}: elapsed time must be positive")
+        if summary["schema_version"] == 2:
+            require(values["throughput_replays"] == summary["throughput_replays"],
+                    f"{key}: throughput replay count differs from summary")
+            require(values["throughput_commands"] == summary["throughput_commands_per_run"],
+                    f"{key}: throughput command count differs from summary")
         runs[key] = values
     require(set(runs) == expected_runs(summary), "runs: incomplete or unexpected engine/run set")
     return runs
+
+
+def read_throughput_replays(path, summary, runs):
+    """Check every retained block against the single-input reference and summed time."""
+    blocks = {}
+    reference = summary["engines"]["reference"]
+    for row in read_csv(path, REPLAY_COLUMNS):
+        engine = row["engine"]
+        require(engine in ENGINES, f"throughput replays: unknown engine {engine}")
+        key = (engine, csv_integer(row["run"], "throughput replay run", 1),
+               csv_integer(row["replay"], "throughput replay index", 1))
+        require(key not in blocks, f"throughput replays: duplicate block {key}")
+        values = {field: csv_integer(row[field], f"{key}.{field}") for field in REPLAY_COLUMNS[3:]}
+        require(values["commands"] == summary["commands"], f"{key}: block input count differs from summary")
+        require(values["throughput_total_ns"] > 0, f"{key}: block duration must be positive")
+        for field in REPLAY_STATE:
+            require(values[field] == reference[field], f"{key}.{field}: differs from single-input reference")
+        blocks[key] = values
+    expected = {(engine, run, replay) for engine, run in expected_runs(summary)
+                for replay in range(1, summary["throughput_replays"] + 1)}
+    require(set(blocks) == expected, "throughput replays: incomplete or unexpected block set")
+    for key, values in runs.items():
+        elapsed = sum(blocks[(*key, replay)]["throughput_total_ns"]
+                      for replay in range(1, summary["throughput_replays"] + 1))
+        integer(elapsed, f"{key}.summed replay duration", 1)
+        require(values["throughput_total_ns"] == elapsed,
+                f"{key}: throughput time does not sum every replay")
+    return blocks
 
 
 def nearest_rank(histogram, numerator, denominator):
@@ -241,7 +302,7 @@ def verify_metrics(summary, runs):
     with localcontext() as context:
         context.prec = 80
         for key, values in runs.items():
-            expected_rate = Decimal(values["commands"]) * 10**9 / values["throughput_total_ns"]
+            expected_rate = Decimal(values.get("throughput_commands", values["commands"])) * 10**9 / values["throughput_total_ns"]
             close_decimal(values["commands_per_second"], expected_rate, f"{key}.commands_per_second")
             for field in ("p50_ns", "p99_ns", "p999_ns", "max_ns"):
                 require(values[field] > 0, f"{key}.{field}: latency metric must be positive")
@@ -284,8 +345,12 @@ def verify_accounting(summary, runs):
         if summary["input"] is None:
             require(metrics["live_orders_final"] <= summary["generated_peak_live_orders"],
                     f"{engine}: final live orders exceed generated peak")
-        for field in (*fields, "live_orders_final"):
+        for field in (REPLAY_STATE if summary["schema_version"] == 2 else (*fields, "live_orders_final")):
             require(metrics[field] == reference[field], f"{engine}.{field}: differs from reference")
+        if summary["schema_version"] == 2:
+            require(metrics["submitted"] == 2 * metrics["executed"] + metrics["cancelled"]
+                    + metrics["expired"] + metrics["resting_quantity"],
+                    f"{engine}: submitted quantity does not satisfy conservation")
     if summary["input"] is None:
         require(summary["generated_peak_live_orders"] <= summary["config"]["max_orders"],
                 "generated peak live orders exceed configured capacity")
@@ -300,15 +365,22 @@ def verify_directory(directory):
     directory = Path(directory)
     summary = read_summary(directory / "summary.json")
     runs = read_runs(directory / "runs.csv", summary)
+    blocks = read_throughput_replays(directory / summary["throughput_replays_file"], summary, runs) \
+        if summary["schema_version"] == 2 else None
     histograms = read_histograms(directory / "latency_histogram.csv", summary, runs)
     verify_accounting(summary, runs)
     derived = verify_metrics(summary, runs)
-    return {
+    report = {
         "verified_commands_per_run": summary["commands"],
         "verified_engine_runs": len(runs),
         "verified_latency_samples": sum(sum(values.values()) for values in histograms.values()),
         "derived": {key: format(value, ".12g") for key, value in sorted(derived.items())},
     }
+    if blocks is not None:
+        report.update(verified_throughput_replays_per_run=summary["throughput_replays"],
+                      verified_throughput_commands_per_run=summary["throughput_commands_per_run"],
+                      verified_throughput_blocks=len(blocks))
+    return report
 
 
 def main(argv=None):

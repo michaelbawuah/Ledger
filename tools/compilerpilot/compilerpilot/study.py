@@ -19,6 +19,7 @@ from .build import BuildResult, file_sha256, source_provenance
 from .layout import PROJECT, require_ledger_root
 from .space import Candidate, KNOBS
 from .api_budget import ApiBudget, BudgetError, MODEL as BUDGET_MODEL, DEFAULT_LIMIT_USD
+from .protocol import measurement_replays, validate_throughput_replays
 
 STRATEGIES = ("random", "genetic", "surrogate", "agent")
 SOURCE_KEYS = ("ledger_commit", "ledger_dirty", "source_sha256")
@@ -66,6 +67,7 @@ class StudyConfig:
     cpu: int = 0
     jobs: int = 2
     commands: int = 1_000_000
+    throughput_replays: int = 1
     budget: int = 40
     seeds: int = 3
     evaluation_seed: int = 20261011
@@ -80,6 +82,7 @@ class StudyConfig:
             raise ValueError("study-id must be 1–64 letters/numbers/dashes/underscores, starting with a letter or number")
         if self.phase not in ("baseline", "study") or self.provider not in ("openai", "anthropic"):
             raise ValueError("Unknown study phase or provider")
+        validate_throughput_replays(self.throughput_replays)
         for name, lower, upper in (("cpu", 0, 1_000_000), ("jobs", 1, 64), ("commands", 1, 5_000_000),
                                     ("budget", 1, 40), ("seeds", 1, 3),
                                     ("evaluation_seed", 0, 2**63-1), ("training_seed", 0, 2**63-1)):
@@ -173,7 +176,9 @@ class StudyRunner:
             if not self.config.resume:
                 raise ValueError("Study already exists; use --resume to continue successful recorded phases")
             self.manifest = _read(self.path)
-            if self.manifest.get("protocol") != self.config.protocol():
+            recorded_protocol = dict(self.manifest.get("protocol", {}))
+            recorded_protocol.setdefault("throughput_replays", 1)
+            if recorded_protocol != self.config.protocol():
                 raise ValueError("Resume protocol differs; use a new study-id and new results directory")
             if self.manifest.get("source") != source or self.manifest.get("host") != host:
                 raise ValueError("Resume requires the same Ledger source and host boot")
@@ -248,6 +253,7 @@ class StudyRunner:
         c = self.config
         return ["--ledger", str(c.ledger), "--data", str(c.data), "--results", str(c.results),
                 "--commands", str(c.commands), "--evaluation-seed", str(c.evaluation_seed),
+                "--throughput-replays", str(c.throughput_replays),
                 "--training-seed", str(c.training_seed), "--cpu", str(c.cpu), "--jobs", str(c.jobs),
                 "--baseline-repetitions", "10"]
 
@@ -297,6 +303,14 @@ class StudyRunner:
         path = self.config.results / "runs" / self._run_id(suffix) / "baseline.json"
         baseline = _read(path)
         metric, build = baseline.get("metric", {}), baseline.get("build", {})
+        try:
+            if (measurement_replays(baseline) != self.config.throughput_replays
+                    or measurement_replays(metric) != self.config.throughput_replays
+                    or any(measurement_replays(observation) != self.config.throughput_replays
+                           for observation in baseline.get("observations", []))):
+                raise ValueError('mismatch')
+        except ValueError as error:
+            raise RuntimeError(f"{suffix} baseline throughput replay protocol differs from the study") from error
         if (baseline.get("noise_gate") is not True or metric.get("correctness") is not True
                 or type(metric.get("cv")) not in (int, float) or not 0 <= metric["cv"] < .02
                 or baseline.get("repetitions", 0) < 10 or len(baseline.get("observations", [])) < 10
@@ -333,6 +347,8 @@ class StudyRunner:
                     raise RuntimeError(f"{suffix} contains a discarded/noisy measurement batch")
                 if not _positive(row.get("throughput")):
                     raise RuntimeError(f"{suffix} contains invalid measured throughput")
+                if measurement_replays(row) != self.config.throughput_replays:
+                    raise RuntimeError(f"{suffix} candidate throughput replay protocol differs from the study")
                 provenance = row.get("provenance", {})
                 if provenance.get("input_sha256") != expected_hash or provenance.get("cpu") != self.config.cpu:
                     raise RuntimeError(f"{suffix} candidate input/CPU differs from the study")
@@ -386,6 +402,8 @@ class StudyRunner:
                 if (row.get("correctness") is True and row.get("measurement_valid") is True
                         and _positive(row.get("throughput")) and _positive(baseline_value)
                         and type(spread) in (int, float) and math.isfinite(spread) and spread >= 0):
+                    if measurement_replays(row) != self.config.throughput_replays:
+                        raise RuntimeError("Confirmation candidate replay protocol differs from the study")
                     groups.setdefault(Candidate.from_dict(row["candidate"]).hash(), []).append(
                         {**row, "_suffix": suffix, "_ratio": row["throughput"] / baseline_value, "_noise": spread / baseline_value})
         eligible = [key for key, rows in groups.items() if any(row.get("significant") is True for row in rows)
@@ -407,6 +425,7 @@ class StudyRunner:
                             "valid_observations": len(groups[key]), "build_file": str(build_path),
                             "representative_run": self._run_id(representative["_suffix"])})
         plan = {"baseline": baseline.build_id, "candidates": choices, "rounds": 10, "full_validation": True,
+                "throughput_replays": self.config.throughput_replays,
                 "selection": "top three distinct candidates by median of all valid measured ratios, exceeding three times maximum baseline noise; fixed earliest representative",
                 "host": self.manifest["host"], "source": self.manifest["source"],
                 "evaluation_input_sha256": self._verify_inputs()["files"]["eval.lob"]["sha256"]}
@@ -421,14 +440,17 @@ class StudyRunner:
             raise RuntimeError("Confirmation evidence already exists and cannot be overwritten")
         if not candidates:
             result = {"status": "no_provisional_improvement", "reason": "No valid candidate exceeded its recorded noise threshold",
-                      "recommendation": None, "winner": None, "baseline": baseline.build_id}
+                      "recommendation": None, "winner": None, "baseline": baseline.build_id,
+                      "throughput_replays": self.config.throughput_replays}
         elif not self.config.confirm:
             result = {"status": "confirmation_disabled", "recommendation": None, "winner": None,
+                      "throughput_replays": self.config.throughput_replays,
                       "reason": "Explicit --no-confirm; no performance winner is confirmed"}
         else:
             from .bench import BenchmarkConfig, BenchmarkRunner
             from .confirm import confirm_candidates
-            runner = BenchmarkRunner(BenchmarkConfig(self.config.data / "eval.lob", cpu=self.config.cpu))
+            runner = BenchmarkRunner(BenchmarkConfig(self.config.data / "eval.lob", cpu=self.config.cpu,
+                                                    throughput_replays=self.config.throughput_replays))
             trace = self.config.results / "confirmation-trace.jsonl"
             if trace.exists():
                 raise RuntimeError("Confirmation trace already exists; this attempt cannot be repeated")
@@ -437,12 +459,16 @@ class StudyRunner:
                     output.write(json.dumps({"time": _now(), "observation": observation}, allow_nan=False) + "\n")
                     output.flush()
                     os.fsync(output.fileno())
+                if measurement_replays(observation) != self.config.throughput_replays:
+                    raise RuntimeError("Confirmation observation replay protocol differs from the study")
                 self._verify_context()
                 self._verify_inputs()
             confirmer = self.confirmer or confirm_candidates
             result = None
             try:
                 result = confirmer(runner, baseline, candidates, rounds=10, full_validation=True, callback=record)
+                if measurement_replays(result) != self.config.throughput_replays:
+                    raise RuntimeError("Confirmation result replay protocol differs from the study")
                 self._verify_context()
                 self._verify_inputs()
             except BaseException as error:
@@ -461,6 +487,7 @@ class StudyRunner:
         phases = self.manifest.get("phases", {})
         lines = [f"# Study {self.config.study_id}", "", f"Status: **{self.manifest.get('status')}**.", "",
                  f"Protocol: {self.config.commands:,} commands; four strategies × {self.config.seeds} seeds × {self.config.budget} candidate builds. "
+                 f"Each throughput run replays the input {self.config.throughput_replays} time(s) from fresh books; latency replays it once. "
                  f"Full E3 protocol: {'yes' if self.config.full_protocol else 'no — smoke protocol only'}.", "",
                  "| Phase | Status | Outcome |", "|---|---|---|"]
         for name, phase in phases.items():
@@ -540,6 +567,7 @@ def run(argv: list[str] | None = None) -> int:
     parser.add_argument("--cpu", type=int, default=0)
     parser.add_argument("--jobs", type=int, default=2)
     parser.add_argument("--commands", type=int, default=1_000_000)
+    parser.add_argument("--throughput-replays", type=int, default=1)
     parser.add_argument("--budget", type=int, default=40)
     parser.add_argument("--seeds", type=int, default=3)
     parser.add_argument("--data", type=Path)
@@ -555,6 +583,7 @@ def run(argv: list[str] | None = None) -> int:
                              data=args.data or PROJECT / "data" / "studies" / args.study_id,
                              results=args.results or PROJECT / "results" / "studies" / args.study_id,
                              **{name: getattr(args, name) for name in ("phase", "provider", "model", "cpu", "jobs", "commands",
+                                 "throughput_replays",
                                  "budget", "seeds", "evaluation_seed", "training_seed", "confirm", "resume", "api_budget_file", "api_budget_usd")})
         result = StudyRunner(config).run()
     except (ValueError, RuntimeError, OSError) as error:

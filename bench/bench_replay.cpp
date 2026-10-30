@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <map>
 #include <numeric>
 #include <string>
@@ -151,19 +152,41 @@ std::uint64_t timer_overhead() {
 }
 template<class Factory>
 std::vector<Trial> benchmark(const std::string& name, Factory factory, std::span<const ledger::Command> commands,
-                            ledger::Config config, unsigned runs, std::size_t warmup,
-                            std::ofstream& raw, std::ofstream& run_csv, Pass& expected, bool& have_expected) {
+                            ledger::Config config, unsigned runs, std::size_t warmup, unsigned throughput_replays,
+                            std::ofstream& raw, std::ofstream& run_csv, std::ofstream& replay_csv,
+                            Pass& expected, bool& have_expected) {
     std::vector<Trial> trials; trials.reserve(runs);
     std::vector<std::uint64_t> latencies(commands.size()); // allocated before measured processing
+    if (commands.size() > std::numeric_limits<std::uint64_t>::max() / throughput_replays)
+        throw std::overflow_error("throughput command count overflow");
+    const auto throughput_commands = static_cast<std::uint64_t>(commands.size()) * throughput_replays;
     for (unsigned run = 1; run <= runs; ++run) {
         // A distinct book avoids replaying duplicate IDs into the measured initial state.
         (void)pass(factory, commands.first(std::min(warmup, commands.size())), config);
-        auto throughput = pass(factory, commands, config); // aggregate timing; no per-command clock calls
+        Pass throughput; std::uint64_t total_ns{};
+        for (unsigned replay = 1; replay <= throughput_replays; ++replay) {
+            // Each block preserves the original processing-only timing scope.
+            // Keep every block; no fastest-block selection or outlier removal.
+            const auto block = pass(factory, commands, config);
+            replay_csv << name << ',' << run << ',' << replay << ',' << commands.size() << ',' << block.total_ns
+                       << ',' << block.checksum << ',' << block.trade_checksum << ',' << block.rejected
+                       << ',' << block.event_count << ',' << block.stats.submitted << ',' << block.stats.executed
+                       << ',' << block.stats.cancelled << ',' << block.stats.expired << ',' << block.stats.rejected
+                       << ',' << block.stats.trade_count << ',' << block.live_orders << ',' << block.resting_quantity
+                       << ',' << block.best_bid << ',' << block.best_ask << '\n';
+            if (!block.total_ns) throw std::runtime_error("throughput replay duration must be positive");
+            if (!have_expected) { expected = block; have_expected = true; }
+            else if (!same(expected, block))
+                throw std::runtime_error(name + " differs from reference event/trade checksum or state");
+            if (block.total_ns > std::numeric_limits<std::uint64_t>::max() - total_ns)
+                throw std::overflow_error("throughput elapsed time overflow");
+            total_ns += block.total_ns;
+            if (replay == 1) throughput = block;
+        }
+        throughput.total_ns = total_ns;
         (void)pass(factory, commands.first(std::min(warmup, commands.size())), config);
         const auto measured = pass(factory, commands, config, latencies);
         if (!same(throughput, measured)) throw std::runtime_error(name + " changed behavior between timing passes");
-        if (!have_expected) { expected = throughput; have_expected = true; }
-        else if (!same(expected, throughput)) throw std::runtime_error(name + " differs from reference event/trade checksum or state");
         std::sort(latencies.begin(), latencies.end());
         // Lossless compression of all raw latencies: exact nanosecond value and frequency.
         // Counts sum to commands.size() for every engine/run; no sampling or histogram binning.
@@ -173,12 +196,12 @@ std::vector<Trial> benchmark(const std::string& name, Factory factory, std::span
         }
         Trial trial{throughput, percentile(latencies, 50, 100), percentile(latencies, 99, 100),
                     percentile(latencies, 999, 1000), latencies.back(),
-                    static_cast<double>(commands.size()) * 1e9 / static_cast<double>(throughput.total_ns)};
+                    static_cast<double>(throughput_commands) * 1e9 / static_cast<double>(throughput.total_ns)};
         run_csv << name << ',' << run << ',' << commands.size() << ',' << throughput.total_ns << ','
                 << std::setprecision(12) << trial.ops_per_second << ',' << trial.p50 << ',' << trial.p99 << ','
                 << trial.p999 << ',' << trial.maximum << ',' << throughput.rejected << ','
                 << throughput.event_count << ',' << throughput.stats.trade_count << ',' << throughput.checksum
-                << ',' << throughput.trade_checksum << '\n';
+                << ',' << throughput.trade_checksum << ',' << throughput_replays << ',' << throughput_commands << '\n';
         trials.push_back(trial);
         std::cerr << name << " run " << run << '/' << runs << ": " << std::fixed << std::setprecision(2)
                   << trial.ops_per_second / 1e6 << " M commands/s, p99 " << trial.p99 << " ns\n";
@@ -199,18 +222,22 @@ void report_engine(std::ostream& out, const std::string& name, const std::vector
         << ",\"max_ns\":" << *std::max_element(maxima.begin(), maxima.end())
         << ",\"rejected_commands\":" << first.rejected << ",\"live_orders_final\":" << first.live_orders
         << ",\"events\":" << first.event_count << ",\"trades\":" << first.stats.trade_count
-        << ",\"event_checksum\":" << first.checksum << ",\"trade_checksum\":" << first.trade_checksum << '}';
+        << ",\"event_checksum\":" << first.checksum << ",\"trade_checksum\":" << first.trade_checksum
+        << ",\"submitted\":" << first.stats.submitted << ",\"executed\":" << first.stats.executed
+        << ",\"cancelled\":" << first.stats.cancelled << ",\"expired\":" << first.stats.expired
+        << ",\"rejected\":" << first.stats.rejected << ",\"resting_quantity\":" << first.resting_quantity
+        << ",\"best_bid\":" << first.best_bid << ",\"best_ask\":" << first.best_ask << '}';
 }
 }
 int main(int argc, char** argv) {
     try {
         std::size_t count = 1'000'000, warmup = 50000; std::uint64_t seed = 20261011;
-        unsigned runs = 5; ledger::Config config; std::string input, outdir = "bench/results";
+        unsigned runs = 5, throughput_replays = 1; ledger::Config config; std::string input, outdir = "bench/results";
         std::unordered_set<std::string> seen;
         for (int i = 1; i < argc; ++i) {
             const std::string option = argv[i];
             if (option == "--help") {
-                std::cout << "bench_replay [--input FILE | --commands N] [--seed N] [--runs ODD_N] [--warmup N] [--outdir DIR] [--min-price N] [--max-price N] [--capacity N]\n";
+                std::cout << "bench_replay [--input FILE | --commands N] [--seed N] [--runs ODD_N] [--warmup N] [--throughput-replays N] [--outdir DIR] [--min-price N] [--max-price N] [--capacity N]\n";
                 return 0;
             }
             if (!seen.insert(option).second) throw std::invalid_argument("duplicate option: " + option);
@@ -221,6 +248,7 @@ int main(int argc, char** argv) {
             else if (option == "--commands") count = number<std::size_t>(value, option);
             else if (option == "--seed") seed = number<std::uint64_t>(value, option);
             else if (option == "--runs") runs = number<unsigned>(value, option);
+            else if (option == "--throughput-replays") throughput_replays = number<unsigned>(value, option);
             else if (option == "--warmup") warmup = number<std::size_t>(value, option);
             else if (option == "--min-price") config.min_price = number<ledger::Price>(value, option);
             else if (option == "--max-price") config.max_price = number<ledger::Price>(value, option);
@@ -231,6 +259,8 @@ int main(int argc, char** argv) {
             throw std::invalid_argument("--input cannot be combined with --commands or --seed");
         if (!count || count > 5'000'000) throw std::invalid_argument("commands must be in [1, 5000000]");
         if (!runs || runs > 31 || runs % 2 == 0) throw std::invalid_argument("runs must be odd and in [1, 31]");
+        if (!throughput_replays || throughput_replays > 20)
+            throw std::invalid_argument("throughput replays must be in [1, 20]");
         if (warmup > 5'000'000 || outdir.empty()) throw std::invalid_argument("invalid warmup count or output directory");
         if (config.min_price <= 0 || config.max_price < config.min_price
             || config.max_price - config.min_price > 999999 || !config.max_orders || config.max_orders > 1'000'000)
@@ -251,24 +281,30 @@ int main(int argc, char** argv) {
         }
         std::filesystem::create_directories(outdir);
         const auto path = std::filesystem::path(outdir);
-        std::ofstream raw(path / "latency_histogram.csv"), run_csv(path / "runs.csv");
-        if (!raw || !run_csv) throw std::runtime_error("cannot create benchmark CSV files");
+        std::ofstream raw(path / "latency_histogram.csv"), run_csv(path / "runs.csv"),
+                      replay_csv(path / "throughput_replays.csv");
+        if (!raw || !run_csv || !replay_csv) throw std::runtime_error("cannot create benchmark CSV files");
         raw << "engine,run,latency_ns,count\n";
-        run_csv << "engine,run,commands,throughput_total_ns,commands_per_second,p50_ns,p99_ns,p999_ns,max_ns,rejected_commands,events,trades,event_checksum,trade_checksum\n";
+        run_csv << "engine,run,commands,throughput_total_ns,commands_per_second,p50_ns,p99_ns,p999_ns,max_ns,rejected_commands,events,trades,event_checksum,trade_checksum,throughput_replays,throughput_commands\n";
+        replay_csv << "engine,run,replay,commands,throughput_total_ns,event_checksum,trade_checksum,rejected_commands,events,submitted,executed,cancelled,expired,rejected,trades,live_orders_final,resting_quantity,best_bid,best_ask\n";
         const auto overhead = timer_overhead(); Pass expected; bool have_expected = false;
         const auto reference = benchmark("reference", [&] { return ledger::ReferenceBook(config); }, commands,
-                                         config, runs, warmup, raw, run_csv, expected, have_expected);
+                                         config, runs, warmup, throughput_replays, raw, run_csv, replay_csv, expected, have_expected);
         const auto bitmap = benchmark("fast-bitmap", [&] { return ledger::FastBook(config, true); }, commands,
-                                      config, runs, warmup, raw, run_csv, expected, have_expected);
+                                      config, runs, warmup, throughput_replays, raw, run_csv, replay_csv, expected, have_expected);
         const auto linear = benchmark("fast-linear", [&] { return ledger::FastBook(config, false, false); }, commands,
-                                      config, runs, warmup, raw, run_csv, expected, have_expected);
-        raw.close(); run_csv.close();
-        if (!raw || !run_csv) throw std::runtime_error("failed to write benchmark CSV files");
+                                      config, runs, warmup, throughput_replays, raw, run_csv, replay_csv, expected, have_expected);
+        raw.close(); run_csv.close(); replay_csv.close();
+        if (!raw || !run_csv || !replay_csv) throw std::runtime_error("failed to write benchmark CSV files");
         std::ofstream report(path / "summary.json"); if (!report) throw std::runtime_error("cannot create benchmark report");
-        report << std::setprecision(12) << "{\n  \"schema_version\":1,\n  \"commands\":" << commands.size()
+        report << std::setprecision(12) << "{\n  \"schema_version\":2,\n  \"commands\":" << commands.size()
                << ",\n  \"seed\":" << (input.empty() ? std::to_string(seed) : "null")
                << ",\n  \"input\":" << (input.empty() ? "null" : quote(input)) << ",\n  \"runs\":" << runs
                << ",\n  \"warmup_commands\":" << std::min(warmup, commands.size())
+               << ",\n  \"throughput_replays\":" << throughput_replays
+               << ",\n  \"throughput_commands_per_run\":" << static_cast<std::uint64_t>(commands.size()) * throughput_replays
+               << ",\n  \"latency_commands_per_run\":" << commands.size()
+               << ",\n  \"throughput_replays_file\":\"throughput_replays.csv\""
                << ",\n  \"config\":{\"min_price\":" << config.min_price << ",\"max_price\":" << config.max_price
                << ",\"max_orders\":" << config.max_orders << "},\n  \"mix\":{\"limit\":" << limits
                << ",\"cancel\":" << cancels << ",\"market\":" << markets << ",\"replace\":" << replaces << "},\n"
@@ -298,7 +334,7 @@ int main(int argc, char** argv) {
                << "},\n  \"clock\":{\"steady\":" << (Clock::is_steady ? "true" : "false")
                << ",\"period_numerator\":" << Clock::period::num << ",\"period_denominator\":" << Clock::period::den
                << ",\"median_empty_pair_ns\":" << overhead << "},\n"
-               << "  \"method\":\"Fresh empty book for each pass; warmed caches; aggregate throughput pass has no per-command clock calls and includes event checksums; latency measures process() only with caller buffer clear and event consumption outside the sample; clocks are not subtracted; exact lossless latency frequencies; medians across runs\",\n"
+               << "  \"method\":\"Fresh empty book for each throughput replay; warmed caches; throughput sums every replay's processing wall time and command count, including event checksums, with no per-command clock calls or outlier removal; correctness fields describe one input replay; one separate input-size latency pass per run measures process() only with caller buffer clear and event consumption outside the sample; clocks are not subtracted; exact lossless latency frequencies; medians across runs\",\n"
                << "  \"engines\":{\n";
         report_engine(report, "reference", reference, false);
         report_engine(report, "fast-bitmap", bitmap, true);

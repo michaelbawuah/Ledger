@@ -1,0 +1,50 @@
+name: CompilerPilot encrypted Codespace credential
+
+on:
+  workflow_dispatch:
+    inputs:
+      public_key_der_hex:
+        description: 'One-line DER hex of the Codespace-owned RSA-4096 public key'
+        required: true
+        type: string
+      public_key_sha256:
+        description: 'SHA-256 hex fingerprint independently read in that Codespace'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  seal:
+    if: github.ref == 'refs/heads/main' && github.actor == github.repository_owner
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: tools/compilerpilot
+    env:
+      ENVELOPE_DIR: results/codespace-access/gha-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Seal one credential for the verified ephemeral public key
+        env:
+          CODESPACE_PUBLIC_KEY_DER_HEX: ${{ inputs.public_key_der_hex }}
+          CODESPACE_PUBLIC_KEY_SHA256: ${{ inputs.public_key_sha256 }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/seal_codespace_key.py --output "$ENVELOPE_DIR"
+      - name: Retain only ciphertext and sanitized metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-codespace-envelope-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tools/compilerpilot/${{ env.ENVELOPE_DIR }}/openai-key.enc
+            tools/compilerpilot/${{ env.ENVELOPE_DIR }}/envelope.json
+          if-no-files-found: error
+          retention-days: 1

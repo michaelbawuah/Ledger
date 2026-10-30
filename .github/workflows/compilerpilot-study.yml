@@ -104,7 +104,7 @@ jobs:
           from pathlib import Path
           study = os.environ['STUDY_ID']
           output = Path('results/studies') / study / 'build-evidence'
-          names = {'build.json', 'summary.json', 'runs.csv', 'differential.json', 'measurement.json', 'size.log', 'compiler-version.log', 'counters.json', 'perf.log', 'validation.json', 'ctest.xml', 'ctest-plan.json', 'ctest.log'}
+          names = {'build.json', 'summary.json', 'runs.csv', 'throughput_replays.csv', 'latency_histogram.csv', 'differential.json', 'measurement.json', 'size.log', 'compiler-version.log', 'counters.json', 'perf.log', 'validation.json', 'ctest.xml', 'ctest-plan.json', 'ctest.log'}
           for build in Path('builds').glob(study + '*'):
               for path in build.rglob('*'):
                   if path.is_file() and (path.name in names or path.suffix == '.yaml'):

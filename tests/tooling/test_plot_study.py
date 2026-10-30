@@ -20,6 +20,12 @@ SPEC.loader.exec_module(plot)
 DRAW_SPEC = importlib.util.spec_from_file_location("draw_architecture", ROOT / "tools/draw_architecture.py")
 draw = importlib.util.module_from_spec(DRAW_SPEC)
 DRAW_SPEC.loader.exec_module(draw)
+CORE_FIXTURE_SPEC = importlib.util.spec_from_file_location("plot_core_test_fixtures", ROOT / "tests/tooling/test_verify_results.py")
+core_fixtures = importlib.util.module_from_spec(CORE_FIXTURE_SPEC)
+CORE_FIXTURE_SPEC.loader.exec_module(core_fixtures)
+AUDIT_SPEC = importlib.util.spec_from_file_location("plot_study_offline_audit", ROOT / "tools/verify_study.py")
+audit = importlib.util.module_from_spec(AUDIT_SPEC)
+AUDIT_SPEC.loader.exec_module(audit)
 HAVE_MATPLOTLIB = importlib.util.find_spec("matplotlib") is not None
 
 
@@ -94,8 +100,67 @@ class Fixture(unittest.TestCase):
             for i in (0,500,1000) for side,price in (("buy",99),("sell",101))])
         return directory
 
+    def core_bundle(self, schema=2, replays=1):
+        """Explicit synthetic fixture; never emitted as project measurements."""
+        summary = core_fixtures.fixture_summary()
+        runs, histogram = core_fixtures.fixture_rows()
+        columns = plot.CORE_RUN_COLUMNS
+        if schema == 2:
+            verifier = core_fixtures.verifier
+            summary.update(schema_version=2, throughput_replays=replays,
+                           throughput_commands_per_run=1000 * replays, latency_commands_per_run=1000,
+                           throughput_replays_file="throughput_replays.csv")
+            for engine in summary["engines"].values():
+                engine.update(submitted=2000, executed=10, cancelled=500, expired=100,
+                              rejected=0, resting_quantity=1380, best_bid=9999, best_ask=10001)
+            blocks = []
+            for row in runs:
+                row.update(throughput_total_ns=row["throughput_total_ns"] * replays,
+                           throughput_replays=replays, throughput_commands=1000 * replays)
+                for replay in range(1, replays + 1):
+                    blocks.append(dict(engine=row["engine"], run=row["run"], replay=replay,
+                                       commands=1000, throughput_total_ns=1000000,
+                                       **{field: summary["engines"][row["engine"]][field]
+                                          for field in verifier.REPLAY_STATE}))
+            columns = list(verifier.RUN_COLUMNS_V2)
+            self.csv("core/throughput_replays.csv", list(verifier.REPLAY_COLUMNS), blocks)
+        self.csv("core/runs.csv", columns, runs)
+        self.csv("core/latency_histogram.csv", plot.CORE_HIST_COLUMNS, histogram)
+        directory = self.root / "core"
+        (directory / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
+        return directory
+
 
 class SchemaTests(Fixture):
+    def test_core_legacy_schema_keeps_original_sources_and_rates(self):
+        directory = self.core_bundle(schema=1)
+        dataset = plot.Dataset(core_root=directory)
+        self.assertEqual(len(dataset.sources), 3)
+        self.assertEqual(dataset.source_dependencies, {})
+        self.assertEqual(dataset.core_runs[0]["commands"], 1000)
+
+    def test_core_schema2_default_one_and_three_replays_preserve_latency_count(self):
+        for replays in (1, 3):
+            with self.subTest(replays=replays):
+                directory = self.core_bundle(replays=replays)
+                dataset = plot.Dataset(core_root=directory)
+                self.assertEqual(dataset.core_runs[0]["commands"], 1000)
+                self.assertEqual(dataset.core_runs[0]["throughput_commands"], 1000 * replays)
+                self.assertEqual(dataset.core_runs[0]["commands_per_second"], 1000000.)
+                self.assertEqual(sum(row["count"] for row in dataset.core_histogram), 9000)
+                self.assertIn(str((directory / "throughput_replays.csv").resolve()), dataset.sources)
+
+    def test_core_schema2_forged_block_is_rejected_before_plotting(self):
+        directory = self.core_bundle(replays=3)
+        path = directory / "throughput_replays.csv"
+        with path.open(newline="") as stream:
+            reader = csv.DictReader(stream)
+            columns, rows = reader.fieldnames, list(reader)
+        rows[0]["trade_checksum"] = str(int(rows[0]["trade_checksum"]) + 1)
+        self.csv("core/throughput_replays.csv", columns, rows)
+        with self.assertRaisesRegex(plot.DataError, "core evidence failed independent audit"):
+            plot.Dataset(core_root=directory)
+
     def test_uint64_checksum_preserved(self):
         directory = self.bundle()
         row = plot.read_csv(directory / "runs.csv",plot.RUN_COLUMNS)[0]
@@ -152,6 +217,26 @@ class SchemaTests(Fixture):
 
 @unittest.skipUnless(HAVE_MATPLOTLIB, "matplotlib is optional; install it for rendering QA")
 class RenderingTests(Fixture):
+    def test_schema2_core_block_evidence_is_hashed_per_chart_and_offline_audited(self):
+        directory = self.core_bundle(replays=3)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            manifest = plot.Renderer(plot.Dataset(core_root=directory), self.root / "plots").render()
+        block_sources = [entry for entry in manifest["sources"]
+                         if Path(entry["path"]).name == "throughput_replays.csv"]
+        self.assertEqual(len(block_sources), 1)
+        self.assertTrue(all(any(Path(source).name == "throughput_replays.csv" for source in chart["sources"])
+                            for chart in manifest["plots"]))
+        verified = audit.verify_plot_manifest(self.root / "plots/plot-manifest.json", {})
+        core_audit = verified["core_evidence_audits"][str(directory.resolve())]
+        self.assertEqual(core_audit["verified_latency_samples"], 9000)
+        self.assertIn("throughput_replays.csv", core_audit["source_sha256"])
+        manifest["sources"] = [entry for entry in manifest["sources"]
+                               if Path(entry["path"]).name != "throughput_replays.csv"]
+        (self.root / "plots/plot-manifest.json").write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(audit.VerificationError, "schema-2 core replay evidence is missing"):
+            audit.verify_plot_manifest(self.root / "plots/plot-manifest.json", {})
+
     def test_manifest_reconstructs_pooled_and_run_quantiles_differently(self):
         self.bundle()
         dataset = plot.Dataset(self.root)

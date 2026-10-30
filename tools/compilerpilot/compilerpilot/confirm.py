@@ -6,6 +6,7 @@ import statistics
 from typing import Any, Callable
 
 from .build import BuildResult
+from .protocol import measurement_replays, runner_replays, validate_throughput_replays
 
 
 def _valid_measurement(result: dict[str, Any]) -> bool:
@@ -65,10 +66,14 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
         raise ValueError("Confirmation requires at least two interleaved rounds")
     if not baseline.success:
         raise ValueError("Baseline build failed")
+    replays = runner_replays(runner)
     selected: list[BuildResult] = []
     excluded: dict[str, str] = {}
     seen = {baseline.build_id}
     baseline_source = getattr(baseline, "provenance", {})
+    if ('throughput_replays' in baseline_source
+            and validate_throughput_replays(baseline_source['throughput_replays']) != replays):
+        raise ValueError("Baseline build's declared replay protocol differs from the confirmation runner")
     for build in candidates:
         if build.build_id in seen:
             continue
@@ -79,6 +84,9 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
                  getattr(build, "provenance", {}).get(key) != baseline_source[key]
                  for key in ("source_sha256", "ledger_commit")):
             excluded[build.build_id] = "source provenance differs from the baseline"
+        elif ('throughput_replays' in getattr(build, 'provenance', {})
+              and validate_throughput_replays(build.provenance['throughput_replays']) != replays):
+            excluded[build.build_id] = "declared replay protocol differs from the confirmation runner"
         elif len(selected) < 3:
             selected.append(build)
         else:
@@ -87,7 +95,7 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
                               "rounds": rounds, "observations": [], "medians": {},
                               "excluded": excluded, "recommendation": None,
                               "recommended_build": None, "winner": None,
-                              "full_validation": None}
+                              "full_validation": None, "throughput_replays": replays}
     by_build: dict[str, list[dict[str, Any]]] = {build.build_id: [] for build in [*selected, baseline]}
     failed: set[str] = set()
     baseline_input_hash: str | None = None
@@ -105,6 +113,17 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
             output["observations"].append(observation)
             if callback is not None:
                 callback(observation)
+            try:
+                protocol_matches = measurement_replays(measured) == replays
+            except ValueError:
+                protocol_matches = False
+            if not protocol_matches:
+                excluded[build.build_id] = "throughput replay protocol differs from the confirmation runner"
+                failed.add(build.build_id)
+                if build.build_id == baseline.build_id:
+                    output.update(status="invalid_baseline", reason=excluded[build.build_id])
+                    return output
+                continue
             if not _valid_measurement(measured):
                 excluded[build.build_id] = "correctness or measurement failed during confirmation"
                 failed.add(build.build_id)
@@ -142,6 +161,9 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
                             "relative": threshold / baseline_stats["throughput"],
                             "noise_multiplier": 3.0, "max_baseline_cv": 0.02,
                             "max_baseline_drift": 0.02, "max_candidate_cv": 0.02}
+    output["method"] = {"throughput_replays": replays,
+                        "throughput_aggregation": "all fresh-book replay times and command counts; no replay removal",
+                        "latency_replays": 1}
     for stats in output["medians"].values():
         stats["speedup"] = stats["throughput"] / baseline_stats["throughput"]
         stats["speedup_pct"] = 100 * (stats["speedup"] - 1.0)
@@ -172,6 +194,11 @@ def confirm_candidates(runner: Any, baseline: BuildResult, candidates: list[Buil
     except Exception as error:
         validation = {"correctness": False, "error": str(error)[:1000]}
     output["full_validation"] = validation
+    if (isinstance(validation, dict) and 'throughput_replays' in validation
+            and measurement_replays(validation) != replays):
+        excluded[winner.build_id] = "final validation replay protocol differs from the runner"
+        output.update(status="validation_failed", reason=excluded[winner.build_id])
+        return output
     if not _validation_passed(validation):
         excluded[winner.build_id] = "final differential or ctest validation failed"
         output.update(status="validation_failed", reason=excluded[winner.build_id])

@@ -10,6 +10,7 @@ from .build import BuildManager, BuildResult
 from .bench import BenchmarkRunner
 from .feedback import summarize_feedback
 from .store import Store
+from .protocol import measurement_replays, runner_replays
 
 
 class Harness:
@@ -19,6 +20,7 @@ class Harness:
         if not 1 <= budget <= 10000:
             raise ValueError('budget must be in 1..10000')
         self.manager, self.runner, self.store = manager, runner, store
+        self.throughput_replays = runner_replays(runner)
         self.budget, self.strategy, self.seed = budget, strategy, seed
         self.training_input = training_input
         self.builds_used = 0
@@ -39,6 +41,12 @@ class Harness:
     def list_knobs(self):
         return list_knobs()
 
+    def _protocol_matches(self, measurement):
+        try:
+            return measurement_replays(measurement) == self.throughput_replays
+        except ValueError:
+            return False
+
     def establish_baseline(self, repetitions: int = 10) -> dict:
         if self.baseline is not None:
             raise RuntimeError('Baseline is already established')
@@ -56,6 +64,8 @@ class Harness:
             self.trace('baseline_observation', result)
             if not result.get('correctness'):
                 raise RuntimeError(f'Baseline failed correctness: {result.get("error")}')
+            if not self._protocol_matches(result):
+                raise RuntimeError('Baseline throughput replay protocol differs from the requested work unit')
         input_hashes = {o.get('provenance', {}).get('input_sha256') for o in observations}
         if len(input_hashes) > 1:
             raise RuntimeError('Evaluation input changed during baseline observations')
@@ -69,6 +79,7 @@ class Harness:
                                     p50_ns=statistics.median(o['p50_ns'] for o in observations),
                                     p99_ns=statistics.median(o['p99_ns'] for o in observations))
         result = {'build': self.baseline.to_dict(), 'metric': self.baseline_metric,
+                  'throughput_replays': self.throughput_replays,
                   'observations': observations, 'noise_gate': self.noise_ok,
                   'repetitions': repetitions, 'threshold_throughput': median + 3 * std}
         self.store.write('baseline.json', result)
@@ -76,6 +87,8 @@ class Harness:
         return result
 
     def _require_ready(self):
+        if runner_replays(self.runner) != self.throughput_replays:
+            raise RuntimeError('Requested throughput replay protocol changed during the experiment')
         if self.baseline_metric is None:
             raise RuntimeError('Establish baseline first')
         if not self.noise_ok:
@@ -124,8 +137,12 @@ class Harness:
         input_matches = (not good or baseline_input is None or
                          metric.get('provenance', {}).get('input_sha256') == baseline_input)
         valid = valid and input_matches
+        protocol_matches = not good or self._protocol_matches(metric)
+        valid = valid and protocol_matches
         if not input_matches:
             metric = dict(metric, error='Evaluation input SHA256 changed after baseline')
+        if not protocol_matches:
+            metric = dict(metric, error='Throughput replay protocol changed after baseline')
         throughput = metric.get('throughput') if good else None
         std = self.baseline_metric['spread']
         trial = {
@@ -135,10 +152,12 @@ class Harness:
             'text_bytes': built.text_bytes, 'compiler_version': built.compiler_version,
             'flags': built.flags, 'build_provenance': built.provenance,
             **metric, 'correctness': good, 'measurement_valid': valid,
+            'throughput_replays': self.throughput_replays,
             'baseline_throughput': baseline, 'baseline_spread': std,
             'speedup': throughput / baseline if throughput else None,
             'significant': bool(valid and throughput and throughput > baseline + 3 * std),
             'status': ('measured' if valid else ('discarded_input_change' if not input_matches
+                       else 'discarded_protocol_change' if not protocol_matches
                        else 'discarded_candidate_noise')) if good else 'failed',
         }
         self.history.append(trial)
@@ -188,7 +207,7 @@ class Harness:
         input_matches = (baseline_input is None or
                          check.get('provenance', {}).get('input_sha256') == baseline_input)
         valid = (check.get('correctness') and drift <= .02 and check.get('cv', 1) < .02
-                 and input_matches)
+                 and input_matches and self._protocol_matches(check))
         self.trace('baseline_checkpoint', {'result': check, 'drift': drift,
                    'boundary': boundary, 'valid': bool(valid)})
         if not valid:
@@ -240,7 +259,7 @@ class Harness:
         def compact(row):
             keys = ('build_id', 'candidate', 'build_index', 'throughput', 'p99_ns', 'p50_ns',
                     'cv', 'baseline_spread', 'speedup', 'significant', 'correctness',
-                    'measurement_valid', 'compile_s', 'text_bytes', 'status')
+                    'measurement_valid', 'compile_s', 'text_bytes', 'status', 'throughput_replays')
             value = {key: row[key] for key in keys if key in row}
             if isinstance(value.get('candidate'), dict):
                 value['candidate'] = dict(value['candidate'])
@@ -251,7 +270,8 @@ class Harness:
                      for key in ('throughput', 'p50_ns', 'p99_ns', 'cv', 'spread', 'correctness')
                      if key in self.baseline_metric} if self.baseline_metric else None)
         if baseline is not None and self.baseline is not None:
-            baseline.update(build_id=self.baseline.build_id, candidate=dict(self.baseline.candidate))
+            baseline.update(build_id=self.baseline.build_id, candidate=dict(self.baseline.candidate),
+                            throughput_replays=self.throughput_replays)
         failed = [r for r in self.history
                   if not r.get('correctness') or not r.get('measurement_valid')]
         return {'best': [compact(row) for row in rows[:top_k]],
@@ -265,6 +285,7 @@ class Harness:
         return predict([Candidate.from_dict(c) for c in candidates], self.history, seed=self.seed)
 
     def finish(self, recommendation: str, rationale: str):
+        self._require_ready()
         if self.builds_used < self.budget:
             raise ValueError('Use the full requested build budget before finish')
         pending = self._pending_builds()
@@ -283,7 +304,8 @@ class Harness:
             raise ValueError('Cannot recommend after failed noise/drift gate')
         self.finished = True
         result = {'recommendation': recommendation, 'rationale': rationale,
-                  'status': 'provisional_pending_confirmation', 'builds_used': self.builds_used}
+                  'status': 'provisional_pending_confirmation', 'builds_used': self.builds_used,
+                  'throughput_replays': self.throughput_replays}
         self.store.write('recommendation.json', result)
         self.trace('finish', result)
         return result

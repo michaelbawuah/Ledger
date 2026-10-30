@@ -298,3 +298,48 @@ def test_real_tool_protocol_can_finish_forty_build_no_improvement_with_discovere
     assert all(row['correctness'] and row['measurement_valid'] for row in harness.history)
     assert not any(row['significant'] for row in harness.history)
     assert result['recommendation']['recommendation'] == harness.baseline.build_id
+
+
+def test_baseline_replay_protocol_must_match_runner_request(tmp_path):
+    from types import SimpleNamespace
+    runner = Runner()
+    runner.config = SimpleNamespace(throughput_replays=5)
+    harness = Harness(Manager(tmp_path), runner, Store(tmp_path / 'results', 'mismatch'), budget=1)
+    with pytest.raises(RuntimeError, match='replay protocol'):
+        harness.establish_baseline(repetitions=2)
+    assert harness.builds_used == 0
+
+
+def test_candidate_and_checkpoint_cannot_switch_replay_protocol(tmp_path):
+    from types import SimpleNamespace
+    class ReplayRunner(Runner):
+        def __init__(self):
+            super().__init__()
+            self.config = SimpleNamespace(throughput_replays=5)
+
+        def run(self, build, label='bench'):
+            value = super().run(build, label)
+            # Only the declared baseline uses five replays; later metrics switch.
+            value['provenance'] = {'throughput_replays': 5 if label.startswith('baseline-') else 1}
+            return value
+
+    harness = ready(tmp_path, runner=ReplayRunner())
+    row = harness.evaluate(Candidate(opt='O2'))
+    assert row['correctness'] and not row['measurement_valid'] and not row['significant']
+    assert row['status'] == 'discarded_protocol_change'
+    assert row['throughput_replays'] == 5
+    with pytest.raises(ValueError, match='measurement gates'):
+        harness.finish(Candidate(opt='O2').hash(), 'Wrong replay protocol')
+    assert not harness.noise_ok
+
+
+def test_legacy_one_replay_metrics_remain_compatible_and_are_declared(tmp_path):
+    harness = ready(tmp_path)
+    assert harness.throughput_replays == 1
+    baseline = json.loads((harness.store.run_dir / 'baseline.json').read_text())
+    assert baseline['throughput_replays'] == 1
+    row = harness.evaluate(Candidate(opt='O2'))
+    assert row['throughput_replays'] == 1 and row['measurement_valid']
+    harness.runner.config = type('ChangedConfig', (), {'throughput_replays': 5})()
+    with pytest.raises(RuntimeError, match='protocol changed'):
+        harness.finish(Candidate(opt='O2').hash(), 'Must not change work unit')

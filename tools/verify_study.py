@@ -467,7 +467,12 @@ def verify_plot_manifest(path, tables):
                 for field in ("run", "latency_ns", "count"):
                     row[field] = csv_integer(row[field], f"core.{field}", 1 if field == "count" else 0)
             tables[source] = core_rows
-            core_audits[str(source.parent)] = {"verified_latency_samples": core_report["verified_latency_samples"], "source_sha256": {name: sha256(source.parent / name) for name in ("summary.json", "runs.csv", "latency_histogram.csv")}}
+            core_files = ("summary.json", "runs.csv", "latency_histogram.csv")
+            if "verified_throughput_blocks" in core_report:
+                require(source.with_name("throughput_replays.csv") in sources,
+                        "plot: schema-2 core replay evidence is missing from source manifest")
+                core_files += ("throughput_replays.csv",)
+            core_audits[str(source.parent)] = {"verified_latency_samples": core_report["verified_latency_samples"], "source_sha256": {name: sha256(source.parent / name) for name in core_files}}
     trace_audits = {}
     for source in sources:
         if source.name == "trace.csv":

@@ -100,6 +100,54 @@ def _read_json(path: Path) -> dict[str, Any]:
         return {}
 
 
+def _mapping(value: Any) -> dict[str, Any]:
+    if isinstance(value, str):
+        try:
+            value = json.loads(value)
+        except (ValueError, TypeError):
+            return {}
+    return value if isinstance(value, dict) else {}
+
+
+def _replay_count(value: Any) -> int | None:
+    number = _number(value)
+    if isinstance(value, str) or number is None or not number.is_integer() or not 1 <= number <= 20:
+        return None
+    return int(number)
+
+
+def _measurement_replays(value: dict[str, Any]) -> int | None:
+    provenance = _mapping(value.get("provenance"))
+    declared = []
+    for source in (value, provenance):
+        if "throughput_replays" in source:
+            raw = source["throughput_replays"]
+            # Missing Parquet columns become null/NaN when old and new rows
+            # share a table; they do not override explicit provenance.
+            if raw is not None and not (isinstance(raw, float) and math.isnan(raw)):
+                declared.append(_replay_count(raw))
+    if not declared:
+        return 1
+    return declared[0] if None not in declared and len(set(declared)) == 1 else None
+
+
+def _baseline_replays(source: dict[str, Any]) -> int | None:
+    metric = _measurement_replays(_mapping(source.get("metric")))
+    wrapper = _replay_count(source.get("throughput_replays", metric))
+    observations = source.get("observations", [])
+    observed = {_measurement_replays(row) for row in observations if isinstance(row, dict)}
+    return metric if metric is not None and wrapper == metric and observed <= {metric} else None
+
+
+def _protocol_replays(protocol: dict[str, Any]) -> int | None:
+    arguments = _mapping(protocol.get("arguments"))
+    declared = [_replay_count(source["throughput_replays"]) for source in (protocol, arguments)
+                if "throughput_replays" in source]
+    if not declared:
+        return 1
+    return declared[0] if None not in declared and len(set(declared)) == 1 else None
+
+
 def _safe_run_dir(results_dir: Path, run_id: str) -> Path | None:
     if not run_id or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for c in run_id):
         return None
@@ -162,23 +210,29 @@ def _select_runs(rows: list[dict[str, Any]], results_dir: Path, budget: int) -> 
         failures = sum(not _true(row.get("correctness")) for row in attempts)
         declared = protocol.get("strategy") == strategy and protocol.get("seed") == seed and protocol.get("budget") == budget
         baseline_cv = _number(baseline.get("metric", {}).get("cv"))
+        replays = _protocol_replays(protocol)
+        replay_protocol_valid = (replays is not None and _baseline_replays(baseline) == replays
+                                 and all(_measurement_replays(row) == replays for row in attempts if _eligible(row)))
         baseline_valid = (_true(baseline.get("noise_gate")) and _true(baseline.get("metric", {}).get("correctness"))
                           and baseline_cv is not None and baseline_cv < .02
                           and baseline.get("repetitions", 0) >= 10 and len(baseline.get("observations", [])) >= 10)
         full_indices = sorted(indices) == list(range(1, budget + 1))
         completed_outcome = outcome.get("status") == "provisional_pending_confirmation" and outcome.get("builds_used") == budget
-        complete = declared and baseline_valid and full_indices and completed_outcome and not noise_excluded and not bad_checkpoint
+        complete = (declared and baseline_valid and full_indices and completed_outcome
+                    and not noise_excluded and not bad_checkpoint and replay_protocol_valid)
         reasons = []
         if not declared: reasons.append("missing/mismatched predeclared protocol")
         if not baseline_valid: reasons.append("baseline noise/E1 gate missing or failed")
         if not full_indices: reasons.append("candidate budget incomplete or duplicate indices")
         if not completed_outcome: reasons.append("completed outcome missing")
         if noise_excluded or bad_checkpoint: reasons.append("discarded noise/drift batch")
+        if not replay_protocol_valid: reasons.append("throughput replay protocol mismatch")
         inventory.append({"run_id": run_id, "strategy": strategy, "seed": seed, "builds": length,
-                          "valid": sum(_eligible(row) for row in attempts), "failed": failures,
+                          "valid": sum(_eligible(row) for row in attempts) if replay_protocol_valid else 0, "failed": failures,
                           "noise_excluded": noise_excluded, "protocol_complete": complete,
+                          "throughput_replays": replays, "measurement_protocol_valid": replay_protocol_valid,
                           "status": "complete" if complete else "; ".join(reasons), "selected": False,
-                          "started": started, "_rows": attempts})
+                          "started": started, "_rows": attempts if replay_protocol_valid else []})
     selected = []
     for strategy, seed in sorted({(item["strategy"], item["seed"]) for item in inventory}):
         choices = [item for item in inventory if item["strategy"] == strategy and item["seed"] == seed]
@@ -215,9 +269,12 @@ def _baselines(results_dir: Path) -> list[dict[str, Any]]:
         cv = _number(metric.get("cv"))
         correct = _true(metric.get("correctness")) and all(_true(row.get("correctness")) for row in observations)
         repeated = source.get("repetitions", len(observations))
-        noise_gate = bool(cv is not None and cv < .02 and ("noise_gate" not in source or _true(source["noise_gate"])))
+        replay_count = _baseline_replays(source)
+        noise_gate = bool(replay_count is not None and cv is not None and cv < .02
+                          and ("noise_gate" not in source or _true(source["noise_gate"])))
         label = "qualification" if path == qualification else path.parent.name
         summaries.append({"run_id": label, "path": str(path.relative_to(results_dir)), "throughput": throughput,
+                          "throughput_replays": replay_count,
                           "p99_ns": _number(metric.get("p99_ns")), "spread": _number(metric.get("spread")), "cv": cv,
                           "compile_s": _number(build.get("compile_s")), "text_bytes": _number(build.get("text_bytes")),
                           "correctness": correct, "noise_gate": noise_gate, "repetitions": repeated,
@@ -241,6 +298,7 @@ def _qualifications(results_dir: Path) -> list[dict[str, Any]]:
         if not source or _number(metric.get("throughput")) is None:
             continue
         measurements.append({"label": label, "source": name, "throughput": metric["throughput"],
+                             "throughput_replays": _measurement_replays(metric),
                              "p99_ns": _number(metric.get("p99_ns")), "cv": _number(metric.get("cv")),
                              "compile_s": _number(build.get("compile_s")), "text_bytes": _number(build.get("text_bytes")),
                              "correctness": _true(metric.get("correctness")), "raw_runs": len(metric.get("runs", []))})
@@ -275,20 +333,22 @@ def _e1_figures(results_dir: Path, figures_dir: Path) -> tuple[list[Path], list[
         if not raw_points:
             continue
         overall_cv = _number(source.get("metric", {}).get("cv"))
-        gate = _true(source.get("noise_gate")) and overall_cv is not None and overall_cv < .02
+        replays = _baseline_replays(source)
+        gate = (replays is not None and _true(source.get("noise_gate"))
+                and overall_cv is not None and overall_cv < .02)
         status, color = ("passed", "#078a82") if gate else ("FAILED", "#b84135")
         fig, (ax, cv_ax) = plt.subplots(2, 1, figsize=(10, 7), sharex=True,
                                        gridspec_kw={"height_ratios": [2.0, 1.0]})
         ax.scatter([point[0] for point in raw_points], [point[1] / 1e6 for point in raw_points],
-                   s=30, color="#64748b", alpha=.75, label=f"All {len(raw_points)} raw replays")
+                   s=30, color="#64748b", alpha=.75, label=f"All {len(raw_points)} reported runs")
         ax.plot([point[0] for point in medians], [point[1] / 1e6 for point in medians],
-                color="#6c4fd3", marker="D", markersize=5, linewidth=1.5, label="Five-replay observation median")
-        ax.set(ylabel="Throughput (M commands/s)", title=f"E1: baseline stability — noise gate {status}")
+                color="#6c4fd3", marker="D", markersize=5, linewidth=1.5, label="Observation median")
+        ax.set(ylabel="Throughput (M commands/s)", title=f"E1: baseline stability — R={replays}; noise gate {status}")
         ax.legend(frameon=False, loc="best", fontsize=9)
         cv_ax.bar([point[0] for point in cvs], [point[1] * 100 for point in cvs], color="#94a3b8", width=.65,
                   label="Within-observation CV")
         cv_ax.axhline(2, color="#b84135", linewidth=1.5, linestyle="--", label="Quiet-host gate: CV < 2%")
-        cv_ax.set(xlabel="Baseline observation (five raw replays each)", ylabel="CV (%)", xticks=range(1, len(observations)+1))
+        cv_ax.set(xlabel="Baseline observation (five reported runs each)", ylabel="CV (%)", xticks=range(1, len(observations)+1))
         cv_ax.legend(frameon=False, loc="best", fontsize=9)
         for panel in (ax, cv_ax):
             panel.grid(axis="y", alpha=.18)
@@ -304,6 +364,7 @@ def _e1_figures(results_dir: Path, figures_dir: Path) -> tuple[list[Path], list[
         evidence.append({"figure": str(path.relative_to(results_dir)), "source": str(source_path.relative_to(results_dir)),
                          "source_sha256": hashlib.sha256(source_path.read_bytes()).hexdigest(),
                          "raw_runs": len(raw_points), "observation_medians": medians, "observation_cvs": cvs,
+                         "throughput_replays": replays,
                          "conservative_cv": overall_cv, "noise_gate": gate})
     active = {path.name for path in paths}
     for stale in figures_dir.glob("e1-*.png"):
@@ -345,7 +406,7 @@ def _curves(rows: list[dict[str, Any]], figures_dir: Path, budget: int, expected
             runs.append(curve)
         selected_runs = [item for item in inventory if item["strategy"] == strategy and item["selected"]]
         complete = (len(selected_runs) == expected_seeds and {item["seed"] for item in selected_runs} == set(range(expected_seeds))
-                    and all(item["protocol_complete"] for item in selected_runs))
+                    and all(item["protocol_complete"] and item.get("comparison_compatible", True) for item in selected_runs))
         coverage[strategy] = {"seeds": seeds, "builds_per_seed": lengths,
                               "expected_seeds": expected_seeds, "budget": budget, "complete": complete,
                               "selected_runs": [{k: v for k, v in item.items() if k != "started"} for item in selected_runs]}
@@ -424,8 +485,35 @@ def generate_report(results_dir: Path, *, budget: int = 40, expected_seeds: int 
     _ensure_trial_table(results_dir)
     rows = _load(results_dir)
     selected_rows, inventory = _select_runs(rows, results_dir, budget)
-    valid = [row for row in selected_rows if _eligible(row)]
     baselines = _baselines(results_dir)
+    baseline_replay_counts = sorted({base["throughput_replays"] for base in baselines
+                                    if not base["qualification"] and base["throughput_replays"] is not None})
+    study_protocol = _mapping(_read_json(results_dir / "study.json").get("protocol"))
+    declared_replays = _protocol_replays(study_protocol) if study_protocol else None
+    replay_counts = sorted({item["throughput_replays"] for item in inventory
+                            if item["selected"] and item["throughput_replays"] is not None})
+    declared_compatible = (not study_protocol or declared_replays is not None
+                           and all(count == declared_replays for count in replay_counts + baseline_replay_counts)
+                           and all(base["throughput_replays"] is not None for base in baselines if not base["qualification"]))
+    protocol_compatible = (len(replay_counts) <= 1
+                           and declared_compatible
+                           and all(item["measurement_protocol_valid"] for item in inventory if item["selected"]))
+    inferred_replays = replay_counts[0] if len(replay_counts) == 1 else (
+        baseline_replay_counts[0] if not replay_counts and len(baseline_replay_counts) == 1 else None)
+    measurement_protocol = {"throughput_replays": declared_replays if study_protocol else inferred_replays,
+                            "declared_throughput_replays": declared_replays,
+                            "observed_replay_counts": replay_counts,
+                            "baseline_replay_counts": baseline_replay_counts,
+                            "comparison_compatible": protocol_compatible,
+                            "reason": None if protocol_compatible else "Mixed or mismatched throughput replay protocols; report each protocol in a separate results directory"}
+    if not protocol_compatible:
+        # Retain the complete attempt inventory, but do not pool distinct work
+        # units in search curves, rankings, or learned-predictor validation.
+        selected_rows = []
+        for item in inventory:
+            if item["selected"]:
+                item["comparison_compatible"] = False
+    valid = [row for row in selected_rows if _eligible(row)]
     qualifications = _qualifications(results_dir)
     gate_check = _read_json(results_dir / "gate-check.json")
     full_validation = _read_json(results_dir / "full-validation-baseline.json")
@@ -442,6 +530,14 @@ def generate_report(results_dir: Path, *, budget: int = 40, expected_seeds: int 
     e1_attempts = [base for base in baselines if not base["qualification"] and base["repetitions"] >= 10]
     failed_e1 = bool(e1_attempts) and not any(base["e1_complete"] for base in e1_attempts)
     lines = ["# CompilerPilot measured results", ""]
+    if not protocol_compatible:
+        lines.extend(["**Comparison withheld: mixed or mismatched throughput replay protocols.** "
+                      "All attempts remain visible below. Search rankings, comparison curves and predictor validation are withheld; "
+                      "generate a separate report for each predeclared protocol.", ""])
+    elif measurement_protocol["throughput_replays"] is not None:
+        lines.extend([f"Throughput protocol: **R={measurement_protocol['throughput_replays']} fresh-book replay(s) per reported run**. "
+                      "Throughput divides all replayed commands by the sum of every replay duration; latency remains a separate single-input pass. "
+                      "Historical records without an explicit replay count mean R=1.", ""])
     if failed_e1 and not rows:
         lines.extend(["**The E1 noise gate failed. Performance experiments E2–E5 were not performed.** "
                       "The recorded compiler/PGO builds below are functional qualifications only; no speedup or winning build is claimed.", ""])
@@ -457,30 +553,36 @@ def generate_report(results_dir: Path, *, budget: int = 40, expected_seeds: int 
         lines.append(f"| {strategy} | {counts} | {len(item['seeds'])}/{expected_seeds} seeds; {'complete' if item['complete'] else 'incomplete'} |")
     sweep_count = sum(row.get("strategy") == "sweep" for row in rows)
     confirmation = _read_json(results_dir / "confirmation.json")
+    confirmation_replays = _replay_count(confirmation.get("throughput_replays", 1))
+    expected_replays = measurement_protocol["throughput_replays"]
+    confirmation_compatible = (protocol_compatible
+                               and (expected_replays is None or confirmation_replays == expected_replays))
+    confirmation_status = (confirmation.get("status", "not performed; no performance winner") if not confirmation or confirmation_compatible
+                           else "withheld: confirmation replay protocol differs from this comparison")
     lines.extend(["", "## Experiment status", "", "| Experiment | Recorded status |", "|---|---|"])
     e1_status = "failed noise gate" if failed_e1 else "passing noise gate recorded" if any(base["e1_complete"] for base in e1_attempts) else "not completed"
     lines.append(f"| E1: machine noise | {e1_status}; {sum(base['repetitions'] for base in e1_attempts)} baseline observations |")
     lines.append(f"| E2: one-knob sweep | {str(sweep_count) + ' recorded trials; completion not inferred' if sweep_count else 'not performed'} |")
     lines.append(f"| E3: fixed-budget search comparison | {'complete' if complete else 'incomplete' if selected_rows else 'not performed'} |")
     lines.append(f"| E4: held-out predictor quality | {'recorded below' if validation['mae_speedup_pct'] is not None else 'not performed; insufficient valid search trials'} |")
-    lines.append(f"| E5: performance-winner confirmation | {confirmation.get('status', 'not performed; no performance winner')} |")
+    lines.append(f"| E5: performance-winner confirmation | {confirmation_status} |")
     lines.extend(["", "## Experiment inventory", "",
                   "Experiments are never combined within a strategy/seed. The fixed selection rule uses the earliest complete predeclared protocol run; if none qualifies, it shows the longest single partial run, breaking ties by start time and run ID. Throughput does not affect this selection. Every attempt remains listed below, including replaced or failed runs.", "",
-                  "| Run | Strategy | Seed | Builds | Valid | Failed | Noise-excluded | Selected | Protocol status |",
-                  "|---|---|---:|---:|---:|---:|---:|---|---|"])
+                  "| Run | Strategy | Seed | R | Builds | Valid | Failed | Noise-excluded | Selected | Protocol status |",
+                  "|---|---|---:|---:|---:|---:|---:|---:|---|---|"])
     for item in inventory:
-        lines.append(f"| {item['run_id']} | {item['strategy']} | {item['seed']} | {item['builds']} | {item['valid']} | {item['failed']} | {item['noise_excluded']} | {'yes' if item['selected'] else 'no'} | {item['status']} |")
+        lines.append(f"| {item['run_id']} | {item['strategy']} | {item['seed']} | {item['throughput_replays']} | {item['builds']} | {item['valid']} | {item['failed']} | {item['noise_excluded']} | {'yes' if item['selected'] else 'no'} | {item['status']} |")
     if not inventory:
         lines.append("\nNo search experiments are recorded.")
     lines.extend(["", "## E1: baseline noise", "",
                   "Baseline files are reported separately by experiment. The qualification measurement is a smoke check; E1 requires ten baseline observations. Noise gate: conservative coefficient of variation below 2%; candidate significance threshold: three baseline standard deviations.", "",
-                  "| Baseline run | Observations | Throughput (M cmd/s) | p99 (ns) | Spread (M cmd/s) | CV | Compile (s) | .text (KiB) | Correct | Noise gate / E1 |",
-                  "|---|---:|---:|---:|---:|---:|---:|---:|---|---|"])
+                  "| Baseline run | Observations | R | Throughput (M cmd/s) | p99 (ns) | Spread (M cmd/s) | CV | Compile (s) | .text (KiB) | Correct | Noise gate / E1 |",
+                  "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|"])
     for base in baselines:
         label = f"[{base['run_id']}]({base['path']})"
         noise = 'pass' if base['noise_gate'] else 'FAILED'
         e1 = 'measurement complete' if base['measurement_complete'] and not base['qualification'] else 'incomplete'
-        lines.append(f"| {label} | {base['repetitions']} | {_fmt(base['throughput'] / 1e6, 3)} | {_fmt(base['p99_ns'], 1)} | "
+        lines.append(f"| {label} | {base['repetitions']} | {base['throughput_replays']} | {_fmt(base['throughput'] / 1e6, 3)} | {_fmt(base['p99_ns'], 1)} | "
                      f"{_fmt(base['spread'] / 1e6 if base['spread'] is not None else None, 3)} | {_fmt(base['cv'] * 100 if base['cv'] is not None else None)}% | "
                      f"{_fmt(base['compile_s'])} | {_fmt(base['text_bytes'] / 1024 if base['text_bytes'] is not None else None)} | "
                      f"{'pass' if base['correctness'] else 'FAIL'} | {noise}; E1 {e1} |")
@@ -489,15 +591,16 @@ def generate_report(results_dir: Path, *, budget: int = 40, expected_seeds: int 
     for figure in e1_figures:
         lines.extend(["", f"![E1 raw baseline replay throughput and CV]({figure.relative_to(results_dir)})"])
     if e1_figures:
-        lines.extend(["", "Every raw replay is plotted. Diamond markers show each observation median; the lower panel shows its CV. "
-                      "The gate uses the larger within-observation or across-observation noise estimate. Figure sources and hashes are recorded in [e1-plot-data.json](e1-plot-data.json)."])
+        lines.extend(["", "Every reported run is plotted. At R>1 each point aggregates all R fresh-book throughput replays; individual block evidence remains in throughput_replays.csv. "
+                      "Diamond markers show each observation median; the lower panel shows its CV. The gate uses the larger within-observation or across-observation noise estimate. "
+                      "Figure sources, replay counts and hashes are recorded in [e1-plot-data.json](e1-plot-data.json)."])
     lines.extend(["", "## Functional build qualification", "",
                   "These raw measurements establish that each compiler/PGO path builds, replays, and passes the per-build differential oracle. "
                   "They ran on a noisy shared host and are not a controlled performance comparison. No speedup ratio is calculated.", "",
-                  "| Qualification build | Raw replays | Median (M cmd/s) | p99 (ns) | CV | Compile (s) | .text (KiB) | Correctness |",
-                  "|---|---:|---:|---:|---:|---:|---:|---|"])
+                  "| Qualification build | Reported runs | R | Median (M cmd/s) | p99 (ns) | CV | Compile (s) | .text (KiB) | Correctness |",
+                  "|---|---:|---:|---:|---:|---:|---:|---:|---|"])
     for qualification in qualifications:
-        lines.append(f"| [{qualification['label']}]({qualification['source']}) | {qualification['raw_runs']} | "
+        lines.append(f"| [{qualification['label']}]({qualification['source']}) | {qualification['raw_runs']} | {qualification['throughput_replays']} | "
                      f"{_fmt(qualification['throughput'] / 1e6, 3)} | {_fmt(qualification['p99_ns'], 1)} | "
                      f"{_fmt(qualification['cv'] * 100 if qualification['cv'] is not None else None)}% | "
                      f"{_fmt(qualification['compile_s'])} | {_fmt(qualification['text_bytes'] / 1024 if qualification['text_bytes'] is not None else None)} | "
@@ -566,6 +669,7 @@ def generate_report(results_dir: Path, *, budget: int = 40, expected_seeds: int 
     summary_path = results_dir / "summary.md"
     summary_path.write_text("\n".join(lines))
     return {"summary": str(summary_path), "trials": len(rows), "eligible": len(valid), "failed": failed,
+            "measurement_protocol": measurement_protocol,
             "measurement_excluded": invalid, "complete": complete, "coverage": coverage, "runs": inventory, "baselines": baselines,
             "figures": [str(path) for path in [*e1_figures, curve, scatter] if path], "predictor": validation,
             "e1": e1_evidence, "qualifications": qualifications, "gate_check": bool(gate_check), "baseline_validation": bool(full_validation)}

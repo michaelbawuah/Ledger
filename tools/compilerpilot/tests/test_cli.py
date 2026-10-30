@@ -71,3 +71,52 @@ def test_live_agent_budget_required_before_any_baseline_build(monkeypatch, tmp_p
     assert main(['experiment', '--strategy', 'agent', '--model', MODEL,
                  '--results', str(tmp_path)]) == 1
     assert not list(tmp_path.iterdir())
+
+
+@pytest.mark.parametrize('count', [None, 5])
+def test_cli_default_and_explicit_throughput_replay_argument(monkeypatch, tmp_path, count):
+    from types import SimpleNamespace
+    import compilerpilot.cli as cli
+    calls = []
+    def harness(args, strategy, budget):
+        calls.append(args.throughput_replays)
+        return SimpleNamespace(trace=lambda *args: None, get_counters=lambda _: {},
+                               baseline=SimpleNamespace(build_id='fixture'),
+                               store=SimpleNamespace(run_dir=tmp_path), noise_ok=True, baseline_metric={})
+    monkeypatch.setattr(cli, '_harness', harness)
+    arguments = ['baseline'] + ([] if count is None else ['--throughput-replays', str(count)])
+    assert cli.main(arguments) == 0
+    assert calls == [1 if count is None else count]
+
+
+def test_harness_configuration_records_and_uses_fixed_replay_count(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+    import json
+    import compilerpilot.cli as cli
+    captured = []
+    monkeypatch.setattr(cli, 'prepare_data', lambda *args: {'fixture': True})
+    monkeypatch.setattr(cli, 'BuildManager', lambda *args, **kwargs: object())
+    monkeypatch.setattr(cli, 'BenchmarkConfig', lambda input_path, **kwargs: SimpleNamespace(input=input_path, **kwargs))
+    monkeypatch.setattr(cli, 'BenchmarkRunner', lambda config: SimpleNamespace(config=config))
+    class Harness:
+        def __init__(self, manager, runner, store, **kwargs):
+            captured.append(runner.config.throughput_replays)
+            self.store = store
+        def establish_baseline(self, repetitions):
+            return {'noise_gate': True}
+    monkeypatch.setattr(cli, 'Harness', Harness)
+    args = SimpleNamespace(ledger=cli.require_ledger_root(), data=tmp_path/'data', results=tmp_path/'results',
+                           run_id='fixed-work', commands=100, evaluation_seed=1, training_seed=2,
+                           jobs=2, cpu=0, baseline_repetitions=10, throughput_replays=5)
+    harness = cli._harness(args, 'random', 1)
+    protocol = json.loads((harness.store.run_dir/'protocol.json').read_text())
+    assert captured == [5]
+    assert protocol['throughput_replays'] == protocol['arguments']['throughput_replays'] == 5
+
+
+def test_confirmation_cli_rejects_saved_one_replay_baseline_for_new_protocol(tmp_path):
+    import json
+    baseline = tmp_path/'baseline.json'
+    baseline.write_text(json.dumps({'build': {}, 'metric': {}}))
+    assert main(['confirm', '--baseline', str(baseline), '--candidates', str(tmp_path/'candidate.json'),
+                 '--input', str(tmp_path/'eval.lob'), '--throughput-replays', '5']) == 1

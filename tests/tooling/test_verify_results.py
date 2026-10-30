@@ -293,5 +293,137 @@ class ReplayMetadataTests(FileFixture):
             with self.assertRaises(verifier.VerificationError):
                 verifier.read_summary(self.write_summary(summary))
 
+
+class FixedThroughputReplayTests(FileFixture):
+    """Schema 2 keeps original latency evidence and audits every throughput block."""
+    def write_evidence(self, replays=3):
+        summary = fixture_summary()
+        summary.update(schema_version=2, throughput_replays=replays,
+                       throughput_commands_per_run=summary["commands"] * replays,
+                       latency_commands_per_run=summary["commands"],
+                       throughput_replays_file="throughput_replays.csv")
+        state = dict(submitted=2000, executed=10, cancelled=500, expired=100,
+                     rejected=0, resting_quantity=1380, best_bid=9999, best_ask=10001)
+        for metrics in summary["engines"].values():
+            metrics.update(state)
+        runs, histogram = fixture_rows()
+        blocks = []
+        for row in runs:
+            row.update(throughput_total_ns=row["throughput_total_ns"] * replays,
+                       throughput_replays=replays, throughput_commands=row["commands"] * replays)
+            for replay in range(1, replays + 1):
+                blocks.append(dict(engine=row["engine"], run=row["run"], replay=replay,
+                                   commands=row["commands"], throughput_total_ns=1_000_000,
+                                   **{key: summary["engines"][row["engine"]][key]
+                                      for key in verifier.REPLAY_STATE}))
+        self.write_summary(summary)
+        self.write_csv("runs.csv", verifier.RUN_COLUMNS_V2, runs)
+        self.write_csv("latency_histogram.csv", verifier.HISTOGRAM_COLUMNS, histogram)
+        self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+        return summary, runs, blocks
+
+    def test_accepts_declared_one_and_three_without_inflating_latency_samples(self):
+        for replays in (1, 3):
+            with self.subTest(replays=replays):
+                self.write_evidence(replays)
+                report = verifier.verify_directory(self.root)
+                self.assertEqual(report["verified_throughput_replays_per_run"], replays)
+                self.assertEqual(report["verified_throughput_commands_per_run"], 1000 * replays)
+                self.assertEqual(report["verified_throughput_blocks"], 9 * replays)
+                self.assertEqual(report["verified_latency_samples"], 9000)
+
+    def test_rejects_undeclared_or_malformed_protocol(self):
+        for field, replacement in (("throughput_replays", 0), ("throughput_replays", 21),
+                                   ("throughput_replays", True), ("throughput_commands_per_run", 1000),
+                                   ("latency_commands_per_run", 3000),
+                                   ("throughput_replays_file", "../outside.csv")):
+            summary, _, _ = self.write_evidence()
+            summary[field] = replacement
+            with self.subTest(field=field, replacement=replacement):
+                with self.assertRaises(verifier.VerificationError):
+                    verifier.read_summary(self.write_summary(summary))
+
+    def test_rejects_missing_duplicate_and_unexpected_blocks(self):
+        for mutation in ("missing", "duplicate", "run", "replay", "engine"):
+            _, _, blocks = self.write_evidence()
+            if mutation == "missing":
+                blocks.pop()
+            elif mutation == "duplicate":
+                blocks.append(blocks[0])
+            elif mutation == "engine":
+                blocks[0]["engine"] = "unknown"
+            else:
+                blocks[0][mutation] = 99
+            self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+            with self.subTest(mutation=mutation):
+                with self.assertRaises(verifier.VerificationError):
+                    verifier.verify_directory(self.root)
+
+    def test_rejects_every_block_state_field_and_invalid_timing(self):
+        for field in verifier.REPLAY_STATE:
+            _, _, blocks = self.write_evidence()
+            blocks[1][field] += 1
+            self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+            with self.subTest(field=field):
+                with self.assertRaises(verifier.VerificationError):
+                    verifier.verify_directory(self.root)
+        for field, replacement in (("commands", 3000), ("throughput_total_ns", 0),
+                                   ("throughput_total_ns", "1.5"),
+                                   ("throughput_total_ns", 2**64)):
+            _, _, blocks = self.write_evidence()
+            blocks[0][field] = replacement
+            self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+            with self.subTest(field=field, replacement=replacement):
+                with self.assertRaises(verifier.VerificationError):
+                    verifier.verify_directory(self.root)
+
+    def test_rejects_fastest_block_selection_even_if_reported_rate_matches(self):
+        summary, runs, _ = self.write_evidence()
+        for row in runs:
+            row["throughput_total_ns"] = 1_000_000
+            row["commands_per_second"] = 3_000_000
+        for metrics in summary["engines"].values():
+            metrics["median_commands_per_second"] = 3_000_000
+        self.write_summary(summary)
+        self.write_csv("runs.csv", verifier.RUN_COLUMNS_V2, runs)
+        with self.assertRaisesRegex(verifier.VerificationError, "sum every replay"):
+            verifier.verify_directory(self.root)
+
+    def test_uses_total_commands_over_total_time_not_mean_of_block_rates(self):
+        summary, runs, blocks = self.write_evidence()
+        for block in blocks:
+            block["throughput_total_ns"] = block["replay"] * 1_000_000
+        for row in runs:
+            row["throughput_total_ns"] = 6_000_000
+            row["commands_per_second"] = 500_000
+        for metrics in summary["engines"].values():
+            metrics["median_commands_per_second"] = 500_000
+        self.write_summary(summary)
+        self.write_csv("runs.csv", verifier.RUN_COLUMNS_V2, runs)
+        self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+        verifier.verify_directory(self.root)
+        for row in runs:
+            row["commands_per_second"] = "611111.111111"
+        self.write_csv("runs.csv", verifier.RUN_COLUMNS_V2, runs)
+        # Keep the summary numeric; the raw run ratio must fail independently.
+        with self.assertRaisesRegex(verifier.VerificationError, "inconsistent numeric value"):
+            verifier.verify_directory(self.root)
+
+    def test_rejects_cross_engine_state_and_quantity_conservation_tampering(self):
+        summary, _, _ = self.write_evidence()
+        summary["engines"]["fast-bitmap"]["best_ask"] += 1
+        self.write_summary(summary)
+        with self.assertRaises(verifier.VerificationError):
+            verifier.verify_directory(self.root)
+        summary, _, blocks = self.write_evidence()
+        for metrics in summary["engines"].values():
+            metrics["resting_quantity"] += 1
+        for block in blocks:
+            block["resting_quantity"] += 1
+        self.write_summary(summary)
+        self.write_csv("throughput_replays.csv", verifier.REPLAY_COLUMNS, blocks)
+        with self.assertRaisesRegex(verifier.VerificationError, "quantity.*conservation"):
+            verifier.verify_directory(self.root)
+
 if __name__ == "__main__":
     unittest.main()

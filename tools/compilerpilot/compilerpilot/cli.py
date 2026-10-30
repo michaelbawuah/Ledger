@@ -14,6 +14,7 @@ from .harness import Harness
 from .store import Store
 from .layout import find_ledger_root, require_ledger_root
 from .api_budget import ApiBudget, BudgetError, MODEL as BUDGET_MODEL, DEFAULT_LIMIT_USD
+from .protocol import measurement_replays, validate_throughput_replays
 
 PROJECT = Path(__file__).resolve().parents[1]
 
@@ -61,6 +62,8 @@ def _common(parser):
     parser.add_argument('--data',type=Path,default=PROJECT/'data')
     parser.add_argument('--results',type=Path,default=PROJECT/'results')
     parser.add_argument('--commands',type=int,default=1_000_000)
+    parser.add_argument('--throughput-replays',type=int,default=1,
+                        help='Fresh-book throughput replays per reported run (1..20; latency remains one input replay)')
     parser.add_argument('--evaluation-seed',type=int,default=20261011)
     parser.add_argument('--training-seed',type=int,default=20261012)
     parser.add_argument('--cpu',type=int,default=None)
@@ -70,18 +73,21 @@ def _common(parser):
 
 
 def _harness(args, strategy, budget):
+    replays = validate_throughput_replays(getattr(args, 'throughput_replays', 1))
     args.ledger = require_ledger_root(args.ledger)
     run_id = args.run_id or f'{strategy}-{args.seed if hasattr(args,"seed") else 0}-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%f}'
     store = Store(args.results.resolve(),run_id)
     manifest = prepare_data(args.ledger.resolve(),args.data.resolve(),args.commands,args.evaluation_seed,args.training_seed,args.jobs)
     store.write('inputs.json',manifest)
     manager = BuildManager(args.ledger,PROJECT/'builds'/run_id,jobs=args.jobs)
-    runner = BenchmarkRunner(BenchmarkConfig(args.data/'eval.lob',cpu=args.cpu))
+    runner = BenchmarkRunner(BenchmarkConfig(args.data/'eval.lob',cpu=args.cpu,throughput_replays=replays))
     harness = Harness(manager,runner,store,budget=budget,strategy=strategy,
                       seed=getattr(args,'seed',0),training_input=args.data/'train.lob')
     store.write('protocol.json',{'strategy':strategy,'seed':getattr(args,'seed',0),'budget':budget,
+                                'throughput_replays':replays,
                                 'arguments':{k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()},
-                                'python':sys.version,'temperature':0 if strategy=='agent' else None,
+                                'python':sys.version,'terminal_progress':store.progress_enabled,
+                                'temperature':0 if strategy=='agent' else None,
                                 'model':getattr(args,'model',None),'provider':getattr(args,'provider',None)})
     baseline = harness.establish_baseline(args.baseline_repetitions)
     if not baseline['noise_gate']:
@@ -165,12 +171,21 @@ def one_at_a_time(args):
 def confirmation(args):
     from .confirm import confirm_candidates
     source=json.loads(args.baseline.read_text())
+    replays = validate_throughput_replays(getattr(args, 'throughput_replays', 1))
+    def validate_recorded_protocol(document):
+        for key in ('metric', 'measurement'):
+            if key in document and measurement_replays(document[key]) != replays:
+                raise ValueError('Confirmation measurement replay protocol differs; use matching evidence')
+        if 'throughput_replays' in document and validate_throughput_replays(document['throughput_replays']) != replays:
+            raise ValueError('Confirmation saved replay protocol differs; use matching evidence')
+    validate_recorded_protocol(source)
     baseline=BuildResult.from_dict(source.get('build',source))
     candidates=[]
     for path in args.candidates:
         loaded=json.loads(path.read_text())
+        validate_recorded_protocol(loaded)
         candidates.append(BuildResult.from_dict(loaded.get('build',loaded)))
-    runner=BenchmarkRunner(BenchmarkConfig(args.input,cpu=args.cpu))
+    runner=BenchmarkRunner(BenchmarkConfig(args.input,cpu=args.cpu,throughput_replays=replays))
     result=confirm_candidates(runner,baseline,candidates,rounds=args.rounds,full_validation=True)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2)+'\n')
@@ -193,10 +208,13 @@ def main(argv=None):
     p=sub.add_parser('confirm');p.add_argument('--baseline',type=Path,required=True)
     p.add_argument('--candidates',type=Path,nargs='+',required=True);p.add_argument('--input',type=Path,required=True)
     p.add_argument('--rounds',type=int,default=10);p.add_argument('--cpu',type=int,default=None)
+    p.add_argument('--throughput-replays',type=int,default=1)
     p.add_argument('--output',type=Path,default=PROJECT/'results'/'confirmation.json')
     p=sub.add_parser('report');p.add_argument('--results',type=Path,default=PROJECT/'results')
     args=parser.parse_args(argv)
     try:
+        if hasattr(args, 'throughput_replays'):
+            validate_throughput_replays(args.throughput_replays)
         if args.command=='data':
             print(json.dumps(prepare_data(require_ledger_root(args.ledger),args.data.resolve(),args.commands,args.evaluation_seed,args.training_seed,args.jobs),indent=2))
         elif args.command=='baseline':

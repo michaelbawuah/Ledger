@@ -14,6 +14,8 @@ See [measured results](results/summary.md), [methodology](docs/methodology.md), 
 
 A separate [hosted-runner qualification](results/studies/gha-41074339510-1/summary.md) used five million commands on AMD EPYC 9V45 and also failed the noise gate (**8.03% CV**). It made no model calls and did not proceed to search. Its different hardware and replay length do not establish a speedup over the earlier results.
 
+The [free Codespaces qualification](results/studies/codespaces-20261030-01/review.md) completed ten observations of five reported runs on a four-core, 16 GB Ubuntu host. Its conservative CV was **2.5335%**, so it also failed the unchanged 2% gate. All correctness checks passed; no model call or compiler search ran. The original raw measurements and launch log remain unchanged.
+
 ## Run it
 
 Linux x86-64, Python 3.11+, GCC 13+, Clang/LLVM 17+, CMake 3.21+, Ninja, binutils and `taskset` are required. Install matching LLVM profiling and `lld` packages for Clang PGO/ThinLTO. Hardware `perf` events need host support and permissions; unavailable counters are recorded explicitly.
@@ -52,11 +54,15 @@ Use an exact model version that supports tool use, temperature zero and, for Ope
 
 ## Controlled study runner
 
+Set `COMPILERPILOT_PROGRESS=1` to stream selected recorded event names and counts to stderr during a long study. Progress omits payloads, model text and credentials, and emits nothing when no new event is recorded. It is disabled by default; per-run protocol metadata records its setting.
+
 The manual [controlled-study workflow](../../.github/workflows/compilerpilot-study.yml) starts with a fresh Linux VM and preserves every attempt. Select **baseline** first: this makes no model calls, uses CPU 0, ten observations with five raw runs each, the existing correctness checks, and a fixed replay length. The default replay contains five million commands to make individual measurements longer. No outliers are removed and failed qualification is not retried automatically.
 
 A standard hosted VM is a candidate measurement host; it is not assumed to have an exclusive physical CPU. Only a recorded CV below 2% qualifies it. A later **study** dispatch runs its own baseline again on that job's VM, followed by all strategies serially; calibration from a different VM is never treated as its baseline. A full study is 480 candidate builds and may exceed a hosted job's time limit, in which case the attempt remains incomplete. Use a quiet Linux host for sustained runs when needed.
 
 For a real model run, add `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` privately in the repository's GitHub Actions secrets and supply an exact supported model version. Keep credentials out of chat, source and artifacts. Provider charges apply to real model calls; the build budget and model-call limits are recorded with the run. No model call is made during baseline qualification.
+
+After a Codespace qualifies, the [encrypted credential delivery workflow](docs/codespaces-access.md) can transfer its existing Actions key directly to that Codespace without displaying the plaintext key.
 
 Local qualification uses the same runner:
 
@@ -65,6 +71,20 @@ python scripts/run_study.py --phase baseline --study-id local-qualification --co
 ```
 
 Artifacts include the protocol, source identity, raw replay observations and failure details. A failed noise gate stops the attempt; a new host or explicitly changed protocol requires a new study ID.
+
+## Fixed throughput windows
+
+`--throughput-replays R` is an optional measurement setting, bounded to 1–20 and defaulting to **1**. Each reported throughput run replays the fixed input R times into R fresh empty books and divides all processed commands by the sum of **every** replay duration. Every block must match the single-input reference state and checksums. Individual durations and checksums remain in `throughput_replays.csv`; no block is removed or selected by its speed. The separate latency pass and exact latency histogram still contain one input replay.
+
+The next proposed Codespaces qualification uses **R=5 with the existing five-million-command input**: 25 million commands of measured throughput work per reported run, with a separate five-million-command latency pass. This extends the measured work without increasing the input or latency-array working set. It is a new predeclared protocol, not a reinterpretation of the failed R=1 attempt. After review, one E1 attempt can be launched with fresh source-bound data, results and study ID:
+
+```bash
+python scripts/run_study.py --phase baseline --study-id codespaces-window-r5 \
+  --commands 5000000 --throughput-replays 5 --cpu 0 \
+  --data data/codespaces-window-r5 --results results/studies/codespaces-window-r5
+```
+
+This command is a plan, not evidence that the attempt ran or passed. The same R must be used for E1, the knob sweep, all four search policies, drift checkpoints and interleaved confirmation. A new source or replay setting cannot resume an older study. The 2% noise limit and three-spread significance requirement remain unchanged. Longer work can reduce the relative effect of a short interruption; recurring contention and clock-frequency changes can still fail the gate. No automatic retry seeks a passing result. Reports do not pool different replay settings into rankings, search comparisons or predictor validation; historical records without R mean R=1.
 
 ## Check provider compatibility first
 

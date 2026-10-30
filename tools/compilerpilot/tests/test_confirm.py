@@ -207,3 +207,38 @@ def test_changing_baseline_input_invalidates_all_comparisons():
     assert result["status"] == "invalid_baseline"
     assert result["recommendation"] is None
     assert runner.validation_calls == []
+
+
+def test_confirmation_enforces_requested_replays_on_every_measurement():
+    from types import SimpleNamespace
+    class ReplayRunner(Runner):
+        config = SimpleNamespace(throughput_replays=5)
+
+        def run(self, build, label):
+            result = super().run(build, label)
+            result['provenance'] = {'throughput_replays': 1 if build.build_id == 'A' else 5}
+            return result
+
+    runner = ReplayRunner()
+    result = confirm_candidates(runner, Build('base'), [Build('A'), Build('B')], rounds=2)
+    assert result['recommendation'] == 'B'
+    assert result['throughput_replays'] == result['method']['throughput_replays'] == 5
+    assert 'replay protocol' in result['excluded']['A']
+    assert sum(build == 'A' for build, _ in runner.calls) == 1
+
+
+def test_legacy_baseline_observation_does_not_satisfy_five_replay_confirmation():
+    from types import SimpleNamespace
+    runner = Runner()
+    runner.config = SimpleNamespace(throughput_replays=5)
+    result = confirm_candidates(runner, Build('base'), [Build('A')], rounds=2)
+    assert result['status'] == 'invalid_baseline' and result['recommendation'] is None
+    assert runner.validation_calls == []
+
+
+def test_explicit_binary_replay_protocol_conflict_is_excluded_before_measurement():
+    runner = Runner()
+    result = confirm_candidates(runner, Build('base'), [Build('A', provenance={'throughput_replays': 5}), Build('B')], rounds=2)
+    assert result['recommendation'] == 'B'
+    assert all(build != 'A' for build, _ in runner.calls)
+    assert 'replay protocol' in result['excluded']['A']

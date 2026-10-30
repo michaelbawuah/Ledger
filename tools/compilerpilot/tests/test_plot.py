@@ -251,3 +251,150 @@ def test_real_agent_wrapper_shape_allows_complete_forty_build_coverage(tmp_path)
     assert result['coverage']['agent']['complete'] is True
     assert len(result['runs']) == 12
     assert all(run['protocol_complete'] for run in result['runs'])
+
+
+def declare_replays(root, run_id, rows, replays):
+    directory = root / "runs" / run_id
+    protocol_path = directory / "protocol.json"
+    protocol = json.loads(protocol_path.read_text())
+    protocol["arguments"] = {"throughput_replays": replays}
+    protocol_path.write_text(json.dumps(protocol))
+    baseline_path = directory / "baseline.json"
+    baseline = json.loads(baseline_path.read_text())
+    baseline["throughput_replays"] = replays
+    baseline["metric"]["provenance"] = {"throughput_replays": replays}
+    for observation in baseline["observations"]:
+        observation["provenance"] = {"throughput_replays": replays}
+    baseline_path.write_text(json.dumps(baseline))
+    for trial in rows:
+        trial["throughput_replays"] = replays
+    return rows
+
+
+def test_legacy_missing_replay_metadata_means_one(tmp_path):
+    rows = protocol_run(tmp_path, "legacy")
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["measurement_protocol"]["throughput_replays"] == 1
+    assert result["measurement_protocol"]["comparison_compatible"]
+    assert result["eligible"] == 2
+    assert result["baselines"][0]["throughput_replays"] == 1
+
+
+def test_uniform_r5_protocol_can_complete_without_rewriting_baselines(tmp_path):
+    import hashlib
+    rows = []
+    for strategy in ("random", "genetic", "surrogate", "agent"):
+        run_id = f"r5-{strategy}"
+        trials = protocol_run(tmp_path, run_id, strategy, budget=2)
+        rows.extend(declare_replays(tmp_path, run_id, trials, 5))
+    source = tmp_path / "runs/r5-random/baseline.json"
+    previous = hashlib.sha256(source.read_bytes()).hexdigest()
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["complete"]
+    assert result["eligible"] == 8
+    assert result["measurement_protocol"]["throughput_replays"] == 5
+    assert all(item["throughput_replays"] == 5 for item in result["runs"])
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == previous
+    report = (tmp_path / "summary.md").read_text()
+    assert "R=5 fresh-book replay(s) per reported run" in report
+
+
+def test_different_replay_protocols_never_pool_comparison_or_predictor_rows(tmp_path):
+    old = protocol_run(tmp_path, "old-random", strategy="random")
+    new = declare_replays(tmp_path, "new-agent",
+                          protocol_run(tmp_path, "new-agent", strategy="agent"), 5)
+    for trial in new:
+        trial.update(throughput=9e6, speedup=9.)
+    pd.DataFrame(old + new).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert not result["measurement_protocol"]["comparison_compatible"]
+    assert result["measurement_protocol"]["observed_replay_counts"] == [1, 5]
+    assert result["eligible"] == result["predictor"]["samples"] == 0
+    assert not result["complete"]
+    assert result["figures"] == []
+    assert {item["run_id"] for item in result["runs"]} == {"old-random", "new-agent"}
+    report = (tmp_path / "summary.md").read_text()
+    assert "Comparison withheld: mixed or mismatched throughput replay protocols" in report
+    assert "9.0000×" not in report
+
+
+def test_within_run_replay_declaration_mismatch_is_ineligible(tmp_path):
+    rows = protocol_run(tmp_path, "inconsistent")
+    rows[0]["throughput_replays"] = 5
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["eligible"] == 0
+    assert not result["runs"][0]["protocol_complete"]
+    assert not result["runs"][0]["measurement_protocol_valid"]
+    assert "throughput replay protocol mismatch" in result["runs"][0]["status"]
+
+
+def test_provenance_replays_survive_missing_parquet_top_level_field(tmp_path):
+    rows = declare_replays(tmp_path, "r5", protocol_run(tmp_path, "r5"), 5)
+    for trial in rows:
+        trial["throughput_replays"] = float("nan")
+        trial["provenance"] = json.dumps({"throughput_replays": 5})
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["eligible"] == 2
+    assert result["runs"][0]["protocol_complete"]
+
+
+def test_r5_baseline_only_report_records_window_and_failed_gate(tmp_path):
+    protocol_run(tmp_path, "r5-E1", strategy="baseline", budget=1, noise_gate=False, complete=False)
+    declare_replays(tmp_path, "r5-E1", [], 5)
+    result = generate_report(tmp_path)
+    assert result["measurement_protocol"]["throughput_replays"] == 5
+    assert result["measurement_protocol"]["baseline_replay_counts"] == [5]
+    report = (tmp_path / "summary.md").read_text()
+    assert "R=5 fresh-book replay(s) per reported run" in report
+    assert "E1 noise gate failed" in report
+
+
+def test_rejected_wrong_r_evidence_cannot_win_or_contaminate_eligible_rows(tmp_path):
+    rows = protocol_run(tmp_path, "partial")
+    rows[1].update(provenance=json.dumps({"throughput_replays": 5}),
+                   measurement_valid=False, speedup=9., throughput=9e6)
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["measurement_protocol"]["comparison_compatible"]
+    assert result["eligible"] == 1
+    assert not result["complete"]
+    assert result["measurement_excluded"] == 1
+    assert "9.0000×" not in (tmp_path / "summary.md").read_text()
+
+
+def test_confirmation_for_another_replay_window_is_not_reported_as_current_winner(tmp_path):
+    rows = declare_replays(tmp_path, "r5", protocol_run(tmp_path, "r5"), 5)
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    (tmp_path / "confirmation.json").write_text(json.dumps({"status": "confirmed", "throughput_replays": 1}))
+    generate_report(tmp_path, budget=2, expected_seeds=1)
+    report = (tmp_path / "summary.md").read_text()
+    assert "withheld: confirmation replay protocol differs" in report
+    assert "| E5: performance-winner confirmation | confirmed |" not in report
+
+
+def test_study_failure_before_measurements_still_records_declared_r5(tmp_path):
+    (tmp_path / "study.json").write_text(json.dumps({"status": "failed", "protocol": {"throughput_replays": 5}}))
+    result = generate_report(tmp_path)
+    assert result["measurement_protocol"]["declared_throughput_replays"] == 5
+    assert result["measurement_protocol"]["throughput_replays"] == 5
+    assert result["measurement_protocol"]["observed_replay_counts"] == []
+    assert result["trials"] == result["eligible"] == 0
+    report = (tmp_path / "summary.md").read_text()
+    assert "R=5 fresh-book replay(s) per reported run" in report
+    assert "| E1: machine noise | not completed; 0 baseline observations |" in report
+
+
+def test_study_declaration_must_match_baseline_and_search_replay_counts(tmp_path):
+    rows = protocol_run(tmp_path, "old-r1")
+    pd.DataFrame(rows).to_parquet(tmp_path / "trials.parquet")
+    (tmp_path / "study.json").write_text(json.dumps({"protocol": {"throughput_replays": 5}}))
+    result = generate_report(tmp_path, budget=2, expected_seeds=1)
+    assert result["measurement_protocol"]["declared_throughput_replays"] == 5
+    assert result["measurement_protocol"]["observed_replay_counts"] == [1]
+    assert not result["measurement_protocol"]["comparison_compatible"]
+    assert result["eligible"] == result["predictor"]["samples"] == 0
+    assert not result["complete"]

@@ -2,9 +2,14 @@
 from __future__ import annotations
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+_PROGRESS_EVENTS = frozenset({'baseline_observation', 'baseline', 'build', 'trial',
+                              'baseline_checkpoint', 'finish', 'stopped',
+                              'llm_request', 'llm_response', 'tool_result'})
 
 
 def json_value(value: Any) -> Any:
@@ -23,12 +28,24 @@ class Store:
         self.run_dir = self.root / 'runs' / run_id
         self.run_dir.mkdir(parents=True, exist_ok=False)
         self.rows: list[dict] = []
+        self.progress_enabled = os.environ.get('COMPILERPILOT_PROGRESS') == '1'
+        self._progress_count = 0
 
     def trace(self, event: str, data: Any) -> None:
         # Callers never place credentials in trace payloads.
         record = {'time': datetime.now(timezone.utc).isoformat(), 'event': event, 'data': data}
         with (self.run_dir / 'trace.jsonl').open('a') as out:
             out.write(json.dumps(record, default=json_value, allow_nan=False) + '\n')
+        self._progress_count += 1
+        if self.progress_enabled and isinstance(event, str) and event in _PROGRESS_EVENTS:
+            # Actual recorded events only; never expose payloads, caller strings,
+            # credentials or model text in terminal progress.
+            try:
+                print(json.dumps({'compilerpilot_progress': event,
+                                  'events_recorded': self._progress_count}),
+                      file=sys.stderr, flush=True)
+            except (OSError, ValueError):
+                self.progress_enabled = False
 
     def append(self, trial: dict) -> None:
         encoded = json.dumps(trial, default=json_value, allow_nan=False)

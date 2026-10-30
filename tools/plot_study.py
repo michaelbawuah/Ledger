@@ -18,6 +18,7 @@ from collections import Counter, defaultdict
 import csv
 from fractions import Fraction
 import hashlib
+import importlib.util
 import json
 import math
 import os
@@ -153,7 +154,7 @@ def validate_frequencies(runs, histogram, diagnostics=None):
         elapsed = row.get("total_ns", row.get("throughput_total_ns", 0))
         if elapsed <= 0 or row["commands"] <= 0:
             raise DataError("commands and elapsed time must be positive")
-        expected = row["commands"] * 1e9 / elapsed
+        expected = row.get("throughput_commands", row["commands"]) * 1e9 / elapsed
         if not math.isclose(row["commands_per_second"], expected, rel_tol=2e-9, abs_tol=.001):
             raise DataError("throughput does not reconstruct from commands / elapsed time")
     grouped = defaultdict(Counter)
@@ -196,6 +197,7 @@ class Dataset:
         self.runs, self.histogram, self.diagnostics, self.timeline, self.depth = [], [], [], [], []
         self.core_runs, self.core_histogram, self.trace, self.queues = [], [], [], []
         self.sources = {}
+        self.source_dependencies = {}
         if study_root:
             root = Path(study_root)
             dirs = sorted(path.parent for path in root.rglob("summary.json")) if root.exists() else []
@@ -219,10 +221,29 @@ class Dataset:
         if core_root:
             directory = Path(core_root)
             if (directory / "runs.csv").exists():
-                self.core_runs = read_csv(directory / "runs.csv", CORE_RUN_COLUMNS)
+                with (directory / "summary.json").open(encoding="utf-8") as stream:
+                    summary = json.load(stream)
+                if not isinstance(summary, dict) or type(summary.get("schema_version")) is not int or summary["schema_version"] not in (1, 2):
+                    raise DataError("unsupported core benchmark summary schema")
+                columns = CORE_RUN_COLUMNS
+                core_files = ["runs.csv", "latency_histogram.csv", "summary.json"]
+                if summary["schema_version"] == 2:
+                    specification = importlib.util.spec_from_file_location(
+                        "ledger_plot_core_verifier", Path(__file__).with_name("verify_results.py"))
+                    verifier = importlib.util.module_from_spec(specification)
+                    specification.loader.exec_module(verifier)
+                    try:
+                        verifier.verify_directory(directory)
+                    except (OSError, ValueError) as error:
+                        raise DataError(f"core evidence failed independent audit: {error}") from error
+                    columns = list(verifier.RUN_COLUMNS_V2)
+                    core_files.append("throughput_replays.csv")
+                    self.source_dependencies[str((directory / "latency_histogram.csv").resolve())] = {
+                        str((directory / name).resolve()) for name in core_files}
+                self.core_runs = read_csv(directory / "runs.csv", columns)
                 self.core_histogram = read_csv(directory / "latency_histogram.csv", CORE_HIST_COLUMNS)
                 validate_frequencies(self.core_runs, self.core_histogram)
-                for name in ("runs.csv", "latency_histogram.csv", "summary.json"):
+                for name in core_files:
                     self.register(directory / name)
             else:
                 warnings.warn("core benchmark unavailable; core distribution omitted")
@@ -305,6 +326,8 @@ class Renderer:
             fig.savefig(path.with_suffix(".png"), dpi=150)
         sources = sorted({source for series in self.series for source in
                           series.get("source_files", [series["source"]] if "source" in series else [])})
+        sources = sorted(set(sources) | {dependency for source in sources
+                                         for dependency in self.data.source_dependencies.get(source, ())})
         self.plots.append({"path": str(path.resolve()), "sources": sources, "caption": caption,
                            "sample_threshold": MIN_CELL, "series": self.series})
         self.series = []
