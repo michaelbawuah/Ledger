@@ -103,6 +103,7 @@ def test_pending_measurement_and_build_indices(tmp_path):
     harness.build(second.to_dict())
     with pytest.raises(ValueError, match='every successful'):
         harness.finish(harness.baseline.build_id, 'Missing data')
+    assert {row['build_id'] for row in harness.query_history()['pending']} == {first.hash(), second.hash()}
     harness.run_benchmark(first.hash())
     harness.run_benchmark(second.hash())
     assert [row['build_index'] for row in harness.history] == [1, 2]
@@ -195,11 +196,24 @@ def test_checkpoint_waits_for_pending_twenty_then_blocks_new_batch(tmp_path):
     harness.build(candidates[19].to_dict())
     harness.run_benchmark(candidates[19].hash())
     assert harness.last_checkpoint == 0
-    with pytest.raises(RuntimeError, match='pending builds'):
+    pending = harness.query_history()['pending']
+    assert pending == [{'build_id': candidates[18].hash(), 'candidate': candidates[18].to_dict(),
+                        'build_index': 19}]
+    pending[0]['candidate']['compiler'] = 'changed copy'
+    assert harness.builds[candidates[18].hash()].candidate == candidates[18].to_dict()
+    with pytest.raises(RuntimeError, match='pending builds') as blocked:
         harness.build(candidates[20].to_dict())
+    assert candidates[18].hash() in str(blocked.value)
+    with pytest.raises(ValueError, match='already evaluated') as duplicate:
+        harness.run_benchmark(candidates[19].hash())
+    assert candidates[18].hash() in str(duplicate.value)
+    with pytest.raises(ValueError, match='pending benchmarks') as checkpoint:
+        harness.checkpoint()
+    assert candidates[18].hash() in str(checkpoint.value)
     assert harness.builds_used == 20
     harness.run_benchmark(candidates[18].hash())
     assert harness.last_checkpoint == 20
+    assert harness.query_history()['pending'] == []
     harness.evaluate(candidates[20])
     assert harness.builds_used == 21
     events = [json.loads(line) for line in (harness.store.run_dir / 'trace.jsonl').read_text().splitlines()]
@@ -275,6 +289,10 @@ def test_real_tool_protocol_can_finish_forty_build_no_improvement_with_discovere
         initial = json.loads(payload['messages'][1]['content'])
         baseline = initial['history']['baseline']
         assert baseline['candidate'] == Candidate().to_dict()
+        if step:
+            current = json.loads(payload['messages'][-1]['content'])
+            expected = [candidates[step // 2].hash()] if step % 2 else []
+            assert current['pending_build_ids'] == expected
         # The fake provider learns the ID only through the real compact prompt.
         if step < 80:
             candidate = candidates[step // 2]

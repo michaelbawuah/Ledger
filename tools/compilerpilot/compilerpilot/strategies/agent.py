@@ -15,6 +15,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 from ..tools import ToolDispatcher
 from ..api_budget import ApiBudget, BudgetError
 
+_MAX_REPEATED_TOOL_FAILURES = 3
+
 _SYSTEM = """You are CompilerPilot, a compiler tuning researcher. Optimize Ledger throughput subject
  to unchanged semantics. Only the supplied tools can build, measure, or judge. Never invent
  measurements or treat predicted speedups as measurements. Keep a fixed model and sampling
@@ -145,12 +147,14 @@ class AgentRunner:
         self._trace("agent_configuration", {"provider": self.provider, "model": self.model,
                     "seed": self.seed, "temperature": 0 if self.sampling == "fixed" else "model-default",
                     "provider_seed_supported": self.provider == "openai" and self.sampling == "fixed",
-                    "budget": budget, "max_calls": self.max_calls})
+                    "budget": budget, "max_calls": self.max_calls,
+                    "max_repeated_tool_failures": _MAX_REPEATED_TOOL_FAILURES})
         context = {"goal": "Maximize correctness-gated throughput beyond baseline noise",
                    "unique_build_budget": budget, "budget_remaining": budget,
                    "knobs": self.harness.list_knobs(),
                    "history": self.harness.query_history(top_k=10, sort_by="throughput")}
         messages: list[dict[str, Any]] = [{"role": "user", "content": _encode(context)}]
+        failures_without_progress: dict[tuple[str, str], int] = {}
         calls = 0
         for calls in range(1, self.max_calls + 1):
             response = self._request(messages, dispatcher.definitions())
@@ -175,6 +179,7 @@ class AgentRunner:
             results = []
             for call_id, name, arguments in normalized:
                 self._trace("tool_call", {"id": call_id, "name": name, "arguments": arguments})
+                builds_before = dispatcher.builds_used
                 try:
                     if isinstance(arguments, str):
                         if len(arguments) > 100_000:
@@ -204,6 +209,25 @@ class AgentRunner:
                                "model": self.model, "seed": self.seed, "sampling": self.sampling}
                     self._trace("agent_stopped", stopped)
                     return stopped
+                if dispatcher.builds_used > builds_before or (not failed and name == "run_benchmark"):
+                    failures_without_progress.clear()
+                elif failed:
+                    try:
+                        identity = json.dumps(arguments, default=_json_default, sort_keys=True)
+                    except (TypeError, ValueError):
+                        identity = type(arguments).__name__
+                    key = (name, identity)
+                    repeats = failures_without_progress.get(key, 0) + 1
+                    failures_without_progress[key] = repeats
+                    if repeats >= _MAX_REPEATED_TOOL_FAILURES:
+                        stopped = {"status": "tool_loop_stopped", "complete": False,
+                                   "incomplete_reason": "repeated tool failures without build or measurement progress",
+                                   "recommendation": None, "calls": calls,
+                                   "builds": dispatcher.builds_used, "provider": self.provider,
+                                   "model": self.model, "seed": self.seed, "sampling": self.sampling,
+                                   "repeated_tool_failures": repeats}
+                        self._trace("agent_stopped", stopped)
+                        return stopped
             if self.provider == "anthropic" and results:
                 messages.append({"role": "user", "content": results})
             if dispatcher.finished:
@@ -215,7 +239,9 @@ class AgentRunner:
             # snapshot after every call needlessly inflates input cost.
             messages.append({"role": "user", "content": _encode({
                 "budget_remaining": budget - dispatcher.builds_used,
-                "instruction": "Continue with tools; measure successful builds before finish."})})
+                "instruction": "Continue with tools; measure successful builds before finish.",
+                "pending_build_ids": (self.harness._pending_builds()
+                                      if callable(getattr(self.harness, "_pending_builds", None)) else [])})})
         result = {"status": "call_limit", "complete": False, "incomplete_reason": "maximum LLM calls reached", "recommendation": None, "calls": calls,
                   "builds": dispatcher.builds_used, "provider": self.provider,
                   "model": self.model, "seed": self.seed, "sampling": self.sampling}

@@ -99,8 +99,10 @@ class Harness:
     def build(self, candidate: dict) -> dict:
         self._require_ready()
         if self.builds_used and self.builds_used % 20 == 0 and self.last_checkpoint < self.builds_used:
-            if self._pending_builds(self.builds_used):
-                raise RuntimeError('Benchmark pending builds before starting the next 20-build batch')
+            pending = self._pending_builds(self.builds_used)
+            if pending:
+                raise RuntimeError('Benchmark pending builds before starting the next 20-build batch; '
+                                   'pending build IDs: ' + ', '.join(pending))
             self.checkpoint()
             self._require_ready()
         parsed = Candidate.from_dict(candidate)
@@ -173,7 +175,9 @@ class Harness:
         if build_id not in self.builds:
             raise ValueError('Unknown build_id')
         if any(t['build_id'] == build_id for t in self.history):
-            raise ValueError('Candidate already evaluated')
+            pending = self._pending_builds()
+            raise ValueError('Candidate already evaluated; pending build IDs: '
+                             + (', '.join(pending) if pending else 'none'))
         built = self.builds[build_id]
         if built is self.baseline:
             raise ValueError('Baseline is measured separately')
@@ -199,8 +203,10 @@ class Harness:
         boundary = self.builds_used if boundary is None else boundary
         if boundary <= self.last_checkpoint:
             return {'valid': self.noise_ok, 'already_checked': True}
-        if self._pending_builds(boundary):
-            raise ValueError('Complete pending benchmarks before checking baseline drift')
+        pending = self._pending_builds(boundary)
+        if pending:
+            raise ValueError('Complete pending benchmarks before checking baseline drift; '
+                             'pending build IDs: ' + ', '.join(pending))
         check = self.runner.run(self.baseline, label=f'checkpoint-{boundary}')
         drift = abs(check.get('throughput', 0) / self.baseline_metric['throughput'] - 1)
         baseline_input = self.baseline_metric.get('provenance', {}).get('input_sha256')
@@ -277,6 +283,10 @@ class Harness:
         return {'best': [compact(row) for row in rows[:top_k]],
                 'worst': [compact(row) for row in rows[-top_k:]],
                 'failed': [compact(row) for row in failed[-top_k:]],
+                'pending': [{'build_id': build_id,
+                             'candidate': dict(self.builds[build_id].candidate),
+                             'build_index': self.build_indices[build_id]}
+                            for build_id in self._pending_builds()],
                 'builds_used': self.builds_used, 'budget_left': self.budget-self.builds_used,
                 'noise_gate': self.noise_ok, 'baseline': baseline}
 
@@ -290,7 +300,8 @@ class Harness:
             raise ValueError('Use the full requested build budget before finish')
         pending = self._pending_builds()
         if pending:
-            raise ValueError('Benchmark every successful build before finish')
+            raise ValueError('Benchmark every successful build before finish; '
+                             'pending build IDs: ' + ', '.join(pending))
         if not isinstance(rationale, str) or not rationale.strip():
             raise ValueError('Rationale required')
         if self.last_checkpoint < len(self.history):

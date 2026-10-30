@@ -6,19 +6,27 @@ The same Python harness runs random, genetic, surrogate-guided and LLM-guided se
 
 ## Current evidence
 
-The implementation includes four search policies, compiler/PGO pipelines, feedback parsers and correctness gates. The committed qualification artifacts under `results/` were collected against Ledger commit `c0dbffd6a036feb27e225362a92df9792d8e844a`, before this component moved into Ledger. Those historical files retain their original provenance. The ten-observation E1 measurement completed with **13.61% baseline variation**, above the **2% noise limit**; E2–E5 performance experiments did not run. **No new speedup, strategy advantage or predictor accuracy is claimed.**
+The [first live agent search and its confirmation packet](results/studies/codespaces-agent-r5-20261030-01/review.md) used `gpt-4.1-mini-2025-04-14` against frozen Ledger source `7c43ec7`. E1 and the live semantic-mutation correctness check passed. The agent built 20 unique candidates and obtained 19 correct measurements, then a tool-use loop and provider HTTP 429 stopped the requested 40-build search. The original study remains explicitly failed/incomplete.
 
-The LLM provider adapters and protocol tests are implemented, but a live API experiment has not run. Such an experiment requires a provider credential and a pinned model; missing credentials cause an explicit error.
+Two separately declared confirmations retained the same three agent-proposed nominees. R=5 stopped after 12 complete observations when maximum baseline within-group CV reached **3.1357%**; one larger-work-unit R=20 protocol stopped after 12 complete observations at **2.1409%**. Both exceed the unchanged **2%** limit, preserve their partial raw data and have no recommendation. The protocols are not pooled. **No confirmed compiler speedup, agent-versus-baselines advantage or predictor accuracy is claimed.** A separate fixed-candidate validation on an independent hosted VM is being prepared; it is not a result yet.
+
+The recorded API allocation conservatively accounts for **$3.1319276** across 89 requests, including a retained $0.425584 reservation for the uncertain failed request. This is controller accounting, not an invoice or a claim about the provider's final charge. The same allocation and checkpoint remain authoritative; it has not been reset.
 
 See [measured results](results/summary.md), [methodology](docs/methodology.md), and [qualification status](results/status.md).
+
+Historical qualification files retain their original provenance. The pre-integration attempt at Ledger commit `c0dbffd6a036feb27e225362a92df9792d8e844a` measured **13.61% baseline variation**, above the 2% limit, so its performance sweep and strategy comparison did not run.
 
 A separate [hosted-runner qualification](results/studies/gha-41074339510-1/summary.md) used five million commands on AMD EPYC 9V45 and also failed the noise gate (**8.03% CV**). It made no model calls and did not proceed to search. Its different hardware and replay length do not establish a speedup over the earlier results.
 
 The [free Codespaces qualification](results/studies/codespaces-20261030-01/review.md) completed ten observations of five reported runs on a four-core, 16 GB Ubuntu host. Its conservative CV was **2.5335%**, so it also failed the unchanged 2% gate. All correctness checks passed; no model call or compiler search ran. The original raw measurements and launch log remain unchanged.
 
+A later [predeclared R=5 qualification](results/studies/codespaces-r5-20261030-01/review.md) passed at **1.5285% CV**. That is baseline qualification on its recorded source/boot, not a confirmed optimization result; the later live-agent attempt and its independent confirmation outcomes are reported separately above.
+
 ## Run it
 
 Linux x86-64, Python 3.11+, GCC 13+, Clang/LLVM 17+, CMake 3.21+, Ninja, binutils and `taskset` are required. Install matching LLVM profiling and `lld` packages for Clang PGO/ThinLTO. Hardware `perf` events need host support and permissions; unavailable counters are recorded explicitly.
+
+The archived profiling evidence includes long encoded paths. When cloning the repository on Windows, use `git clone -c core.longpaths=true https://github.com/michaelbawuah/Ledger.git`. In an existing checkout, run `git config core.longpaths true` before pulling that evidence. The recorded filenames and hashes remain unchanged.
 
 ```bash
 git clone https://github.com/michaelbawuah/Ledger.git

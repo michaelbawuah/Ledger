@@ -1,0 +1,74 @@
+name: CompilerPilot fixed-nominee host replication
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: compilerpilot-independent-fixed-host-replication
+  cancel-in-progress: false
+
+jobs:
+  replicate:
+    if: github.ref == 'refs/heads/main' && github.actor == github.repository_owner && github.run_attempt == 1 && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      CXX: /usr/bin/g++-13
+      REPLICATION_ID: gha-replication-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - name: Check out the versioned controller
+        uses: actions/checkout@v4
+        with:
+          path: controller
+          persist-credentials: false
+      - name: Check out the independently frozen engine and harness
+        uses: actions/checkout@v4
+        with:
+          ref: 7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6
+          path: engine
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install matched toolchains before any measurement
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++-13 clang-18 llvm-18 llvm-18-tools lld-18 libclang-rt-18-dev binutils util-linux
+          python -m pip install 'PyYAML>=6,<7' 'matplotlib>=3.7,<4'
+          mkdir -p "$RUNNER_TEMP/compilerpilot-toolchain"
+          ln -s /usr/bin/g++-13 "$RUNNER_TEMP/compilerpilot-toolchain/g++"
+          ln -s /usr/bin/clang++-18 "$RUNNER_TEMP/compilerpilot-toolchain/clang++"
+          ln -s /usr/bin/llvm-profdata-18 "$RUNNER_TEMP/compilerpilot-toolchain/llvm-profdata"
+          ln -s /usr/bin/ld.lld-18 "$RUNNER_TEMP/compilerpilot-toolchain/ld.lld"
+          ln -s /usr/bin/lld-18 "$RUNNER_TEMP/compilerpilot-toolchain/lld"
+          echo "$RUNNER_TEMP/compilerpilot-toolchain" >> "$GITHUB_PATH"
+      - name: Run one fixed-hypothesis replication without provider credentials
+        run: |
+          set -o pipefail
+          timeout --signal=INT --kill-after=120s 4h python controller/tools/compilerpilot/scripts/run_host_replication.py \
+            --controller "$GITHUB_WORKSPACE/controller" --engine "$GITHUB_WORKSPACE/engine" \
+            --run-id "$REPLICATION_ID" 2>&1 | tee "$RUNNER_TEMP/$REPLICATION_ID-launch.log"
+      - name: Preserve and seal all available evidence after success or failure
+        if: always()
+        id: collect
+        run: |
+          python controller/tools/compilerpilot/scripts/run_host_replication.py --collect-only \
+            --controller "$GITHUB_WORKSPACE/controller" --engine "$GITHUB_WORKSPACE/engine" \
+            --run-id "$REPLICATION_ID" --launch-log "$RUNNER_TEMP/$REPLICATION_ID-launch.log" \
+            --github-output "$GITHUB_OUTPUT"
+      - name: Retain only the bounded precompressed public evidence packet
+        if: always() && steps.collect.outputs.upload == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-host-replication-${{ github.run_id }}-${{ github.run_attempt }}
+          path: controller/tools/compilerpilot/results/replications/${{ env.REPLICATION_ID }}/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1

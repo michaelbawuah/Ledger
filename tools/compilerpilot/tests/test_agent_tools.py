@@ -140,8 +140,9 @@ def test_budget_updates_do_not_duplicate_history_or_drop_tool_evidence():
     assert json.loads(requests[0]["messages"][1]["content"])["history"]["history_response"] == 1
     for request in requests[1:]:
         update = json.loads(request["messages"][-1]["content"])
-        assert set(update) == {"budget_remaining", "instruction"}
+        assert set(update) == {"budget_remaining", "instruction", "pending_build_ids"}
         assert update["budget_remaining"] == 0
+        assert update["pending_build_ids"] == []
         assert request["messages"][-2]["role"] == "tool"
     measured = {"correctness": True, "throughput": 123.0,
                 "full_evidence": {"replay_durations": [37, 39, 41]}}
@@ -193,6 +194,53 @@ def test_noise_checkpoint_stops_remaining_tools_and_provider_requests():
     assert len(tool_results) == 1
     assert tool_results[0]["result"]["status"] == "discarded_drift"
     assert tool_results[0]["result"]["measurement_valid"] is False
+
+
+def test_repeated_failed_calls_stop_even_with_successful_queries_between_them():
+    harness = Harness()
+    replies = iter([
+        _openai_call("run_benchmark", {"build_id": "unknown"}),
+        _openai_call("query_history", {"top_k": 10, "sort_by": "throughput"}, 2),
+        _openai_call("run_benchmark", {"build_id": "unknown"}, 3),
+        _openai_call("list_knobs", {}, 4),
+        _openai_call("run_benchmark", {"build_id": "unknown"}, 5),
+    ])
+    requests = []
+
+    def transport(url, headers, payload, timeout):
+        requests.append(json.loads(json.dumps(payload)))
+        return next(replies)
+
+    result = AgentRunner(harness, model="fixed-model", api_key="test", max_calls=10,
+                         transport=transport).run(1)
+    assert result["status"] == "tool_loop_stopped" and result["complete"] is False
+    assert result["recommendation"] is None and result["repeated_tool_failures"] == 3
+    assert len(requests) == result["calls"] == 5
+    recorded = [data for event, data in harness.events if event == "tool_result"]
+    assert len(recorded) == 5 and sum(item["is_error"] for item in recorded) == 3
+    assert harness.events[-1] == ("agent_stopped", result)
+
+
+def test_build_and_measurement_progress_reset_failed_call_guard():
+    harness = Harness()
+    build_id = Candidate().hash()
+    actions = [
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("build", {"candidate": Candidate().to_dict()}),
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("run_benchmark", {"build_id": build_id}),
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("run_benchmark", {"build_id": "unknown"}),
+        ("finish", {"recommendation": build_id, "rationale": "measured"}),
+    ]
+    replies = iter(_openai_call(name, arguments, index)
+                   for index, (name, arguments) in enumerate(actions))
+    result = AgentRunner(harness, model="fixed-model", api_key="test", max_calls=10,
+                         transport=lambda *args: next(replies)).run(1)
+    assert result["status"] == "finished" and result["calls"] == 9
+    assert not any(event == "agent_stopped" for event, _ in harness.events)
 
 
 def test_anthropic_parallel_tool_results_are_one_user_message():

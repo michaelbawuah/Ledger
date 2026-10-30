@@ -1,0 +1,68 @@
+{
+  "automatic_retries": 0,
+  "baseline": {
+    "build_id": "be180963747c4559",
+    "candidate": {
+      "alignment": 0,
+      "compiler": "gcc",
+      "frame_pointer": false,
+      "inline": "default",
+      "isa": "native",
+      "lto": false,
+      "opt": "O3",
+      "pgo": false,
+      "semantic_interposition": true,
+      "unroll": false,
+      "vectorize": true
+    }
+  },
+  "benchmark_timeout_seconds": 600,
+  "claim_boundary": "Independent same-source fixed-nominee replication on a new host. No timing pooling with Codespaces and no agent-versus-search ranking. The originating40-build agent study remains failed/incomplete.",
+  "commands": 5000000,
+  "cpu": 0,
+  "evaluation_input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+  "evaluation_seed": 20261011,
+  "fallback_nominees": 0,
+  "jobs": 2,
+  "kind": "fixed_agent_nomination_host_replication",
+  "latency_replays": 1,
+  "maximum_new_platform_attempts": 1,
+  "maximum_nominees": 1,
+  "nomination_selection": "Only the first top-ranked original fixed plan nominee, before any new-host measurement; no fallback to other configurations.",
+  "nominees": [
+    {
+      "build_id": "6d3511b71fcfb52d",
+      "candidate": {
+        "alignment": 64,
+        "compiler": "clang",
+        "frame_pointer": false,
+        "inline": "default",
+        "isa": "native",
+        "lto": false,
+        "opt": "O3",
+        "pgo": true,
+        "semantic_interposition": false,
+        "unroll": true,
+        "vectorize": false
+      }
+    }
+  ],
+  "origin_engine_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+  "origin_engine_source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+  "origin_measured_candidates": 19,
+  "origin_packet_commit": "0eed8289285c993a6b7487d8cc662f6b623edf1e",
+  "origin_plan_path": "tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/postsearch-r20-confirmation/plan.json",
+  "origin_plan_sha256": "c14e2936238f1e078461ce99d94023e2e4a353728df59b41b847fae094ece6bf",
+  "origin_recorded_builds": 20,
+  "origin_requested_budget": 40,
+  "origin_study_id": "codespaces-agent-r5-20261030-01",
+  "origin_study_path": "tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/study.json",
+  "origin_study_sha256": "6c165b93d69708e627a0cb91d93bf55304c7293aa95c50a6dd1483486e18e4c6",
+  "origin_study_status": "failed",
+  "reported_runs": 5,
+  "rounds": 10,
+  "schema_version": 1,
+  "throughput_replays": 20,
+  "training_input_sha256": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4",
+  "training_seed": 20261012
+}
