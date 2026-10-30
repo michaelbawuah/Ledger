@@ -1,0 +1,105 @@
+{
+  "correctness": true,
+  "throughput": 18814250.666,
+  "p50_ns": 40.0,
+  "p99_ns": 270.0,
+  "cv": 0.03970557131072663,
+  "spread": 735101.5786574868,
+  "runs": [
+    18814250.666,
+    19276406.1223,
+    18885491.5988,
+    18197931.6231,
+    17394992.0861
+  ],
+  "error": null,
+  "provenance": {
+    "input_sha256": "0d6ea0c05f8ba20973b6f07a7d00de68092d406b787ea8e183830ac7d22188ee",
+    "input": "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/data/migration/eval.lob",
+    "cpu": 0,
+    "pinned": true,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "summary": "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/migration-live/summary.json",
+    "runs_csv": "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/migration-live/runs.csv",
+    "benchmark_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/ledger_bench",
+      "--input",
+      "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/data/migration/eval.lob",
+      "--runs",
+      "5",
+      "--warmup",
+      "50000",
+      "--outdir",
+      "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/migration-live"
+    ],
+    "differential_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/ledger_differential",
+      "--seeds",
+      "5",
+      "--orders",
+      "100000",
+      "--output",
+      "/workspace/scratch/782b5db88681/Ledger/tools/compilerpilot/builds/migration-positive/be180963747c4559/migration-live/differential.json"
+    ],
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "compiler": {
+      "version": "13.3.0",
+      "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+      "optimization_enabled": true,
+      "ndebug": true
+    },
+    "differential": {
+      "status": "pass",
+      "generator": "splitmix64-bounded-adversarial-v1",
+      "base_seed": 8330235730275514375,
+      "first_seed": 0,
+      "seeds": 5,
+      "commands_per_seed": 100000,
+      "commands_compared": 500000,
+      "reports_compared": 1047284,
+      "trades_compared": 171010,
+      "applied_commands": 237011,
+      "rejected_commands": 262989,
+      "structural_checkpoints": 125,
+      "checkpoint_interval": 4096,
+      "linear_variant_compared": true,
+      "linear_fok_variant_compared": true,
+      "per_command_checks": [
+        "process_result",
+        "all_event_fields",
+        "statistics",
+        "size",
+        "resting_quantity",
+        "best_quotes",
+        "quantity_conservation",
+        "uncrossed_quotes"
+      ],
+      "checkpoint_checks": [
+        "full_structural_invariants",
+        "full_FIFO_orders",
+        "all_levels",
+        "all_statistics"
+      ],
+      "elapsed_seconds": 0.101077
+    }
+  },
+  "checksums": {
+    "event_checksum": 16158622380256031910,
+    "trade_checksum": 14793442050757656098,
+    "events": 213635,
+    "trades": 37878,
+    "rejected_commands": 0,
+    "live_orders_final": 2044
+  }
+}

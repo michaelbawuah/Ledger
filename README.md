@@ -33,6 +33,12 @@ build/release/ledger_generate --out orders.lob --commands 1000000 --seed 2026101
 build/release/ledger_bench --input orders.lob --runs 5 --outdir bench/results/local
 ```
 
+## Auto-tuning the build
+
+[CompilerPilot](tools/compilerpilot/README.md) is Ledger's compiler-tuning component under `tools/compilerpilot`. Random, genetic, learned-surrogate and LLM tool-use policies share typed compiler choices, clean builds, checksum/differential correctness gates and noise-aware measurement. It discovers the live Ledger checkout automatically and records its source provenance; no submodule or separate repository is required.
+
+The committed qualification evidence was collected against Ledger commit `c0dbffd6a036feb27e225362a92df9792d8e844a`. Ten baseline observations measured **13.61% variation**, above the **2% noise limit**, so the performance sweep and strategy comparison did not run. CompilerPilot claims no additional speedup or agent advantage. Start with its [setup and commands](tools/compilerpilot/README.md), [measured evidence](tools/compilerpilot/results/summary.md), or [current status](tools/compilerpilot/results/status.md).
+
 ## Design
 
 | Component | Implementation | Cost / boundary |

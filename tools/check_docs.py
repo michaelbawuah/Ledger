@@ -153,9 +153,16 @@ def markdown_files(root):
     root = Path(root).resolve()
     if not root.is_dir():
         raise ValueError(f"repository root is not a directory: {root}")
+    compilerpilot_generated = {
+        root / "tools" / "compilerpilot" / name for name in ("builds", "data")
+    }
     paths = []
     for directory, children, files in os.walk(root, followlinks=False):
-        children[:] = sorted(name for name in children if not skipped_directory(name))
+        children[:] = sorted(
+            name for name in children
+            if not skipped_directory(name)
+            and Path(directory) / name not in compilerpilot_generated
+        )
         for name in sorted(files):
             if name.lower().endswith(".md"):
                 paths.append(Path(directory) / name)

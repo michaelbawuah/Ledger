@@ -101,6 +101,20 @@ class CodeExampleTests(DocumentFixture):
 
 
 class RepositoryTests(DocumentFixture):
+    def test_compilerpilot_generated_trees_are_skipped_but_source_docs_are_checked(self):
+        component = self.root / "tools" / "compilerpilot"
+        for directory in ("builds", "data", "docs"):
+            folder = component / directory
+            folder.mkdir(parents=True)
+            (folder / "readme.md").write_text("[Missing](absent.md)", encoding="utf-8")
+        paths = checker.markdown_files(self.root)
+        self.assertIn(component / "docs" / "readme.md", paths)
+        self.assertNotIn(component / "builds" / "readme.md", paths)
+        self.assertNotIn(component / "data" / "readme.md", paths)
+        count, issues = checker.check_repository(self.root)
+        self.assertEqual(count, 1)
+        self.assertEqual(len(issues), 1)
+
     def test_discovery_skips_generated_build_and_cache_documents(self):
         self.document("Source", "README.md")
         self.document("Source")

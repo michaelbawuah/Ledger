@@ -1,0 +1,86 @@
+name: CompilerPilot verification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/compilerpilot.yml'
+      - 'README.md'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'cmake/**'
+      - 'src/**'
+      - 'include/**'
+      - 'bench/**'
+      - 'tests/**'
+      - 'tools/check_docs.py'
+      - 'tools/compilerpilot/**'
+  pull_request:
+    paths:
+      - '.github/workflows/compilerpilot.yml'
+      - 'README.md'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'cmake/**'
+      - 'src/**'
+      - 'include/**'
+      - 'bench/**'
+      - 'tests/**'
+      - 'tools/check_docs.py'
+      - 'tools/compilerpilot/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: tools/compilerpilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python package and test dependencies
+        run: python -m pip install -e '.[dev]'
+      - name: Run CompilerPilot tests
+        run: python -m pytest --junitxml=results/ci-python-tests.xml
+      - name: Check component and Ledger overview links
+        run: python ../../tools/check_docs.py --root ../.. ../../README.md README.md docs/methodology.md docs/resume.md results/status.md
+      - name: Upload Python test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-python-tests
+          path: tools/compilerpilot/results/ci-python-tests.xml
+          if-no-files-found: error
+
+  compiler-integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: tools/compilerpilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install compiler toolchains
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build g++ clang llvm lld
+      - name: Install Python package
+        run: python -m pip install -e '.[dev]'
+      - name: Generate a deterministic replay from the live Ledger source
+        run: python -m compilerpilot data --commands 100000 --data data/ci
+      - name: Require rejection of a compiling semantic mutation
+        run: python scripts/check_gate.py --input data/ci/eval.lob --output results/ci-gate-check.json
+      - name: Upload mutation proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-mutation-proof
+          path: tools/compilerpilot/results/ci-gate-check.json
+          if-no-files-found: error
