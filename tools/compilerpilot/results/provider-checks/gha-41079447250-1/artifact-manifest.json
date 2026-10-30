@@ -1,0 +1,12 @@
+{
+  "workflow_url": "https://github.com/michaelbawuah/Ledger/actions/runs/41079447250",
+  "source_commit": "9a0eb9b5916abfc56ce872b921392902a337336c",
+  "artifact_id": 12988523255,
+  "artifact_sha256": "2b62e08f91322a42dd83b5f7d4655fc453df372a51d0109cd01eeb2ce9cde453",
+  "files": {
+    "provider-check.json": "e26102f062171668f6e05a3e078fe87871847c0d913f607a3a864fcab9f3d566"
+  },
+  "api_requests": 1,
+  "benchmarks_run": false,
+  "agent_study_run": false
+}

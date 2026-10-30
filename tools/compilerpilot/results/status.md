@@ -19,9 +19,10 @@ CompilerPilot now lives under `tools/compilerpilot` in Ledger and automatically 
 | E4: predictor accuracy | Model and out-of-fold evaluation implemented; no measured training table available |
 | E5: winning-build performance confirmation | Interleaved confirmer implemented/tested; no winner exists yet |
 | Hardware counters | perf runs, but VM reports requested hardware events unsupported |
-| Live LLM tool-use experiment | Not run; API adapters and protocol tests implemented, requiring a provider credential and pinned model |
+| Live provider compatibility | [One-request check](provider-checks/gha-41079447250-1/review.md) passed with `gpt-4.1-mini-2025-04-14`: authenticated request and expected harmless tool call; 72 input + 15 output tokens. This is not a tuning experiment. |
+| Full LLM tuning experiment | Not run; the provider is reachable, but the full comparison still requires a host that passes E1 and an agreed API budget |
 | Canonical source | [Ledger/tools/compilerpilot](https://github.com/michaelbawuah/Ledger/tree/main/tools/compilerpilot), with [setup commands](../README.md) |
 
 `qualification-clang-pgo.json` retains an earlier failed attempt during toolchain setup. The later `clang-pgo-qualification.json` records the successful clean attempt. Both remain visible. Qualification timings are raw observations from a noisy host; they are not comparable speedup results.
 
-To continue: use a quiet Linux host, configure one provider credential as an environment variable, rerun E1, and only proceed if the gate passes. `scripts/run_study.py` preflights credentials and stops on noise. Run from `Ledger/tools/compilerpilot`; no submodule is needed. New measurements use the live Ledger source and must pass the same gates. The historical 13.61% noise result, absent E2–E5 performance study and absent live API run remain explicit.
+To continue: use a quiet Linux host, supply the provider credential securely on that host, agree an API budget, rerun E1, and only proceed if the gate passes. `scripts/run_study.py` preflights credentials and stops on noise. Run from `Ledger/tools/compilerpilot`; no submodule is needed. New measurements use the live Ledger source and must pass the same gates. Both failed noise qualifications and the absent E2–E5 performance study remain explicit; the successful live provider check does not establish tuning performance.
