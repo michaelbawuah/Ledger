@@ -99,7 +99,15 @@ def runtime_fixture(tmp_path,monkeypatch):
         if path.name=='train.lob':return MANIFEST['training_input_sha256']
         return original_sha(path)
     monkeypatch.setattr(controller.helper,'sha',fixture_sha)
-    quota=Path('/sys/fs/cgroup/cpu.max').read_text().strip();cpuset=Path('/sys/fs/cgroup/cpuset.cpus.effective').read_text().strip()
+    # Model the declared cgroup rather than requiring these files on the CI host.
+    quota='800000 100000';cpuset='0-8'
+    cgroup_files={Path('/sys/fs/cgroup/cpu.max'):quota,
+        Path('/sys/fs/cgroup/cpuset.cpus.effective'):cpuset}
+    original_read_text=Path.read_text
+    def fixture_read_text(path,*args,**kwargs):
+        if path in cgroup_files:return cgroup_files[path]+'\n'
+        return original_read_text(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'read_text',fixture_read_text)
     monkeypatch.setattr(controller,'resources',lambda:{'cpu_model':controller.EXPECTED_MODEL,'allowed_cpus':list(range(9)),
         'cpu_max':quota,'cpuset_effective':cpuset,'cpu_stat':'fixture','python':'fixture'})
     monkeypatch.setattr(controller.os,'sched_getaffinity',lambda unused:set(current))
