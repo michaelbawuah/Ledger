@@ -46,6 +46,18 @@ def fixture_rows():
     return runs, histogram
 
 
+def zero_latency_frequencies(summary, runs):
+    """Model exact zero-duration clock samples without changing throughput work."""
+    for metrics in summary["engines"].values():
+        for field in ("median_p50_ns", "median_p99_ns", "median_p999_ns", "median_run_max_ns", "max_ns"):
+            metrics[field] = 0
+    for row in runs:
+        for field in ("p50_ns", "p99_ns", "p999_ns", "max_ns"):
+            row[field] = 0
+    return [dict(engine=row["engine"], run=row["run"], latency_ns=0, count=summary["commands"])
+            for row in runs]
+
+
 class FileFixture(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -227,11 +239,56 @@ class AccountingTests(FileFixture):
 
 
 class IntegrationTests(FileFixture):
-    def write_evidence(self):
-        self.write_summary(fixture_summary())
+    def write_evidence(self, zero_latencies=False):
+        summary = fixture_summary()
         runs, histogram = fixture_rows()
+        if zero_latencies:
+            histogram = zero_latency_frequencies(summary, runs)
+        self.write_summary(summary)
         self.write_csv("runs.csv", verifier.RUN_COLUMNS, runs)
         self.write_csv("latency_histogram.csv", verifier.HISTOGRAM_COLUMNS, histogram)
+
+    def test_exact_zero_latency_samples_preserve_counts_and_undefined_ratios(self):
+        self.write_evidence(zero_latencies=True)
+        report = verifier.verify_directory(self.root)
+        self.assertEqual(report["verified_latency_samples"], 9000)
+        self.assertIsNone(report["derived"]["bitmap_linear_p99_reduction_percent"])
+        self.assertIsNone(report["derived"]["bitmap_linear_p999_reduction_percent"])
+        self.assertEqual(report["derived"]["bitmap_reference_throughput_ratio"], "1")
+        result = subprocess.run([sys.executable, str(SCRIPT), str(self.root)],
+                                text=True, capture_output=True, check=True)
+        self.assertEqual(json.loads(result.stdout), report)
+
+    def test_zero_resolution_does_not_admit_negative_or_inconsistent_latency(self):
+        for target in ("run", "histogram", "summary", "mismatch"):
+            with self.subTest(target=target):
+                self.write_evidence(zero_latencies=True)
+                if target == "summary":
+                    summary = json.loads((self.root / "summary.json").read_text())
+                    summary["engines"]["reference"]["median_p50_ns"] = -1
+                    self.write_summary(summary)
+                else:
+                    name = "latency_histogram.csv" if target == "histogram" else "runs.csv"
+                    columns = verifier.HISTOGRAM_COLUMNS if target == "histogram" else verifier.RUN_COLUMNS
+                    with (self.root / name).open(newline="", encoding="utf-8") as stream:
+                        rows = list(csv.DictReader(stream))
+                    field = "latency_ns" if target == "histogram" else "p50_ns"
+                    rows[0][field] = 1 if target == "mismatch" else -1
+                    self.write_csv(name, columns, rows)
+                with self.assertRaises(verifier.VerificationError):
+                    verifier.verify_directory(self.root)
+
+    def test_zero_latency_still_requires_positive_throughput_and_elapsed_time(self):
+        for field in ("commands_per_second", "throughput_total_ns"):
+            for value in (0, -1):
+                with self.subTest(field=field, value=value):
+                    self.write_evidence(zero_latencies=True)
+                    with (self.root / "runs.csv").open(newline="", encoding="utf-8") as stream:
+                        rows = list(csv.DictReader(stream))
+                    rows[0][field] = value
+                    self.write_csv("runs.csv", verifier.RUN_COLUMNS, rows)
+                    with self.assertRaises(verifier.VerificationError):
+                        verifier.verify_directory(self.root)
 
     def test_complete_fixture_and_deterministic_cli_json(self):
         self.write_evidence()
@@ -331,6 +388,18 @@ class FixedThroughputReplayTests(FileFixture):
                 self.assertEqual(report["verified_throughput_commands_per_run"], 1000 * replays)
                 self.assertEqual(report["verified_throughput_blocks"], 9 * replays)
                 self.assertEqual(report["verified_latency_samples"], 9000)
+
+    def test_zero_resolution_latency_keeps_every_throughput_block(self):
+        summary, runs, _ = self.write_evidence(replays=20)
+        histogram = zero_latency_frequencies(summary, runs)
+        self.write_summary(summary)
+        self.write_csv("runs.csv", verifier.RUN_COLUMNS_V2, runs)
+        self.write_csv("latency_histogram.csv", verifier.HISTOGRAM_COLUMNS, histogram)
+        report = verifier.verify_directory(self.root)
+        self.assertEqual(report["verified_latency_samples"], 9000)
+        self.assertEqual(report["verified_throughput_blocks"], 180)
+        self.assertEqual(report["verified_throughput_commands_per_run"], 20_000)
+        self.assertIsNone(report["derived"]["bitmap_linear_p99_reduction_percent"])
 
     def test_rejects_undeclared_or_malformed_protocol(self):
         for field, replacement in (("throughput_replays", 0), ("throughput_replays", 21),

@@ -305,7 +305,9 @@ def verify_metrics(summary, runs):
             expected_rate = Decimal(values.get("throughput_commands", values["commands"])) * 10**9 / values["throughput_total_ns"]
             close_decimal(values["commands_per_second"], expected_rate, f"{key}.commands_per_second")
             for field in ("p50_ns", "p99_ns", "p999_ns", "max_ns"):
-                require(values[field] > 0, f"{key}.{field}: latency metric must be positive")
+                # A steady clock can report zero for a command shorter than its
+                # resolution. Preserve that exact sample instead of inventing time.
+                integer(values[field], f"{key}.{field}")
         for engine in sorted(ENGINES):
             selected = [values for (candidate, _), values in runs.items() if candidate == engine]
             metrics = summary["engines"][engine]
@@ -321,15 +323,17 @@ def verify_metrics(summary, runs):
         bitmap_rate = Decimal(engines["fast-bitmap"]["median_commands_per_second"])
         linear_rate = Decimal(engines["fast-linear"]["median_commands_per_second"])
         reference_rate = Decimal(engines["reference"]["median_commands_per_second"])
+
+        def latency_reduction(field):
+            denominator = engines["fast-linear"][field]
+            return (Decimal(denominator - engines["fast-bitmap"][field]) / denominator * 100
+                    if denominator else None)
+
         return {
             "bitmap_reference_throughput_ratio": bitmap_rate / reference_rate,
             "bitmap_linear_throughput_improvement_percent": (bitmap_rate / linear_rate - 1) * 100,
-            "bitmap_linear_p99_reduction_percent": (
-                Decimal(engines["fast-linear"]["median_p99_ns"] - engines["fast-bitmap"]["median_p99_ns"])
-                / engines["fast-linear"]["median_p99_ns"] * 100),
-            "bitmap_linear_p999_reduction_percent": (
-                Decimal(engines["fast-linear"]["median_p999_ns"] - engines["fast-bitmap"]["median_p999_ns"])
-                / engines["fast-linear"]["median_p999_ns"] * 100),
+            "bitmap_linear_p99_reduction_percent": latency_reduction("median_p99_ns"),
+            "bitmap_linear_p999_reduction_percent": latency_reduction("median_p999_ns"),
         }
 
 
@@ -374,7 +378,8 @@ def verify_directory(directory):
         "verified_commands_per_run": summary["commands"],
         "verified_engine_runs": len(runs),
         "verified_latency_samples": sum(sum(values.values()) for values in histograms.values()),
-        "derived": {key: format(value, ".12g") for key, value in sorted(derived.items())},
+        "derived": {key: None if value is None else format(value, ".12g")
+                    for key, value in sorted(derived.items())},
     }
     if blocks is not None:
         report.update(verified_throughput_replays_per_run=summary["throughput_replays"],
