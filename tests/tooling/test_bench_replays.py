@@ -124,9 +124,10 @@ class BuiltBenchmarkReplayTests(unittest.TestCase):
     def test_explicit_upper_bound_keeps_every_tiny_replay(self):
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary)
-            result = self.invoke("--commands", 1, "--runs", 1, "--throughput-replays", 20, "--outdir", output)
+            # Keep each replay above coarse clock resolution while checking R=20.
+            result = self.invoke("--commands", 2000, "--runs", 1, "--throughput-replays", 20, "--outdir", output)
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.validate(output, commands=1, runs=1, replays=20)
+            self.validate(output, commands=2000, runs=1, replays=20)
 
     def test_invalid_replay_count_rejected_before_writing_evidence(self):
         invalid = (("--throughput-replays", "0"), ("--throughput-replays", "21"),
