@@ -1,0 +1,25 @@
+{
+  "strategy": "baseline",
+  "seed": 0,
+  "budget": 1,
+  "throughput_replays": 5,
+  "arguments": {
+    "command": "baseline",
+    "ledger": "/workspaces/Ledger-focused",
+    "data": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01",
+    "results": "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01",
+    "commands": 5000000,
+    "throughput_replays": 5,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012,
+    "cpu": 0,
+    "jobs": 2,
+    "baseline_repetitions": 10,
+    "run_id": "codespaces-agent-r5-20261030-01-E1"
+  },
+  "python": "3.14.2 (main, Oct 28 2026, 19:03:49) [GCC 13.3.0]",
+  "terminal_progress": true,
+  "temperature": null,
+  "model": null,
+  "provider": null
+}

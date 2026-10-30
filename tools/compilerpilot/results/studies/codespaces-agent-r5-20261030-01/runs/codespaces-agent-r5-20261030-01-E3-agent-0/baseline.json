@@ -1,0 +1,1841 @@
+{
+  "build": {
+    "build_id": "be180963747c4559",
+    "candidate": {
+      "compiler": "gcc",
+      "opt": "O3",
+      "isa": "native",
+      "lto": false,
+      "pgo": false,
+      "inline": "default",
+      "unroll": false,
+      "vectorize": true,
+      "frame_pointer": false,
+      "alignment": 0,
+      "semantic_interposition": true
+    },
+    "build_dir": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559",
+    "success": true,
+    "compile_s": 19.88466117400003,
+    "text_bytes": 105790,
+    "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "error": null,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "provenance": {
+      "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+      "ledger_dirty": false,
+      "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+      "compiler_executable": "/usr/bin/g++",
+      "configure_s": 0.4650037579999662,
+      "commands": [
+        [
+          "cmake",
+          "-S",
+          "/workspaces/Ledger-focused",
+          "-B",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_CXX_COMPILER=g++",
+          "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=native -fopt-info-missed",
+          "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+          "-DLEDGER_NATIVE=OFF",
+          "-DBUILD_TESTING=ON",
+          "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+          "-G",
+          "Ninja"
+        ],
+        [
+          "cmake",
+          "--build",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559",
+          "--parallel",
+          "2"
+        ]
+      ],
+      "clean_build": true,
+      "binary_sha256": "2332f3cf9c39a61a1654b5ddc68037823f61e3b3d65181e234a85fcfc722ee8b"
+    }
+  },
+  "metric": {
+    "correctness": true,
+    "throughput": 16426604.630800001,
+    "p50_ns": 50.0,
+    "p99_ns": 301.0,
+    "cv": 0.01223627680410877,
+    "spread": 201000.48121412375,
+    "runs": [
+      16558325.7291,
+      16480179.6673,
+      16607443.8576,
+      16652421.1532,
+      16284214.5295
+    ],
+    "error": null,
+    "throughput_replays": 5,
+    "provenance": {
+      "throughput_replays": 5,
+      "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+      "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+      "cpu": 0,
+      "pinned": true,
+      "flags": [
+        "-O3",
+        "-DNDEBUG",
+        "-march=native",
+        "-fopt-info-missed"
+      ],
+      "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/summary.json",
+      "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/runs.csv",
+      "benchmark_command": [
+        "taskset",
+        "-c",
+        "0",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+        "--input",
+        "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "--runs",
+        "5",
+        "--warmup",
+        "50000",
+        "--outdir",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0",
+        "--throughput-replays",
+        "5"
+      ],
+      "differential_command": [
+        "taskset",
+        "-c",
+        "0",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+        "--seeds",
+        "5",
+        "--orders",
+        "100000",
+        "--output",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/differential.json"
+      ],
+      "cpu_model": "AMD EPYC 7763 64-Core Processor",
+      "compiler": {
+        "version": "13.3.0",
+        "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+        "optimization_enabled": true,
+        "ndebug": true
+      },
+      "differential": {
+        "status": "pass",
+        "generator": "splitmix64-bounded-adversarial-v1",
+        "base_seed": 8330235730275514375,
+        "first_seed": 0,
+        "seeds": 5,
+        "commands_per_seed": 100000,
+        "commands_compared": 500000,
+        "reports_compared": 1047284,
+        "trades_compared": 171010,
+        "applied_commands": 237011,
+        "rejected_commands": 262989,
+        "structural_checkpoints": 125,
+        "checkpoint_interval": 4096,
+        "linear_variant_compared": true,
+        "linear_fok_variant_compared": true,
+        "per_command_checks": [
+          "process_result",
+          "all_event_fields",
+          "statistics",
+          "size",
+          "resting_quantity",
+          "best_quotes",
+          "quantity_conservation",
+          "uncrossed_quotes"
+        ],
+        "checkpoint_checks": [
+          "full_structural_invariants",
+          "full_FIFO_orders",
+          "all_levels",
+          "all_statistics"
+        ],
+        "elapsed_seconds": 0.121754
+      },
+      "benchmark_schema_version": 2,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/throughput_replays.csv"
+    },
+    "input_commands": 5000000,
+    "throughput_commands_per_run": 25000000,
+    "latency_commands_per_run": 5000000,
+    "throughput_replay_durations_ns": [
+      [
+        304392270,
+        303187472,
+        300051760,
+        298929526,
+        303253455
+      ],
+      [
+        308262513,
+        299056383,
+        300047271,
+        299321297,
+        310286289
+      ],
+      [
+        302418326,
+        304958908,
+        300088499,
+        299124309,
+        298759018
+      ],
+      [
+        298481390,
+        300393989,
+        303032172,
+        299021417,
+        300354225
+      ],
+      [
+        300008109,
+        307684935,
+        326367077,
+        300234601,
+        300934377
+      ]
+    ],
+    "checksums": {
+      "event_checksum": 4775833837545484177,
+      "trade_checksum": 5735633710814156320,
+      "events": 10979250,
+      "trades": 1993083,
+      "rejected_commands": 0,
+      "live_orders_final": 2039,
+      "submitted": 439451632,
+      "executed": 144785476,
+      "cancelled": 149679069,
+      "expired": 98,
+      "rejected": 0,
+      "resting_quantity": 201513,
+      "best_bid": 9993,
+      "best_ask": 10007
+    }
+  },
+  "throughput_replays": 5,
+  "observations": [
+    {
+      "correctness": true,
+      "throughput": 16558325.7291,
+      "p50_ns": 50.0,
+      "p99_ns": 301.0,
+      "cv": 0.008761872689574287,
+      "spread": 144715.61911826412,
+      "runs": [
+        16558325.7291,
+        16480179.6673,
+        16607443.8576,
+        16652421.1532,
+        16284214.5295
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.121754
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          304392270,
+          303187472,
+          300051760,
+          298929526,
+          303253455
+        ],
+        [
+          308262513,
+          299056383,
+          300047271,
+          299321297,
+          310286289
+        ],
+        [
+          302418326,
+          304958908,
+          300088499,
+          299124309,
+          298759018
+        ],
+        [
+          298481390,
+          300393989,
+          303032172,
+          299021417,
+          300354225
+        ],
+        [
+          300008109,
+          307684935,
+          326367077,
+          300234601,
+          300934377
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16383120.6661,
+      "p50_ns": 50.0,
+      "p99_ns": 310.0,
+      "cv": 0.008644012248149927,
+      "spread": 141972.52786958253,
+      "runs": [
+        16573411.2856,
+        16383120.6661,
+        16568877.6149,
+        16343021.5401,
+        16253460.7844
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.111634
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          303748639,
+          300041281,
+          300173919,
+          299784923,
+          304691448
+        ],
+        [
+          315352063,
+          300689861,
+          300095562,
+          305839591,
+          303983728
+        ],
+        [
+          299027990,
+          300587660,
+          300322595,
+          304138958,
+          304775755
+        ],
+        [
+          299825658,
+          300814053,
+          311919377,
+          316810925,
+          300334879
+        ],
+        [
+          322821050,
+          313391994,
+          299157692,
+          302861995,
+          299901229
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16438054.9976,
+      "p50_ns": 50.0,
+      "p99_ns": 301.0,
+      "cv": 0.0041501749847230665,
+      "spread": 68226.45800877135,
+      "runs": [
+        16438054.9976,
+        16536763.6084,
+        16346692.9142,
+        16454190.1659,
+        16421384.2921
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.112666
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          317173853,
+          298446895,
+          305231195,
+          299533032,
+          300476222
+        ],
+        [
+          299058396,
+          307013993,
+          304199330,
+          300858475,
+          300652921
+        ],
+        [
+          301930567,
+          304314855,
+          309225760,
+          302909132,
+          310981015
+        ],
+        [
+          301049422,
+          309434058,
+          299343629,
+          309674948,
+          299867766
+        ],
+        [
+          307015846,
+          315595417,
+          300840392,
+          299218565,
+          299734929
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16410882.7425,
+      "p50_ns": 50.0,
+      "p99_ns": 310.0,
+      "cv": 0.012247999353111199,
+      "spread": 200440.85579352084,
+      "runs": [
+        16538316.7486,
+        16329052.7991,
+        16509070.322,
+        16410882.7425,
+        16038635.2503
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.112414
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          300125347,
+          310545723,
+          299845255,
+          300408306,
+          300716510
+        ],
+        [
+          300342643,
+          315767738,
+          300595154,
+          305032926,
+          309275022
+        ],
+        [
+          308616062,
+          300089160,
+          301132507,
+          304303405,
+          300177935
+        ],
+        [
+          306813648,
+          301091601,
+          308363972,
+          304595179,
+          302514957
+        ],
+        [
+          308921532,
+          329107211,
+          322433687,
+          298966545,
+          299307140
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16466335.4512,
+      "p50_ns": 50.0,
+      "p99_ns": 301.0,
+      "cv": 0.004555925009520335,
+      "spread": 75067.59856693282,
+      "runs": [
+        16597671.1877,
+        16475445.1159,
+        16391446.2308,
+        16453687.3731,
+        16466335.4512
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.117691
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          299165426,
+          303582840,
+          300271170,
+          299919524,
+          303296446
+        ],
+        [
+          299704562,
+          320622498,
+          298735173,
+          299094744,
+          299252709
+        ],
+        [
+          327482329,
+          297808424,
+          298075452,
+          302656962,
+          299162570
+        ],
+        [
+          300734565,
+          306154819,
+          301874311,
+          310828732,
+          299823825
+        ],
+        [
+          298237054,
+          304086750,
+          313138691,
+          298051367,
+          304735300
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16691167.6316,
+      "p50_ns": 50.0,
+      "p99_ns": 300.0,
+      "cv": 0.0102505403053289,
+      "spread": 170740.23346253406,
+      "runs": [
+        16691167.6316,
+        16828665.0849,
+        16570834.1523,
+        16785125.3952,
+        16407736.3973
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.124778
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          306912543,
+          297651732,
+          304949981,
+          294534194,
+          293749700
+        ],
+        [
+          294869530,
+          305969484,
+          294196914,
+          294202074,
+          296322491
+        ],
+        [
+          296642328,
+          307421403,
+          294568127,
+          297004874,
+          313038074
+        ],
+        [
+          300251814,
+          294571644,
+          294331515,
+          296075701,
+          304183281
+        ],
+        [
+          294638588,
+          294271463,
+          294843220,
+          317919172,
+          321999037
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16210011.7773,
+      "p50_ns": 50.0,
+      "p99_ns": 301.0,
+      "cv": 0.011012123637078873,
+      "spread": 177468.99682132434,
+      "runs": [
+        16274939.6858,
+        16241840.2846,
+        15881945.4086,
+        16210011.7773,
+        15970178.7141
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.121337
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          305645338,
+          305620943,
+          308264035,
+          312491896,
+          304081791
+        ],
+        [
+          310873545,
+          304948719,
+          307090756,
+          307356691,
+          308964733
+        ],
+        [
+          312891852,
+          307666691,
+          339341990,
+          308507830,
+          305706102
+        ],
+        [
+          305500538,
+          311401901,
+          313228570,
+          305076648,
+          307049088
+        ],
+        [
+          312144586,
+          315122494,
+          325411985,
+          305649025,
+          307089583
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16398531.2539,
+      "p50_ns": 50.0,
+      "p99_ns": 300.0,
+      "cv": 0.008196285309864352,
+      "spread": 133977.20668981175,
+      "runs": [
+        16303957.7468,
+        16452784.9918,
+        16444181.0627,
+        16398531.2539,
+        16130988.4474
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.11903
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          324600671,
+          305582290,
+          299634251,
+          299771818,
+          303780989
+        ],
+        [
+          312479562,
+          300889043,
+          300579415,
+          301261718,
+          304289849
+        ],
+        [
+          315527269,
+          300041381,
+          300604201,
+          304080468,
+          300041301
+        ],
+        [
+          299839774,
+          310220647,
+          304063296,
+          310982769,
+          299420291
+        ],
+        [
+          300445946,
+          300760613,
+          317068155,
+          300649014,
+          330888305
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16597512.1034,
+      "p50_ns": 51.0,
+      "p99_ns": 311.0,
+      "cv": 0.011643625032286754,
+      "spread": 192345.31209371795,
+      "runs": [
+        16378408.5005,
+        16684395.0154,
+        16256654.8966,
+        16679863.1851,
+        16597512.1034
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.117275
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          312366571,
+          301152233,
+          312258400,
+          303749711,
+          296872918
+        ],
+        [
+          307864570,
+          297394491,
+          298098616,
+          297772457,
+          297276010
+        ],
+        [
+          297746569,
+          311083727,
+          297929530,
+          300996123,
+          330075798
+        ],
+        [
+          301235779,
+          298868362,
+          303141456,
+          297766656,
+          297801000
+        ],
+        [
+          300377759,
+          297433324,
+          297789890,
+          312384415,
+          298264455
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    },
+    {
+      "correctness": true,
+      "throughput": 16415154.264,
+      "p50_ns": 50.0,
+      "p99_ns": 310.0,
+      "cv": 0.008229076990108471,
+      "spread": 135137.7647461669,
+      "runs": [
+        16365511.7061,
+        16573035.1721,
+        16415154.264,
+        16524985.7573,
+        16231229.5034
+      ],
+      "error": null,
+      "throughput_replays": 5,
+      "provenance": {
+        "throughput_replays": 5,
+        "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "cpu": 0,
+        "pinned": true,
+        "flags": [
+          "-O3",
+          "-DNDEBUG",
+          "-march=native",
+          "-fopt-info-missed"
+        ],
+        "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/summary.json",
+        "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/runs.csv",
+        "benchmark_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_bench",
+          "--input",
+          "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+          "--runs",
+          "5",
+          "--warmup",
+          "50000",
+          "--outdir",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9",
+          "--throughput-replays",
+          "5"
+        ],
+        "differential_command": [
+          "taskset",
+          "-c",
+          "0",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/ledger_differential",
+          "--seeds",
+          "5",
+          "--orders",
+          "100000",
+          "--output",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/differential.json"
+        ],
+        "cpu_model": "AMD EPYC 7763 64-Core Processor",
+        "compiler": {
+          "version": "13.3.0",
+          "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+          "optimization_enabled": true,
+          "ndebug": true
+        },
+        "differential": {
+          "status": "pass",
+          "generator": "splitmix64-bounded-adversarial-v1",
+          "base_seed": 8330235730275514375,
+          "first_seed": 0,
+          "seeds": 5,
+          "commands_per_seed": 100000,
+          "commands_compared": 500000,
+          "reports_compared": 1047284,
+          "trades_compared": 171010,
+          "applied_commands": 237011,
+          "rejected_commands": 262989,
+          "structural_checkpoints": 125,
+          "checkpoint_interval": 4096,
+          "linear_variant_compared": true,
+          "linear_fok_variant_compared": true,
+          "per_command_checks": [
+            "process_result",
+            "all_event_fields",
+            "statistics",
+            "size",
+            "resting_quantity",
+            "best_quotes",
+            "quantity_conservation",
+            "uncrossed_quotes"
+          ],
+          "checkpoint_checks": [
+            "full_structural_invariants",
+            "full_FIFO_orders",
+            "all_levels",
+            "all_statistics"
+          ],
+          "elapsed_seconds": 0.111656
+        },
+        "benchmark_schema_version": 2,
+        "throughput_commands_per_run": 25000000,
+        "latency_commands_per_run": 5000000,
+        "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/throughput_replays.csv"
+      },
+      "input_commands": 5000000,
+      "throughput_commands_per_run": 25000000,
+      "latency_commands_per_run": 5000000,
+      "throughput_replay_durations_ns": [
+        [
+          298285605,
+          300144533,
+          330249582,
+          298715216,
+          300207772
+        ],
+        [
+          299831850,
+          300594463,
+          300733422,
+          299568108,
+          307746600
+        ],
+        [
+          304586292,
+          309140090,
+          299148184,
+          299966411,
+          310141969
+        ],
+        [
+          300314711,
+          304937338,
+          299904916,
+          308111992,
+          299591651
+        ],
+        [
+          301086842,
+          304965650,
+          314934624,
+          320013751,
+          299239815
+        ]
+      ],
+      "checksums": {
+        "event_checksum": 4775833837545484177,
+        "trade_checksum": 5735633710814156320,
+        "events": 10979250,
+        "trades": 1993083,
+        "rejected_commands": 0,
+        "live_orders_final": 2039,
+        "submitted": 439451632,
+        "executed": 144785476,
+        "cancelled": 149679069,
+        "expired": 98,
+        "rejected": 0,
+        "resting_quantity": 201513,
+        "best_bid": 9993,
+        "best_ask": 10007
+      }
+    }
+  ],
+  "noise_gate": true,
+  "repetitions": 10,
+  "threshold_throughput": 17029606.07444237
+}

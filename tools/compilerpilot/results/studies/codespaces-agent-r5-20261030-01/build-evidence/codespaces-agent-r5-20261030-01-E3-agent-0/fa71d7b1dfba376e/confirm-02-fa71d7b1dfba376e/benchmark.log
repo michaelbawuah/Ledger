@@ -1,0 +1,16 @@
+reference run 1/5: 7.50 M commands/s, p99 581 ns
+reference run 2/5: 7.81 M commands/s, p99 561 ns
+reference run 3/5: 7.40 M commands/s, p99 581 ns
+reference run 4/5: 7.58 M commands/s, p99 561 ns
+reference run 5/5: 7.72 M commands/s, p99 551 ns
+fast-bitmap run 1/5: 16.28 M commands/s, p99 280 ns
+fast-bitmap run 2/5: 17.17 M commands/s, p99 260 ns
+fast-bitmap run 3/5: 17.32 M commands/s, p99 280 ns
+fast-bitmap run 4/5: 16.11 M commands/s, p99 280 ns
+fast-bitmap run 5/5: 16.39 M commands/s, p99 280 ns
+fast-linear run 1/5: 15.59 M commands/s, p99 341 ns
+fast-linear run 2/5: 15.67 M commands/s, p99 321 ns
+fast-linear run 3/5: 15.71 M commands/s, p99 301 ns
+fast-linear run 4/5: 16.60 M commands/s, p99 301 ns
+fast-linear run 5/5: 16.57 M commands/s, p99 301 ns
+/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-02-fa71d7b1dfba376e/summary.json

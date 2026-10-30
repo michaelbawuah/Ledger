@@ -1,0 +1,188 @@
+{
+  "baseline": "be180963747c4559",
+  "baseline_build": {
+    "build_dir": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559",
+    "build_id": "be180963747c4559",
+    "candidate": {
+      "alignment": 0,
+      "compiler": "gcc",
+      "frame_pointer": false,
+      "inline": "default",
+      "isa": "native",
+      "lto": false,
+      "opt": "O3",
+      "pgo": false,
+      "semantic_interposition": true,
+      "unroll": false,
+      "vectorize": true
+    },
+    "compile_s": 21.139883071999975,
+    "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "error": null,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "provenance": {
+      "binary_sha256": "2332f3cf9c39a61a1654b5ddc68037823f61e3b3d65181e234a85fcfc722ee8b",
+      "clean_build": true,
+      "commands": [
+        [
+          "cmake",
+          "-S",
+          "/workspaces/Ledger-focused",
+          "-B",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_CXX_COMPILER=g++",
+          "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=native -fopt-info-missed",
+          "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+          "-DLEDGER_NATIVE=OFF",
+          "-DBUILD_TESTING=ON",
+          "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+          "-G",
+          "Ninja"
+        ],
+        [
+          "cmake",
+          "--build",
+          "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559",
+          "--parallel",
+          "2"
+        ]
+      ],
+      "compiler_executable": "/usr/bin/g++",
+      "configure_s": 0.7153186040000037,
+      "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+      "ledger_dirty": false,
+      "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+    },
+    "success": true,
+    "text_bytes": 105790
+  },
+  "candidates": [
+    {
+      "build_file": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/build.json",
+      "build_file_sha256": "1ac6ba45af9a16edfd8186ae6adb9875e83618945cfd872b505fcbf0be9ec974",
+      "build_id": "6d3511b71fcfb52d",
+      "build_index": 12,
+      "candidate": {
+        "alignment": 64,
+        "compiler": "clang",
+        "frame_pointer": false,
+        "inline": "default",
+        "isa": "native",
+        "lto": false,
+        "opt": "O3",
+        "pgo": true,
+        "semantic_interposition": false,
+        "unroll": true,
+        "vectorize": false
+      },
+      "flags": [
+        "-O3",
+        "-DNDEBUG",
+        "-march=native",
+        "-funroll-loops",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-falign-functions=64",
+        "-fno-semantic-interposition",
+        "-fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/profile/merged.profdata",
+        "-fsave-optimization-record"
+      ],
+      "max_baseline_relative_spread": 0.01223627680410877,
+      "median_recorded_speedup": 1.0673336679039636,
+      "valid_observations": 1
+    },
+    {
+      "build_file": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/build.json",
+      "build_file_sha256": "4836d6a7f8607f6daa8ab28ae6dc50e4e352ef4c81edcc4952dce262ff3d41d5",
+      "build_id": "690ad140a9953cfe",
+      "build_index": 14,
+      "candidate": {
+        "alignment": 64,
+        "compiler": "clang",
+        "frame_pointer": false,
+        "inline": 500,
+        "isa": "native",
+        "lto": true,
+        "opt": "O3",
+        "pgo": true,
+        "semantic_interposition": false,
+        "unroll": true,
+        "vectorize": false
+      },
+      "flags": [
+        "-O3",
+        "-DNDEBUG",
+        "-march=native",
+        "-flto=thin",
+        "-fuse-ld=lld",
+        "-mllvm",
+        "-inline-threshold=500",
+        "-funroll-loops",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-falign-functions=64",
+        "-fno-semantic-interposition",
+        "-fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/profile/merged.profdata",
+        "-fsave-optimization-record"
+      ],
+      "max_baseline_relative_spread": 0.01223627680410877,
+      "median_recorded_speedup": 1.0526122455263542,
+      "valid_observations": 1
+    },
+    {
+      "build_file": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/build.json",
+      "build_file_sha256": "3490095aac84d66ac65aec96a3d170a34959acb88935f4305dea080f597a0765",
+      "build_id": "fa71d7b1dfba376e",
+      "build_index": 13,
+      "candidate": {
+        "alignment": 64,
+        "compiler": "clang",
+        "frame_pointer": false,
+        "inline": "default",
+        "isa": "native",
+        "lto": true,
+        "opt": "O3",
+        "pgo": true,
+        "semantic_interposition": false,
+        "unroll": true,
+        "vectorize": false
+      },
+      "flags": [
+        "-O3",
+        "-DNDEBUG",
+        "-march=native",
+        "-flto=thin",
+        "-fuse-ld=lld",
+        "-funroll-loops",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-falign-functions=64",
+        "-fno-semantic-interposition",
+        "-fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/profile/merged.profdata",
+        "-fsave-optimization-record"
+      ],
+      "max_baseline_relative_spread": 0.01223627680410877,
+      "median_recorded_speedup": 1.0486184723167045,
+      "valid_observations": 1
+    }
+  ],
+  "eligible_candidate_count": 5,
+  "eligible_ranked_build_ids": [
+    "6d3511b71fcfb52d",
+    "690ad140a9953cfe",
+    "fa71d7b1dfba376e",
+    "5fc09f86d858a34c",
+    "3727815b92c90d90"
+  ],
+  "full_validation": true,
+  "rounds": 10,
+  "schema_version": 1,
+  "selection": "Same frozen StudyRunner formula: top three distinct candidates by median of all valid measured ratios exceeding three times maximum relative baseline noise; ties by candidate hash; earliest recorded build representative. The failed source phase supplies exploratory nominations only.",
+  "source_history_sha256": "4fe17d8e443d743f20e8637ad0e4d003e604efd143a19e272da81050803cac34"
+}

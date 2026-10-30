@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-30T21:06:00.286633+00:00",
+  "decision": "Stopped remaining R20 confirmation after baseline maximum within-group CV exceeded the unchanged 2% limit. All completed and partial data are retained; no speedup is established.",
+  "completed_observations": 12,
+  "per_build_variability": {
+    "690ad140a9953cfe": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.018606453572657333
+    },
+    "6d3511b71fcfb52d": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.013210290092451123
+    },
+    "be180963747c4559": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.02140946089125291
+    },
+    "fa71d7b1dfba376e": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.013850397583614643
+    }
+  },
+  "interruption": "SIGINT to wrapper; one active benchmark process group terminated; wrapper records interrupted status",
+  "further_Codespace_precision_attempts": 0,
+  "original_study_remains_failed": true
+}

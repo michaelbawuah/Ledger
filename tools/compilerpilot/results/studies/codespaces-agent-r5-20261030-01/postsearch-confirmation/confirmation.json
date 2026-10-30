@@ -1,0 +1,8 @@
+{
+  "failure_class": "KeyboardInterrupt",
+  "recommendation": null,
+  "status": "confirmation_interrupted_or_invalidated",
+  "throughput_replays": 5,
+  "unvalidated_result": null,
+  "winner": null
+}

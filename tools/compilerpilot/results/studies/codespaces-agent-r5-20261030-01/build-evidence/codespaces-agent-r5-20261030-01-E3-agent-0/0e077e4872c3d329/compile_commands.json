@@ -1,0 +1,146 @@
+[
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger.dir/src/book.cpp.o -c /workspaces/Ledger-focused/src/book.cpp",
+  "file": "/workspaces/Ledger-focused/src/book.cpp",
+  "output": "CMakeFiles/ledger.dir/src/book.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger.dir/src/reference_book.cpp.o -c /workspaces/Ledger-focused/src/reference_book.cpp",
+  "file": "/workspaces/Ledger-focused/src/reference_book.cpp",
+  "output": "CMakeFiles/ledger.dir/src/reference_book.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger.dir/src/feed.cpp.o -c /workspaces/Ledger-focused/src/feed.cpp",
+  "file": "/workspaces/Ledger-focused/src/feed.cpp",
+  "output": "CMakeFiles/ledger.dir/src/feed.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger.dir/src/feed_view.cpp.o -c /workspaces/Ledger-focused/src/feed_view.cpp",
+  "file": "/workspaces/Ledger-focused/src/feed_view.cpp",
+  "output": "CMakeFiles/ledger.dir/src/feed_view.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger.dir/src/study_workloads.cpp.o -c /workspaces/Ledger-focused/src/study_workloads.cpp",
+  "file": "/workspaces/Ledger-focused/src/study_workloads.cpp",
+  "output": "CMakeFiles/ledger.dir/src/study_workloads.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_replay.dir/src/replay.cpp.o -c /workspaces/Ledger-focused/src/replay.cpp",
+  "file": "/workspaces/Ledger-focused/src/replay.cpp",
+  "output": "CMakeFiles/ledger_replay.dir/src/replay.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_generate.dir/bench/gen_orders.cpp.o -c /workspaces/Ledger-focused/bench/gen_orders.cpp",
+  "file": "/workspaces/Ledger-focused/bench/gen_orders.cpp",
+  "output": "CMakeFiles/ledger_generate.dir/bench/gen_orders.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -DLEDGER_COMPILER_FLAGS=\"\\\"-O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG   standard=C++23\\\"\" -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.o -c /workspaces/Ledger-focused/bench/bench_replay.cpp",
+  "file": "/workspaces/Ledger-focused/bench/bench_replay.cpp",
+  "output": "CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -DLEDGER_COMPILER_FLAGS=\"\\\"-O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG   standard=C++23\\\"\" -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_study.dir/bench/bench_study.cpp.o -c /workspaces/Ledger-focused/bench/bench_study.cpp",
+  "file": "/workspaces/Ledger-focused/bench/bench_study.cpp",
+  "output": "CMakeFiles/ledger_study.dir/bench/bench_study.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_spsc_bench.dir/bench/bench_spsc.cpp.o -c /workspaces/Ledger-focused/bench/bench_spsc.cpp",
+  "file": "/workspaces/Ledger-focused/bench/bench_spsc.cpp",
+  "output": "CMakeFiles/ledger_spsc_bench.dir/bench/bench_spsc.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_market_maker.dir/src/market_maker.cpp.o -c /workspaces/Ledger-focused/src/market_maker.cpp",
+  "file": "/workspaces/Ledger-focused/src/market_maker.cpp",
+  "output": "CMakeFiles/ledger_market_maker.dir/src/market_maker.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_risk_demo.dir/examples/risk_demo.cpp.o -c /workspaces/Ledger-focused/examples/risk_demo.cpp",
+  "file": "/workspaces/Ledger-focused/examples/risk_demo.cpp",
+  "output": "CMakeFiles/ledger_risk_demo.dir/examples/risk_demo.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_tests.dir/tests/unit/engine_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/engine_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/engine_tests.cpp",
+  "output": "CMakeFiles/ledger_tests.dir/tests/unit/engine_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_allocation_tests.dir/tests/unit/memory_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/memory_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/memory_tests.cpp",
+  "output": "CMakeFiles/ledger_allocation_tests.dir/tests/unit/memory_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_spsc_tests.dir/tests/unit/spsc_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/spsc_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/spsc_tests.cpp",
+  "output": "CMakeFiles/ledger_spsc_tests.dir/tests/unit/spsc_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_feed_tests.dir/tests/unit/feed_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/feed_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/feed_tests.cpp",
+  "output": "CMakeFiles/ledger_feed_tests.dir/tests/unit/feed_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_differential.dir/tests/differential/differential.cpp.o -c /workspaces/Ledger-focused/tests/differential/differential.cpp",
+  "file": "/workspaces/Ledger-focused/tests/differential/differential.cpp",
+  "output": "CMakeFiles/ledger_differential.dir/tests/differential/differential.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_pool_tests.dir/tests/unit/pool_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/pool_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/pool_tests.cpp",
+  "output": "CMakeFiles/ledger_pool_tests.dir/tests/unit/pool_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_index_tests.dir/tests/unit/index_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/index_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/index_tests.cpp",
+  "output": "CMakeFiles/ledger_index_tests.dir/tests/unit/index_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_feed_view_tests.dir/tests/unit/feed_view_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/feed_view_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/feed_view_tests.cpp",
+  "output": "CMakeFiles/ledger_feed_view_tests.dir/tests/unit/feed_view_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_risk_tests.dir/tests/unit/risk_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/risk_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/risk_tests.cpp",
+  "output": "CMakeFiles/ledger_risk_tests.dir/tests/unit/risk_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_fok_tests.dir/tests/unit/fok_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/fok_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/fok_tests.cpp",
+  "output": "CMakeFiles/ledger_fok_tests.dir/tests/unit/fok_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_study_workload_tests.dir/tests/unit/study_workload_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/study_workload_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/study_workload_tests.cpp",
+  "output": "CMakeFiles/ledger_study_workload_tests.dir/tests/unit/study_workload_tests.cpp.o"
+},
+{
+  "directory": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329",
+  "command": "/usr/bin/clang++ -I/workspaces/Ledger-focused/include -O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -falign-functions=64 -fprofile-instr-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/profile/merged.profdata -fsave-optimization-record -DNDEBUG -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/ledger_study_observer_tests.dir/tests/unit/study_observer_tests.cpp.o -c /workspaces/Ledger-focused/tests/unit/study_observer_tests.cpp",
+  "file": "/workspaces/Ledger-focused/tests/unit/study_observer_tests.cpp",
+  "output": "CMakeFiles/ledger_study_observer_tests.dir/tests/unit/study_observer_tests.cpp.o"
+}
+]

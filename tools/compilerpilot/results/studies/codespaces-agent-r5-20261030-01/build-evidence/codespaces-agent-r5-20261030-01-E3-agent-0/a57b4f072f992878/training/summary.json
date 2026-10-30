@@ -1,0 +1,26 @@
+{
+  "schema_version":2,
+  "commands":5000000,
+  "seed":null,
+  "input":"/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/train.lob",
+  "runs":1,
+  "warmup_commands":50000,
+  "throughput_replays":1,
+  "throughput_commands_per_run":5000000,
+  "latency_commands_per_run":5000000,
+  "throughput_replays_file":"throughput_replays.csv",
+  "config":{"min_price":1,"max_price":20000,"max_orders":8192},
+  "mix":{"limit":3000992,"cancel":1499717,"market":499291,"replace":0},
+  "generated_peak_live_orders":null,
+  "generated_empty_book_cancels":null,
+  "generated_capacity_ioc_limits":null,
+  "machine":{"system":"Linux 6.8.0-1064-azure x86_64","cpu_model":"AMD EPYC 7763 64-Core Processor","logical_cpus":4,"affinity_cpus":"0,1,2,3","memory":"MemTotal:       16377436 kB","governor_cpu0":""},
+  "compiler":{"version":"Ubuntu Clang 18.1.3 (1ubuntu1)","flags":"-O3 -DNDEBUG -march=native -flto=thin -fuse-ld=lld -mllvm -inline-threshold=500 -funroll-loops -fno-vectorize -fno-slp-vectorize -fno-omit-frame-pointer -falign-functions=64 -fno-semantic-interposition -fprofile-instr-generate=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/a57b4f072f992878/profile/default-%p.profraw -fsave-optimization-record -DNDEBUG   standard=C++23","optimization_enabled":true,"ndebug":true},
+  "clock":{"steady":true,"period_numerator":1,"period_denominator":1000000000,"median_empty_pair_ns":30},
+  "method":"Fresh empty book for each throughput replay; warmed caches; throughput sums every replay's processing wall time and command count, including event checksums, with no per-command clock calls or outlier removal; correctness fields describe one input replay; one separate input-size latency pass per run measures process() only with caller buffer clear and event consumption outside the sample; clocks are not subtracted; exact lossless latency frequencies; medians across runs",
+  "engines":{
+    "reference": {"median_commands_per_second":4280933.95146,"median_p50_ns":170,"median_p99_ns":771,"median_p999_ns":1162,"median_run_max_ns":56836,"max_ns":56836,"rejected_commands":1,"live_orders_final":2045,"events":10977059,"trades":1992353,"event_checksum":7899542053471099939,"trade_checksum":9113672502106149448,"submitted":439538294,"executed":144776080,"cancelled":149781508,"expired":0,"rejected":0,"resting_quantity":204626,"best_bid":9985,"best_ask":10011},
+    "fast-bitmap": {"median_commands_per_second":7930335.54236,"median_p50_ns":70,"median_p99_ns":421,"median_p999_ns":622,"median_run_max_ns":38702,"max_ns":38702,"rejected_commands":1,"live_orders_final":2045,"events":10977059,"trades":1992353,"event_checksum":7899542053471099939,"trade_checksum":9113672502106149448,"submitted":439538294,"executed":144776080,"cancelled":149781508,"expired":0,"rejected":0,"resting_quantity":204626,"best_bid":9985,"best_ask":10011},
+    "fast-linear": {"median_commands_per_second":7850958.27486,"median_p50_ns":70,"median_p99_ns":471,"median_p999_ns":651,"median_run_max_ns":38302,"max_ns":38302,"rejected_commands":1,"live_orders_final":2045,"events":10977059,"trades":1992353,"event_checksum":7899542053471099939,"trade_checksum":9113672502106149448,"submitted":439538294,"executed":144776080,"cancelled":149781508,"expired":0,"rejected":0,"resting_quantity":204626,"best_bid":9985,"best_ask":10011}
+  }
+}

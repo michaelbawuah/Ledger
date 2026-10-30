@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-10-30T19:39:43.450822+00:00",
+  "source_mode": "live-checkout",
+  "qualified": true,
+  "original_source": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "mutation": {
+    "file": "src/book.cpp",
+    "before": "    return command.action == Action::Market || (command.side == Side::Buy ? command.price >= maker_price : command.price <= maker_price);",
+    "after": "    return command.action == Action::Market || (command.side == Side::Buy ? command.price > maker_price : command.price <= maker_price);",
+    "reason": "A buy limit equal to the resting ask incorrectly fails to cross"
+  },
+  "build_success": true,
+  "correctness": false,
+  "throughput": null,
+  "p50_ns": null,
+  "p99_ns": null,
+  "mutated_source": {
+    "ledger_commit": null,
+    "ledger_dirty": false,
+    "source_sha256": "ad19524a7e770f880563db1757cf2dd4e38f6ad61398e9019c296e4d5d021e11"
+  },
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-march=native",
+    "-fopt-info-missed"
+  ],
+  "error": "Benchmark/checksum gate failed: reference run 1/5: 7.50 M commands/s, p99 621 ns\nreference run 2/5: 7.26 M commands/s, p99 581 ns\nreference run 3/5: 7.26 M commands/s, p99 571 ns\nreference run 4/5: 7.44 M commands/s, p99 601 ns\nreference run 5/5: 7.34 M commands/s, p99 581 ns\nbench_replay: fast-bitmap differs from reference event/trade checksum or state\n",
+  "measurement": {
+    "correctness": false,
+    "throughput": null,
+    "p50_ns": null,
+    "p99_ns": null,
+    "cv": null,
+    "spread": null,
+    "runs": [],
+    "error": "Benchmark/checksum gate failed: reference run 1/5: 7.50 M commands/s, p99 621 ns\nreference run 2/5: 7.26 M commands/s, p99 581 ns\nreference run 3/5: 7.26 M commands/s, p99 571 ns\nreference run 4/5: 7.44 M commands/s, p99 601 ns\nreference run 5/5: 7.34 M commands/s, p99 581 ns\nbench_replay: fast-bitmap differs from reference event/trade checksum or state\n",
+    "throughput_replays": 1,
+    "provenance": {
+      "throughput_replays": 1,
+      "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+      "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+      "cpu": 0,
+      "pinned": true,
+      "flags": [
+        "-O3",
+        "-DNDEBUG",
+        "-march=native",
+        "-fopt-info-missed"
+      ],
+      "summary": "/tmp/compilerpilot-gate-8z44hi4q/builds/be180963747c4559/mutation-gate/summary.json",
+      "runs_csv": "/tmp/compilerpilot-gate-8z44hi4q/builds/be180963747c4559/mutation-gate/runs.csv",
+      "benchmark_command": [
+        "taskset",
+        "-c",
+        "0",
+        "/tmp/compilerpilot-gate-8z44hi4q/builds/be180963747c4559/ledger_bench",
+        "--input",
+        "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+        "--runs",
+        "5",
+        "--warmup",
+        "50000",
+        "--outdir",
+        "/tmp/compilerpilot-gate-8z44hi4q/builds/be180963747c4559/mutation-gate"
+      ]
+    }
+  },
+  "cpu": 0,
+  "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+  "pinned_source_unchanged": true,
+  "source_unchanged": true
+}

@@ -1,0 +1,38 @@
+/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/600a9c35307325b5/ledger_bench  :
+section                size     addr
+.interp                  28      792
+.note.gnu.property       32      824
+.note.gnu.build-id       36      856
+.note.ABI-tag            32      892
+.gnu.hash                56      928
+.dynsym                2304      984
+.dynstr                3672     3288
+.gnu.version            192     6960
+.gnu.version_r          368     7152
+.rela.dyn               528     7520
+.rela.plt              1704     8048
+.init                    27    12288
+.plt                   1152    12320
+.plt.got                  8    13472
+.text                 89334    13488
+.fini                    13   102824
+.rodata                4993   106496
+.eh_frame_hdr           956   111492
+.eh_frame              6544   112448
+.gcc_except_table      3640   118992
+.init_array               8   126272
+.fini_array               8   126280
+.dynamic                528   126288
+.got                    136   126816
+.got.plt                592   126952
+.data                    32   127544
+.bss                      8   127576
+.comment                 84        0
+.debug_info          118798        0
+.debug_abbrev           804        0
+.debug_line           62766        0
+.debug_str            28925        0
+.debug_ranges         57120        0
+Total                385428
+
+

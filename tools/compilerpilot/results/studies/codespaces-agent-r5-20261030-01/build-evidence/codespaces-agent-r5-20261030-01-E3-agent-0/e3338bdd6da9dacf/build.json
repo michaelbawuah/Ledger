@@ -1,0 +1,233 @@
+{
+  "build_id": "e3338bdd6da9dacf",
+  "candidate": {
+    "compiler": "gcc",
+    "opt": "O3",
+    "isa": "x86-64-v3",
+    "lto": false,
+    "pgo": true,
+    "inline": "default",
+    "unroll": false,
+    "vectorize": true,
+    "frame_pointer": false,
+    "alignment": 0,
+    "semantic_interposition": true
+  },
+  "build_dir": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf",
+  "success": true,
+  "compile_s": 28.96118113400007,
+  "text_bytes": 73748,
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "error": null,
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-march=x86-64-v3",
+    "-fprofile-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile",
+    "-fprofile-correction",
+    "-fopt-info-missed"
+  ],
+  "provenance": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+    "compiler_executable": "/usr/bin/g++",
+    "configure_s": 0.7800458710000839,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "/workspaces/Ledger-focused",
+        "-B",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=g++",
+        "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=x86-64-v3 -fprofile-generate=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile -fopt-info-missed",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+        "-DLEDGER_NATIVE=OFF",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-G",
+        "Ninja"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf",
+        "--parallel",
+        "2",
+        "--target",
+        "ledger_bench"
+      ],
+      [
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/ledger_bench",
+        "--input",
+        "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/train.lob",
+        "--runs",
+        "1",
+        "--outdir",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/training"
+      ],
+      [
+        "cmake",
+        "-S",
+        "/workspaces/Ledger-focused",
+        "-B",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=g++",
+        "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=x86-64-v3 -fprofile-use=/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile -fprofile-correction -fopt-info-missed",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+        "-DLEDGER_NATIVE=OFF",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-G",
+        "Ninja"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf",
+        "--parallel",
+        "2"
+      ]
+    ],
+    "clean_build": true,
+    "training_input_sha256": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4",
+    "training_input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/train.lob",
+    "profile_verification": {
+      "correctness": true,
+      "reason": "Core profile artifacts are present and the compiler reported no missing or stale core data",
+      "profile_hashes": {
+        "profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger.dir#src#book.cpp.gcda": "a6f3e5107b9e24e8c901c17b8dfe2eab35ce4c852d1cf5489c119f9225b6daab",
+        "profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger.dir#src#reference_book.cpp.gcda": "2a83f0088f99011303e69aeb75f2682a50e82954290f5e6a23599cef9ff8ba57",
+        "profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger.dir#src#feed.cpp.gcda": "567c597d91385685c55d12f7754ff8972bc9db39824f166c958c7a272a83bf61",
+        "profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_bench.dir#bench#bench_replay.cpp.gcda": "07afd11b5cdbc9ad6cc849e1f6b375b11390937401b38d450110bd296673a79c"
+      },
+      "counts": {},
+      "diagnostics": [
+        {
+          "source": "feed_view.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/src/feed_view.cpp:49:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger.dir#src#feed_view.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "replay.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/src/replay.cpp:83:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_replay.dir#src#replay.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "study_workloads.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/src/study_workloads.cpp:373:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger.dir#src#study_workloads.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "gen_orders.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/bench/gen_orders.cpp:58:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_generate.dir#bench#gen_orders.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "bench_spsc.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/bench/bench_spsc.cpp:258:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_spsc_bench.dir#bench#bench_spsc.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "bench_study.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/bench/bench_study.cpp:423:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_study.dir#bench#bench_study.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "risk_demo.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/examples/risk_demo.cpp:65:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_risk_demo.dir#examples#risk_demo.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "market_maker.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/src/market_maker.cpp:203:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_market_maker.dir#src#market_maker.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "memory_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/memory_tests.cpp:132:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_allocation_tests.dir#tests#unit#memory_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "spsc_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/spsc_tests.cpp:69:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_spsc_tests.dir#tests#unit#spsc_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "engine_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/engine_tests.cpp:325:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_tests.dir#tests#unit#engine_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "feed_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/feed_tests.cpp:88:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_feed_tests.dir#tests#unit#feed_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "pool_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/pool_tests.cpp:221:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_pool_tests.dir#tests#unit#pool_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "differential.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/differential/differential.cpp:210:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_differential.dir#tests#differential#differential.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "index_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/index_tests.cpp:288:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_index_tests.dir#tests#unit#index_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "feed_view_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/feed_view_tests.cpp:242:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_feed_view_tests.dir#tests#unit#feed_view_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "risk_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/risk_tests.cpp:353:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_risk_tests.dir#tests#unit#risk_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "fok_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/fok_tests.cpp:212:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_fok_tests.dir#tests#unit#fok_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "study_observer_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/study_observer_tests.cpp:101:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_study_observer_tests.dir#tests#unit#study_observer_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        },
+        {
+          "source": "study_workload_tests.cpp",
+          "core": false,
+          "unassigned": false,
+          "message": "/workspaces/Ledger-focused/tests/unit/study_workload_tests.cpp:261:1: warning: \u2018/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/profile/#tmp#compilerpilot-focused-builds#codespaces-agent-r5-20261030-01-E3-agent-0#e3338bdd6da9dacf#CMakeFiles#ledger_study_workload_tests.dir#tests#unit#study_workload_tests.cpp.gcda\u2019 profile count data file not found [-Wmissing-profile]"
+        }
+      ]
+    },
+    "binary_sha256": "63313168d165d64381d8d087bc717d6586801ff35df754c7cf79b399a4892686"
+  }
+}

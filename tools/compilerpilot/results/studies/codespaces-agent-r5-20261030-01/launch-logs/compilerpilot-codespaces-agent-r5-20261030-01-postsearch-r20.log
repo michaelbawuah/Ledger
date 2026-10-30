@@ -1,0 +1,13 @@
+{"postsearch_progress": "observation", "round": 0, "build_id": "6d3511b71fcfb52d", "observations_recorded": 1}
+{"postsearch_progress": "observation", "round": 0, "build_id": "690ad140a9953cfe", "observations_recorded": 2}
+{"postsearch_progress": "observation", "round": 0, "build_id": "fa71d7b1dfba376e", "observations_recorded": 3}
+{"postsearch_progress": "observation", "round": 0, "build_id": "be180963747c4559", "observations_recorded": 4}
+{"postsearch_progress": "observation", "round": 1, "build_id": "6d3511b71fcfb52d", "observations_recorded": 5}
+{"postsearch_progress": "observation", "round": 1, "build_id": "690ad140a9953cfe", "observations_recorded": 6}
+{"postsearch_progress": "observation", "round": 1, "build_id": "fa71d7b1dfba376e", "observations_recorded": 7}
+{"postsearch_progress": "observation", "round": 1, "build_id": "be180963747c4559", "observations_recorded": 8}
+{"postsearch_progress": "observation", "round": 2, "build_id": "6d3511b71fcfb52d", "observations_recorded": 9}
+{"postsearch_progress": "observation", "round": 2, "build_id": "690ad140a9953cfe", "observations_recorded": 10}
+{"postsearch_progress": "observation", "round": 2, "build_id": "fa71d7b1dfba376e", "observations_recorded": 11}
+{"postsearch_progress": "observation", "round": 2, "build_id": "be180963747c4559", "observations_recorded": 12}
+{"postsearch_confirmation": "confirmation_interrupted_or_invalidated", "failure_class": "KeyboardInterrupt"}

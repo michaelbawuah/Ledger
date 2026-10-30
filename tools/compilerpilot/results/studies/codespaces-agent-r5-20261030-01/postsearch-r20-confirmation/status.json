@@ -1,0 +1,10 @@
+{
+  "ended_at": "2026-10-30T21:05:42.193447+00:00",
+  "failure_class": "KeyboardInterrupt",
+  "model_calls": 0,
+  "observations_recorded": 12,
+  "original_study_status": "failed",
+  "recommendation": null,
+  "started_at": "2026-10-30T20:35:16.407612+00:00",
+  "status": "confirmation_interrupted_or_invalidated"
+}

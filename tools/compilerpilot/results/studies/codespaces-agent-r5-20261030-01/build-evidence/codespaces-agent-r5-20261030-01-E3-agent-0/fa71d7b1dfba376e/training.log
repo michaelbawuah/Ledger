@@ -1,0 +1,4 @@
+reference run 1/1: 4.28 M commands/s, p99 771 ns
+fast-bitmap run 1/1: 8.17 M commands/s, p99 410 ns
+fast-linear run 1/1: 8.00 M commands/s, p99 451 ns
+/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/training/summary.json

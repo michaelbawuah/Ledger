@@ -1,0 +1,2673 @@
+{
+  "all_recorded_correct_measurements_independently_verified": true,
+  "builds": [
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "2332f3cf9c39a61a1654b5ddc68037823f61e3b3d65181e234a85fcfc722ee8b",
+          "size_bytes": 170600
+        },
+        "ledger_differential": {
+          "sha256": "6d75cb849416a05b05ff78d2613d48bcb6067f0212ee5d59c120556edc373be2",
+          "size_bytes": 85032
+        }
+      },
+      "build_id": "be180963747c4559",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "7665db0df7a693be958d9522e95c4a853dd42f42cca8111d65c9fa8559689284",
+          "size_bytes": 360120
+        },
+        "ledger_differential": {
+          "sha256": "e16acbb9a4cbb9dc5e5eb7ae3b84b3f1e44590c8664cb7c157d6dce45c5fb905",
+          "size_bytes": 205360
+        }
+      },
+      "build_id": "0e077e4872c3d329",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "5df1af1a0f6e224cd09d82f43f8caa3266d609133cbb4ebe71f8f4dd4b60b50b",
+          "size_bytes": 167264
+        },
+        "ledger_differential": {
+          "sha256": "832354d102ad8c8f58a0b2d435e87b0b554a06eac1dec57ee26c558dec3f3b4e",
+          "size_bytes": 81360
+        }
+      },
+      "build_id": "1011e8e007835561",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/1011e8e007835561/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "1a530079228ebb7e84c378c0ee6ef0af1dea474bb55f284664e90ca6c529e0d2",
+          "size_bytes": 195176
+        },
+        "ledger_differential": {
+          "sha256": "ae2c2a6b7eea53cdaa345ca3d9f2cb45cce295d382187cb9ff4885de69f16e49",
+          "size_bytes": 105512
+        }
+      },
+      "build_id": "19b96bc1dbc07f41",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/19b96bc1dbc07f41/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "5d30792f5e8f7d2287773a8be3cd3f7bfe377973068dfaf25a4cf29cf04444e6",
+          "size_bytes": 467608
+        },
+        "ledger_differential": {
+          "sha256": "1609ee84c8ce7d72cee3ef9f9aa2b468f495e906c55d626437171f012ce4901e",
+          "size_bytes": 193184
+        }
+      },
+      "build_id": "282f4e6561f11510",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "00b06ffe3c6f6faaece2c1e97c01759122c633750160b25ed56dab798ad19460",
+          "size_bytes": 358544
+        },
+        "ledger_differential": {
+          "sha256": "31c5ca0ce541778d3dc0f3236d6697d89cda4462dffcbfd6019a8ab892706be2",
+          "size_bytes": 192168
+        }
+      },
+      "build_id": "3727815b92c90d90",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3727815b92c90d90/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "20ff949180e85e697fe6b086aa142b06fa88466cca8a90c7715c7ed7b3a1716b",
+          "size_bytes": 170600
+        },
+        "ledger_differential": {
+          "sha256": "45ceb70c6784f8db16428dc1ef06868b2a59e58ada3326c5c58b96009d78a545",
+          "size_bytes": 85032
+        }
+      },
+      "build_id": "393b4f303d12cb1f",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/393b4f303d12cb1f/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "a3d05187bd3b01fb4771d9b70a10526b188869a3730fb48d855b0da1c36304ef",
+          "size_bytes": 195176
+        },
+        "ledger_differential": {
+          "sha256": "ae2c2a6b7eea53cdaa345ca3d9f2cb45cce295d382187cb9ff4885de69f16e49",
+          "size_bytes": 105512
+        }
+      },
+      "build_id": "3d5f367d50c8ddb4",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3d5f367d50c8ddb4/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "83f016485b329014c56716a51bd8d3e4b8b34dcba100699f819e13506aed6c4e",
+          "size_bytes": 468280
+        },
+        "ledger_differential": {
+          "sha256": "f82e00d39fb08f2be17fbcbe2742a1ed5e5e7e35129a4bd29bb73f5f2fdcab74",
+          "size_bytes": 193440
+        }
+      },
+      "build_id": "4b07e16add5b7bec",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/4b07e16add5b7bec/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "d8c45a018440c2c262bd55fb5f2c2e7c924057992f83c82e06402207e9cd117b",
+          "size_bytes": 358544
+        },
+        "ledger_differential": {
+          "sha256": "2502cb4b640f3f0d1da075cc50a0e5d8c9ba6a70e8149af28e9e66cb8fb2e475",
+          "size_bytes": 192168
+        }
+      },
+      "build_id": "5fc09f86d858a34c",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/5fc09f86d858a34c/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "fd4d5098a8f7365f1b83c2c0150ea30c69ab79239487b6057ae9b6e6ed37f59c",
+          "size_bytes": 422464
+        },
+        "ledger_differential": {
+          "sha256": "0c52da21d572c03751e23c1246642ccc53a0456cef1f991c9623eb1999a6af62",
+          "size_bytes": 186032
+        }
+      },
+      "build_id": "600a9c35307325b5",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/600a9c35307325b5/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "85960baae7a33a40dd61baf3d1048579dde9b6597676f98a2b679c824e9fe98b",
+          "size_bytes": 360184
+        },
+        "ledger_differential": {
+          "sha256": "34b20ec9fd219978711bbaf90814874ed7c21335ef932bfd10c09f3182d816ed",
+          "size_bytes": 204488
+        }
+      },
+      "build_id": "690ad140a9953cfe",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "fca793a9c6a31496c1d53f17bc61be9baddd36d1b08643b26369780d4d49c672",
+          "size_bytes": 360120
+        },
+        "ledger_differential": {
+          "sha256": "1f94ce56dc2af5771c512696d6756f879a4722991424df3d7e55fa48ef960eab",
+          "size_bytes": 205360
+        }
+      },
+      "build_id": "6a0a6bc25c533f88",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6a0a6bc25c533f88/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "261188c0fb1ac1135cb280cba70331bae25a6668a771b1cb885aece83b082377",
+          "size_bytes": 408456
+        },
+        "ledger_differential": {
+          "sha256": "6906b3635f738f883cd58bb3dd960bd69881163460d5f73c27ebf15951a800b0",
+          "size_bytes": 210744
+        }
+      },
+      "build_id": "6d3511b71fcfb52d",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "b281738e0f9f68c5f26e3d1ff848f928628d987ebb95e08a664c85e86ad2a2d9",
+          "size_bytes": 145968
+        },
+        "ledger_differential": {
+          "sha256": "514c648c88fd1e11fcb9e865a8e5c5789a911d8271e05757667bb1e1559c8f0e",
+          "size_bytes": 73512
+        }
+      },
+      "build_id": "9378e2ec52795970",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/9378e2ec52795970/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "97584752afb7568a429e90987df4430e4c8eabeee0bdc01f9a00e3f39bec6e2c",
+          "size_bytes": 191080
+        },
+        "ledger_differential": {
+          "sha256": "ab6cf38d408aa8c81c8ab368879330949a4d6ab279eb01b358e95eae04ffe66c",
+          "size_bytes": 105512
+        }
+      },
+      "build_id": "a45ca07092ddabaf",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a45ca07092ddabaf/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "efe5c379dd55b321aec68854671e56cec81266aef8bbd7fa8b28b9332c63fd34",
+          "size_bytes": 359328
+        },
+        "ledger_differential": {
+          "sha256": "47c430dee7039e4b930f3b7aa5c7abb50e55910be00f10b863a0d51ce963161d",
+          "size_bytes": 202792
+        }
+      },
+      "build_id": "a57b4f072f992878",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a57b4f072f992878/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "c87bbe694b7e90b505063493931a6f47e02f8ea24df59863200f6d2e85574f3f",
+          "size_bytes": 472416
+        },
+        "ledger_differential": {
+          "sha256": "81ffb2749ff31bd8671eec3ac3b43d572928b528427afd2cc849a6723f0e82d8",
+          "size_bytes": 197576
+        }
+      },
+      "build_id": "b59582e65ba178d0",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "2332f3cf9c39a61a1654b5ddc68037823f61e3b3d65181e234a85fcfc722ee8b",
+          "size_bytes": 170600
+        },
+        "ledger_differential": {
+          "sha256": "6d75cb849416a05b05ff78d2613d48bcb6067f0212ee5d59c120556edc373be2",
+          "size_bytes": 85032
+        }
+      },
+      "build_id": "be180963747c4559",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "c77954c0bfc9e29da3858ffdddaaf755fbb15ae748385b6b2ca02f03b1dfc989",
+          "size_bytes": 360120
+        },
+        "ledger_differential": {
+          "sha256": "d6804e8ff40bcd667500a6aaf0a6da38217efd3a64a7e8be2b4c0ff7a7fdfe74",
+          "size_bytes": 205360
+        }
+      },
+      "build_id": "c04af27e1a44f9a6",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/c04af27e1a44f9a6/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "63313168d165d64381d8d087bc717d6586801ff35df754c7cf79b399a4892686",
+          "size_bytes": 143336
+        },
+        "ledger_differential": {
+          "sha256": "2f4bff60b8979dbb994af1e565aad0303c0bddbc4af01c8885c51482a44640ab",
+          "size_bytes": 83792
+        }
+      },
+      "build_id": "e3338bdd6da9dacf",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    },
+    {
+      "benchmark_hash_matches_build_provenance": true,
+      "binary_hashes": {
+        "ledger_bench": {
+          "sha256": "b57b624d98675074ca7a4a580ca30ca1a9464e7053714c30be1c3367c6bd335f",
+          "size_bytes": 358968
+        },
+        "ledger_differential": {
+          "sha256": "98c7b30d7e5190c784ea06904987758e07dd253599ec5afd9a3cc8014e538a2a",
+          "size_bytes": 191304
+        }
+      },
+      "build_id": "fa71d7b1dfba376e",
+      "build_json": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/build.json",
+      "executables_copied": false,
+      "source_matches_study": true,
+      "success": true
+    }
+  ],
+  "final_validations": [],
+  "independent_attempt_binary_binding": {
+    "baseline_build_records_equal": true,
+    "candidate_build_file_hashes_equal": true,
+    "comparison": "Predeclared R5 and R20 artifacts; no timing observations pooled",
+    "ordered_nominations_equal": true,
+    "predeclared_binary_maps_equal": true
+  },
+  "inventory_counts_by_throughput_replays": {
+    "R1": {
+      "engine_run_rows": 30,
+      "latency_samples": 150000000,
+      "raw_measurement_directories": 10,
+      "throughput_blocks": 30
+    },
+    "R20": {
+      "engine_run_rows": 180,
+      "latency_samples": 900000000,
+      "raw_measurement_directories": 12,
+      "throughput_blocks": 3600
+    },
+    "R5": {
+      "engine_run_rows": 765,
+      "latency_samples": 3825000000,
+      "raw_measurement_directories": 51,
+      "throughput_blocks": 3825
+    }
+  },
+  "measurement_directories": [
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-0",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.5530145530",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "0.811882759015",
+          "bitmap_reference_throughput_ratio": "2.23518765845"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-1",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "11.0629067245",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.18173242614",
+          "bitmap_reference_throughput_ratio": "2.23880712075"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-2",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.50759219089",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.98991154243",
+          "bitmap_reference_throughput_ratio": "2.23794408701"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-3",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.86917960089",
+          "bitmap_linear_p99_reduction_percent": "9.36555891239",
+          "bitmap_linear_throughput_improvement_percent": "2.65496121276",
+          "bitmap_reference_throughput_ratio": "2.26023559268"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-4",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "0",
+          "bitmap_linear_p99_reduction_percent": "8.82352941176",
+          "bitmap_linear_throughput_improvement_percent": "1.52296871992",
+          "bitmap_reference_throughput_ratio": "2.24026729320"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-5",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.8459869848",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "2.02614602363",
+          "bitmap_reference_throughput_ratio": "2.21366468329"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-6",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.5530145530",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "2.87459385197",
+          "bitmap_reference_throughput_ratio": "2.23614231781"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-7",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.89370932755",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.88736064745",
+          "bitmap_reference_throughput_ratio": "2.22825632149"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-8",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "4.53514739229",
+          "bitmap_linear_p99_reduction_percent": "9.06344410876",
+          "bitmap_linear_throughput_improvement_percent": "2.41641119058",
+          "bitmap_reference_throughput_ratio": "2.26637229351"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-9",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.69565217391",
+          "bitmap_linear_p99_reduction_percent": "11.4705882353",
+          "bitmap_linear_throughput_improvement_percent": "1.09002444865",
+          "bitmap_reference_throughput_ratio": "2.26649119506"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-4.21286031042",
+          "bitmap_linear_p99_reduction_percent": "6.34441087613",
+          "bitmap_linear_throughput_improvement_percent": "-2.13080824060",
+          "bitmap_reference_throughput_ratio": "2.16225946535"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-01-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.86917960089",
+          "bitmap_linear_p99_reduction_percent": "11.7647058824",
+          "bitmap_linear_throughput_improvement_percent": "1.29254171107",
+          "bitmap_reference_throughput_ratio": "2.20164530921"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-02-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "0",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "2.41265630813",
+          "bitmap_reference_throughput_ratio": "2.21273915451"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-00-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "2.07900207900",
+          "bitmap_linear_p99_reduction_percent": "8.79765395894",
+          "bitmap_linear_throughput_improvement_percent": "1.99039642671",
+          "bitmap_reference_throughput_ratio": "2.22191483290"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-01-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.67678958785",
+          "bitmap_linear_p99_reduction_percent": "11.4705882353",
+          "bitmap_linear_throughput_improvement_percent": "2.87980733452",
+          "bitmap_reference_throughput_ratio": "2.29399050277"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-02-be180963747c4559",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.5530145530",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.88210230733",
+          "bitmap_reference_throughput_ratio": "2.23243557973"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "18.7110187110",
+          "bitmap_linear_p99_reduction_percent": "14.4117647059",
+          "bitmap_linear_throughput_improvement_percent": "3.05555984284",
+          "bitmap_reference_throughput_ratio": "2.13250438227"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.3627019090",
+          "bitmap_linear_p99_reduction_percent": "11.0864745011",
+          "bitmap_linear_throughput_improvement_percent": "2.54729854180",
+          "bitmap_reference_throughput_ratio": "1.85613705038"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/1011e8e007835561/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.8459869848",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "3.16112346688",
+          "bitmap_reference_throughput_ratio": "2.15269508426"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/19b96bc1dbc07f41/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "5.800",
+          "bitmap_linear_p99_reduction_percent": "13.7466307278",
+          "bitmap_linear_throughput_improvement_percent": "6.56693527120",
+          "bitmap_reference_throughput_ratio": "2.27690718648"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.28074245940",
+          "bitmap_linear_p99_reduction_percent": "12.500",
+          "bitmap_linear_throughput_improvement_percent": "3.67057177426",
+          "bitmap_reference_throughput_ratio": "2.26298333013"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3727815b92c90d90/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.73236009732",
+          "bitmap_linear_p99_reduction_percent": "13.2890365449",
+          "bitmap_linear_throughput_improvement_percent": "2.75289409384",
+          "bitmap_reference_throughput_ratio": "2.18780274979"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3727815b92c90d90/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.3270223752",
+          "bitmap_linear_p99_reduction_percent": "11.3378684807",
+          "bitmap_linear_throughput_improvement_percent": "4.36412893250",
+          "bitmap_reference_throughput_ratio": "1.84856451488"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/393b4f303d12cb1f/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "8.67678958785",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.55250123065",
+          "bitmap_reference_throughput_ratio": "2.20887429298"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3d5f367d50c8ddb4/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.6986301370",
+          "bitmap_linear_p99_reduction_percent": "18.1578947368",
+          "bitmap_linear_throughput_improvement_percent": "5.45824167775",
+          "bitmap_reference_throughput_ratio": "2.26545996479"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/4b07e16add5b7bec/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.4090909091",
+          "bitmap_linear_p99_reduction_percent": "12.500",
+          "bitmap_linear_throughput_improvement_percent": "5.27017094118",
+          "bitmap_reference_throughput_ratio": "2.25545858659"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/5fc09f86d858a34c/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "24.9520153551",
+          "bitmap_linear_p99_reduction_percent": "18.6915887850",
+          "bitmap_linear_throughput_improvement_percent": "9.70958446419",
+          "bitmap_reference_throughput_ratio": "2.26532690653"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/5fc09f86d858a34c/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "5.33562822719",
+          "bitmap_linear_p99_reduction_percent": "9.28074245940",
+          "bitmap_linear_throughput_improvement_percent": "-1.14610498911",
+          "bitmap_reference_throughput_ratio": "1.76621773558"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/600a9c35307325b5/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "4.64037122970",
+          "bitmap_linear_p99_reduction_percent": "9.65732087227",
+          "bitmap_linear_throughput_improvement_percent": "4.20840289941",
+          "bitmap_reference_throughput_ratio": "2.26530409593"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.2517814727",
+          "bitmap_linear_p99_reduction_percent": "16.1290322581",
+          "bitmap_linear_throughput_improvement_percent": "4.49052731812",
+          "bitmap_reference_throughput_ratio": "2.21862346432"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-00-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.9625935162",
+          "bitmap_linear_p99_reduction_percent": "16.3333333333",
+          "bitmap_linear_throughput_improvement_percent": "4.88301278862",
+          "bitmap_reference_throughput_ratio": "2.23349496055"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-01-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.3950103950",
+          "bitmap_linear_p99_reduction_percent": "8.31024930748",
+          "bitmap_linear_throughput_improvement_percent": "3.21475122784",
+          "bitmap_reference_throughput_ratio": "2.09485270049"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-02-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "23.9520958084",
+          "bitmap_linear_p99_reduction_percent": "16.0771704180",
+          "bitmap_linear_throughput_improvement_percent": "6.71509506848",
+          "bitmap_reference_throughput_ratio": "2.24885346299"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-00-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "11.0629067245",
+          "bitmap_linear_p99_reduction_percent": "12.8617363344",
+          "bitmap_linear_throughput_improvement_percent": "5.82500505915",
+          "bitmap_reference_throughput_ratio": "2.19797861926"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-01-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "21.2765957447",
+          "bitmap_linear_p99_reduction_percent": "16.1290322581",
+          "bitmap_linear_throughput_improvement_percent": "4.80494012435",
+          "bitmap_reference_throughput_ratio": "2.20511195331"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-02-690ad140a9953cfe",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "2.26757369615",
+          "bitmap_linear_p99_reduction_percent": "12.9032258065",
+          "bitmap_linear_throughput_improvement_percent": "3.42972304350",
+          "bitmap_reference_throughput_ratio": "2.18442556644"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "23.9099859353",
+          "bitmap_linear_p99_reduction_percent": "11.0864745011",
+          "bitmap_linear_throughput_improvement_percent": "0.739351468106",
+          "bitmap_reference_throughput_ratio": "1.94474431869"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6a0a6bc25c533f88/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.4893111639",
+          "bitmap_linear_p99_reduction_percent": "16.1290322581",
+          "bitmap_linear_throughput_improvement_percent": "2.43843921363",
+          "bitmap_reference_throughput_ratio": "2.16886604135"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6a0a6bc25c533f88/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "23.9099859353",
+          "bitmap_linear_p99_reduction_percent": "13.0151843818",
+          "bitmap_linear_throughput_improvement_percent": "2.76756834790",
+          "bitmap_reference_throughput_ratio": "1.91003459798"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.1654501217",
+          "bitmap_linear_p99_reduction_percent": "13.6212624585",
+          "bitmap_linear_throughput_improvement_percent": "5.51680166558",
+          "bitmap_reference_throughput_ratio": "2.30293413102"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-00-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "22.8690228690",
+          "bitmap_linear_p99_reduction_percent": "16.0771704180",
+          "bitmap_linear_throughput_improvement_percent": "5.03337751266",
+          "bitmap_reference_throughput_ratio": "2.32635382243"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-01-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-7.48129675810",
+          "bitmap_linear_p99_reduction_percent": "10.2990033223",
+          "bitmap_linear_throughput_improvement_percent": "1.42133384532",
+          "bitmap_reference_throughput_ratio": "2.21849397860"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-02-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "2.14285714286",
+          "bitmap_linear_p99_reduction_percent": "12.9032258065",
+          "bitmap_linear_throughput_improvement_percent": "5.00132513049",
+          "bitmap_reference_throughput_ratio": "2.30744063320"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-00-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "11.8764845606",
+          "bitmap_linear_p99_reduction_percent": "13.6212624585",
+          "bitmap_linear_throughput_improvement_percent": "4.79764615954",
+          "bitmap_reference_throughput_ratio": "2.25788656387"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-01-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "0.232018561485",
+          "bitmap_linear_p99_reduction_percent": "12.9032258065",
+          "bitmap_linear_throughput_improvement_percent": "4.21472395164",
+          "bitmap_reference_throughput_ratio": "2.21145879776"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-02-6d3511b71fcfb52d",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.07317073171",
+          "bitmap_linear_p99_reduction_percent": "13.2890365449",
+          "bitmap_linear_throughput_improvement_percent": "5.37580549677",
+          "bitmap_reference_throughput_ratio": "2.30377432147"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-5.15806988353",
+          "bitmap_linear_p99_reduction_percent": "8.86917960089",
+          "bitmap_linear_throughput_improvement_percent": "3.49500280855",
+          "bitmap_reference_throughput_ratio": "1.94344800296"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/9378e2ec52795970/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.3950103950",
+          "bitmap_linear_p99_reduction_percent": "11.0803324100",
+          "bitmap_linear_throughput_improvement_percent": "2.48091943586",
+          "bitmap_reference_throughput_ratio": "2.18667933507"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a45ca07092ddabaf/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "17.4664107486",
+          "bitmap_linear_p99_reduction_percent": "18.1578947368",
+          "bitmap_linear_throughput_improvement_percent": "4.24047346123",
+          "bitmap_reference_throughput_ratio": "2.18958385425"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a57b4f072f992878/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "4.45468509985",
+          "bitmap_linear_p99_reduction_percent": "10.6157112527",
+          "bitmap_linear_throughput_improvement_percent": "1.01105195979",
+          "bitmap_reference_throughput_ratio": "1.85247790138"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.3037694013",
+          "bitmap_linear_p99_reduction_percent": "12.4610591900",
+          "bitmap_linear_throughput_improvement_percent": "3.78204821739",
+          "bitmap_reference_throughput_ratio": "2.21701436549"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.3950103950",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.98702445486",
+          "bitmap_reference_throughput_ratio": "2.25644475157"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.4255319149",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "0.892131892339",
+          "bitmap_reference_throughput_ratio": "2.22649531880"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.7388535032",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "2.17374104005",
+          "bitmap_reference_throughput_ratio": "2.25404674191"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.4255319149",
+          "bitmap_linear_p99_reduction_percent": "8.82352941176",
+          "bitmap_linear_throughput_improvement_percent": "1.15477460857",
+          "bitmap_reference_throughput_ratio": "2.20106670778"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.6521739130",
+          "bitmap_linear_p99_reduction_percent": "11.4705882353",
+          "bitmap_linear_throughput_improvement_percent": "1.44779470642",
+          "bitmap_reference_throughput_ratio": "2.22944226990"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.8459869848",
+          "bitmap_linear_p99_reduction_percent": "9.36555891239",
+          "bitmap_linear_throughput_improvement_percent": "2.52768098251",
+          "bitmap_reference_throughput_ratio": "2.24081762218"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.6157112527",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "1.62515366455",
+          "bitmap_reference_throughput_ratio": "2.22679618302"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.09090909091",
+          "bitmap_linear_p99_reduction_percent": "9.36555891239",
+          "bitmap_linear_throughput_improvement_percent": "1.30170845822",
+          "bitmap_reference_throughput_ratio": "2.20539060365"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.4740124740",
+          "bitmap_linear_p99_reduction_percent": "11.3960113960",
+          "bitmap_linear_throughput_improvement_percent": "1.23545865164",
+          "bitmap_reference_throughput_ratio": "2.21444815114"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.50759219089",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "1.67327323462",
+          "bitmap_reference_throughput_ratio": "2.23062512940"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "baseline qualification",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/c04af27e1a44f9a6/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.6054421769",
+          "bitmap_linear_p99_reduction_percent": "16.0771704180",
+          "bitmap_linear_throughput_improvement_percent": "4.27307857629",
+          "bitmap_reference_throughput_ratio": "2.17279833915"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/c04af27e1a44f9a6/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-5.16351118761",
+          "bitmap_linear_p99_reduction_percent": "8.86363636364",
+          "bitmap_linear_throughput_improvement_percent": "1.75637538296",
+          "bitmap_reference_throughput_ratio": "1.84002515128"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.7388535032",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "2.91998695361",
+          "bitmap_reference_throughput_ratio": "2.16382931193"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.1832993890",
+          "bitmap_linear_p99_reduction_percent": "11.0803324100",
+          "bitmap_linear_throughput_improvement_percent": "2.91062599591",
+          "bitmap_reference_throughput_ratio": "3.18271933457"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/bench",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "16.6270783848",
+          "bitmap_linear_p99_reduction_percent": "13.6212624585",
+          "bitmap_linear_throughput_improvement_percent": "4.24873110578",
+          "bitmap_reference_throughput_ratio": "2.19734467067"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "candidate measurement",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-00-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.8321995465",
+          "bitmap_linear_p99_reduction_percent": "13.6212624585",
+          "bitmap_linear_throughput_improvement_percent": "3.37476272465",
+          "bitmap_reference_throughput_ratio": "2.20573288481"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-01-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-12.1654501217",
+          "bitmap_linear_p99_reduction_percent": "6.66666666667",
+          "bitmap_linear_throughput_improvement_percent": "0.363174584667",
+          "bitmap_reference_throughput_ratio": "2.11773227980"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-02-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-9.28074245940",
+          "bitmap_linear_p99_reduction_percent": "6.97674418605",
+          "bitmap_linear_throughput_improvement_percent": "4.37738271555",
+          "bitmap_reference_throughput_ratio": "2.16312324671"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 75,
+      "throughput_replays_expected": 5,
+      "throughput_replays_observed": 5,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-00-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.96055684455",
+          "bitmap_linear_p99_reduction_percent": "12.9032258065",
+          "bitmap_linear_throughput_improvement_percent": "4.92523819738",
+          "bitmap_reference_throughput_ratio": "2.20113829415"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-01-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "21.6919739696",
+          "bitmap_linear_p99_reduction_percent": "16.1290322581",
+          "bitmap_linear_throughput_improvement_percent": "4.04376922058",
+          "bitmap_reference_throughput_ratio": "2.22439310205"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "derived_metrics_match_raw": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-02-fa71d7b1dfba376e",
+      "engine_run_rows": 15,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.1654501217",
+          "bitmap_linear_p99_reduction_percent": "13.6212624585",
+          "bitmap_linear_throughput_improvement_percent": "4.68320240550",
+          "bitmap_reference_throughput_ratio": "2.22517221951"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "latency_samples": 75000000,
+      "measurement_and_differential_verified": true,
+      "recorded_measurement_correctness": true,
+      "role": "interleaved confirmation",
+      "throughput_blocks": 300,
+      "throughput_replays_expected": 20,
+      "throughput_replays_observed": 20,
+      "verified": true
+    },
+    {
+      "declared_protocol_matches": true,
+      "directory": "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/training",
+      "engine_run_rows": 3,
+      "failure_expected_from_measurement": false,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.33137829912",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "2.11019494746",
+          "bitmap_reference_throughput_ratio": "1.90782778250"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "latency_samples": 15000000,
+      "recorded_measurement_correctness": null,
+      "role": "PGO training, not a search measurement",
+      "throughput_blocks": 3,
+      "throughput_replays_expected": 1,
+      "throughput_replays_observed": 1,
+      "verified": true
+    }
+  ],
+  "missing_referenced_summary_files": [],
+  "post_measurement_audit_only": true,
+  "protocol_aggregation_boundary": "Counts are file inventory only; R5 and R20 timings are independently audited and never pooled for noise or speedup.",
+  "recorded_correct_summary_files": [
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-0/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-1/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-2/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-3/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-4/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-5/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-6/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-7/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-8/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-9/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-01-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-02-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-00-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-01-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-02-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/1011e8e007835561/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/19b96bc1dbc07f41/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3727815b92c90d90/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/393b4f303d12cb1f/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3d5f367d50c8ddb4/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/4b07e16add5b7bec/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/5fc09f86d858a34c/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/600a9c35307325b5/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-00-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-01-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-02-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-00-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-01-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-02-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6a0a6bc25c533f88/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-00-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-01-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-02-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-00-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-01-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-02-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/9378e2ec52795970/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a45ca07092ddabaf/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/c04af27e1a44f9a6/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-00-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-01-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-02-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-00-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-01-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-02-fa71d7b1dfba376e/summary.json"
+  ],
+  "referenced_summary_files": [
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-0/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-1/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-2/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-3/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-4/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-5/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-6/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-7/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-8/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/baseline-9/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-01-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-02-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-00-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-01-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-r20-02-be180963747c4559/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/0e077e4872c3d329/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/1011e8e007835561/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/19b96bc1dbc07f41/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3727815b92c90d90/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/393b4f303d12cb1f/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/3d5f367d50c8ddb4/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/4b07e16add5b7bec/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/5fc09f86d858a34c/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/600a9c35307325b5/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-00-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-01-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-02-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-00-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-01-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/confirm-r20-02-690ad140a9953cfe/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6a0a6bc25c533f88/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-00-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-01-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-02-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-00-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-01-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/confirm-r20-02-6d3511b71fcfb52d/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/9378e2ec52795970/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/a45ca07092ddabaf/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-0/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-1/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-2/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-3/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-4/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-5/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-6/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-7/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-8/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/be180963747c4559/baseline-9/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/c04af27e1a44f9a6/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/e3338bdd6da9dacf/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/bench/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-00-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-01-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-02-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-00-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-01-fa71d7b1dfba376e/summary.json",
+    "build-evidence/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/confirm-r20-02-fa71d7b1dfba376e/summary.json"
+  ],
+  "schema_version": 1,
+  "totals": {
+    "engine_run_rows": 975,
+    "latency_samples": 4875000000,
+    "raw_measurement_directories": 73,
+    "throughput_blocks": 7455,
+    "verified_directories": 73
+  },
+  "unmapped_summary_references": [],
+  "unverified_recorded_correct_summary_files": [],
+  "verifier_path": "tools/verify_results.py",
+  "verifier_sha256": "34a481058c22f7568b55817c75a83f54a3d0236e3762a3b98e8b788c93e9861c"
+}

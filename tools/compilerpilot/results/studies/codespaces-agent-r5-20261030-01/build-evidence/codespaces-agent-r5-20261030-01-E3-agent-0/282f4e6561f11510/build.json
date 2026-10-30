@@ -1,0 +1,64 @@
+{
+  "build_id": "282f4e6561f11510",
+  "candidate": {
+    "compiler": "clang",
+    "opt": "O3",
+    "isa": "native",
+    "lto": false,
+    "pgo": false,
+    "inline": "default",
+    "unroll": true,
+    "vectorize": true,
+    "frame_pointer": false,
+    "alignment": 0,
+    "semantic_interposition": false
+  },
+  "build_dir": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510",
+  "success": true,
+  "compile_s": 24.242795081000168,
+  "text_bytes": 98582,
+  "compiler_version": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+  "error": null,
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-march=native",
+    "-funroll-loops",
+    "-fno-semantic-interposition",
+    "-fsave-optimization-record"
+  ],
+  "provenance": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+    "compiler_executable": "/usr/bin/clang++",
+    "configure_s": 0.7157978870000079,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "/workspaces/Ledger-focused",
+        "-B",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=native -funroll-loops -fno-semantic-interposition -fsave-optimization-record",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+        "-DLEDGER_NATIVE=OFF",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-G",
+        "Ninja"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/282f4e6561f11510",
+        "--parallel",
+        "2"
+      ]
+    ],
+    "clean_build": true,
+    "binary_sha256": "5d30792f5e8f7d2287773a8be3cd3f7bfe377973068dfaf25a4cf29cf04444e6"
+  }
+}

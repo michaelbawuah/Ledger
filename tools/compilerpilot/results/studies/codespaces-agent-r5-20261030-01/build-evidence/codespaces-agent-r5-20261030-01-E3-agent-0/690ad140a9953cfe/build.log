@@ -1,0 +1,127 @@
+[1/44] Building CXX object CMakeFiles/ledger.dir/src/book.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[2/44] Building CXX object CMakeFiles/ledger.dir/src/reference_book.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[3/44] Building CXX object CMakeFiles/ledger.dir/src/feed_view.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "feed_view.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[4/44] Building CXX object CMakeFiles/ledger.dir/src/feed.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[5/44] Building CXX object CMakeFiles/ledger_replay.dir/src/replay.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 464 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[6/44] Building CXX object CMakeFiles/ledger.dir/src/study_workloads.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "study_workloads.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[7/44] Linking CXX static library libledger.a
+[8/44] Linking CXX executable ledger_replay
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[9/44] Building CXX object CMakeFiles/ledger_generate.dir/bench/gen_orders.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "gen_orders.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[10/44] Linking CXX executable ledger_generate
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[11/44] Building CXX object CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[12/44] Linking CXX executable ledger_bench
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[13/44] Building CXX object CMakeFiles/ledger_spsc_bench.dir/bench/bench_spsc.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "bench_spsc.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[14/44] Linking CXX executable ledger_spsc_bench
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[15/44] Building CXX object CMakeFiles/ledger_market_maker.dir/src/market_maker.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "market_maker.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[16/44] Linking CXX executable ledger_market_maker
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[17/44] Building CXX object CMakeFiles/ledger_risk_demo.dir/examples/risk_demo.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 21 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[18/44] Linking CXX executable ledger_risk_demo
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[19/44] Building CXX object CMakeFiles/ledger_tests.dir/tests/unit/engine_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 607 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[20/44] Building CXX object CMakeFiles/ledger_study.dir/bench/bench_study.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 1615 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[21/44] Linking CXX executable ledger_study
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[22/44] Linking CXX executable ledger_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[23/44] Building CXX object CMakeFiles/ledger_allocation_tests.dir/tests/unit/memory_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 97 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[24/44] Linking CXX executable ledger_allocation_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[25/44] Building CXX object CMakeFiles/ledger_spsc_tests.dir/tests/unit/spsc_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 95 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[26/44] Linking CXX executable ledger_spsc_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[27/44] Building CXX object CMakeFiles/ledger_feed_tests.dir/tests/unit/feed_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 399 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[28/44] Linking CXX executable ledger_feed_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[29/44] Building CXX object CMakeFiles/ledger_differential.dir/tests/differential/differential.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: no profile data available for file "differential.cpp" [-Wprofile-instr-unprofiled]
+1 warning generated.
+[30/44] Linking CXX executable ledger_differential
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[31/44] Building CXX object CMakeFiles/ledger_pool_tests.dir/tests/unit/pool_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 263 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[32/44] Linking CXX executable ledger_pool_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[33/44] Building CXX object CMakeFiles/ledger_feed_view_tests.dir/tests/unit/feed_view_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 310 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[34/44] Linking CXX executable ledger_feed_view_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[35/44] Building CXX object CMakeFiles/ledger_risk_tests.dir/tests/unit/risk_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 55 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[36/44] Linking CXX executable ledger_risk_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[37/44] Building CXX object CMakeFiles/ledger_index_tests.dir/tests/unit/index_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 568 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[38/44] Linking CXX executable ledger_index_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[39/44] Building CXX object CMakeFiles/ledger_fok_tests.dir/tests/unit/fok_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 241 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[40/44] Linking CXX executable ledger_fok_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[41/44] Building CXX object CMakeFiles/ledger_study_workload_tests.dir/tests/unit/study_workload_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 753 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[42/44] Building CXX object CMakeFiles/ledger_study_observer_tests.dir/tests/unit/study_observer_tests.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+warning: profile data may be out of date: of 591 functions, 1 has mismatched data that will be ignored [-Wprofile-instr-out-of-date]
+1 warning generated.
+[43/44] Linking CXX executable ledger_study_workload_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]
+[44/44] Linking CXX executable ledger_study_observer_tests
+clang++: warning: argument unused during compilation: '-mllvm -inline-threshold=500' [-Wunused-command-line-argument]

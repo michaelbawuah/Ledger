@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-30T20:33:21.169321+00:00",
+  "decision": "Stopped the remaining R5 confirmation after recorded baseline within-group CV already exceeded the fixed 2% limit. All completed and partial observations are retained; no speedup is established.",
+  "reason": "Further R5 groups cannot undo a maximum-CV failure. A separate one-time R20 precision protocol will use the same nominees and unchanged gates; results will not be pooled.",
+  "completed_observations": 12,
+  "per_build_variability": {
+    "690ad140a9953cfe": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.021089870807407998
+    },
+    "6d3511b71fcfb52d": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.033871669121580975
+    },
+    "be180963747c4559": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.0313571899789084
+    },
+    "fa71d7b1dfba376e": {
+      "observations": 3,
+      "maximum_within_group_cv": 0.03727356291817626
+    }
+  },
+  "interruption": "SIGINT to wrapper; one active benchmark process group terminated; wrapper records interrupted status",
+  "original_study_remains_failed": true
+}

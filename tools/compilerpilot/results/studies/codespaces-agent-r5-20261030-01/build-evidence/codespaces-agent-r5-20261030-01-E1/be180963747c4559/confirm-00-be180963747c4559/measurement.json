@@ -1,0 +1,161 @@
+{
+  "correctness": true,
+  "throughput": 16001203.8026,
+  "p50_ns": 50.0,
+  "p99_ns": 310.0,
+  "cv": 0.0313571899789084,
+  "spread": 510444.7851005136,
+  "runs": [
+    16948890.4838,
+    15809856.1602,
+    16001203.8026,
+    15932965.6238,
+    16699068.5819
+  ],
+  "error": null,
+  "throughput_replays": 5,
+  "provenance": {
+    "throughput_replays": 5,
+    "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+    "input": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+    "cpu": 0,
+    "pinned": true,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "summary": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/summary.json",
+    "runs_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/runs.csv",
+    "benchmark_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/ledger_bench",
+      "--input",
+      "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/eval.lob",
+      "--runs",
+      "5",
+      "--warmup",
+      "50000",
+      "--outdir",
+      "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559",
+      "--throughput-replays",
+      "5"
+    ],
+    "differential_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/ledger_differential",
+      "--seeds",
+      "5",
+      "--orders",
+      "100000",
+      "--output",
+      "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/differential.json"
+    ],
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "compiler": {
+      "version": "13.3.0",
+      "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+      "optimization_enabled": true,
+      "ndebug": true
+    },
+    "differential": {
+      "status": "pass",
+      "generator": "splitmix64-bounded-adversarial-v1",
+      "base_seed": 8330235730275514375,
+      "first_seed": 0,
+      "seeds": 5,
+      "commands_per_seed": 100000,
+      "commands_compared": 500000,
+      "reports_compared": 1047284,
+      "trades_compared": 171010,
+      "applied_commands": 237011,
+      "rejected_commands": 262989,
+      "structural_checkpoints": 125,
+      "checkpoint_interval": 4096,
+      "linear_variant_compared": true,
+      "linear_fok_variant_compared": true,
+      "per_command_checks": [
+        "process_result",
+        "all_event_fields",
+        "statistics",
+        "size",
+        "resting_quantity",
+        "best_quotes",
+        "quantity_conservation",
+        "uncrossed_quotes"
+      ],
+      "checkpoint_checks": [
+        "full_structural_invariants",
+        "full_FIFO_orders",
+        "all_levels",
+        "all_statistics"
+      ],
+      "elapsed_seconds": 0.114101
+    },
+    "benchmark_schema_version": 2,
+    "throughput_commands_per_run": 25000000,
+    "latency_commands_per_run": 5000000,
+    "throughput_replays_csv": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/confirm-00-be180963747c4559/throughput_replays.csv"
+  },
+  "input_commands": 5000000,
+  "throughput_commands_per_run": 25000000,
+  "latency_commands_per_run": 5000000,
+  "throughput_replay_durations_ns": [
+    [
+      293587016,
+      299984745,
+      293861037,
+      293384578,
+      294205430
+    ],
+    [
+      324456843,
+      317419320,
+      310627035,
+      317988843,
+      310800018
+    ],
+    [
+      313285766,
+      311242733,
+      311480638,
+      315425640,
+      310947673
+    ],
+    [
+      313115418,
+      318424075,
+      314015248,
+      311707060,
+      311812067
+    ],
+    [
+      299542280,
+      306331719,
+      303999507,
+      293421577,
+      293794403
+    ]
+  ],
+  "checksums": {
+    "event_checksum": 4775833837545484177,
+    "trade_checksum": 5735633710814156320,
+    "events": 10979250,
+    "trades": 1993083,
+    "rejected_commands": 0,
+    "live_orders_final": 2039,
+    "submitted": 439451632,
+    "executed": 144785476,
+    "cancelled": 149679069,
+    "expired": 98,
+    "rejected": 0,
+    "resting_quantity": 201513,
+    "best_bid": 9993,
+    "best_ask": 10007
+  }
+}

@@ -1,0 +1,3 @@
+reference run 1/5: 7.43 M commands/s, p99 571 ns
+reference run 2/5: 7.51 M commands/s, p99 561 ns
+reference run 3/5: 7.50 M commands/s, p99 601 ns

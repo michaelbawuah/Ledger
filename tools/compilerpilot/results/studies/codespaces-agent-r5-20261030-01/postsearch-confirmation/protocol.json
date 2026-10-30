@@ -1,0 +1,65 @@
+{
+  "binary_sha256_before_confirmation": {
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/ledger_bench": "2332f3cf9c39a61a1654b5ddc68037823f61e3b3d65181e234a85fcfc722ee8b",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E1/be180963747c4559/ledger_differential": "6d75cb849416a05b05ff78d2613d48bcb6067f0212ee5d59c120556edc373be2",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/ledger_bench": "85960baae7a33a40dd61baf3d1048579dde9b6597676f98a2b679c824e9fe98b",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/690ad140a9953cfe/ledger_differential": "34b20ec9fd219978711bbaf90814874ed7c21335ef932bfd10c09f3182d816ed",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/ledger_bench": "261188c0fb1ac1135cb280cba70331bae25a6668a771b1cb885aece83b082377",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/6d3511b71fcfb52d/ledger_differential": "6906b3635f738f883cd58bb3dd960bd69881163460d5f73c27ebf15951a800b0",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/ledger_bench": "b57b624d98675074ca7a4a580ca30ca1a9464e7053714c30be1c3367c6bd335f",
+    "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/fa71d7b1dfba376e/ledger_differential": "98c7b30d7e5190c784ea06904987758e07dd253599ec5afd9a3cc8014e538a2a"
+  },
+  "claim_boundary": "The original fixed-budget agent search remains failed/incomplete. Its observed candidates only nominate builds for this newly declared independent confirmation. A confirmed result supports workload-specific compiler speedup, not agent-versus-search ranking.",
+  "commands": 5000000,
+  "cpu": 0,
+  "declared_at": "2026-10-30T20:23:18.260048+00:00",
+  "evaluation_input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+  "frozen_module_sha256": {
+    "bench.py": "5178dd5541971521f146f11da7bd2bee09908fe81f28d71c93d0ced55fbc270a",
+    "build.py": "2ff08d9b3b2d766203ca458c7ff45c763f1fb64547b9e7eb138d654387b2f2d2",
+    "confirm.py": "2bf9ef909430ffc461566416786f8560cd99baf568c5e886c380de01ac15bec9",
+    "protocol.py": "14fde83fd3467d1237141a180635a558a4e7a3354d06df497a8f90fe40ffedc3",
+    "space.py": "089245336b19cbb1d22f99e4edceabd594d6d8fb95ad6117d4cfe2d34ec6d241",
+    "study.py": "755e9d3b8fa04162c6d0d61d85b28602b9bc33ab7433c73ea817004596c957a6"
+  },
+  "full_validation": true,
+  "host": {
+    "boot_id_sha256": "8f1cc6f60a70cab9debb69ba19f3c77bdd25527b3ec6a050585d190f333ef1ff",
+    "github_run_attempt": null,
+    "github_run_id": null,
+    "machine": "x86_64",
+    "node": "codespaces-e9123b",
+    "system": "Linux"
+  },
+  "kind": "independent_postsearch_confirmation",
+  "latency_replays": 1,
+  "model_calls": 0,
+  "original_evidence_sha256": {
+    "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01/manifest.json": "a41945f6ce08c9f7c5b8a980c7218862a536f138c7a2341ffa76af80416bf413",
+    "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E1/baseline.json": "9c4456b3251a403a9369ae30cc46c9e0e0dbfe08b77cec21410713efed93dacc",
+    "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E3-agent-0/baseline.json": "e485a97873b8796bc08cdc329e5672c23f83419164f86027f6eb0f64d7b874d3",
+    "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E3-agent-0/history.json": "4fe17d8e443d743f20e8637ad0e4d003e604efd143a19e272da81050803cac34",
+    "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E3-agent-0/trace.jsonl": "52d7bf6913159be485e9531691bb8b0e051593f3d136067228f44bd1cdba8331",
+    "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/study.json": "6c165b93d69708e627a0cb91d93bf55304c7293aa95c50a6dd1483486e18e4c6"
+  },
+  "original_requested_build_budget": 40,
+  "original_scope": "agent-speedup",
+  "original_study_completed": false,
+  "original_study_id": "codespaces-agent-r5-20261030-01",
+  "original_study_status": "failed",
+  "recorded_build_events": 20,
+  "recorded_correct_measurements": 19,
+  "recorded_history_rows": 19,
+  "required_ctest_cases": 15,
+  "rounds": 10,
+  "schema_version": 1,
+  "source": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "throughput_replays": 5,
+  "validation_commands_per_seed": 1000000,
+  "validation_seeds": 100,
+  "wrapper_sha256": "bbf718836294c1320ef345eeff9639a680adfe76b26032cda18fea5c125f8ece"
+}

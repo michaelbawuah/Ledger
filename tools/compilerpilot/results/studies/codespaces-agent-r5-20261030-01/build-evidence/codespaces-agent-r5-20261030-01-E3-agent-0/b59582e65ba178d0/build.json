@@ -1,0 +1,67 @@
+{
+  "build_id": "b59582e65ba178d0",
+  "candidate": {
+    "compiler": "clang",
+    "opt": "O3",
+    "isa": "native",
+    "lto": false,
+    "pgo": false,
+    "inline": "default",
+    "unroll": true,
+    "vectorize": false,
+    "frame_pointer": false,
+    "alignment": 64,
+    "semantic_interposition": false
+  },
+  "build_dir": "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0",
+  "success": true,
+  "compile_s": 24.192520603000048,
+  "text_bytes": 101254,
+  "compiler_version": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+  "error": null,
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-march=native",
+    "-funroll-loops",
+    "-fno-vectorize",
+    "-fno-slp-vectorize",
+    "-falign-functions=64",
+    "-fno-semantic-interposition",
+    "-fsave-optimization-record"
+  ],
+  "provenance": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+    "compiler_executable": "/usr/bin/clang++",
+    "configure_s": 0.7157953620003354,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "/workspaces/Ledger-focused",
+        "-B",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=native -funroll-loops -fno-vectorize -fno-slp-vectorize -falign-functions=64 -fno-semantic-interposition -fsave-optimization-record",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+        "-DLEDGER_NATIVE=OFF",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-G",
+        "Ninja"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/tmp/compilerpilot-focused-builds/codespaces-agent-r5-20261030-01-E3-agent-0/b59582e65ba178d0",
+        "--parallel",
+        "2"
+      ]
+    ],
+    "clean_build": true,
+    "binary_sha256": "c87bbe694b7e90b505063493931a6f47e02f8ea24df59863200f6d2e85574f3f"
+  }
+}

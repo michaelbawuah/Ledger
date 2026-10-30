@@ -1,0 +1,1437 @@
+{
+  "schema_version": 1,
+  "allocation_id": "ledger-compilerpilot-20261030-approved-usd15",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "service_tier": "default",
+  "currency": "USD",
+  "limit_nusd": 9990000000,
+  "preflight_reserve_nusd": 10000000,
+  "authorized_total_nusd": 10000000000,
+  "input_context_tokens": 1047576,
+  "input_nusd_per_token": 400,
+  "output_nusd_per_token": 1600,
+  "created_at": "2026-10-30T19:36:11.756533+00:00",
+  "entries": [
+    {
+      "id": "8db1a2ea277d4340af729b3c283b485b",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 568800,
+      "status": "settled",
+      "created_at": "2026-10-30T19:48:09.839528+00:00",
+      "finalized_at": "2026-10-30T19:48:12.080566+00:00",
+      "usage": {
+        "prompt_tokens": 1150,
+        "completion_tokens": 68,
+        "total_tokens": 1218
+      }
+    },
+    {
+      "id": "3c6e8ea34bc04e458c693a8fce1aaa87",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 774800,
+      "status": "settled",
+      "created_at": "2026-10-30T19:48:32.550022+00:00",
+      "finalized_at": "2026-10-30T19:48:33.740395+00:00",
+      "usage": {
+        "prompt_tokens": 1837,
+        "completion_tokens": 25,
+        "total_tokens": 1862
+      }
+    },
+    {
+      "id": "2aec9bbb77764881ab746c69003b6eaa",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 1762000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:49:19.496054+00:00",
+      "finalized_at": "2026-10-30T19:49:22.140189+00:00",
+      "usage": {
+        "prompt_tokens": 3813,
+        "completion_tokens": 148,
+        "total_tokens": 3961
+      }
+    },
+    {
+      "id": "24fd658653a84476bde62e1eea90eb11",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 3402800,
+      "status": "settled",
+      "created_at": "2026-10-30T19:49:57.747384+00:00",
+      "finalized_at": "2026-10-30T19:49:58.919003+00:00",
+      "usage": {
+        "prompt_tokens": 8411,
+        "completion_tokens": 24,
+        "total_tokens": 8435
+      }
+    },
+    {
+      "id": "429158e186454ecf895e390133071e0c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 5959200,
+      "status": "settled",
+      "created_at": "2026-10-30T19:50:43.852740+00:00",
+      "finalized_at": "2026-10-30T19:50:45.794464+00:00",
+      "usage": {
+        "prompt_tokens": 14290,
+        "completion_tokens": 152,
+        "total_tokens": 14442
+      }
+    },
+    {
+      "id": "cce2dec4f5404126b92747feecfafa9c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 6063600,
+      "status": "settled",
+      "created_at": "2026-10-30T19:51:11.436435+00:00",
+      "finalized_at": "2026-10-30T19:51:12.709102+00:00",
+      "usage": {
+        "prompt_tokens": 15067,
+        "completion_tokens": 23,
+        "total_tokens": 15090
+      }
+    },
+    {
+      "id": "ee68c1972c1a44be87da30e4612d1667",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 7056000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:51:57.687563+00:00",
+      "finalized_at": "2026-10-30T19:52:02.422284+00:00",
+      "usage": {
+        "prompt_tokens": 17040,
+        "completion_tokens": 150,
+        "total_tokens": 17190
+      }
+    },
+    {
+      "id": "d2f589b7a3c1443a98a0bf157c47686e",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 7166000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:52:22.135884+00:00",
+      "finalized_at": "2026-10-30T19:52:23.361412+00:00",
+      "usage": {
+        "prompt_tokens": 17823,
+        "completion_tokens": 23,
+        "total_tokens": 17846
+      }
+    },
+    {
+      "id": "d408d9d9215347d9a820b75d21b8e22e",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 8157200,
+      "status": "settled",
+      "created_at": "2026-10-30T19:53:09.494887+00:00",
+      "finalized_at": "2026-10-30T19:53:11.742008+00:00",
+      "usage": {
+        "prompt_tokens": 19809,
+        "completion_tokens": 146,
+        "total_tokens": 19955
+      }
+    },
+    {
+      "id": "e0f63252901e43ca84870cc25bb10d31",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 8272000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:53:33.120745+00:00",
+      "finalized_at": "2026-10-30T19:53:34.372560+00:00",
+      "usage": {
+        "prompt_tokens": 20584,
+        "completion_tokens": 24,
+        "total_tokens": 20608
+      }
+    },
+    {
+      "id": "5296fbac82c546a09cf1d27c0ff92ade",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 9264000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:54:21.172141+00:00",
+      "finalized_at": "2026-10-30T19:54:23.537898+00:00",
+      "usage": {
+        "prompt_tokens": 22572,
+        "completion_tokens": 147,
+        "total_tokens": 22719
+      }
+    },
+    {
+      "id": "3a74b050aadd4228ac6ce15feb46e78d",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 9390400,
+      "status": "settled",
+      "created_at": "2026-10-30T19:54:44.830632+00:00",
+      "finalized_at": "2026-10-30T19:54:46.023834+00:00",
+      "usage": {
+        "prompt_tokens": 23372,
+        "completion_tokens": 26,
+        "total_tokens": 23398
+      }
+    },
+    {
+      "id": "925804051f2f4b4095a9fedf2cecb9aa",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 10398400,
+      "status": "settled",
+      "created_at": "2026-10-30T19:55:32.864030+00:00",
+      "finalized_at": "2026-10-30T19:55:34.813202+00:00",
+      "usage": {
+        "prompt_tokens": 25412,
+        "completion_tokens": 146,
+        "total_tokens": 25558
+      }
+    },
+    {
+      "id": "2795a1db62f9498a9443b5c76b0a2732",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 10521600,
+      "status": "settled",
+      "created_at": "2026-10-30T19:55:56.238223+00:00",
+      "finalized_at": "2026-10-30T19:55:57.111044+00:00",
+      "usage": {
+        "prompt_tokens": 26212,
+        "completion_tokens": 23,
+        "total_tokens": 26235
+      }
+    },
+    {
+      "id": "a2cc58bcad5d40f98175706b715f2ad5",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 11532000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:56:44.504631+00:00",
+      "finalized_at": "2026-10-30T19:56:46.688452+00:00",
+      "usage": {
+        "prompt_tokens": 28242,
+        "completion_tokens": 147,
+        "total_tokens": 28389
+      }
+    },
+    {
+      "id": "abc9dc8d5a4244b0b1f80cc22830b468",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 11648800,
+      "status": "settled",
+      "created_at": "2026-10-30T19:57:11.256871+00:00",
+      "finalized_at": "2026-10-30T19:57:12.384318+00:00",
+      "usage": {
+        "prompt_tokens": 29026,
+        "completion_tokens": 24,
+        "total_tokens": 29050
+      }
+    },
+    {
+      "id": "8b917cc612164cd69e4855eb58099b31",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 12650000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:57:58.539665+00:00",
+      "finalized_at": "2026-10-30T19:58:00.666477+00:00",
+      "usage": {
+        "prompt_tokens": 31045,
+        "completion_tokens": 145,
+        "total_tokens": 31190
+      }
+    },
+    {
+      "id": "a02df06754b047999eebf21dc95effba",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 12763200,
+      "status": "settled",
+      "created_at": "2026-10-30T19:58:25.680317+00:00",
+      "finalized_at": "2026-10-30T19:58:26.699641+00:00",
+      "usage": {
+        "prompt_tokens": 31812,
+        "completion_tokens": 24,
+        "total_tokens": 31836
+      }
+    },
+    {
+      "id": "5aa208870236483bb27b29b545302e2d",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 13744000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:59:12.698406+00:00",
+      "finalized_at": "2026-10-30T19:59:14.687162+00:00",
+      "usage": {
+        "prompt_tokens": 33808,
+        "completion_tokens": 138,
+        "total_tokens": 33946
+      }
+    },
+    {
+      "id": "2f840879ad8d41ebac102e90a8dab9d7",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 13878000,
+      "status": "settled",
+      "created_at": "2026-10-30T19:59:39.545173+00:00",
+      "finalized_at": "2026-10-30T19:59:41.677095+00:00",
+      "usage": {
+        "prompt_tokens": 34595,
+        "completion_tokens": 25,
+        "total_tokens": 34620
+      }
+    },
+    {
+      "id": "51faa4d65faa4fae8d7fdeec78194fb1",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 14881200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:00:27.915187+00:00",
+      "finalized_at": "2026-10-30T20:00:30.768108+00:00",
+      "usage": {
+        "prompt_tokens": 36651,
+        "completion_tokens": 138,
+        "total_tokens": 36789
+      }
+    },
+    {
+      "id": "990cfa995f964ad49165e8a0f22f9a67",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 15016400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:00:55.733003+00:00",
+      "finalized_at": "2026-10-30T20:00:56.979874+00:00",
+      "usage": {
+        "prompt_tokens": 37445,
+        "completion_tokens": 24,
+        "total_tokens": 37469
+      }
+    },
+    {
+      "id": "e54401a6c6c74e98b9f4b4b1a833684c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 16020000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:01:43.165851+00:00",
+      "finalized_at": "2026-10-30T20:01:45.062258+00:00",
+      "usage": {
+        "prompt_tokens": 39506,
+        "completion_tokens": 136,
+        "total_tokens": 39642
+      }
+    },
+    {
+      "id": "099088ca670544869db769d459ff69bd",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 16875600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:02:30.107649+00:00",
+      "finalized_at": "2026-10-30T20:02:31.683608+00:00",
+      "usage": {
+        "prompt_tokens": 42089,
+        "completion_tokens": 25,
+        "total_tokens": 42114
+      }
+    },
+    {
+      "id": "7124a05acba34cc28bb4ca9c7afea985",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 18637200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:03:15.568665+00:00",
+      "finalized_at": "2026-10-30T20:03:17.701770+00:00",
+      "usage": {
+        "prompt_tokens": 46049,
+        "completion_tokens": 136,
+        "total_tokens": 46185
+      }
+    },
+    {
+      "id": "86c271e4d0a04314b671799e05a98d95",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 19506800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:04:05.884939+00:00",
+      "finalized_at": "2026-10-30T20:04:07.683852+00:00",
+      "usage": {
+        "prompt_tokens": 48667,
+        "completion_tokens": 25,
+        "total_tokens": 48692
+      }
+    },
+    {
+      "id": "bba2971a85a542a7a5434b5fb4821dad",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 21297200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:04:51.267846+00:00",
+      "finalized_at": "2026-10-30T20:04:54.140774+00:00",
+      "usage": {
+        "prompt_tokens": 52679,
+        "completion_tokens": 141,
+        "total_tokens": 52820
+      }
+    },
+    {
+      "id": "73ef2d3f39f04a18b48a9c5782e5c488",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 22167600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:05:49.439265+00:00",
+      "finalized_at": "2026-10-30T20:05:50.795550+00:00",
+      "usage": {
+        "prompt_tokens": 55327,
+        "completion_tokens": 23,
+        "total_tokens": 55350
+      }
+    },
+    {
+      "id": "d3629ea7d1124c7e93548dd1b2df0802",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 23972400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:06:34.476832+00:00",
+      "finalized_at": "2026-10-30T20:06:37.239384+00:00",
+      "usage": {
+        "prompt_tokens": 59375,
+        "completion_tokens": 139,
+        "total_tokens": 59514
+      }
+    },
+    {
+      "id": "6b4301b1f6374e0e86d1e208e68febfc",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 25382000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:07:32.665292+00:00",
+      "finalized_at": "2026-10-30T20:07:36.177150+00:00",
+      "usage": {
+        "prompt_tokens": 62035,
+        "completion_tokens": 355,
+        "total_tokens": 62390
+      }
+    },
+    {
+      "id": "4756d7420a474d25b00365591cc278b5",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 25198000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:07:36.183516+00:00",
+      "finalized_at": "2026-10-30T20:07:38.222982+00:00",
+      "usage": {
+        "prompt_tokens": 62439,
+        "completion_tokens": 139,
+        "total_tokens": 62578
+      }
+    },
+    {
+      "id": "bd65fade555f4cc094120bee12ee26fb",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 25272800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:07:38.231037+00:00",
+      "finalized_at": "2026-10-30T20:07:40.324087+00:00",
+      "usage": {
+        "prompt_tokens": 62626,
+        "completion_tokens": 139,
+        "total_tokens": 62765
+      }
+    },
+    {
+      "id": "c28163ec9ef24189ad83af1fab13b21c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 26146000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:08:35.823398+00:00",
+      "finalized_at": "2026-10-30T20:08:37.100698+00:00",
+      "usage": {
+        "prompt_tokens": 65257,
+        "completion_tokens": 27,
+        "total_tokens": 65284
+      }
+    },
+    {
+      "id": "cca19ab4f747499daf4aee60c9ed7c2d",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 27939200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:09:20.982777+00:00",
+      "finalized_at": "2026-10-30T20:09:23.478647+00:00",
+      "usage": {
+        "prompt_tokens": 69292,
+        "completion_tokens": 139,
+        "total_tokens": 69431
+      }
+    },
+    {
+      "id": "be0edd72e1f746ac9c8bfa36a4f73b18",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 28808000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:10:18.574535+00:00",
+      "finalized_at": "2026-10-30T20:10:19.796334+00:00",
+      "usage": {
+        "prompt_tokens": 71916,
+        "completion_tokens": 26,
+        "total_tokens": 71942
+      }
+    },
+    {
+      "id": "dea44bace11a47bab6841766d7e13f0e",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 30596400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:11:03.502038+00:00",
+      "finalized_at": "2026-10-30T20:11:06.177975+00:00",
+      "usage": {
+        "prompt_tokens": 75931,
+        "completion_tokens": 140,
+        "total_tokens": 76071
+      }
+    },
+    {
+      "id": "f7f2683c1bc042048a84c1cc13cbd379",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 31445200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:12:01.421578+00:00",
+      "finalized_at": "2026-10-30T20:12:02.710620+00:00",
+      "usage": {
+        "prompt_tokens": 78513,
+        "completion_tokens": 25,
+        "total_tokens": 78538
+      }
+    },
+    {
+      "id": "f27ee8e9823045228f01110566520591",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 33208400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:12:46.694719+00:00",
+      "finalized_at": "2026-10-30T20:12:49.428999+00:00",
+      "usage": {
+        "prompt_tokens": 82461,
+        "completion_tokens": 140,
+        "total_tokens": 82601
+      }
+    },
+    {
+      "id": "233920cc4a854a9d8f0d694e77bd1111",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 34053600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:13:36.698278+00:00",
+      "finalized_at": "2026-10-30T20:13:37.867304+00:00",
+      "usage": {
+        "prompt_tokens": 85050,
+        "completion_tokens": 21,
+        "total_tokens": 85071
+      }
+    },
+    {
+      "id": "3f9cb0235c534136a487fd5a5cccc9a0",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 36134400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:13:37.875350+00:00",
+      "finalized_at": "2026-10-30T20:13:40.518351+00:00",
+      "usage": {
+        "prompt_tokens": 89776,
+        "completion_tokens": 140,
+        "total_tokens": 89916
+      }
+    },
+    {
+      "id": "a8b919ee06e843828723df5a3b83227e",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 36979200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:14:27.596436+00:00",
+      "finalized_at": "2026-10-30T20:14:28.908578+00:00",
+      "usage": {
+        "prompt_tokens": 92364,
+        "completion_tokens": 21,
+        "total_tokens": 92385
+      }
+    },
+    {
+      "id": "f08e7560385148d6a12c35cb47e5cf61",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 38158800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:14:28.916136+00:00",
+      "finalized_at": "2026-10-30T20:14:31.168429+00:00",
+      "usage": {
+        "prompt_tokens": 94841,
+        "completion_tokens": 139,
+        "total_tokens": 94980
+      }
+    },
+    {
+      "id": "98e58ba8f9224770824e3fc02a8db7d5",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 38070400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:14:31.175103+00:00",
+      "finalized_at": "2026-10-30T20:14:32.760524+00:00",
+      "usage": {
+        "prompt_tokens": 95032,
+        "completion_tokens": 36,
+        "total_tokens": 95068
+      }
+    },
+    {
+      "id": "a6dc879767a14896b660614fde982e23",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 39825200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:15:16.349860+00:00",
+      "finalized_at": "2026-10-30T20:15:18.680153+00:00",
+      "usage": {
+        "prompt_tokens": 99007,
+        "completion_tokens": 139,
+        "total_tokens": 99146
+      }
+    },
+    {
+      "id": "0272a37d1d4246b7991bad338e7b6fe5",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 39738400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:15:18.687064+00:00",
+      "finalized_at": "2026-10-30T20:15:22.750799+00:00",
+      "usage": {
+        "prompt_tokens": 99198,
+        "completion_tokens": 37,
+        "total_tokens": 99235
+      }
+    },
+    {
+      "id": "6e87469c8e6c448fac09a2e6058d7542",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41486000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:07.246029+00:00",
+      "finalized_at": "2026-10-30T20:16:09.912279+00:00",
+      "usage": {
+        "prompt_tokens": 103167,
+        "completion_tokens": 137,
+        "total_tokens": 103304
+      }
+    },
+    {
+      "id": "8be47217bf504cba9a5a9e84f7da4214",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41401600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:09.919026+00:00",
+      "finalized_at": "2026-10-30T20:16:11.552883+00:00",
+      "usage": {
+        "prompt_tokens": 103356,
+        "completion_tokens": 37,
+        "total_tokens": 103393
+      }
+    },
+    {
+      "id": "cd2a1255f029489e816be67449c83aca",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41514800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:11.559802+00:00",
+      "finalized_at": "2026-10-30T20:16:14.147108+00:00",
+      "usage": {
+        "prompt_tokens": 103439,
+        "completion_tokens": 87,
+        "total_tokens": 103526
+      }
+    },
+    {
+      "id": "5a0c894b3137491a8319d9f2e21d352b",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41487200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:14.156374+00:00",
+      "finalized_at": "2026-10-30T20:16:16.304840+00:00",
+      "usage": {
+        "prompt_tokens": 103578,
+        "completion_tokens": 35,
+        "total_tokens": 103613
+      }
+    },
+    {
+      "id": "1586ea02d60f4ac0a62c85ce1d7ce71d",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41863600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:16.313127+00:00",
+      "finalized_at": "2026-10-30T20:16:20.011603+00:00",
+      "usage": {
+        "prompt_tokens": 103659,
+        "completion_tokens": 250,
+        "total_tokens": 103909
+      }
+    },
+    {
+      "id": "3a96ac0e926946da94b548576b3fab17",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41804000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:20.019842+00:00",
+      "finalized_at": "2026-10-30T20:16:22.110699+00:00",
+      "usage": {
+        "prompt_tokens": 103958,
+        "completion_tokens": 138,
+        "total_tokens": 104096
+      }
+    },
+    {
+      "id": "9d5e8cbd35784e6bb812e14b3994d32d",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42057600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:22.117810+00:00",
+      "finalized_at": "2026-10-30T20:16:24.919118+00:00",
+      "usage": {
+        "prompt_tokens": 104144,
+        "completion_tokens": 250,
+        "total_tokens": 104394
+      }
+    },
+    {
+      "id": "faee05c40e0643dcabf45899109dd401",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41998000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:24.926381+00:00",
+      "finalized_at": "2026-10-30T20:16:27.238147+00:00",
+      "usage": {
+        "prompt_tokens": 104443,
+        "completion_tokens": 138,
+        "total_tokens": 104581
+      }
+    },
+    {
+      "id": "681b31cd4e46417799145f0aeed30523",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 41912400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:27.245448+00:00",
+      "finalized_at": "2026-10-30T20:16:29.031986+00:00",
+      "usage": {
+        "prompt_tokens": 104633,
+        "completion_tokens": 37,
+        "total_tokens": 104670
+      }
+    },
+    {
+      "id": "332b6f71bfb54cc6991f9c76211befbc",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42286400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:29.039583+00:00",
+      "finalized_at": "2026-10-30T20:16:32.106112+00:00",
+      "usage": {
+        "prompt_tokens": 104716,
+        "completion_tokens": 250,
+        "total_tokens": 104966
+      }
+    },
+    {
+      "id": "4e460668814344e4855ce836e1f67674",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42226800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:32.113930+00:00",
+      "finalized_at": "2026-10-30T20:16:34.321153+00:00",
+      "usage": {
+        "prompt_tokens": 105015,
+        "completion_tokens": 138,
+        "total_tokens": 105153
+      }
+    },
+    {
+      "id": "1ed001e08b654bd6b8ae9be37e5264f3",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42480400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:34.328579+00:00",
+      "finalized_at": "2026-10-30T20:16:37.463804+00:00",
+      "usage": {
+        "prompt_tokens": 105201,
+        "completion_tokens": 250,
+        "total_tokens": 105451
+      }
+    },
+    {
+      "id": "ca5284b4fa8e49ccafc916e3436087d8",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42420800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:37.470816+00:00",
+      "finalized_at": "2026-10-30T20:16:40.012954+00:00",
+      "usage": {
+        "prompt_tokens": 105500,
+        "completion_tokens": 138,
+        "total_tokens": 105638
+      }
+    },
+    {
+      "id": "e6adef12d3724fddbfe261a0a030a871",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42335200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:40.083355+00:00",
+      "finalized_at": "2026-10-30T20:16:41.811474+00:00",
+      "usage": {
+        "prompt_tokens": 105690,
+        "completion_tokens": 37,
+        "total_tokens": 105727
+      }
+    },
+    {
+      "id": "e45d9b2071094ea1a7f5d02e12f738a8",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42709200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:41.818982+00:00",
+      "finalized_at": "2026-10-30T20:16:44.991028+00:00",
+      "usage": {
+        "prompt_tokens": 105773,
+        "completion_tokens": 250,
+        "total_tokens": 106023
+      }
+    },
+    {
+      "id": "7a68be7e28a341d6af3e8dbd8ac31e30",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42657600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:44.998593+00:00",
+      "finalized_at": "2026-10-30T20:16:47.703127+00:00",
+      "usage": {
+        "prompt_tokens": 106072,
+        "completion_tokens": 143,
+        "total_tokens": 106215
+      }
+    },
+    {
+      "id": "cf02538445f94372b230506ce966e034",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42566000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:47.711591+00:00",
+      "finalized_at": "2026-10-30T20:16:49.774947+00:00",
+      "usage": {
+        "prompt_tokens": 106267,
+        "completion_tokens": 37,
+        "total_tokens": 106304
+      }
+    },
+    {
+      "id": "5f9c3753958b42baa15debd822d6d362",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42940000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:49.782611+00:00",
+      "finalized_at": "2026-10-30T20:16:52.848762+00:00",
+      "usage": {
+        "prompt_tokens": 106350,
+        "completion_tokens": 250,
+        "total_tokens": 106600
+      }
+    },
+    {
+      "id": "575424a337d844a9b162efaa25742ca3",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42880400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:52.856281+00:00",
+      "finalized_at": "2026-10-30T20:16:55.745320+00:00",
+      "usage": {
+        "prompt_tokens": 106649,
+        "completion_tokens": 138,
+        "total_tokens": 106787
+      }
+    },
+    {
+      "id": "b5b06e0aa9454dbf88b63196a796408f",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43134000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:55.752770+00:00",
+      "finalized_at": "2026-10-30T20:16:58.652942+00:00",
+      "usage": {
+        "prompt_tokens": 106835,
+        "completion_tokens": 250,
+        "total_tokens": 107085
+      }
+    },
+    {
+      "id": "e6c8b795274746daa1e5252870c28000",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43101600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:16:58.660689+00:00",
+      "finalized_at": "2026-10-30T20:17:01.686014+00:00",
+      "usage": {
+        "prompt_tokens": 107134,
+        "completion_tokens": 155,
+        "total_tokens": 107289
+      }
+    },
+    {
+      "id": "e9a72d75c72541f495243ffcadb99e8a",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 42995600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:01.693828+00:00",
+      "finalized_at": "2026-10-30T20:17:03.725143+00:00",
+      "usage": {
+        "prompt_tokens": 107341,
+        "completion_tokens": 37,
+        "total_tokens": 107378
+      }
+    },
+    {
+      "id": "5897c11dc61443a194d364f2c936478c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43369600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:03.733022+00:00",
+      "finalized_at": "2026-10-30T20:17:06.823107+00:00",
+      "usage": {
+        "prompt_tokens": 107424,
+        "completion_tokens": 250,
+        "total_tokens": 107674
+      }
+    },
+    {
+      "id": "2c9034ea4b87448095d4a420ccb6cff0",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43329200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:06.831280+00:00",
+      "finalized_at": "2026-10-30T20:17:09.457042+00:00",
+      "usage": {
+        "prompt_tokens": 107723,
+        "completion_tokens": 150,
+        "total_tokens": 107873
+      }
+    },
+    {
+      "id": "92eae46c7c4146a0b8ee843f0bc91c90",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43229200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:09.464640+00:00",
+      "finalized_at": "2026-10-30T20:17:11.888884+00:00",
+      "usage": {
+        "prompt_tokens": 107925,
+        "completion_tokens": 37,
+        "total_tokens": 107962
+      }
+    },
+    {
+      "id": "eaff3bdc5992403391731c0a832ee466",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43603200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:11.898041+00:00",
+      "finalized_at": "2026-10-30T20:17:15.012563+00:00",
+      "usage": {
+        "prompt_tokens": 108008,
+        "completion_tokens": 250,
+        "total_tokens": 108258
+      }
+    },
+    {
+      "id": "7eaad4414fa847a98a26ab31b9cd1423",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43562800,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:15.079721+00:00",
+      "finalized_at": "2026-10-30T20:17:17.595420+00:00",
+      "usage": {
+        "prompt_tokens": 108307,
+        "completion_tokens": 150,
+        "total_tokens": 108457
+      }
+    },
+    {
+      "id": "27c36e0471ce469e886be99df74ab3d6",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43802000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:17.604547+00:00",
+      "finalized_at": "2026-10-30T20:17:21.091404+00:00",
+      "usage": {
+        "prompt_tokens": 108505,
+        "completion_tokens": 250,
+        "total_tokens": 108755
+      }
+    },
+    {
+      "id": "02e2521bbc284ef695f7d22bfbfb98f0",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43763200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:21.100683+00:00",
+      "finalized_at": "2026-10-30T20:17:23.567153+00:00",
+      "usage": {
+        "prompt_tokens": 108804,
+        "completion_tokens": 151,
+        "total_tokens": 108955
+      }
+    },
+    {
+      "id": "8ea9ee2e9e954e37bb1115f565fd5421",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43662000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:23.576293+00:00",
+      "finalized_at": "2026-10-30T20:17:25.646808+00:00",
+      "usage": {
+        "prompt_tokens": 109007,
+        "completion_tokens": 37,
+        "total_tokens": 109044
+      }
+    },
+    {
+      "id": "be4c2e83156d4c82b20deded528f21b8",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44036000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:25.654759+00:00",
+      "finalized_at": "2026-10-30T20:17:29.400994+00:00",
+      "usage": {
+        "prompt_tokens": 109090,
+        "completion_tokens": 250,
+        "total_tokens": 109340
+      }
+    },
+    {
+      "id": "aa5ed2a14aab4bc09f7d4d53717b19fb",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 43978000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:29.409242+00:00",
+      "finalized_at": "2026-10-30T20:17:32.407428+00:00",
+      "usage": {
+        "prompt_tokens": 109389,
+        "completion_tokens": 139,
+        "total_tokens": 109528
+      }
+    },
+    {
+      "id": "581460a6e80b45cb95c738231b64cec2",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44230400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:32.415375+00:00",
+      "finalized_at": "2026-10-30T20:17:35.832247+00:00",
+      "usage": {
+        "prompt_tokens": 109576,
+        "completion_tokens": 250,
+        "total_tokens": 109826
+      }
+    },
+    {
+      "id": "4dfdd37e4d95468f909da9be3b5d56cb",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44191600,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:35.842968+00:00",
+      "finalized_at": "2026-10-30T20:17:38.372453+00:00",
+      "usage": {
+        "prompt_tokens": 109875,
+        "completion_tokens": 151,
+        "total_tokens": 110026
+      }
+    },
+    {
+      "id": "036763055ab445e882991d15e976b7f5",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44090400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:38.380619+00:00",
+      "finalized_at": "2026-10-30T20:17:40.293895+00:00",
+      "usage": {
+        "prompt_tokens": 110078,
+        "completion_tokens": 37,
+        "total_tokens": 110115
+      }
+    },
+    {
+      "id": "8cca77adae0c4132842a9e4c7a8e4484",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44464400,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:40.302402+00:00",
+      "finalized_at": "2026-10-30T20:17:44.324910+00:00",
+      "usage": {
+        "prompt_tokens": 110161,
+        "completion_tokens": 250,
+        "total_tokens": 110411
+      }
+    },
+    {
+      "id": "ecc34daa689b4cc5a7758038b78d469f",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44424000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:44.388481+00:00",
+      "finalized_at": "2026-10-30T20:17:46.884113+00:00",
+      "usage": {
+        "prompt_tokens": 110460,
+        "completion_tokens": 150,
+        "total_tokens": 110610
+      }
+    },
+    {
+      "id": "871bc115f575414586daa5102782018b",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44324000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:46.893682+00:00",
+      "finalized_at": "2026-10-30T20:17:48.742850+00:00",
+      "usage": {
+        "prompt_tokens": 110662,
+        "completion_tokens": 37,
+        "total_tokens": 110699
+      }
+    },
+    {
+      "id": "ea570165e4074a9e84f406f1895acd11",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44698000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:48.751261+00:00",
+      "finalized_at": "2026-10-30T20:17:51.884036+00:00",
+      "usage": {
+        "prompt_tokens": 110745,
+        "completion_tokens": 250,
+        "total_tokens": 110995
+      }
+    },
+    {
+      "id": "9ee786db3ba94db098cc922fdf3b3f4c",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44659200,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:51.892068+00:00",
+      "finalized_at": "2026-10-30T20:17:54.418960+00:00",
+      "usage": {
+        "prompt_tokens": 111044,
+        "completion_tokens": 151,
+        "total_tokens": 111195
+      }
+    },
+    {
+      "id": "5ce5c9701a7f44c8aa84e3e53420403b",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44558000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:54.427631+00:00",
+      "finalized_at": "2026-10-30T20:17:56.129147+00:00",
+      "usage": {
+        "prompt_tokens": 111247,
+        "completion_tokens": 37,
+        "total_tokens": 111284
+      }
+    },
+    {
+      "id": "2752b92fb1174b05b61ff81c2ac11583",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44932000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:17:56.139349+00:00",
+      "finalized_at": "2026-10-30T20:18:02.271882+00:00",
+      "usage": {
+        "prompt_tokens": 111330,
+        "completion_tokens": 250,
+        "total_tokens": 111580
+      }
+    },
+    {
+      "id": "83a3b203dfb3449cbe8ebf1c6b51a951",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 44874000,
+      "status": "settled",
+      "created_at": "2026-10-30T20:18:02.282958+00:00",
+      "finalized_at": "2026-10-30T20:18:04.710523+00:00",
+      "usage": {
+        "prompt_tokens": 111629,
+        "completion_tokens": 139,
+        "total_tokens": 111768
+      }
+    },
+    {
+      "id": "92b5dd9917cc4252899c80aa67f8de1e",
+      "run_id": "codespaces-agent-r5-20261030-01-E3-agent-0",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "max_completion_tokens": 4096,
+      "reserved_nusd": 425584000,
+      "charged_nusd": 425584000,
+      "status": "uncertain",
+      "created_at": "2026-10-30T20:18:04.719813+00:00",
+      "reason": "ambiguous_provider_error",
+      "finalized_at": "2026-10-30T20:18:05.096497+00:00"
+    }
+  ],
+  "revision": 179
+}

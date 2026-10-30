@@ -1,0 +1,14 @@
+[1/8] Building CXX object CMakeFiles/ledger.dir/src/book.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[2/8] Building CXX object CMakeFiles/ledger.dir/src/reference_book.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[3/8] Building CXX object CMakeFiles/ledger.dir/src/feed_view.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[4/8] Building CXX object CMakeFiles/ledger.dir/src/feed.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[5/8] Building CXX object CMakeFiles/ledger.dir/src/study_workloads.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[6/8] Linking CXX static library libledger.a
+[7/8] Building CXX object CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.o
+clang++: warning: argument unused during compilation: '-fuse-ld=lld' [-Wunused-command-line-argument]
+[8/8] Linking CXX executable ledger_bench
