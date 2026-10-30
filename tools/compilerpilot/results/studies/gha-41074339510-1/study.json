@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "study_id": "gha-41074339510-1",
+  "created_at": "2026-10-30T14:45:28.326611+00:00",
+  "protocol": {
+    "study_id": "gha-41074339510-1",
+    "ledger": "/home/runner/work/Ledger/Ledger",
+    "data": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/data/studies/gha-41074339510-1",
+    "results": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/results/studies/gha-41074339510-1",
+    "cpu": 0,
+    "jobs": 2,
+    "commands": 5000000,
+    "budget": 40,
+    "seeds": 3,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012
+  },
+  "source": {
+    "ledger_commit": "b53235bce92451365db76df7c10a466be6b17d58",
+    "ledger_dirty": false,
+    "source_sha256": "222be23680fb9afd773e85f8f58492869aa9318a59e79831ca04b47b9b752f76"
+  },
+  "host": {
+    "node": "runnervm48cm3",
+    "machine": "x86_64",
+    "system": "Linux",
+    "boot_id_sha256": "b6e3cc531eadd38880a4e6bcd4ab562f72753a6e9527234233de16d0fa54b375",
+    "github_run_id": "41074339510",
+    "github_run_attempt": "1"
+  },
+  "full_E3_protocol": true,
+  "phases": {
+    "E1": {
+      "status": "failed",
+      "started_at": "2026-10-30T14:45:28.331811+00:00",
+      "ended_at": "2026-10-30T14:48:00.710893+00:00",
+      "error": "E1 stopped with exit code 1; its evidence remains in /home/runner/work/Ledger/Ledger/tools/compilerpilot/results/studies/gha-41074339510-1/runs/gha-41074339510-1-E1"
+    }
+  },
+  "status": "failed",
+  "agent": null,
+  "requested_phase": "baseline",
+  "confirmation_requested": true,
+  "updated_at": "2026-10-30T14:48:01.870136+00:00",
+  "error": "E1 stopped with exit code 1; its evidence remains in /home/runner/work/Ledger/Ledger/tools/compilerpilot/results/studies/gha-41074339510-1/runs/gha-41074339510-1-E1",
+  "report": {
+    "summary": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/results/studies/gha-41074339510-1/summary.md",
+    "trials": 0,
+    "eligible": 0,
+    "complete": false,
+    "heldout_measured": false,
+    "status": "insufficient_predictor_data"
+  }
+}

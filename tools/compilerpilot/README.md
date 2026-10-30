@@ -12,6 +12,8 @@ The LLM provider adapters and protocol tests are implemented, but a live API exp
 
 See [measured results](results/summary.md), [methodology](docs/methodology.md), and [qualification status](results/status.md).
 
+A separate [hosted-runner qualification](results/studies/gha-41074339510-1/summary.md) used five million commands on AMD EPYC 9V45 and also failed the noise gate (**8.03% CV**). It made no model calls and did not proceed to search. Its different hardware and replay length do not establish a speedup over the earlier results.
+
 ## Run it
 
 Linux x86-64, Python 3.11+, GCC 13+, Clang/LLVM 17+, CMake 3.21+, Ninja, binutils and `taskset` are required. Install matching LLVM profiling and `lld` packages for Clang PGO/ThinLTO. Hardware `perf` events need host support and permissions; unavailable counters are recorded explicitly.

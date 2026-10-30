@@ -1,0 +1,105 @@
+{
+  "correctness": true,
+  "throughput": 25549355.8624,
+  "p50_ns": 40.0,
+  "p99_ns": 201.0,
+  "cv": 0.014535882767969702,
+  "spread": 374610.6525329236,
+  "runs": [
+    26209847.6143,
+    25549355.8624,
+    26145334.9624,
+    25530362.6476,
+    25422306.4571
+  ],
+  "error": null,
+  "provenance": {
+    "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+    "input": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/data/studies/gha-41074339510-1/eval.lob",
+    "cpu": 0,
+    "pinned": true,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "summary": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/baseline-7/summary.json",
+    "runs_csv": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/baseline-7/runs.csv",
+    "benchmark_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/ledger_bench",
+      "--input",
+      "/home/runner/work/Ledger/Ledger/tools/compilerpilot/data/studies/gha-41074339510-1/eval.lob",
+      "--runs",
+      "5",
+      "--warmup",
+      "50000",
+      "--outdir",
+      "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/baseline-7"
+    ],
+    "differential_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/ledger_differential",
+      "--seeds",
+      "5",
+      "--orders",
+      "100000",
+      "--output",
+      "/home/runner/work/Ledger/Ledger/tools/compilerpilot/builds/gha-41074339510-1-E1/be180963747c4559/baseline-7/differential.json"
+    ],
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+    "compiler": {
+      "version": "13.3.0",
+      "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+      "optimization_enabled": true,
+      "ndebug": true
+    },
+    "differential": {
+      "status": "pass",
+      "generator": "splitmix64-bounded-adversarial-v1",
+      "base_seed": 8330235730275514375,
+      "first_seed": 0,
+      "seeds": 5,
+      "commands_per_seed": 100000,
+      "commands_compared": 500000,
+      "reports_compared": 1047284,
+      "trades_compared": 171010,
+      "applied_commands": 237011,
+      "rejected_commands": 262989,
+      "structural_checkpoints": 125,
+      "checkpoint_interval": 4096,
+      "linear_variant_compared": true,
+      "linear_fok_variant_compared": true,
+      "per_command_checks": [
+        "process_result",
+        "all_event_fields",
+        "statistics",
+        "size",
+        "resting_quantity",
+        "best_quotes",
+        "quantity_conservation",
+        "uncrossed_quotes"
+      ],
+      "checkpoint_checks": [
+        "full_structural_invariants",
+        "full_FIFO_orders",
+        "all_levels",
+        "all_statistics"
+      ],
+      "elapsed_seconds": 0.068918
+    }
+  },
+  "checksums": {
+    "event_checksum": 4775833837545484177,
+    "trade_checksum": 5735633710814156320,
+    "events": 10979250,
+    "trades": 1993083,
+    "rejected_commands": 0,
+    "live_orders_final": 2039
+  }
+}

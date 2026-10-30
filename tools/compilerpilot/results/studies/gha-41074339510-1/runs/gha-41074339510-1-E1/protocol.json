@@ -1,0 +1,22 @@
+{
+  "strategy": "baseline",
+  "seed": 0,
+  "budget": 1,
+  "arguments": {
+    "command": "baseline",
+    "ledger": "/home/runner/work/Ledger/Ledger",
+    "data": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/data/studies/gha-41074339510-1",
+    "results": "/home/runner/work/Ledger/Ledger/tools/compilerpilot/results/studies/gha-41074339510-1",
+    "commands": 5000000,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012,
+    "cpu": 0,
+    "jobs": 2,
+    "baseline_repetitions": 10,
+    "run_id": "gha-41074339510-1-E1"
+  },
+  "python": "3.11.17 (main, Oct  1 2026, 14:32:31) [GCC 13.3.0]",
+  "temperature": null,
+  "model": null,
+  "provider": null
+}
