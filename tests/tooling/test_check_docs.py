@@ -102,7 +102,7 @@ class CodeExampleTests(DocumentFixture):
 
 class RepositoryTests(DocumentFixture):
     def test_compilerpilot_generated_trees_are_skipped_but_source_docs_are_checked(self):
-        component = self.root / "tools" / "compilerpilot"
+        component = (self.root / "tools" / "compilerpilot").resolve()
         for directory in ("builds", "data", "docs"):
             folder = component / directory
             folder.mkdir(parents=True)
