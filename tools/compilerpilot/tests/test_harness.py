@@ -259,3 +259,42 @@ def test_compile_failure_keeps_diagnostic_without_benchmark_input_provenance(tmp
     row = harness.evaluate(candidate)
     assert row['error'] == 'broken compilation'
     assert not row['correctness']
+
+
+def test_real_tool_protocol_can_finish_forty_build_no_improvement_with_discovered_baseline(tmp_path):
+    from compilerpilot.strategies.agent import AgentRunner
+    candidates = [Candidate(compiler='clang', opt='O2' if i & 1 else 'O3',
+                            isa='none' if i & 2 else 'native', lto=bool(i & 4),
+                            unroll=bool(i & 8), vectorize=bool(i & 16), frame_pointer=bool(i & 32))
+                  for i in range(40)]
+    measurements = {candidate.hash(): metric(100.0) for candidate in candidates}
+    harness = ready(tmp_path, budget=40, runner=Runner(candidate_metrics=measurements))
+    step = 0
+    def transport(url, headers, payload, timeout):
+        nonlocal step
+        initial = json.loads(payload['messages'][1]['content'])
+        baseline = initial['history']['baseline']
+        assert baseline['candidate'] == Candidate().to_dict()
+        # The fake provider learns the ID only through the real compact prompt.
+        if step < 80:
+            candidate = candidates[step // 2]
+            if step % 2 == 0:
+                name, arguments = 'build', {'candidate': candidate.to_dict()}
+            else:
+                name, arguments = 'run_benchmark', {'build_id': candidate.hash()}
+        else:
+            name, arguments = 'finish', {'recommendation': baseline['build_id'],
+                'rationale': 'All forty correctness-passing candidates were within baseline noise'}
+        step += 1
+        return {'choices': [{'message': {'role': 'assistant',
+            'content': 'Test hypothesis; measured result does not support an improvement.',
+            'tool_calls': [{'id': f'call-{step}', 'type': 'function',
+                            'function': {'name': name, 'arguments': json.dumps(arguments)}}]}}]}
+    result = AgentRunner(harness, provider='openai', model='test-fixed-model',
+                         api_key='test-placeholder', transport=transport).run(40)
+    assert result['status'] == 'finished' and result['complete'] is True
+    assert result['builds'] == 40 and result['calls'] == 81
+    assert len(harness.history) == 40
+    assert all(row['correctness'] and row['measurement_valid'] for row in harness.history)
+    assert not any(row['significant'] for row in harness.history)
+    assert result['recommendation']['recommendation'] == harness.baseline.build_id

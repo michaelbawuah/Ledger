@@ -250,6 +250,8 @@ class Harness:
         baseline = ({key: self.baseline_metric[key]
                      for key in ('throughput', 'p50_ns', 'p99_ns', 'cv', 'spread', 'correctness')
                      if key in self.baseline_metric} if self.baseline_metric else None)
+        if baseline is not None and self.baseline is not None:
+            baseline.update(build_id=self.baseline.build_id, candidate=dict(self.baseline.candidate))
         failed = [r for r in self.history
                   if not r.get('correctness') or not r.get('measurement_valid')]
         return {'best': [compact(row) for row in rows[:top_k]],

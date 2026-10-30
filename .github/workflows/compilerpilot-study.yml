@@ -1,0 +1,121 @@
+name: CompilerPilot controlled study
+
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: 'Noise qualification first; study requires a provider secret and fixed model'
+        type: choice
+        options: [baseline, study]
+        default: baseline
+        required: true
+      provider:
+        description: 'Provider for the study phase'
+        type: choice
+        options: [openai, anthropic]
+        default: openai
+        required: true
+      model:
+        description: 'Exact model version for study; unused during baseline qualification'
+        type: string
+        default: ''
+        required: false
+      commands:
+        description: 'Fixed replay length shared by all candidates'
+        type: choice
+        options: ['5000000', '1000000']
+        default: '5000000'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: compilerpilot-controlled-study
+  cancel-in-progress: false
+
+jobs:
+  controlled-study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    defaults:
+      run:
+        working-directory: tools/compilerpilot
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      STUDY_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+      STUDY_PHASE: ${{ inputs.phase }}
+      STUDY_PROVIDER: ${{ inputs.provider }}
+      STUDY_MODEL: ${{ inputs.model }}
+      STUDY_COMMANDS: ${{ inputs.commands }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install matched compiler toolchains
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build g++ clang llvm lld libclang-rt-18-dev binutils util-linux
+      - name: Install Python requirements
+        run: python -m pip install -e '.[dev]'
+      - name: Record public runner metadata
+        run: |
+          python - <<'PY'
+          import json, os, platform, subprocess
+          from pathlib import Path
+          path = Path('results/studies') / os.environ['STUDY_ID']
+          path.mkdir(parents=True, exist_ok=True)
+          versions = {}
+          for executable in ['g++', 'clang++', 'cmake', 'llvm-profdata']:
+              versions[executable] = subprocess.check_output([executable, '--version'], text=True).splitlines()[0]
+          metadata = {
+              'study_id': os.environ['STUDY_ID'],
+              'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'platform': platform.platform(),
+              'allowed_cpus': sorted(os.sched_getaffinity(0)),
+              'fixed_cpu': 0,
+              'compiler_versions': versions,
+              'phase': os.environ['STUDY_PHASE'],
+              'commands': int(os.environ['STUDY_COMMANDS']),
+              'automatic_retries': 0,
+              'runner_class': 'GitHub standard hosted VM; physical CPU exclusivity is not assumed',
+          }
+          (path / 'runner.json').write_text(json.dumps(metadata, indent=2) + '\n')
+          print(json.dumps(metadata, indent=2))
+          PY
+      - name: Qualify baseline noise without model calls
+        if: inputs.phase == 'baseline'
+        run: |
+          python scripts/run_study.py --phase baseline --study-id "$STUDY_ID" --commands "$STUDY_COMMANDS" --cpu 0 --jobs 2
+      - name: Run gated E1-E5 study on this same VM
+        if: inputs.phase == 'study'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/run_study.py --phase study --study-id "$STUDY_ID" --commands "$STUDY_COMMANDS" --cpu 0 --jobs 2 --provider "$STUDY_PROVIDER" --model "$STUDY_MODEL" --budget 40 --seeds 3
+      - name: Collect raw benchmark and compiler evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import os, shutil
+          from pathlib import Path
+          study = os.environ['STUDY_ID']
+          output = Path('results/studies') / study / 'build-evidence'
+          names = {'build.json', 'summary.json', 'runs.csv', 'differential.json', 'measurement.json', 'size.log', 'compiler-version.log', 'counters.json', 'perf.log', 'validation.json', 'ctest.xml', 'ctest-plan.json', 'ctest.log'}
+          for build in Path('builds').glob(study + '*'):
+              for path in build.rglob('*'):
+                  if path.is_file() and (path.name in names or path.suffix == '.yaml'):
+                      target = output / path.relative_to('builds')
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      shutil.copy2(path, target)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compilerpilot-study-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tools/compilerpilot/results/studies/${{ env.STUDY_ID }}/
+          if-no-files-found: error
+          retention-days: 14

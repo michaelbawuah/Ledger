@@ -231,3 +231,23 @@ def test_zero_search_trials_produce_empty_typed_parquet(tmp_path):
     assert table.schema.field("correctness").type == pa.bool_()
     assert table.schema.field("throughput").type == pa.float64()
     assert table.schema.field("candidate").type == pa.string()
+
+
+def test_real_agent_wrapper_shape_allows_complete_forty_build_coverage(tmp_path):
+    rows = []
+    for strategy in ('random', 'genetic', 'surrogate', 'agent'):
+        for seed in range(3):
+            run_id = f'{strategy}-{seed}'
+            rows.extend(protocol_run(tmp_path, run_id, strategy, seed, budget=40))
+            if strategy == 'agent':
+                outcome = tmp_path / 'runs' / run_id / 'outcome.json'
+                recommendation = json.loads(outcome.read_text())
+                outcome.write_text(json.dumps({'status': 'finished', 'complete': True,
+                    'builds': 40, 'provider': 'openai', 'model': 'fixed-model-version',
+                    'seed': seed, 'calls': 81, 'recommendation': recommendation}))
+    pd.DataFrame(rows).to_parquet(tmp_path / 'trials.parquet')
+    result = generate_report(tmp_path, budget=40, expected_seeds=3)
+    assert result['complete'] is True
+    assert result['coverage']['agent']['complete'] is True
+    assert len(result['runs']) == 12
+    assert all(run['protocol_complete'] for run in result['runs'])

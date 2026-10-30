@@ -30,6 +30,8 @@ python scripts/check_gate.py --input data/eval.lob
 
 Run all commands in this document from `Ledger/tools/compilerpilot`, with the virtual environment active. CompilerPilot discovers the enclosing Ledger root; `--ledger /path/to/Ledger` selects an explicit source checkout when needed. New trials record the live Ledger commit, relevant source/configuration fingerprint and dirty state, rather than retaining the historical qualification commit. The input manifest binds the source and workload protocol; use a new data/results location when either changes.
 
+New mutation checks default to `results/live-gate-check.json`; the original qualification JSON remains historical evidence.
+
 Choose a CPU allowed by `taskset -pc $$`. Keep the machine quiet during measurement. Each baseline command makes ten observations, each with five benchmark runs and a warmup. A failed noise gate stops subsequent search.
 
 ```bash
@@ -44,7 +46,23 @@ python -m compilerpilot report
 
 Use an exact model version that supports tool use, temperature zero and, for OpenAI, the seed parameter. The tool loop records model, sampling settings, request/response traces, hypotheses and tool results. Anthropic does not expose a matching seed parameter; that limitation is recorded. A provider error is an incomplete experiment, never a fallback search result.
 
-`python scripts/run_study.py --model MODEL_ID --provider openai --cpu 0` runs E1, E2 and the full E3 matrix sequentially: four strategies, three seeds and forty unique builds per strategy/seed. Preflight credentials first. Run IDs cannot overwrite existing evidence. A noisy or drifting batch stops the study and must be rerun under a new ID. Reports inventory all attempts.
+`python scripts/run_study.py --phase study --study-id research-01 --model MODEL_ID --provider openai --cpu 0` runs E1, E2 and the full E3 matrix sequentially: four strategies, three seeds and forty unique builds per strategy/seed. Preflight credentials first. Run IDs cannot overwrite existing evidence. A noisy or drifting batch stops the study and must be rerun under a new ID. Reports inventory all attempts.
+
+## Controlled study runner
+
+The manual [controlled-study workflow](../../.github/workflows/compilerpilot-study.yml) starts with a fresh Linux VM and preserves every attempt. Select **baseline** first: this makes no model calls, uses CPU 0, ten observations with five raw runs each, the existing correctness checks, and a fixed replay length. The default replay contains five million commands to make individual measurements longer. No outliers are removed and failed qualification is not retried automatically.
+
+A standard hosted VM is a candidate measurement host; it is not assumed to have an exclusive physical CPU. Only a recorded CV below 2% qualifies it. A later **study** dispatch runs its own baseline again on that job's VM, followed by all strategies serially; calibration from a different VM is never treated as its baseline. A full study is 480 candidate builds and may exceed a hosted job's time limit, in which case the attempt remains incomplete. Use a quiet Linux host for sustained runs when needed.
+
+For a real model run, add `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` privately in the repository's GitHub Actions secrets and supply an exact supported model version. Keep credentials out of chat, source and artifacts. Provider charges apply to real model calls; the build budget and model-call limits are recorded with the run. No model call is made during baseline qualification.
+
+Local qualification uses the same runner:
+
+```bash
+python scripts/run_study.py --phase baseline --study-id local-qualification --commands 5000000 --cpu 0
+```
+
+Artifacts include the protocol, source identity, raw replay observations and failure details. A failed noise gate stops the attempt; a new host or explicitly changed protocol requires a new study ID.
 
 ## How a trial works
 

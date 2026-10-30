@@ -148,6 +148,11 @@ def _select_runs(rows: list[dict[str, Any]], results_dir: Path, budget: int) -> 
         protocol = _read_json(run_dir / "protocol.json") if run_dir else {}
         baseline = _read_json(run_dir / "baseline.json") if run_dir else {}
         outcome = _read_json(run_dir / "outcome.json") if run_dir else {}
+        # Earlier agent runs stored the provider wrapper rather than the neutral
+        # harness recommendation. Only a successful wrapper can be unwrapped.
+        if (strategy == "agent" and outcome.get("status") == "finished"
+                and isinstance(outcome.get("recommendation"), dict)):
+            outcome = outcome["recommendation"]
         if not outcome and run_dir:
             outcome = _read_json(run_dir / "recommendation.json")
         started, bad_checkpoint = _trace_state(run_dir)

@@ -99,9 +99,16 @@ def experiment(args):
     try:
         if args.strategy == 'agent':
             from .strategies.agent import AgentRunner
-            outcome = AgentRunner(h,provider=args.provider,model=args.model,seed=args.seed,max_calls=args.budget*12).run(args.budget)
-            if outcome.get('status') != 'finished':
-                raise RuntimeError(f'Agent experiment incomplete: {outcome.get("status")}')
+            execution = AgentRunner(h,provider=args.provider,model=args.model,seed=args.seed,max_calls=args.budget*12).run(args.budget)
+            # Keep provider metadata independently of the strategy-neutral outcome.
+            h.store.write('agent-execution.json', execution)
+            if execution.get('status') != 'finished':
+                raise RuntimeError(f'Agent experiment incomplete: {execution.get("status")}')
+            outcome = execution.get('recommendation')
+            if (not isinstance(outcome, dict)
+                    or outcome.get('status') != 'provisional_pending_confirmation'
+                    or outcome.get('builds_used') != args.budget):
+                raise RuntimeError('Agent finished without a complete harness recommendation')
         else:
             if args.strategy=='random':
                 from .strategies.random_search import RandomSearch as Policy
