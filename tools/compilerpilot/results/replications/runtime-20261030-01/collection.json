@@ -1,0 +1,271 @@
+{
+  "claim_boundary": "Independent host results only; no timing pooling, no original search completion or policy ranking.",
+  "collected_at": "2026-10-30T22:58:54.776592+00:00",
+  "compressed_artifacts": [
+    {
+      "compressed_sha256": "f7d238a7570075d2af70269c5b7544522506c34f6b95846a044b43585c74f109",
+      "compressed_size_bytes": 4684,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "be180963747c4559/CMakeFiles/CMakeConfigureLog.yaml",
+      "original_sha256": "5a080a2e8a27a4acc4d9ccfb1c7de2ada18ca60a4d0a02b1877ecceed7e5f619",
+      "original_size_bytes": 34885,
+      "retained_path": "build-evidence/be180963747c4559/CMakeFiles/CMakeConfigureLog.yaml.gz"
+    }
+  ],
+  "model_calls": 0,
+  "raw_audits": [
+    {
+      "directory": "build-evidence/be180963747c4559/baseline-0",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.51219512195",
+          "bitmap_linear_p99_reduction_percent": "9.96677740864",
+          "bitmap_linear_throughput_improvement_percent": "3.28665278011",
+          "bitmap_reference_throughput_ratio": "2.15461299015"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/baseline-1",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "11.6666666667",
+          "bitmap_linear_p99_reduction_percent": "12.5806451613",
+          "bitmap_linear_throughput_improvement_percent": "4.07004186606",
+          "bitmap_reference_throughput_ratio": "2.24840756553"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0000",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.73236009732",
+          "bitmap_linear_p99_reduction_percent": "12.5806451613",
+          "bitmap_linear_throughput_improvement_percent": "-0.143360041676",
+          "bitmap_reference_throughput_ratio": "2.30388266001"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0001",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.07317073171",
+          "bitmap_linear_p99_reduction_percent": "9.96677740864",
+          "bitmap_linear_throughput_improvement_percent": "5.14407828061",
+          "bitmap_reference_throughput_ratio": "2.19245731368"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0002",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.73236009732",
+          "bitmap_linear_p99_reduction_percent": "12.5806451613",
+          "bitmap_linear_throughput_improvement_percent": "6.10333709299",
+          "bitmap_reference_throughput_ratio": "2.40555622762"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0003",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.97566909976",
+          "bitmap_linear_p99_reduction_percent": "10.2990033223",
+          "bitmap_linear_throughput_improvement_percent": "2.54747600982",
+          "bitmap_reference_throughput_ratio": "2.19174366954"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0004",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "11.6666666667",
+          "bitmap_linear_p99_reduction_percent": "12.5806451613",
+          "bitmap_linear_throughput_improvement_percent": "3.96073509607",
+          "bitmap_reference_throughput_ratio": "2.18006499424"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0005",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.31707317073",
+          "bitmap_linear_p99_reduction_percent": "9.96677740864",
+          "bitmap_linear_throughput_improvement_percent": "2.62677607184",
+          "bitmap_reference_throughput_ratio": "2.18543299389"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0006",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.51219512195",
+          "bitmap_linear_p99_reduction_percent": "9.96677740864",
+          "bitmap_linear_throughput_improvement_percent": "-1.53453433932",
+          "bitmap_reference_throughput_ratio": "2.12424204439"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0007",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.97506234414",
+          "bitmap_linear_p99_reduction_percent": "10.2990033223",
+          "bitmap_linear_throughput_improvement_percent": "4.86512015272",
+          "bitmap_reference_throughput_ratio": "2.23928290638"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0008",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.97566909976",
+          "bitmap_linear_p99_reduction_percent": "10.2990033223",
+          "bitmap_linear_throughput_improvement_percent": "3.79260297895",
+          "bitmap_reference_throughput_ratio": "2.22256085084"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0009",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.12589073634",
+          "bitmap_linear_p99_reduction_percent": "9.67741935484",
+          "bitmap_linear_throughput_improvement_percent": "-0.994704678309",
+          "bitmap_reference_throughput_ratio": "2.23415441476"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0010",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.73871733967",
+          "bitmap_linear_p99_reduction_percent": "12.5806451613",
+          "bitmap_linear_throughput_improvement_percent": "0.0251574536193",
+          "bitmap_reference_throughput_ratio": "2.15716537044"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/condition-e1-0011",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.97566909976",
+          "bitmap_linear_p99_reduction_percent": "10.2990033223",
+          "bitmap_linear_throughput_improvement_percent": "7.01373371678",
+          "bitmap_reference_throughput_ratio": "2.27909385068"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 60,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,9 @@
+{
+  "actual_wall_seconds": 321.771121810998,
+  "completed_groups": 12,
+  "reported_runs": 1,
+  "role": "conditioning_only_not_performance_estimation",
+  "selection": "All completed groups retained; stop depends only on elapsed wall time, never speed or CV",
+  "target_wall_seconds": 300,
+  "throughput_replays": 20
+}

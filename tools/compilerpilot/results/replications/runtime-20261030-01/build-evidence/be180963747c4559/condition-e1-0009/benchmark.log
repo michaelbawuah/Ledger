@@ -1,0 +1,4 @@
+reference run 1/1: 7.76 M commands/s, p99 481 ns
+fast-bitmap run 1/1: 17.35 M commands/s, p99 280 ns
+fast-linear run 1/1: 17.52 M commands/s, p99 310 ns
+/workspace/scratch/782b5db88681/Ledger-runtime-engine/tools/compilerpilot/builds/runtime-20261030-01/be180963747c4559/condition-e1-0009/summary.json

@@ -1,0 +1,15 @@
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0000", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0001", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0002", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0003", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0004", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0005", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0006", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0007", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0008", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0009", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0010", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "conditioning_e1", "build_id": "be180963747c4559", "label": "condition-e1-0011", "round": null, "correctness": true, "cv": 0.0}
+{"runtime_progress": "qualification", "build_id": "be180963747c4559", "label": "baseline-0", "round": null, "correctness": true, "cv": 0.006251890236470291}
+{"runtime_progress": "qualification", "build_id": "be180963747c4559", "label": "baseline-1", "round": null, "correctness": true, "cv": 0.02791477650437748}
+{"runtime_status": "early_noisy", "phase": "qualification", "failure_class": "BaselineNoiseAbort"}

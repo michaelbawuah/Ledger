@@ -1,0 +1,83 @@
+{
+  "aggregation_boundary": "Conditioning runs1, E1 runs5, E5 runs5 and PGO training are distinct; no timing pooling",
+  "groups_by_role": {
+    "PGO_training": [],
+    "conditioning_e1": [
+      {
+        "directory": "be180963747c4559/condition-e1-0000",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0001",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0002",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0003",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0004",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0005",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0006",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0007",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0008",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0009",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0010",
+        "runs": 1,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/condition-e1-0011",
+        "runs": 1,
+        "throughput_replays": 20
+      }
+    ],
+    "conditioning_e5": [],
+    "confirmation": [],
+    "other": [],
+    "qualification": [
+      {
+        "directory": "be180963747c4559/baseline-0",
+        "runs": 5,
+        "throughput_replays": 20
+      },
+      {
+        "directory": "be180963747c4559/baseline-1",
+        "runs": 5,
+        "throughput_replays": 20
+      }
+    ]
+  }
+}

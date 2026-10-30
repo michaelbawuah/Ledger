@@ -1,0 +1,8 @@
+{
+  "failure_class": "BaselineNoiseAbort",
+  "reason": "E1 baseline within-group CV already fails the strict 2% maximum gate",
+  "recommendation": null,
+  "status": "early_noisy",
+  "unvalidated_result": null,
+  "winner": null
+}

@@ -1,0 +1,42 @@
+{
+  "commands": 5000000,
+  "evaluation_seed": 20261011,
+  "files": {
+    "eval.lob": {
+      "generator": {
+        "cancels": 1499265,
+        "capacity_ioc_limits": 0,
+        "empty_book_cancels": 0,
+        "limits": 2999950,
+        "markets": 500785,
+        "peak_live_orders": 2107,
+        "records": 5000000,
+        "rejected_commands": 0,
+        "seed": 20261011
+      },
+      "seed": 20261011,
+      "sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04"
+    },
+    "train.lob": {
+      "generator": {
+        "cancels": 1499717,
+        "capacity_ioc_limits": 0,
+        "empty_book_cancels": 1,
+        "limits": 3000992,
+        "markets": 499291,
+        "peak_live_orders": 2121,
+        "records": 5000000,
+        "rejected_commands": 1,
+        "seed": 20261012
+      },
+      "seed": 20261012,
+      "sha256": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4"
+    }
+  },
+  "source": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "training_seed": 20261012
+}

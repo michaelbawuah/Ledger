@@ -1,0 +1,161 @@
+{
+  "automatic_retries": 0,
+  "benchmark_cpu": 8,
+  "builds": "/workspace/scratch/782b5db88681/Ledger-runtime-engine/tools/compilerpilot/builds/runtime-20261030-01",
+  "child_lifecycle": "Observe Popen handles only for own start_new_session children; unchanged commands/timeouts; terminate active owned groups on controller failure",
+  "claim_boundary": "Qualification is not speedup. Conditioning/E1/E5/PGO training timings stay separate; no original agent-budget completion or policy ranking.",
+  "commands": 5000000,
+  "conditional_plan": "If qualification fails, stop before nominee build; otherwise build only original6d, mutation gate, then unchanged ten-round confirmer/full100M+15CTest",
+  "conditioning_excluded_by_role_only": true,
+  "conditioning_rule": "Complete baseline-only groups until monotonic elapsed>=300s, once before E1 and once before E5; no value-based selection",
+  "conditioning_runs": 1,
+  "conditioning_wall_seconds_each": 300,
+  "confirmation_gate": "Unchanged frozen confirmer, CV<2%, drift<=2%, improvement>3x baseline noise, full100M differential and all15CTest",
+  "confirmation_rounds": 10,
+  "controller_commit": "274fb1c7cbd40af903e3ecd53ce80e6e958a823d",
+  "controller_script_sha256": "d7a41f772f866c62951d30b1303c578723adc8a00e981ee8d67d622cc4904ea0",
+  "cpu_selection": "Maximum originally allowed CPU, selected before any benchmark",
+  "data": "/workspace/scratch/782b5db88681/Ledger-runtime-engine/tools/compilerpilot/data/replications/runtime-20261030-01",
+  "declared_at": "2026-10-30T22:48:15.463155+00:00",
+  "driver_cpus": [
+    0,
+    1
+  ],
+  "engine": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "frozen_gate_script_sha256": "f6f159ad63bc1d2a976cb3b943982b5bd6df8fb3c9c2f0a44983c3c4a0b5aea6",
+  "frozen_module_sha256": {
+    "bench": "5178dd5541971521f146f11da7bd2bee09908fe81f28d71c93d0ced55fbc270a",
+    "build": "2ff08d9b3b2d766203ca458c7ff45c763f1fb64547b9e7eb138d654387b2f2d2",
+    "cli": "173369752c3e41ef29826e55c29e92e511f13dd511aadf60b26b6e5d8ffc45ca",
+    "confirm": "2bf9ef909430ffc461566416786f8560cd99baf568c5e886c380de01ac15bec9",
+    "harness": "1de0fb4e8663408e2c71169965279f5eb3cf0ea00a8ed2205900cb82bc79b422",
+    "protocol": "14fde83fd3467d1237141a180635a558a4e7a3354d06df497a8f90fe40ffedc3",
+    "space": "089245336b19cbb1d22f99e4edceabd594d6d8fb95ad6117d4cfe2d34ec6d241",
+    "store": "8307014505029b2eb24ae7ca8d1205f0600630cdbd86da9387ae2f14d91116a3",
+    "study": "755e9d3b8fa04162c6d0d61d85b28602b9bc33ab7433c73ea817004596c957a6"
+  },
+  "futility_rule": "Append first; any E1/E5 baseline within-group CV>=2% stops as an irreversible maximum-CV failure. Never stop on partial across-group CV or drift.",
+  "host": {
+    "boot_id_sha256": "2f69c891729e3d5ae2ac9d094a79f3fc3ea6712811f3a9eb3e2dca1655ba1feb",
+    "github_run_attempt": null,
+    "github_run_id": null,
+    "machine": "x86_64",
+    "node": "0ca8aa814a36",
+    "system": "Linux"
+  },
+  "kind": "runtime_qualification_then_conditional_fixed_nominee",
+  "latency_replays": 1,
+  "maximum_runtime_attempts": 1,
+  "model_calls": 0,
+  "nomination": {
+    "automatic_retries": 0,
+    "baseline": {
+      "build_id": "be180963747c4559",
+      "candidate": {
+        "alignment": 0,
+        "compiler": "gcc",
+        "frame_pointer": false,
+        "inline": "default",
+        "isa": "native",
+        "lto": false,
+        "opt": "O3",
+        "pgo": false,
+        "semantic_interposition": true,
+        "unroll": false,
+        "vectorize": true
+      }
+    },
+    "benchmark_timeout_seconds": 600,
+    "claim_boundary": "Independent same-source fixed-nominee replication on a new host. No timing pooling with Codespaces and no agent-versus-search ranking. The originating40-build agent study remains failed/incomplete.",
+    "commands": 5000000,
+    "cpu": 0,
+    "evaluation_input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+    "evaluation_seed": 20261011,
+    "fallback_nominees": 0,
+    "jobs": 2,
+    "kind": "fixed_agent_nomination_host_replication",
+    "latency_replays": 1,
+    "maximum_new_platform_attempts": 1,
+    "maximum_nominees": 1,
+    "nomination_selection": "Only the first top-ranked original fixed plan nominee, before any new-host measurement; no fallback to other configurations.",
+    "nominees": [
+      {
+        "build_id": "6d3511b71fcfb52d",
+        "candidate": {
+          "alignment": 64,
+          "compiler": "clang",
+          "frame_pointer": false,
+          "inline": "default",
+          "isa": "native",
+          "lto": false,
+          "opt": "O3",
+          "pgo": true,
+          "semantic_interposition": false,
+          "unroll": true,
+          "vectorize": false
+        }
+      }
+    ],
+    "origin_engine_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "origin_engine_source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+    "origin_measured_candidates": 19,
+    "origin_packet_commit": "0eed8289285c993a6b7487d8cc662f6b623edf1e",
+    "origin_plan_path": "tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/postsearch-r20-confirmation/plan.json",
+    "origin_plan_sha256": "c14e2936238f1e078461ce99d94023e2e4a353728df59b41b847fae094ece6bf",
+    "origin_recorded_builds": 20,
+    "origin_requested_budget": 40,
+    "origin_study_id": "codespaces-agent-r5-20261030-01",
+    "origin_study_path": "tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/study.json",
+    "origin_study_sha256": "6c165b93d69708e627a0cb91d93bf55304c7293aa95c50a6dd1483486e18e4c6",
+    "origin_study_status": "failed",
+    "reported_runs": 5,
+    "rounds": 10,
+    "schema_version": 1,
+    "throughput_replays": 20,
+    "training_input_sha256": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4",
+    "training_seed": 20261012
+  },
+  "nomination_manifest_sha256": "b5552c211dd69ed9649f25c021dd10b7eb60c31575180991cfad89cc758fa260",
+  "qualification_gate": "Frozen Harness conservative CV<2% AND maximum within-group CV<2% AND across-group CV<2%; ten correct groups",
+  "qualification_groups": 10,
+  "reported_runs": 5,
+  "resources_before": {
+    "allowed_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "cpu_max": "800000 100000",
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "cpu_stat": "usage_usec 1831324862\nuser_usec 1493645161\nsystem_usec 337679701\nnice_usec 0\nnr_periods 114175\nnr_throttled 39\nthrottled_usec 1046705\nnr_bursts 0\nburst_usec 0\n",
+    "cpuset_effective": "0-8",
+    "kernel": "6.18.57",
+    "load_average": [
+      0.1083984375,
+      0.05224609375,
+      0.0234375
+    ],
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "run_id": "runtime-20261030-01",
+  "schema_version": 1,
+  "throughput_replays": 20,
+  "tool_versions": {
+    "clang++": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /workspace/scratch/compilerpilot-runtime-bin",
+    "cmake": "cmake version 3.28.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "ld.lld": "Ubuntu LLD 18.1.3 (compatible with GNU linkers)",
+    "llvm-profdata": "Ubuntu LLVM version 18.1.3\n  Optimized build."
+  }
+}

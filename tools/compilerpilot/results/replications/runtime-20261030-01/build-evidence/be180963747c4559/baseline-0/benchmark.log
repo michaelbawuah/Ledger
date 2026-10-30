@@ -1,0 +1,16 @@
+reference run 1/5: 8.46 M commands/s, p99 480 ns
+reference run 2/5: 8.71 M commands/s, p99 481 ns
+reference run 3/5: 8.16 M commands/s, p99 481 ns
+reference run 4/5: 8.30 M commands/s, p99 480 ns
+reference run 5/5: 8.53 M commands/s, p99 490 ns
+fast-bitmap run 1/5: 18.23 M commands/s, p99 271 ns
+fast-bitmap run 2/5: 18.41 M commands/s, p99 271 ns
+fast-bitmap run 3/5: 18.21 M commands/s, p99 270 ns
+fast-bitmap run 4/5: 18.12 M commands/s, p99 271 ns
+fast-bitmap run 5/5: 18.35 M commands/s, p99 271 ns
+fast-linear run 1/5: 16.97 M commands/s, p99 301 ns
+fast-linear run 2/5: 17.44 M commands/s, p99 301 ns
+fast-linear run 3/5: 18.25 M commands/s, p99 301 ns
+fast-linear run 4/5: 17.65 M commands/s, p99 301 ns
+fast-linear run 5/5: 18.30 M commands/s, p99 310 ns
+/workspace/scratch/782b5db88681/Ledger-runtime-engine/tools/compilerpilot/builds/runtime-20261030-01/be180963747c4559/baseline-0/summary.json
