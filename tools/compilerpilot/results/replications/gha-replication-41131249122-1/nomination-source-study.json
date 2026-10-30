@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "study_id": "codespaces-agent-r5-20261030-01",
+  "created_at": "2026-10-30T19:26:54.910035+00:00",
+  "protocol": {
+    "study_id": "codespaces-agent-r5-20261030-01",
+    "ledger": "/workspaces/Ledger-focused",
+    "data": "/workspaces/Ledger-focused/tools/compilerpilot/data/studies/codespaces-agent-r5-20261030-01",
+    "results": "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01",
+    "scope": "agent-speedup",
+    "cpu": 0,
+    "jobs": 2,
+    "commands": 5000000,
+    "throughput_replays": 5,
+    "budget": 40,
+    "seeds": 3,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012
+  },
+  "source": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "host": {
+    "node": "codespaces-e9123b",
+    "machine": "x86_64",
+    "system": "Linux",
+    "boot_id_sha256": "8f1cc6f60a70cab9debb69ba19f3c77bdd25527b3ec6a050585d190f333ef1ff",
+    "github_run_id": null,
+    "github_run_attempt": null
+  },
+  "full_E3_protocol": false,
+  "phases": {
+    "E1": {
+      "status": "passed",
+      "started_at": "2026-10-30T19:26:54.919476+00:00",
+      "ended_at": "2026-10-30T19:35:05.818369+00:00",
+      "outcome": {
+        "run_id": "codespaces-agent-r5-20261030-01-E1",
+        "noise_gate": true
+      }
+    },
+    "Gate": {
+      "status": "passed",
+      "started_at": "2026-10-30T19:39:43.437334+00:00",
+      "ended_at": "2026-10-30T19:40:13.948069+00:00",
+      "outcome": {
+        "qualified": true,
+        "evidence": "/workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/live-gate-check.json"
+      }
+    },
+    "E3-agent-0": {
+      "status": "failed",
+      "started_at": "2026-10-30T19:40:13.958542+00:00",
+      "ended_at": "2026-10-30T20:18:05.116405+00:00",
+      "error": "E3-agent-0 stopped with exit code 1; its evidence remains in /workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E3-agent-0"
+    }
+  },
+  "status": "failed",
+  "agent": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0,
+    "service_tier": "default",
+    "api_budget_file": "/workspaces/Ledger-focused/tools/compilerpilot/data/api-allocation.json",
+    "api_budget_usd": "9.99"
+  },
+  "effective_strategy_runs": [
+    {
+      "strategy": "agent",
+      "seed": 0,
+      "build_budget": 40
+    }
+  ],
+  "requested_phase": "study",
+  "confirmation_requested": true,
+  "updated_at": "2026-10-30T20:18:05.123688+00:00",
+  "inputs": {
+    "commands": 5000000,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012,
+    "source": {
+      "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+      "ledger_dirty": false,
+      "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+    },
+    "files": {
+      "eval.lob": {
+        "sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+        "seed": 20261011,
+        "generator": {
+          "records": 5000000,
+          "seed": 20261011,
+          "limits": 2999950,
+          "cancels": 1499265,
+          "markets": 500785,
+          "rejected_commands": 0,
+          "empty_book_cancels": 0,
+          "capacity_ioc_limits": 0,
+          "peak_live_orders": 2107
+        }
+      },
+      "train.lob": {
+        "sha256": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4",
+        "seed": 20261012,
+        "generator": {
+          "records": 5000000,
+          "seed": 20261012,
+          "limits": 3000992,
+          "cancels": 1499717,
+          "markets": 499291,
+          "rejected_commands": 1,
+          "empty_book_cancels": 1,
+          "capacity_ioc_limits": 0,
+          "peak_live_orders": 2121
+        }
+      }
+    }
+  },
+  "report": {
+    "status": "not_requested",
+    "reason": "Focused speedup scope excludes E4 predictor evaluation"
+  },
+  "api_budget": {
+    "allocation_id": "ledger-compilerpilot-20261030-approved-usd15",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "service_tier": "default",
+    "limit_usd": "9.99",
+    "charged_usd": "3.1319276",
+    "remaining_usd": "6.8580724",
+    "preflight_reserve_usd": "0.01",
+    "requests": 89,
+    "uncertain_requests": 1
+  },
+  "error": "E3-agent-0 stopped with exit code 1; its evidence remains in /workspaces/Ledger-focused/tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/runs/codespaces-agent-r5-20261030-01-E3-agent-0"
+}

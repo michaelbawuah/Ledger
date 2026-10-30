@@ -1,0 +1,4 @@
+-- GoogleTest unavailable: using the same cases in the dependency-free harness
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/runner/work/Ledger/Ledger/engine/tools/compilerpilot/builds/gha-replication-41131249122-1/6d3511b71fcfb52d

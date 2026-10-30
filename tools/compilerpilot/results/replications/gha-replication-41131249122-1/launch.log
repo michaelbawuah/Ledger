@@ -1,0 +1,21 @@
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 0, "correctness": true, "throughput": 26525263.3314, "cv": 0.006947157073882136}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 0, "correctness": true, "throughput": 25594246.7147, "cv": 0.007903019926191704}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 1, "correctness": true, "throughput": 27389535.0219, "cv": 0.01062202657938032}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 1, "correctness": true, "throughput": 26401165.3817, "cv": 0.007238762177169762}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 2, "correctness": true, "throughput": 27270450.3637, "cv": 0.00815518484533845}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 2, "correctness": true, "throughput": 26204664.3123, "cv": 0.008194087837279792}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 3, "correctness": true, "throughput": 26963803.154, "cv": 0.01832336849309383}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 3, "correctness": true, "throughput": 24683822.8885, "cv": 0.002930733430353543}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 4, "correctness": true, "throughput": 26241964.0955, "cv": 0.0024415508825072064}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 4, "correctness": true, "throughput": 24892373.9629, "cv": 0.003964261731571471}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 5, "correctness": true, "throughput": 26200006.9133, "cv": 0.017543187861177194}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 5, "correctness": true, "throughput": 24347616.7601, "cv": 0.010924936930750879}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 6, "correctness": true, "throughput": 26385045.5732, "cv": 0.009631901679661655}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 6, "correctness": true, "throughput": 25107105.2413, "cv": 0.006135255561027861}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 7, "correctness": true, "throughput": 26446927.1605, "cv": 0.0025059856437532196}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 7, "correctness": true, "throughput": 24974266.3411, "cv": 0.005337411971572267}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 8, "correctness": true, "throughput": 26375405.9078, "cv": 0.009854257982159404}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 8, "correctness": true, "throughput": 25509273.0973, "cv": 0.008259369928523304}
+{"replication_progress": "observation", "build_id": "6d3511b71fcfb52d", "round": 9, "correctness": true, "throughput": 27491340.7033, "cv": 0.005207543889611415}
+{"replication_progress": "observation", "build_id": "be180963747c4559", "round": 9, "correctness": true, "throughput": 26155478.8613, "cv": 0.006526514692743238}
+{"replication_status": "noisy", "recommendation": null, "observations_recorded": 20, "model_calls": 0}

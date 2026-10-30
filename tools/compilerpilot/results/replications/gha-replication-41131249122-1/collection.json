@@ -1,0 +1,649 @@
+{
+  "claim_boundary": "Independent host results only; no timing pooling, no original search completion or policy ranking.",
+  "collected_at": "2026-10-30T22:00:00.601076+00:00",
+  "compressed_artifacts": [
+    {
+      "compressed_sha256": "685c96822458f41fbea38b8f436128c6a6e7c99f7be52dbfab80ff5b2ba6bf91",
+      "compressed_size_bytes": 427,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/3.31.6/CompilerIdCXX/CMakeCXXCompilerId.opt.yaml",
+      "original_sha256": "97dfb26ed93b79f72f919857c6ad5539fe250fd18dfc9d5ee7c03c7a190d6604",
+      "original_size_bytes": 3046,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/3.31.6/CompilerIdCXX/CMakeCXXCompilerId.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "74d6210e6eea2384ce8a1b0d3b05963785b1fbf6a88d80b6789369afa8a0e434",
+      "compressed_size_bytes": 4072,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/CMakeConfigureLog.yaml",
+      "original_sha256": "2445c36be20f374b700fa028d2f491249b12b9e20569ac88e7d160dc76cd00ba",
+      "original_size_bytes": 30503,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/CMakeConfigureLog.yaml.gz"
+    },
+    {
+      "compressed_sha256": "8cd0e6ccb209c0f00849eb4f5f146b7c5bc1210e1973df3e497926c973337cb6",
+      "compressed_size_bytes": 62707,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/book.cpp.opt.yaml",
+      "original_sha256": "b8e2a93f2e4a90650214adb6c21df8b7adb9d591336cf8ea74318165148085ce",
+      "original_size_bytes": 2636694,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/book.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "53c1e27b2995a9d5317945dd767cfac29b738ffab8c29ec5062db24bcde78638",
+      "compressed_size_bytes": 26290,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/feed.cpp.opt.yaml",
+      "original_sha256": "eca26a12ceba5d18b1c6d5e969de5ce28cdf7fb3832df8a908c04c1792bacfc2",
+      "original_size_bytes": 782857,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/feed.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "9e855fee192b6b9f369449f789117432b7a386b91b9146444a62833b261cac83",
+      "compressed_size_bytes": 2323,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/feed_view.cpp.opt.yaml",
+      "original_sha256": "44a2e624f80219db9acbf48d18d140eb29be72af8eaab19957e580d1a9986073",
+      "original_size_bytes": 42466,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/feed_view.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "3717083abab69f4c8ced9af065012c2e89f9d16e0f3f10fecf389bb863ef1b15",
+      "compressed_size_bytes": 82698,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/reference_book.cpp.opt.yaml",
+      "original_sha256": "e2161949174acff3623bbd7c0d20906bd2cf547a4229cf0415c51cd816c56362",
+      "original_size_bytes": 2856131,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/reference_book.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "ef370a899ed5ac6227be31e7b260c861b50c9a59df76e6155706582d97d67d38",
+      "compressed_size_bytes": 131556,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/study_workloads.cpp.opt.yaml",
+      "original_sha256": "f543b6ba0750739a9eec3b192e99f565030a9bfd3ab0003c71c1ff722d64103b",
+      "original_size_bytes": 5033814,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger.dir/src/study_workloads.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "a4b16a010090d75af9bc133eef7245f817b74c14ea96ac814aacab6156138aaf",
+      "compressed_size_bytes": 14894,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_allocation_tests.dir/tests/unit/memory_tests.cpp.opt.yaml",
+      "original_sha256": "92c5510d07908bef156dbc760f6a48c0fe60f9e1673314cb19c7d5b736ff5078",
+      "original_size_bytes": 858760,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_allocation_tests.dir/tests/unit/memory_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "8d35be37649932ccac7ae1145e91d3cb21af0961a38124010d039b36b695a31c",
+      "compressed_size_bytes": 260182,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.opt.yaml",
+      "original_sha256": "212cb7db19c5b51ce777b5a23d4751acaeda0f7b0c0c56e3c5259ef41c805159",
+      "original_size_bytes": 13198346,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_bench.dir/bench/bench_replay.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "6756e5dc0e81fed566c2ce3509b6f90f5748ed0935b0631efd9c698e2ce3a527",
+      "compressed_size_bytes": 86240,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_differential.dir/tests/differential/differential.cpp.opt.yaml",
+      "original_sha256": "a7ad61dde95b2a29b58641ac5fcc02a7260e34029f473ff2093d74b0107457b5",
+      "original_size_bytes": 5798302,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_differential.dir/tests/differential/differential.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "e42c22f26f43f222790424f39e69b2cb2190dd76f231470ef0ea1473f4a45554",
+      "compressed_size_bytes": 65157,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_feed_tests.dir/tests/unit/feed_tests.cpp.opt.yaml",
+      "original_sha256": "3b93593f0207d6c734ed6399bfaa24f07dd42e82a524be2a7b3ce786424636c9",
+      "original_size_bytes": 2620276,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_feed_tests.dir/tests/unit/feed_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "de740967a5e32e94b45717edff2bb367e2fe0994b7d8ed8a7bf9f3326a430285",
+      "compressed_size_bytes": 61145,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_feed_view_tests.dir/tests/unit/feed_view_tests.cpp.opt.yaml",
+      "original_sha256": "e9696e8ffd2c874e666f58495f39cfe76056d801017105c0c613b887812f6a7a",
+      "original_size_bytes": 2501309,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_feed_view_tests.dir/tests/unit/feed_view_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "29c510b5fe4b17880ee70a8932feceb3fdfed95825f8c1ad47d2bbf083ffb3ff",
+      "compressed_size_bytes": 34383,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_fok_tests.dir/tests/unit/fok_tests.cpp.opt.yaml",
+      "original_sha256": "e830c2e4367d861447b1bcd6663b085e66fc655e8a995cce713008a8e04c79e5",
+      "original_size_bytes": 1579642,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_fok_tests.dir/tests/unit/fok_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "56f865efc229712f43a890ab4a9ff93c27c6485c41a8c457ee9e418977308fea",
+      "compressed_size_bytes": 93050,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_generate.dir/bench/gen_orders.cpp.opt.yaml",
+      "original_sha256": "7b108895740916f4228f12335d48438a41d4479bceb2a23b7244e8821d23aa7f",
+      "original_size_bytes": 3071964,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_generate.dir/bench/gen_orders.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "3b0f565c401b389187a475134eea3898b953d69e50edaa55db1abce0284ef3a4",
+      "compressed_size_bytes": 143010,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_index_tests.dir/tests/unit/index_tests.cpp.opt.yaml",
+      "original_sha256": "7a686a4238ef18b03ad5ed8cda372b5255d35a144acd0c2d222883c533deb517",
+      "original_size_bytes": 6467952,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_index_tests.dir/tests/unit/index_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "496f8bd3c1b05b4d1ea8198039f903b620eae0bf024a29af4de9cae84b215dc8",
+      "compressed_size_bytes": 51250,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_market_maker.dir/src/market_maker.cpp.opt.yaml",
+      "original_sha256": "3573ede144dc88aa176c0d6ba3b5bf92a714b343682c1566452bce63de39dcad",
+      "original_size_bytes": 3093679,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_market_maker.dir/src/market_maker.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "227eba5e2003576a68c379ce28ff4368136579f388d76321d5b95b4fbb9ce829",
+      "compressed_size_bytes": 52280,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_pool_tests.dir/tests/unit/pool_tests.cpp.opt.yaml",
+      "original_sha256": "9b420adad0eb3317771ab55f1c67d7b449a83fe7d7c48097af288601e54b4943",
+      "original_size_bytes": 2389268,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_pool_tests.dir/tests/unit/pool_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "7bf043d5680cce637ceddb845d8ee00daa10cefbb95fea304d3b8f35bb125755",
+      "compressed_size_bytes": 74427,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_replay.dir/src/replay.cpp.opt.yaml",
+      "original_sha256": "ff6aeb69b7851e8c847c7f605e77f0569447c2dbfcd73635772697e76ab3c6be",
+      "original_size_bytes": 2799520,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_replay.dir/src/replay.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "01e2e804eb4e286ca0f482a593c9f19710437cff755105ce17d5c802ef5dc337",
+      "compressed_size_bytes": 3223,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_risk_demo.dir/examples/risk_demo.cpp.opt.yaml",
+      "original_sha256": "5398ec912c9fe7803cd43d2f5f4f5c39e6a9790650bc2856ffd168225ad94466",
+      "original_size_bytes": 76528,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_risk_demo.dir/examples/risk_demo.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "84ee454ee839b1aef4a063b35665961173a2582e315eb254c12637a426b7b284",
+      "compressed_size_bytes": 12588,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_risk_tests.dir/tests/unit/risk_tests.cpp.opt.yaml",
+      "original_sha256": "b743313d1f1ffa60fe44d1ad02acf6bd17f861c25a99d9ff836ab4db6b91d947",
+      "original_size_bytes": 421863,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_risk_tests.dir/tests/unit/risk_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "b3b9dce012a6579065b240836b45206f5d3193922e54d583afcaf45d443e1674",
+      "compressed_size_bytes": 221177,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_spsc_bench.dir/bench/bench_spsc.cpp.opt.yaml",
+      "original_sha256": "5357083e378e6d6be6a626d7b46d6d004893b5dc2e16baf6de305297678bd758",
+      "original_size_bytes": 14626902,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_spsc_bench.dir/bench/bench_spsc.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "21eeec770690f033d13e33f1dd3e78461af678a0b0632e59d709a9d504e9168e",
+      "compressed_size_bytes": 13007,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_spsc_tests.dir/tests/unit/spsc_tests.cpp.opt.yaml",
+      "original_sha256": "091ddbb9788adb482ca156666c48fb32ca9b5262ff1a503218ebbe5c3f63b569",
+      "original_size_bytes": 480706,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_spsc_tests.dir/tests/unit/spsc_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "cd85ff58566a274de390fcbf67d9cfedc037959309c9be057a9bfc70f43e65d1",
+      "compressed_size_bytes": 395131,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_study.dir/bench/bench_study.cpp.opt.yaml",
+      "original_sha256": "65adce1d07e0b16e29372e781009076921307d4ebb835b56f06d25336872164e",
+      "original_size_bytes": 20594891,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_study.dir/bench/bench_study.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "d7ee7b690b3b88ca702eaaeeabefabe1464e34cdf842437ddddcc58ebfe87dab",
+      "compressed_size_bytes": 93830,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_study_observer_tests.dir/tests/unit/study_observer_tests.cpp.opt.yaml",
+      "original_sha256": "c6735196436b97169ff41829f782725355b72fa897b3a2ab5edfe5db65464b11",
+      "original_size_bytes": 3346207,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_study_observer_tests.dir/tests/unit/study_observer_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "21563c395d9ea0d394290b82447c76713d0a37d5f07c0ee1a8f44ac895e3a907",
+      "compressed_size_bytes": 121482,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_study_workload_tests.dir/tests/unit/study_workload_tests.cpp.opt.yaml",
+      "original_sha256": "9d8a56c4b00565553e090176e692db484c176ced01dd7d81bf26651aaf040719",
+      "original_size_bytes": 6025713,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_study_workload_tests.dir/tests/unit/study_workload_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "280d6a2907da2af3b25021a1ffba891c625b7086d23af7a2595b89952d4b5ec7",
+      "compressed_size_bytes": 240045,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/CMakeFiles/ledger_tests.dir/tests/unit/engine_tests.cpp.opt.yaml",
+      "original_sha256": "f7db296f291751b1df8a800439badd0831587a7b9e588850de3dc19c6f4dc982",
+      "original_size_bytes": 14523928,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/CMakeFiles/ledger_tests.dir/tests/unit/engine_tests.cpp.opt.yaml.gz"
+    },
+    {
+      "compressed_sha256": "4960d8fb1de2be425af4446f3ff715661ae51bbe409fe5c1830e6ce8405e3204",
+      "compressed_size_bytes": 54133,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/profile/default-3336.profraw",
+      "original_sha256": "4c7b13e5fbe877e0e9eac77265ebe012fc0be4c1666059b76dcdf3c76042073c",
+      "original_size_bytes": 170184,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/profile/default-3336.profraw.gz"
+    },
+    {
+      "compressed_sha256": "79ee690d1d64012b2a8deb9556e99aa3c42371cc0ed83860b7e9599858d152d7",
+      "compressed_size_bytes": 66400,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "6d3511b71fcfb52d/profile/merged.profdata",
+      "original_sha256": "03d0ff6aa9398ac6cde344f96de434388cbb5b70897d247f748dfd8222a966d7",
+      "original_size_bytes": 333256,
+      "retained_path": "build-evidence/6d3511b71fcfb52d/profile/merged.profdata.gz"
+    },
+    {
+      "compressed_sha256": "33abab2e55590e6914e88ca28069bbfa5f139fd7f89b55957b9953ad2c3e784f",
+      "compressed_size_bytes": 4954,
+      "lossless_roundtrip_verified": true,
+      "original_relative_path": "be180963747c4559/CMakeFiles/CMakeConfigureLog.yaml",
+      "original_sha256": "3e35615d730659e688bd5569406e09c33b15ec8ec054e043dd0bab24260d4be6",
+      "original_size_bytes": 38545,
+      "retained_path": "build-evidence/be180963747c4559/CMakeFiles/CMakeConfigureLog.yaml.gz"
+    }
+  ],
+  "model_calls": 0,
+  "raw_audits": [
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-00-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.2857142857",
+          "bitmap_linear_p99_reduction_percent": "14.2857142857",
+          "bitmap_linear_throughput_improvement_percent": "4.91796573214",
+          "bitmap_reference_throughput_ratio": "2.19458582011"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-01-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "18.1481481481",
+          "bitmap_linear_p99_reduction_percent": "20.0",
+          "bitmap_linear_throughput_improvement_percent": "4.94496986823",
+          "bitmap_reference_throughput_ratio": "2.17859985391"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-02-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "15.3256704981",
+          "bitmap_linear_p99_reduction_percent": "19.500",
+          "bitmap_linear_throughput_improvement_percent": "4.55574190631",
+          "bitmap_reference_throughput_ratio": "2.18263540711"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-03-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "21.0714285714",
+          "bitmap_linear_p99_reduction_percent": "23.3333333333",
+          "bitmap_linear_throughput_improvement_percent": "5.04028286632",
+          "bitmap_reference_throughput_ratio": "2.14075962506"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-04-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "17.500",
+          "bitmap_linear_p99_reduction_percent": "19.0476190476",
+          "bitmap_linear_throughput_improvement_percent": "6.07084337041",
+          "bitmap_reference_throughput_ratio": "2.20748698614"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-05-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "14.5907473310",
+          "bitmap_linear_p99_reduction_percent": "18.9573459716",
+          "bitmap_linear_throughput_improvement_percent": "5.59129408803",
+          "bitmap_reference_throughput_ratio": "2.18082879411"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-06-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "17.500",
+          "bitmap_linear_p99_reduction_percent": "19.0476190476",
+          "bitmap_linear_throughput_improvement_percent": "6.67505141381",
+          "bitmap_reference_throughput_ratio": "2.22772784366"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-07-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "17.500",
+          "bitmap_linear_p99_reduction_percent": "19.0476190476",
+          "bitmap_linear_throughput_improvement_percent": "5.53118278437",
+          "bitmap_reference_throughput_ratio": "2.21044448373"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-08-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "15.1291512915",
+          "bitmap_linear_p99_reduction_percent": "15.4228855721",
+          "bitmap_linear_throughput_improvement_percent": "5.23032678629",
+          "bitmap_reference_throughput_ratio": "2.15530087930"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/confirm-09-6d3511b71fcfb52d",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "18.5185185185",
+          "bitmap_linear_p99_reduction_percent": "20.0",
+          "bitmap_linear_throughput_improvement_percent": "4.71019342333",
+          "bitmap_reference_throughput_ratio": "2.26812513660"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/6d3511b71fcfb52d/training",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.2432432432",
+          "bitmap_linear_p99_reduction_percent": "13.9285714286",
+          "bitmap_linear_throughput_improvement_percent": "2.77238299186",
+          "bitmap_reference_throughput_ratio": "2.22187825900"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 3,
+        "verified_latency_samples": 15000000,
+        "verified_throughput_blocks": 3,
+        "verified_throughput_commands_per_run": 5000000,
+        "verified_throughput_replays_per_run": 1
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-00-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.0",
+          "bitmap_linear_p99_reduction_percent": "13.5746606335",
+          "bitmap_linear_throughput_improvement_percent": "2.49488888064",
+          "bitmap_reference_throughput_ratio": "2.17984871824"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-01-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.00",
+          "bitmap_linear_p99_reduction_percent": "14.0271493213",
+          "bitmap_linear_throughput_improvement_percent": "4.25688110994",
+          "bitmap_reference_throughput_ratio": "2.20922458746"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-02-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.0",
+          "bitmap_linear_p99_reduction_percent": "16.9565217391",
+          "bitmap_linear_throughput_improvement_percent": "3.81505510931",
+          "bitmap_reference_throughput_ratio": "2.22449872830"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-03-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "10.5263157895",
+          "bitmap_linear_p99_reduction_percent": "11.0320284698",
+          "bitmap_linear_throughput_improvement_percent": "3.72820235036",
+          "bitmap_reference_throughput_ratio": "2.16187834598"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-04-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.96784565916",
+          "bitmap_linear_p99_reduction_percent": "16.6666666667",
+          "bitmap_linear_throughput_improvement_percent": "3.24792287722",
+          "bitmap_reference_throughput_ratio": "2.21497199849"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-05-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "9.64630225080",
+          "bitmap_linear_p99_reduction_percent": "16.2500",
+          "bitmap_linear_throughput_improvement_percent": "0.346754642909",
+          "bitmap_reference_throughput_ratio": "2.16786414828"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-06-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.8617363344",
+          "bitmap_linear_p99_reduction_percent": "16.6666666667",
+          "bitmap_linear_throughput_improvement_percent": "4.98000911244",
+          "bitmap_reference_throughput_ratio": "2.21859396506"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-07-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.5806451613",
+          "bitmap_linear_p99_reduction_percent": "13.4199134199",
+          "bitmap_linear_throughput_improvement_percent": "2.04198757172",
+          "bitmap_reference_throughput_ratio": "2.19910692958"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-08-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.1832797428",
+          "bitmap_linear_p99_reduction_percent": "20.4166666667",
+          "bitmap_linear_throughput_improvement_percent": "4.31196755428",
+          "bitmap_reference_throughput_ratio": "2.17772137180"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    },
+    {
+      "directory": "build-evidence/be180963747c4559/confirm-09-be180963747c4559",
+      "report": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.2890365449",
+          "bitmap_linear_p99_reduction_percent": "17.3913043478",
+          "bitmap_linear_throughput_improvement_percent": "4.69662841368",
+          "bitmap_reference_throughput_ratio": "2.21753775102"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 300,
+        "verified_throughput_commands_per_run": 100000000,
+        "verified_throughput_replays_per_run": 20
+      },
+      "verified": true
+    }
+  ],
+  "schema_version": 1
+}

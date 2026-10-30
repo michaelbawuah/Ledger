@@ -1,0 +1,38 @@
+/home/runner/work/Ledger/Ledger/engine/tools/compilerpilot/builds/gha-replication-41131249122-1/6d3511b71fcfb52d/ledger_bench  :
+section                size     addr
+.interp                  28      792
+.note.gnu.property       32      824
+.note.gnu.build-id       36      856
+.note.ABI-tag            32      892
+.gnu.hash               172      928
+.dynsym                2568     1104
+.dynstr                4516     3672
+.gnu.version            214     8188
+.gnu.version_r          352     8408
+.rela.dyn               552     8760
+.rela.plt              1632     9312
+.init                    27    12288
+.plt                   1104    12320
+.plt.got                  8    13424
+.text                 75864    13440
+.fini                    13    89304
+.rodata                5312    90112
+.eh_frame_hdr          1860    95424
+.eh_frame             11248    97288
+.gcc_except_table      2792   108536
+.init_array               8   118072
+.fini_array               8   118080
+.dynamic                528   118088
+.got                    144   118616
+.got.plt                568   118760
+.data                    32   119328
+.bss                      8   119360
+.comment                 84        0
+.debug_info          100361        0
+.debug_abbrev           813        0
+.debug_line           59732        0
+.debug_str            29856        0
+.debug_ranges         36032        0
+Total                336536
+
+

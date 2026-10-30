@@ -1,0 +1,10 @@
+{
+  "ended_at": "2026-10-30T21:59:58.386770+00:00",
+  "kind": "independent_fixed_nominee_host_replication",
+  "model_calls": 0,
+  "observations_recorded": 20,
+  "recommendation": null,
+  "source_host_input_binary_unchanged": true,
+  "started_at": "2026-10-30T21:28:40.772583+00:00",
+  "status": "noisy"
+}

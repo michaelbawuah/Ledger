@@ -1,0 +1,16 @@
+reference run 1/5: 11.37 M commands/s, p99 350 ns
+reference run 2/5: 11.28 M commands/s, p99 351 ns
+reference run 3/5: 11.28 M commands/s, p99 351 ns
+reference run 4/5: 11.32 M commands/s, p99 350 ns
+reference run 5/5: 11.35 M commands/s, p99 350 ns
+fast-bitmap run 1/5: 25.25 M commands/s, p99 200 ns
+fast-bitmap run 2/5: 25.01 M commands/s, p99 200 ns
+fast-bitmap run 3/5: 25.11 M commands/s, p99 200 ns
+fast-bitmap run 4/5: 25.33 M commands/s, p99 200 ns
+fast-bitmap run 5/5: 24.97 M commands/s, p99 200 ns
+fast-linear run 1/5: 23.92 M commands/s, p99 231 ns
+fast-linear run 2/5: 24.33 M commands/s, p99 231 ns
+fast-linear run 3/5: 24.26 M commands/s, p99 240 ns
+fast-linear run 4/5: 23.64 M commands/s, p99 240 ns
+fast-linear run 5/5: 23.88 M commands/s, p99 240 ns
+/home/runner/work/Ledger/Ledger/engine/tools/compilerpilot/builds/gha-replication-41131249122-1/be180963747c4559/confirm-06-be180963747c4559/summary.json
