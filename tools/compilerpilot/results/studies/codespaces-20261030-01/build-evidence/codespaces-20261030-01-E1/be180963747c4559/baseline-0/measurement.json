@@ -1,0 +1,105 @@
+{
+  "correctness": true,
+  "throughput": 16107500.0118,
+  "p50_ns": 50.0,
+  "p99_ns": 310.0,
+  "cv": 0.02624349760205811,
+  "spread": 425620.10003898054,
+  "runs": [
+    16107500.0118,
+    15884601.5971,
+    16685743.3101,
+    15769224.0418,
+    16643513.2651
+  ],
+  "error": null,
+  "provenance": {
+    "input_sha256": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+    "input": "/workspaces/Ledger/tools/compilerpilot/data/studies/codespaces-20261030-01/eval.lob",
+    "cpu": 0,
+    "pinned": true,
+    "flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-march=native",
+      "-fopt-info-missed"
+    ],
+    "summary": "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/baseline-0/summary.json",
+    "runs_csv": "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/baseline-0/runs.csv",
+    "benchmark_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/ledger_bench",
+      "--input",
+      "/workspaces/Ledger/tools/compilerpilot/data/studies/codespaces-20261030-01/eval.lob",
+      "--runs",
+      "5",
+      "--warmup",
+      "50000",
+      "--outdir",
+      "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/baseline-0"
+    ],
+    "differential_command": [
+      "taskset",
+      "-c",
+      "0",
+      "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/ledger_differential",
+      "--seeds",
+      "5",
+      "--orders",
+      "100000",
+      "--output",
+      "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559/baseline-0/differential.json"
+    ],
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "compiler": {
+      "version": "13.3.0",
+      "flags": "-O3 -DNDEBUG -march=native -fopt-info-missed -DNDEBUG   standard=C++23",
+      "optimization_enabled": true,
+      "ndebug": true
+    },
+    "differential": {
+      "status": "pass",
+      "generator": "splitmix64-bounded-adversarial-v1",
+      "base_seed": 8330235730275514375,
+      "first_seed": 0,
+      "seeds": 5,
+      "commands_per_seed": 100000,
+      "commands_compared": 500000,
+      "reports_compared": 1047284,
+      "trades_compared": 171010,
+      "applied_commands": 237011,
+      "rejected_commands": 262989,
+      "structural_checkpoints": 125,
+      "checkpoint_interval": 4096,
+      "linear_variant_compared": true,
+      "linear_fok_variant_compared": true,
+      "per_command_checks": [
+        "process_result",
+        "all_event_fields",
+        "statistics",
+        "size",
+        "resting_quantity",
+        "best_quotes",
+        "quantity_conservation",
+        "uncrossed_quotes"
+      ],
+      "checkpoint_checks": [
+        "full_structural_invariants",
+        "full_FIFO_orders",
+        "all_levels",
+        "all_statistics"
+      ],
+      "elapsed_seconds": 0.114478
+    }
+  },
+  "checksums": {
+    "event_checksum": 4775833837545484177,
+    "trade_checksum": 5735633710814156320,
+    "events": 10979250,
+    "trades": 1993083,
+    "rejected_commands": 0,
+    "live_orders_final": 2039
+  }
+}

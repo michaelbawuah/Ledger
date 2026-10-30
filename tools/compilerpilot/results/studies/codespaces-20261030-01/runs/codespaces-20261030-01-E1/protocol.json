@@ -1,0 +1,22 @@
+{
+  "strategy": "baseline",
+  "seed": 0,
+  "budget": 1,
+  "arguments": {
+    "command": "baseline",
+    "ledger": "/workspaces/Ledger",
+    "data": "/workspaces/Ledger/tools/compilerpilot/data/studies/codespaces-20261030-01",
+    "results": "/workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01",
+    "commands": 5000000,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012,
+    "cpu": 0,
+    "jobs": 2,
+    "baseline_repetitions": 10,
+    "run_id": "codespaces-20261030-01-E1"
+  },
+  "python": "3.14.2 (main, Oct 28 2026, 19:03:49) [GCC 13.3.0]",
+  "temperature": null,
+  "model": null,
+  "provider": null
+}

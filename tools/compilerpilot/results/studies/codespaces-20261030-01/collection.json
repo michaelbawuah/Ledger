@@ -1,0 +1,16 @@
+{
+  "collected_at": "2026-10-30T18:02:08.540462+00:00",
+  "collected_after_measurement": true,
+  "source_commit": "4c8525b5fcd1bd571de97293c26644847d6c70c3",
+  "runner_class": "GitHub Codespaces 4-core 16GB included allowance; physical CPU exclusivity is not assumed",
+  "fixed_cpu": 0,
+  "commands_per_raw_replay": 5000000,
+  "observations": 10,
+  "raw_replays": 50,
+  "correctness": true,
+  "noise_gate": false,
+  "conservative_cv": 0.02533502420346325,
+  "model_calls": 0,
+  "automatic_retries": 0,
+  "wrapper_error": "Newline quoting broke launch metadata and post-run collection; harness evidence was preserved and collected afterward without rerunning."
+}
