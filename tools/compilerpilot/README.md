@@ -6,13 +6,15 @@ The same Python harness runs random, genetic, surrogate-guided and LLM-guided se
 
 ## Current evidence
 
+The latest [conditioned runtime qualification](results/replications/runtime-20261030-01-review.md) stopped before any nominee build. After 12 fixed-time conditioning groups, the second baseline qualification group had **2.7915% within-group CV**, above the unchanged 2% limit. Both completed qualification groups passed correctness; all raw evidence is retained separately from conditioning. This was one declared attempt with no model calls, retry or confirmation.
+
 The [first live agent search and its confirmation packet](results/studies/codespaces-agent-r5-20261030-01/review.md) used `gpt-4.1-mini-2025-04-14` against frozen Ledger source `7c43ec7`. E1 and the live semantic-mutation correctness check passed. The agent built 20 unique candidates and obtained 19 correct measurements, then a tool-use loop and provider HTTP 429 stopped the requested 40-build search. The original study remains explicitly failed/incomplete.
 
 Two separately declared confirmations retained the same three agent-proposed nominees. R=5 stopped after 12 complete observations when maximum baseline within-group CV reached **3.1357%**; one larger-work-unit R=20 protocol stopped after 12 complete observations at **2.1409%**. Both exceed the unchanged **2%** limit, preserve their partial raw data and have no recommendation. The protocols are not pooled.
 
 The [independent GitHub Actions replication](results/replications/gha-replication-41131249122-1-review.md) rebuilt only the original top-ranked agent nominee against the GCC baseline on a fresh four-core Ubuntu VM. All 20 interleaved R=20 observations passed correctness, but baseline variation across the ten rounds was **2.7585%**, above 2%; drift was **1.9033%**. The descriptive median difference also failed the unchanged three-sigma requirement. The result is `noisy`, with no recommendation or final-winner validation. **No confirmed compiler speedup, agent-versus-baselines advantage or predictor accuracy is claimed.**
 
-The remaining blocker is a Linux host stable enough across the entire ten-round confirmation. No further automatic attempt is scheduled. Additional model calls would not resolve this measurement failure.
+The remaining blocker is a Linux host stable enough across the entire ten-round confirmation. [Cornell Red Cloud exploratory access](docs/cornell-exploratory-access.md) offers 165 free compute units to eligible first-time Cornell users, with dedicated CPU cores and RAM; access has not been requested or provisioned, and a future host must still qualify. No further automatic attempt is scheduled. Additional model calls would not resolve this measurement failure.
 
 The recorded API allocation conservatively accounts for **$3.1319276** across 89 requests, including a retained $0.425584 reservation for the uncertain failed request. This is controller accounting, not an invoice or a claim about the provider's final charge. The same allocation and checkpoint remain authoritative; it has not been reset.
 

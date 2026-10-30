@@ -1,0 +1,52 @@
+{
+  "agent_win_claim_supported": false,
+  "audit_helper_sha256": "d886a0f876278af0448b2ca003ea37b5213008aa751abd008b776238fbf3441d",
+  "claim": "No speedup or agent-win claim supported.",
+  "confirmation": {},
+  "controller_commit": "274fb1c7cbd40af903e3ecd53ce80e6e958a823d",
+  "engine": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  },
+  "file_hashes_verified": 143,
+  "fresh_executables_rehashed": 2,
+  "fresh_input_sha256": {
+    "eval.lob": "f3618b200095cc3aecf9bfd317f583500234b2c7fe98e2c3fba3e33975647a04",
+    "train.lob": "c9f6e216eb41c89fbda0c8c6f0310d2e7f5443ca3b1f0c3633a551b8371441b4"
+  },
+  "fresh_source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7",
+  "frozen_raw_verifier_sha256": "34a481058c22f7568b55817c75a83f54a3d0236e3762a3b98e8b788c93e9861c",
+  "host": {
+    "boot_id_sha256": "2f69c891729e3d5ae2ac9d094a79f3fc3ea6712811f3a9eb3e2dca1655ba1feb",
+    "github_run_attempt": null,
+    "github_run_id": null,
+    "machine": "x86_64",
+    "node": "0ca8aa814a36",
+    "system": "Linux"
+  },
+  "limits": "Offline audit binds recorded bytes, rehashes available original source/inputs/executables and independently reconstructs raw statistics; no fresh benchmark or search is performed.",
+  "lossless_archives_verified": 1,
+  "model_calls": 0,
+  "packet_integrity_verified": true,
+  "phase_counts": {
+    "PGO_training": 0,
+    "conditioning_e1": 12,
+    "conditioning_e5": 0,
+    "confirmation": 0,
+    "other": 0,
+    "qualification": 2
+  },
+  "qualification": {
+    "across_group_cv": 0.00556196759879772,
+    "conservative_cv": 0.02802456266862872,
+    "groups": 2,
+    "max_within_group_cv": 0.02791477650437748,
+    "median_throughput": 18301406.4395,
+    "passed": false
+  },
+  "raw_directories_verified": 14,
+  "speedup_claim_supported": false,
+  "status": "early_noisy",
+  "trace_observations_verified": 14
+}

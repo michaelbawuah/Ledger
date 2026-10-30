@@ -1,5 +1,9 @@
 # CompilerPilot measured results
 
+The latest [conditioned runtime qualification](replications/runtime-20261030-01-review.md) stopped at E1 before any nominee build: its second baseline group's within-group CV was **2.7915%**, above the unchanged 2% limit. No confirmed compiler speedup or agent-versus-search advantage exists. See [current evidence status](status.md) for the separate live-agent study, confirmations and host attempts; their timings are never pooled with the historical report below.
+
+## Historical pre-integration qualification
+
 **The E1 noise gate failed. Performance experiments E2–E5 were not performed.** The recorded compiler/PGO builds below are functional qualifications only; no speedup or winning build is claimed.
 
 Recorded 0 trials; the E3 inventory contains 0 experiments. 0 correctness-passing, measurement-valid trials belong to the selected single runs. 0 correctness/build failures; 0 correctness-passing trials excluded by the measurement gate.
