@@ -18,6 +18,7 @@ from typing import Any, Callable
 from .build import BuildResult, file_sha256, source_provenance
 from .layout import PROJECT, require_ledger_root
 from .space import Candidate, KNOBS
+from .api_budget import ApiBudget, BudgetError, MODEL as BUDGET_MODEL, DEFAULT_LIMIT_USD
 
 STRATEGIES = ("random", "genetic", "surrogate", "agent")
 SOURCE_KEYS = ("ledger_commit", "ledger_dirty", "source_sha256")
@@ -71,6 +72,8 @@ class StudyConfig:
     training_seed: int = 20261012
     confirm: bool = True
     resume: bool = False
+    api_budget_file: Path | None = None
+    api_budget_usd: str = DEFAULT_LIMIT_USD
 
     def __post_init__(self) -> None:
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", self.study_id):
@@ -87,6 +90,15 @@ class StudyConfig:
             raise ValueError("Training and evaluation seeds must differ")
         for name in ("ledger", "data", "results"):
             setattr(self, name, Path(getattr(self, name)).resolve())
+        if self.api_budget_file is not None:
+            budget_path = Path(self.api_budget_file)
+            if budget_path.is_symlink():
+                raise ValueError('Shared API budget must not be a symbolic link')
+            # Resolve parent aliases before checking containment, while keeping
+            # the final component visible to ApiBudget's symlink checks.
+            self.api_budget_file = budget_path.parent.resolve() / budget_path.name
+            if self.api_budget_file.is_relative_to(self.results):
+                raise ValueError('Shared API budget must be outside per-study results and reused across attempts')
         if self.data == self.results:
             raise ValueError("Data and results must use different directories")
 
@@ -98,7 +110,7 @@ class StudyConfig:
         values = asdict(self)
         for name in ("ledger", "data", "results"):
             values[name] = str(values[name])
-        for name in ("phase", "resume", "provider", "model", "confirm"):
+        for name in ("phase", "resume", "provider", "model", "confirm", "api_budget_file", "api_budget_usd"):
             del values[name]
         return values
 
@@ -134,8 +146,12 @@ class StudyRunner:
         self.manifest: dict[str, Any] = {}
         self.active: str | None = None
         self._lock_owned = False
+        self.api_spending: ApiBudget | None = None
 
     def _save(self) -> None:
+        if self.api_spending is not None:
+            self.manifest['api_budget'] = self.api_spending.summary()
+            _write(self.config.results / 'api-budget-snapshot.json', self.api_spending.snapshot())
         self.manifest["updated_at"] = _now()
         _write(self.path, self.manifest)
 
@@ -147,6 +163,11 @@ class StudyRunner:
             key = "OPENAI_API_KEY" if self.config.provider == "openai" else "ANTHROPIC_API_KEY"
             if not os.getenv(key, "").strip():
                 raise ValueError(f"{key} is required before starting the study")
+            if self.config.provider != 'openai' or self.config.model != BUDGET_MODEL:
+                raise BudgetError('The approved allocation permits only OpenAI gpt-4.1-mini-2025-04-14')
+            if self.config.api_budget_file is None:
+                raise BudgetError('--api-budget-file must name the existing shared allocation')
+            self.api_spending = ApiBudget(self.config.api_budget_file, self.config.api_budget_usd)
         source, host = self.source_reader(self.config.ledger), self.host_reader()
         if self.path.exists():
             if not self.config.resume:
@@ -163,7 +184,7 @@ class StudyRunner:
             if any(item.get("status") == "running" for item in self.manifest.get("phases", {}).values()):
                 raise ValueError("An interrupted phase cannot be rerun under the same study-id")
             prior = self.manifest.get("agent")
-            agent = {"provider": self.config.provider, "model": self.config.model, "temperature": 0}
+            agent = self._agent_protocol()
             if prior and self.config.phase == "study" and prior != agent:
                 raise ValueError("Resume cannot change the pinned provider/model")
             self._verify_inputs(required="E1" in self.manifest.get("phases", {}))
@@ -177,7 +198,7 @@ class StudyRunner:
                              "source": source, "host": host, "full_E3_protocol": self.config.full_protocol,
                              "phases": {}, "status": "planned", "agent": None}
         if self.config.phase == "study":
-            self.manifest["agent"] = {"provider": self.config.provider, "model": self.config.model, "temperature": 0}
+            self.manifest["agent"] = self._agent_protocol()
         self.manifest["requested_phase"] = self.config.phase
         self.manifest["confirmation_requested"] = self.config.confirm
         self.config.results.mkdir(parents=True, exist_ok=True)
@@ -189,6 +210,11 @@ class StudyRunner:
             lock.write(str(os.getpid()))
         self._lock_owned = True
         self._save()
+
+    def _agent_protocol(self) -> dict[str, Any]:
+        return {"provider": self.config.provider, "model": self.config.model, "temperature": 0,
+                "service_tier": "default", "api_budget_file": str(self.config.api_budget_file),
+                "api_budget_usd": self.api_spending.summary()['limit_usd'] if self.api_spending else self.config.api_budget_usd}
 
     def _verify_context(self) -> None:
         if self.source_reader(self.config.ledger) != self.manifest["source"]:
@@ -466,7 +492,9 @@ class StudyRunner:
                     command = ["experiment", "--strategy", strategy, "--budget", str(self.config.budget),
                                "--seed", str(seed), "--run-id", self._run_id(suffix), *self._common()]
                     if strategy == "agent":
-                        command += ["--provider", self.config.provider, "--model", self.config.model]
+                        command += ["--provider", self.config.provider, "--model", self.config.model,
+                                    "--api-budget-file", str(self.config.api_budget_file),
+                                    "--api-budget-usd", self.config.api_budget_usd]
                     self._perform(suffix, lambda s=suffix, c=command: self._command(s, c,
                         lambda: self._validate_search(s, self.config.budget, experiment=True)))
             predictor = self._perform("E4", self._report)
@@ -507,6 +535,8 @@ def run(argv: list[str] | None = None) -> int:
     parser.add_argument("--study-id", required=True)
     parser.add_argument("--provider", choices=("openai", "anthropic"), default="openai")
     parser.add_argument("--model")
+    parser.add_argument("--api-budget-file", type=Path, help="Existing shared spending ledger; never reset for a new attempt")
+    parser.add_argument("--api-budget-usd", default=DEFAULT_LIMIT_USD, help="At most 9.99 USD after the earlier preflight reserve")
     parser.add_argument("--cpu", type=int, default=0)
     parser.add_argument("--jobs", type=int, default=2)
     parser.add_argument("--commands", type=int, default=1_000_000)
@@ -525,7 +555,7 @@ def run(argv: list[str] | None = None) -> int:
                              data=args.data or PROJECT / "data" / "studies" / args.study_id,
                              results=args.results or PROJECT / "results" / "studies" / args.study_id,
                              **{name: getattr(args, name) for name in ("phase", "provider", "model", "cpu", "jobs", "commands",
-                                 "budget", "seeds", "evaluation_seed", "training_seed", "confirm", "resume")})
+                                 "budget", "seeds", "evaluation_seed", "training_seed", "confirm", "resume", "api_budget_file", "api_budget_usd")})
         result = StudyRunner(config).run()
     except (ValueError, RuntimeError, OSError) as error:
         print(f"Study stopped: {error}", file=__import__('sys').stderr)

@@ -10,9 +10,10 @@ import json
 import os
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from ..tools import ToolDispatcher
+from ..api_budget import ApiBudget, BudgetError
 
 _SYSTEM = """You are CompilerPilot, a compiler tuning researcher. Optimize Ledger throughput subject
  to unchanged semantics. Only the supplied tools can build, measure, or judge. Never invent
@@ -39,11 +40,16 @@ def _encode(value: Any) -> str:
     return json.dumps(value, default=_json_default, ensure_ascii=False, allow_nan=False)
 
 
+class _NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, request, fp, code, message, headers, new_url):
+        return None
+
+
 def _post(url: str, headers: dict[str, str], payload: dict[str, Any], timeout: float) -> dict[str, Any]:
     request = Request(url, data=_encode(payload).encode("utf-8"),
                       headers={"Content-Type": "application/json", **headers}, method="POST")
     try:
-        with urlopen(request, timeout=timeout) as response:
+        with build_opener(_NoRedirect()).open(request, timeout=timeout) as response:
             result = json.loads(response.read(8 * 1024 * 1024))
     except HTTPError as error:
         # Do not include request headers or untrusted provider bodies, which may echo credentials.
@@ -59,7 +65,8 @@ class AgentRunner:
     def __init__(self, harness: Any, *, provider: str = "openai", model: str,
                  seed: int = 0, max_calls: int = 400, timeout: float = 120,
                  transport: Callable[..., dict[str, Any]] | None = None,
-                 api_key: str | None = None, sampling: str = "fixed"):
+                 api_key: str | None = None, sampling: str = "fixed",
+                 spending: ApiBudget | None = None):
         if provider not in ("openai", "anthropic"):
             raise ValueError("provider must be openai or anthropic")
         if not isinstance(model, str) or not model.strip():
@@ -71,6 +78,8 @@ class AgentRunner:
         self.harness, self.provider, self.model = harness, provider, model
         self.seed, self.max_calls, self.timeout = seed, max_calls, timeout
         self.transport = transport or _post
+        self._network_transport = transport is None
+        self.spending = spending
         self.api_key = api_key or os.environ.get("OPENAI_API_KEY" if provider == "openai" else "ANTHROPIC_API_KEY")
         self.sampling = sampling
 
@@ -93,7 +102,7 @@ class AgentRunner:
             headers = {"Authorization": f"Bearer {self.api_key}"}
             payload = {"model": self.model, "messages": [{"role": "system", "content": _SYSTEM}, *messages],
                        "tools": definitions, "tool_choice": "auto", "parallel_tool_calls": False,
-                       "max_completion_tokens": 4096}
+                       "max_completion_tokens": 4096, "service_tier": "default"}
             if self.sampling == "fixed":
                 payload.update(temperature=0, seed=self.seed)
         else:
@@ -105,8 +114,26 @@ class AgentRunner:
                                   "input_schema": tool["function"]["parameters"]} for tool in definitions]}
             if self.sampling == "fixed":
                 payload["temperature"] = 0
+        if self._network_transport and self.spending is None:
+            raise BudgetError('A persistent shared API budget is required before any live provider request')
+        if self.spending is not None and self.provider != 'openai':
+            raise BudgetError('This API allocation permits only the vetted OpenAI model')
+        run_dir = getattr(getattr(self.harness, 'store', None), 'run_dir', None)
+        run_id = run_dir.name if run_dir is not None else f'agent-seed-{self.seed}'
+        reservation = (self.spending.reserve(self.model, payload['max_completion_tokens'], run_id=run_id)
+                       if self.spending is not None else None)
         self._trace("llm_request", {"provider": self.provider, "payload": payload})
-        response = self.transport(url, headers, payload, self.timeout)
+        try:
+            response = self.transport(url, headers, payload, self.timeout)
+        except BaseException:
+            if reservation is not None:
+                self.spending.uncertain(reservation)
+                self._trace('api_budget', self.spending.summary())
+            raise
+        if reservation is not None:
+            receipt = self.spending.settle(reservation, response)
+            self._trace('api_budget_settlement', receipt)
+            self._trace('api_budget', self.spending.summary())
         self._trace("llm_response", response)
         return response
 

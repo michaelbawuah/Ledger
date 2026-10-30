@@ -25,6 +25,7 @@ def test_successful_agent_outcome_is_strategy_neutral_and_execution_metadata_kep
     import compilerpilot.cli as cli
     import compilerpilot.strategies.agent as agent
     from compilerpilot.store import Store
+    from compilerpilot.api_budget import ApiBudget, MODEL
 
     store = Store(tmp_path, 'agent-40')
     recommendation = {'status': 'provisional_pending_confirmation',
@@ -32,7 +33,7 @@ def test_successful_agent_outcome_is_strategy_neutral_and_execution_metadata_kep
                       'rationale': 'All forty measured candidates were within baseline noise'}
     execution = {'status': 'finished', 'complete': True, 'builds': 40,
                  'recommendation': recommendation, 'provider': 'openai',
-                 'model': 'fixed-model-version', 'seed': 2, 'calls': 81, 'sampling': 'fixed'}
+                 'model': MODEL, 'seed': 2, 'calls': 81, 'sampling': 'fixed'}
     class Harness:
         pass
     harness = Harness()
@@ -40,7 +41,7 @@ def test_successful_agent_outcome_is_strategy_neutral_and_execution_metadata_kep
     class Runner:
         def __init__(self, supplied, **settings):
             assert supplied is harness
-            assert settings['model'] == 'fixed-model-version'
+            assert settings['model'] == MODEL
             assert settings['seed'] == 2
         def run(self, budget):
             assert budget == 40
@@ -50,11 +51,23 @@ def test_successful_agent_outcome_is_strategy_neutral_and_execution_metadata_kep
     monkeypatch.setenv('OPENAI_API_KEY', 'test-placeholder')
     monkeypatch.setattr(cli, '_harness', lambda *args: harness)
     monkeypatch.setattr(agent, 'AgentRunner', Runner)
-    cli.experiment(argparse.Namespace(strategy='agent', model='fixed-model-version',
-                                      provider='openai', budget=40, seed=2))
+    budget_path = tmp_path / 'shared-api-budget.json'
+    ApiBudget.initialize(budget_path)
+    cli.experiment(argparse.Namespace(strategy='agent', model=MODEL,
+                                      provider='openai', budget=40, seed=2, api_budget_file=budget_path, api_budget_usd='9.99'))
     outcome = json.loads((store.run_dir / 'outcome.json').read_text())
     raw = json.loads((store.run_dir / 'agent-execution.json').read_text())
     assert outcome == recommendation
     assert raw == execution
-    assert raw['provider'] == 'openai' and raw['model'] == 'fixed-model-version'
+    assert raw['provider'] == 'openai' and raw['model'] == MODEL
     assert raw['seed'] == 2 and raw['calls'] == 81
+
+
+def test_live_agent_budget_required_before_any_baseline_build(monkeypatch, tmp_path):
+    import compilerpilot.cli as cli
+    from compilerpilot.api_budget import MODEL
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-placeholder')
+    monkeypatch.setattr(cli, '_harness', lambda *args: pytest.fail('No build before persistent spending guard'))
+    assert main(['experiment', '--strategy', 'agent', '--model', MODEL,
+                 '--results', str(tmp_path)]) == 1
+    assert not list(tmp_path.iterdir())

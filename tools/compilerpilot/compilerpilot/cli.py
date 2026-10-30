@@ -13,6 +13,7 @@ from .bench import BenchmarkConfig, BenchmarkRunner
 from .harness import Harness
 from .store import Store
 from .layout import find_ledger_root, require_ledger_root
+from .api_budget import ApiBudget, BudgetError, MODEL as BUDGET_MODEL, DEFAULT_LIMIT_USD
 
 PROJECT = Path(__file__).resolve().parents[1]
 
@@ -89,17 +90,23 @@ def _harness(args, strategy, budget):
 
 
 def experiment(args):
+    spending = None
     if args.strategy == 'agent':
         if not args.model:
             raise ValueError('--model must pin the exact provider model for an agent run')
         key = 'OPENAI_API_KEY' if args.provider=='openai' else 'ANTHROPIC_API_KEY'
         if not os.getenv(key):
             raise RuntimeError(f'{key} is required for a real agent run')
+        if args.provider != 'openai' or args.model != BUDGET_MODEL:
+            raise BudgetError('The approved allocation permits only OpenAI gpt-4.1-mini-2025-04-14')
+        if not getattr(args, 'api_budget_file', None):
+            raise BudgetError('--api-budget-file must name the existing shared allocation; no automatic reset is allowed')
+        spending = ApiBudget(args.api_budget_file, getattr(args, 'api_budget_usd', DEFAULT_LIMIT_USD))
     h = _harness(args,args.strategy,args.budget)
     try:
         if args.strategy == 'agent':
             from .strategies.agent import AgentRunner
-            execution = AgentRunner(h,provider=args.provider,model=args.model,seed=args.seed,max_calls=args.budget*12).run(args.budget)
+            execution = AgentRunner(h,provider=args.provider,model=args.model,seed=args.seed,max_calls=args.budget*12,spending=spending).run(args.budget)
             # Keep provider metadata independently of the strategy-neutral outcome.
             h.store.write('agent-execution.json', execution)
             if execution.get('status') != 'finished':
@@ -181,6 +188,8 @@ def main(argv=None):
     p.add_argument('--budget',type=int,default=40);p.add_argument('--seed',type=int,default=0)
     p.add_argument('--compilers',default='gcc,clang')
     p.add_argument('--provider',choices=['openai','anthropic'],default='openai');p.add_argument('--model')
+    p.add_argument('--api-budget-file',type=Path,help='Existing shared API spending ledger, reused across all seeds/attempts')
+    p.add_argument('--api-budget-usd',default=DEFAULT_LIMIT_USD,help='Fixed allocation limit; at most 9.99 USD after the preflight reserve')
     p=sub.add_parser('confirm');p.add_argument('--baseline',type=Path,required=True)
     p.add_argument('--candidates',type=Path,nargs='+',required=True);p.add_argument('--input',type=Path,required=True)
     p.add_argument('--rounds',type=int,default=10);p.add_argument('--cpu',type=int,default=None)

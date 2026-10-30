@@ -8,6 +8,7 @@ import random
 import pytest
 
 from compilerpilot.build import BuildResult, file_sha256
+from compilerpilot.api_budget import ApiBudget, MODEL
 from compilerpilot.space import Candidate, KNOBS, sample_candidate
 from compilerpilot.study import StudyConfig, StudyRunner, run
 
@@ -23,8 +24,11 @@ def save(path, value):
 
 def config(tmp_path, **changes):
     values = {"study_id": "controlled", "ledger": tmp_path / "ledger", "data": tmp_path / "data",
-              "results": tmp_path / "results", "model": "pinned-model", "budget": 2, "seeds": 1, "cpu": CPU}
+              "results": tmp_path / "results", "model": MODEL, "budget": 2, "seeds": 1, "cpu": CPU,
+              "api_budget_file": tmp_path / "shared-api-budget.json"}
     values.update(changes)
+    if values.get("api_budget_file") is not None and not Path(values["api_budget_file"]).exists():
+        ApiBudget.initialize(values["api_budget_file"])
     return StudyConfig(**values)
 
 
@@ -203,7 +207,7 @@ def test_explicit_resume_reuses_only_passing_same_host_baseline(tmp_path, monkey
     fake = FakeExperiment(cfg)
     assert fake.runner().run() == 0
     monkeypatch.setenv("OPENAI_API_KEY", "test-only-key")
-    follow = replace(cfg, phase="study", model="pinned-model", resume=True)
+    follow = replace(cfg, phase="study", model=MODEL, resume=True)
     assert fake.runner(follow).run() == 0
     assert sum(cmd[0] == "baseline" for cmd in fake.commands) == 1
     assert sum(cmd[0] == "experiment" for cmd in fake.commands) == 4
@@ -343,3 +347,62 @@ def test_host_identity_hashes_boot_id_and_records_github_session(monkeypatch):
     assert "boot_id" not in identity
     assert identity["github_run_id"] == "12345" and identity["github_run_attempt"] == "2"
     assert identity["boot_id_sha256"] is None or len(identity["boot_id_sha256"]) == 64
+
+
+def test_all_agent_seeds_share_one_existing_api_allocation_and_audit_snapshot(tmp_path, monkeypatch):
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-only-key')
+    cfg = config(tmp_path, seeds=3)
+    fake = FakeExperiment(cfg)
+    assert fake.runner().run() == 0
+    agents = [command for command in fake.commands if '--strategy' in command
+              and command[command.index('--strategy') + 1] == 'agent']
+    assert len(agents) == 3
+    for command in agents:
+        assert command[command.index('--api-budget-file') + 1] == str(cfg.api_budget_file)
+        assert command[command.index('--api-budget-usd') + 1] == '9.99'
+    others = [command for command in fake.commands if command not in agents]
+    assert all('--api-budget-file' not in command for command in others)
+    snapshot = json.loads((cfg.results / 'api-budget-snapshot.json').read_text())
+    assert snapshot == ApiBudget(cfg.api_budget_file).snapshot()
+    manifest = json.loads((cfg.results / 'study.json').read_text())
+    assert manifest['api_budget']['limit_usd'] == '9.99'
+    assert manifest['api_budget']['preflight_reserve_usd'] == '0.01'
+
+
+def test_study_missing_allocation_fails_before_any_build_or_new_results(tmp_path, monkeypatch):
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-only-key')
+    cfg = config(tmp_path)
+    cfg.api_budget_file.unlink()
+    fake = FakeExperiment(cfg)
+    with pytest.raises(RuntimeError, match='budget ledger is missing'):
+        fake.runner().run()
+    assert not cfg.results.exists() and fake.commands == []
+
+
+@pytest.mark.parametrize('alias_kind', ['dotdot', 'symlink_parent'])
+def test_budget_cannot_hide_inside_per_study_results_through_path_alias(tmp_path, alias_kind):
+    results = tmp_path / 'results'
+    results.mkdir()
+    outside = tmp_path / 'outside'
+    outside.mkdir()
+    if alias_kind == 'dotdot':
+        budget = outside / '..' / 'results' / 'shared.json'
+    else:
+        alias = outside / 'alias'
+        alias.symlink_to(results, target_is_directory=True)
+        budget = alias / 'shared.json'
+    with pytest.raises(ValueError, match='outside per-study results'):
+        StudyConfig(study_id='controlled', ledger=tmp_path / 'ledger',
+                    data=tmp_path / 'data', results=results, phase='baseline',
+                    api_budget_file=budget)
+
+
+def test_budget_final_symlink_is_rejected_before_normalization(tmp_path):
+    real = tmp_path / 'authoritative.json'
+    real.write_text('{}')
+    alias = tmp_path / 'alias.json'
+    alias.symlink_to(real)
+    with pytest.raises(ValueError, match='must not be a symbolic link'):
+        StudyConfig(study_id='controlled', ledger=tmp_path / 'ledger',
+                    data=tmp_path / 'data', results=tmp_path / 'results',
+                    phase='baseline', api_budget_file=alias)

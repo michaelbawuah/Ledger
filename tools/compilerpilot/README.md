@@ -42,13 +42,13 @@ python -m compilerpilot experiment --strategy random --budget 40 --seed 0 --cpu 
 python -m compilerpilot experiment --strategy genetic --budget 40 --seed 0 --cpu 0
 python -m compilerpilot experiment --strategy surrogate --budget 40 --seed 0 --cpu 0
 # Set OPENAI_API_KEY or ANTHROPIC_API_KEY securely in your environment first.
-python -m compilerpilot experiment --strategy agent --provider openai --model MODEL_ID --budget 40 --seed 0 --cpu 0
+python -m compilerpilot experiment --strategy agent --provider openai --model gpt-4.1-mini-2025-04-14 --budget 40 --seed 0 --cpu 0 --api-budget-file data/api-allocation.json --api-budget-usd 9.99
 python -m compilerpilot report
 ```
 
 Use an exact model version that supports tool use, temperature zero and, for OpenAI, the seed parameter. The tool loop records model, sampling settings, request/response traces, hypotheses and tool results. Anthropic does not expose a matching seed parameter; that limitation is recorded. A provider error is an incomplete experiment, never a fallback search result.
 
-`python scripts/run_study.py --phase study --study-id research-01 --model MODEL_ID --provider openai --cpu 0` runs E1, E2 and the full E3 matrix sequentially: four strategies, three seeds and forty unique builds per strategy/seed. Preflight credentials first. Run IDs cannot overwrite existing evidence. A noisy or drifting batch stops the study and must be rerun under a new ID. Reports inventory all attempts.
+`python scripts/run_study.py --phase study --study-id research-01 --model gpt-4.1-mini-2025-04-14 --provider openai --cpu 0 --api-budget-file data/api-allocation.json --api-budget-usd 9.99` runs E1, E2 and the full E3 matrix sequentially: four strategies, three seeds and forty unique builds per strategy/seed. Preflight credentials first. Run IDs cannot overwrite existing evidence. A noisy or drifting batch stops the study and must be rerun under a new ID. Reports inventory all attempts.
 
 ## Controlled study runner
 
@@ -77,6 +77,26 @@ With `OPENAI_API_KEY` supplied securely in the environment, the same bounded che
 ```bash
 python scripts/check_provider.py --model gpt-4.1-mini-2025-04-14 --output results/provider-check.json
 ```
+
+## Enforced shared API allocation
+
+The current approval allows **$10 total for model calls**. A conservative **$0.01 reserve** covers the already completed provider check, leaving **$9.99 for the full study**. No further live preflight is needed under this allocation. This controller covers API calls independently of the measurement host. Using an included Codespaces compute allowance does not make model API usage free.
+
+Every live agent command requires the existing shared budget file. The approved pricing configuration permits only `gpt-4.1-mini-2025-04-14` with `service_tier=default`, at $0.40 per million input tokens and $1.60 per million output tokens. Before each request, the controller atomically reserves the maximum model input context (1,047,576 tokens) plus the requested completion cap (4,096 tokens), **$0.425584 per study request**. Exact integer nanodollars avoid floating-point rounding. Actual verified usage refunds the difference; all prompt tokens are conservatively charged at the uncached rate. The controller stops before a request if its full reservation would exceed the remaining allocation.
+
+Initialize the allocation **once**, then pass the same file to all three agent seeds and every subsequent attempt under this approval:
+
+```bash
+python -m compilerpilot.api_budget init --file data/api-allocation.json --limit-usd 9.99
+python -m compilerpilot.api_budget status --file data/api-allocation.json --limit-usd 9.99
+python scripts/run_study.py --phase study --study-id research-01 \
+  --provider openai --model gpt-4.1-mini-2025-04-14 --cpu 0 \
+  --api-budget-file data/api-allocation.json --api-budget-usd 9.99
+```
+
+The study never initializes or resets an allocation automatically. Preserve the original JSON **and its `.lock` checkpoint** across seeds, study IDs, interrupted attempts and host moves; keep them outside the per-study results directory. The checkpoint binds the latest revision and file hash, so missing state, a changed limit, a corrupt file or an older JSON snapshot fails closed. Do not create a second allocation or restore an older matching file pair to regain funds. The launcher must retain this one authoritative allocation; filesystem operators can replace files, so an audit copy is not independent spending authority.
+
+There are no automatic retries or redirects. Missing or malformed usage, unexpected model/tier, timeouts and ambiguous provider errors retain the entire reservation and stop the experiment. A crash between durable writes can also block further requests; preserve the state instead of resetting it. Budget exhaustion leaves the run incomplete with all existing measurements retained. Each study exports `api-budget-snapshot.json` for audit alongside its partial or completed results.
 
 ## How a trial works
 
