@@ -1,0 +1,38 @@
+name: CompilerPilot provider compatibility check
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Exact OpenAI model ID; this checks compatibility, never performance'
+        required: true
+        type: string
+        default: 'gpt-4.1-mini-2025-04-14'
+
+permissions:
+  contents: read
+
+jobs:
+  one-request:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: tools/compilerpilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check one harmless tool call with study sampling parameters
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CHECK_MODEL: ${{ inputs.model }}
+        run: python scripts/check_provider.py --model="$CHECK_MODEL" --output results/provider-check.json
+      - name: Upload compatibility report even when the check fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-provider-compatibility
+          path: tools/compilerpilot/results/provider-check.json
+          if-no-files-found: error

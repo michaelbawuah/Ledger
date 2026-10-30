@@ -66,6 +66,18 @@ python scripts/run_study.py --phase baseline --study-id local-qualification --co
 
 Artifacts include the protocol, source identity, raw replay observations and failure details. A failed noise gate stops the attempt; a new host or explicitly changed protocol requires a new study ID.
 
+## Check provider compatibility first
+
+The manual [provider compatibility workflow](../../.github/workflows/compilerpilot-provider-check.yml) makes exactly one harmless OpenAI request, with no retries, builds or benchmarks. It checks the study's existing Chat Completions request shape: strict function tools, `temperature=0`, `seed=0`, and a reduced 512-token completion limit. Its artifact contains only model IDs, request ID, numeric usage, a fixed status and the harmless tool name. A compatibility pass is not an agent performance result.
+
+The default snapshot is `gpt-4.1-mini-2025-04-14`. It remains API-available but is deprecated, with shutdown scheduled for **January 14, 2027**; see the official [model page](https://developers.openai.com/api/docs/models/gpt-4.1-mini) and [deprecation notice](https://developers.openai.com/api/docs/deprecations). The seed parameter is deprecated and offers best-effort repeatability, not deterministic execution. This check requires the returned model ID to match the requested snapshot exactly. It does not establish that the account has enough quota for a full study.
+
+With `OPENAI_API_KEY` supplied securely in the environment, the same bounded check runs locally:
+
+```bash
+python scripts/check_provider.py --model gpt-4.1-mini-2025-04-14 --output results/provider-check.json
+```
+
 ## How a trial works
 
 ```mermaid
