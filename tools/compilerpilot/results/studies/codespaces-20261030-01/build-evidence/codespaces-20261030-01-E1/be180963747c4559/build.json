@@ -1,0 +1,62 @@
+{
+  "build_id": "be180963747c4559",
+  "candidate": {
+    "compiler": "gcc",
+    "opt": "O3",
+    "isa": "native",
+    "lto": false,
+    "pgo": false,
+    "inline": "default",
+    "unroll": false,
+    "vectorize": true,
+    "frame_pointer": false,
+    "alignment": 0,
+    "semantic_interposition": true
+  },
+  "build_dir": "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559",
+  "success": true,
+  "compile_s": 21.71484554100016,
+  "text_bytes": 96030,
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "error": null,
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-march=native",
+    "-fopt-info-missed"
+  ],
+  "provenance": {
+    "ledger_commit": "4c8525b5fcd1bd571de97293c26644847d6c70c3",
+    "ledger_dirty": false,
+    "source_sha256": "222be23680fb9afd773e85f8f58492869aa9318a59e79831ca04b47b9b752f76",
+    "compiler_executable": "/usr/bin/g++",
+    "configure_s": 0.6657429679999041,
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "/workspaces/Ledger",
+        "-B",
+        "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=g++",
+        "-DCMAKE_CXX_FLAGS=-O3 -DNDEBUG -march=native -fopt-info-missed",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG",
+        "-DLEDGER_NATIVE=OFF",
+        "-DBUILD_TESTING=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-G",
+        "Ninja"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/workspaces/Ledger/tools/compilerpilot/builds/codespaces-20261030-01-E1/be180963747c4559",
+        "--parallel",
+        "2"
+      ]
+    ],
+    "clean_build": true,
+    "binary_sha256": "1383eec743a6f96ef8aaa641948287735a7c766444b3c2c75a91d936fe97e31e"
+  }
+}

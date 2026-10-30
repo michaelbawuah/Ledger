@@ -1,0 +1,14 @@
+  File "<stdin>", line 7
+    (p/'runner.json').write_text(json.dumps(metadata,indent=2)+'
+                                                               ^
+SyntaxError: unterminated string literal (detected at line 7)
+Noise gate failed: CV 2.53%; evidence saved in /workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01/runs/codespaces-20261030-01-E1
+{
+  "study": "/workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01",
+  "status": "failed",
+  "exit_code": 1
+}
+  File "<stdin>", line 13
+    (output/'qualification-exit.json').write_text(json.dumps(result,indent=2)+'
+                                                                              ^
+SyntaxError: unterminated string literal (detected at line 13)

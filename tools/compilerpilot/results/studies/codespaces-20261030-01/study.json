@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "study_id": "codespaces-20261030-01",
+  "created_at": "2026-10-30T17:53:26.128041+00:00",
+  "protocol": {
+    "study_id": "codespaces-20261030-01",
+    "ledger": "/workspaces/Ledger",
+    "data": "/workspaces/Ledger/tools/compilerpilot/data/studies/codespaces-20261030-01",
+    "results": "/workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01",
+    "cpu": 0,
+    "jobs": 2,
+    "commands": 5000000,
+    "budget": 40,
+    "seeds": 3,
+    "evaluation_seed": 20261011,
+    "training_seed": 20261012
+  },
+  "source": {
+    "ledger_commit": "4c8525b5fcd1bd571de97293c26644847d6c70c3",
+    "ledger_dirty": false,
+    "source_sha256": "222be23680fb9afd773e85f8f58492869aa9318a59e79831ca04b47b9b752f76"
+  },
+  "host": {
+    "node": "codespaces-e9123b",
+    "machine": "x86_64",
+    "system": "Linux",
+    "boot_id_sha256": "00272295c447b800dd5ca9a78d81e2b13b0c6d1e7710d02f2d178a089707ea66",
+    "github_run_id": null,
+    "github_run_attempt": null
+  },
+  "full_E3_protocol": true,
+  "phases": {
+    "E1": {
+      "status": "failed",
+      "started_at": "2026-10-30T17:53:26.138111+00:00",
+      "ended_at": "2026-10-30T17:57:23.169405+00:00",
+      "error": "E1 stopped with exit code 1; its evidence remains in /workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01/runs/codespaces-20261030-01-E1"
+    }
+  },
+  "status": "failed",
+  "agent": null,
+  "requested_phase": "baseline",
+  "confirmation_requested": true,
+  "updated_at": "2026-10-30T17:57:25.079352+00:00",
+  "error": "E1 stopped with exit code 1; its evidence remains in /workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01/runs/codespaces-20261030-01-E1",
+  "report": {
+    "summary": "/workspaces/Ledger/tools/compilerpilot/results/studies/codespaces-20261030-01/summary.md",
+    "trials": 0,
+    "eligible": 0,
+    "complete": false,
+    "heldout_measured": false,
+    "status": "insufficient_predictor_data"
+  }
+}
