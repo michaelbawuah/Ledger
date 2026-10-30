@@ -1,0 +1,63 @@
+{
+  "agent_win_claim_supported": false,
+  "audit_limits": "Original executable and .lob bytes are not retained; hash checks establish recorded continuity, not fresh binary/feed rehashing.",
+  "baseline": {
+    "cv": 0.0275846949953209,
+    "max_run_cv": 0.010924936930750879,
+    "median_run_cv": 0.0068826384349565,
+    "noise_stdev": 700292.6892543683,
+    "observations": 10,
+    "p50_ns": 40.0,
+    "p99_ns": 195.5,
+    "speedup": 1.0,
+    "speedup_pct": 0.0,
+    "spread": 2053548.621600002,
+    "stdev": 700292.6892543683,
+    "throughput": 25308189.1693
+  },
+  "baseline_drift": 0.019033241291692593,
+  "baseline_drift_passed": true,
+  "baseline_variability_passed": false,
+  "candidate": {
+    "cv": 0.01869471424642665,
+    "max_run_cv": 0.01832336849309383,
+    "median_run_cv": 0.008893543262500053,
+    "noise_stdev": 499690.5351889936,
+    "observations": 10,
+    "p50_ns": 40.0,
+    "p99_ns": 170.0,
+    "speedup": 1.0465424874442955,
+    "speedup_pct": 4.6542487444295455,
+    "spread": 1291333.789999999,
+    "stdev": 499690.5351889936,
+    "throughput": 26486095.24595
+  },
+  "candidate_variability_passed": true,
+  "claim": "No speedup or strategy-ranking claim is supported.",
+  "delta_above_three_sigma": false,
+  "file_hashes_verified": 230,
+  "host": {
+    "boot_id_sha256": "82c9451047a077455374aabb1bcf38de8e53809bcdcaaf0e554e1fd0cfab3862",
+    "github_run_attempt": "1",
+    "github_run_id": "41131249122",
+    "machine": "x86_64",
+    "node": "runnervm48cm3",
+    "system": "Linux"
+  },
+  "independently_confirmed": false,
+  "lossless_archives_verified": 29,
+  "observations_verified": 20,
+  "original_budget": 40,
+  "original_builds": 20,
+  "original_measured": 19,
+  "original_study_status": "failed",
+  "packet_integrity_verified": true,
+  "raw_directories_verified": 21,
+  "relative_three_sigma_threshold": 0.08301178933463825,
+  "replication_status": "noisy",
+  "source": {
+    "ledger_commit": "7c43ec7346796040a6c8b8f8d3ad22d0bd7446d6",
+    "ledger_dirty": false,
+    "source_sha256": "adcb9b9bc745d28411bde43e91eb21b2dd44c9455c4666ccd2f1d1ad4f6251d7"
+  }
+}

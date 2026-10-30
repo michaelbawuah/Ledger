@@ -8,7 +8,11 @@ The same Python harness runs random, genetic, surrogate-guided and LLM-guided se
 
 The [first live agent search and its confirmation packet](results/studies/codespaces-agent-r5-20261030-01/review.md) used `gpt-4.1-mini-2025-04-14` against frozen Ledger source `7c43ec7`. E1 and the live semantic-mutation correctness check passed. The agent built 20 unique candidates and obtained 19 correct measurements, then a tool-use loop and provider HTTP 429 stopped the requested 40-build search. The original study remains explicitly failed/incomplete.
 
-Two separately declared confirmations retained the same three agent-proposed nominees. R=5 stopped after 12 complete observations when maximum baseline within-group CV reached **3.1357%**; one larger-work-unit R=20 protocol stopped after 12 complete observations at **2.1409%**. Both exceed the unchanged **2%** limit, preserve their partial raw data and have no recommendation. The protocols are not pooled. **No confirmed compiler speedup, agent-versus-baselines advantage or predictor accuracy is claimed.** A separate fixed-candidate validation on an independent hosted VM is being prepared; it is not a result yet.
+Two separately declared confirmations retained the same three agent-proposed nominees. R=5 stopped after 12 complete observations when maximum baseline within-group CV reached **3.1357%**; one larger-work-unit R=20 protocol stopped after 12 complete observations at **2.1409%**. Both exceed the unchanged **2%** limit, preserve their partial raw data and have no recommendation. The protocols are not pooled.
+
+The [independent GitHub Actions replication](results/replications/gha-replication-41131249122-1-review.md) rebuilt only the original top-ranked agent nominee against the GCC baseline on a fresh four-core Ubuntu VM. All 20 interleaved R=20 observations passed correctness, but baseline variation across the ten rounds was **2.7585%**, above 2%; drift was **1.9033%**. The descriptive median difference also failed the unchanged three-sigma requirement. The result is `noisy`, with no recommendation or final-winner validation. **No confirmed compiler speedup, agent-versus-baselines advantage or predictor accuracy is claimed.**
+
+The remaining blocker is a Linux host stable enough across the entire ten-round confirmation. No further automatic attempt is scheduled. Additional model calls would not resolve this measurement failure.
 
 The recorded API allocation conservatively accounts for **$3.1319276** across 89 requests, including a retained $0.425584 reservation for the uncertain failed request. This is controller accounting, not an invoice or a claim about the provider's final charge. The same allocation and checkpoint remain authoritative; it has not been reset.
 
@@ -115,7 +119,7 @@ This scope needs no model credential or API allocation and makes no model calls.
 
 `--throughput-replays R` is an optional measurement setting, bounded to 1–20 and defaulting to **1**. Each reported throughput run replays the fixed input R times into R fresh empty books and divides all processed commands by the sum of **every** replay duration. Every block must match the single-input reference state and checksums. Individual durations and checksums remain in `throughput_replays.csv`; no block is removed or selected by its speed. The separate latency pass and exact latency histogram still contain one input replay.
 
-The next proposed Codespaces qualification uses **R=5 with the existing five-million-command input**: 25 million commands of measured throughput work per reported run, with a separate five-million-command latency pass. This extends the measured work without increasing the input or latency-array working set. It is a new predeclared protocol, not a reinterpretation of the failed R=1 attempt. After review, one E1 attempt can be launched with fresh source-bound data, results and study ID:
+The completed [R=5 Codespaces qualification](results/studies/codespaces-r5-20261030-01/review.md) used **R=5 with the existing five-million-command input**: 25 million commands of measured throughput work per reported run, with a separate five-million-command latency pass. This extended the measured work without increasing the input or latency-array working set. It was a new predeclared protocol, with its own evidence. An illustrative baseline command using fresh source-bound folders is:
 
 ```bash
 python scripts/run_study.py --phase baseline --study-id codespaces-window-r5 \
@@ -123,7 +127,7 @@ python scripts/run_study.py --phase baseline --study-id codespaces-window-r5 \
   --data data/codespaces-window-r5 --results results/studies/codespaces-window-r5
 ```
 
-This command is a plan, not evidence that the attempt ran or passed. The same R must be used for E1, the knob sweep, all four search policies, drift checkpoints and interleaved confirmation. A new source or replay setting cannot resume an older study. The 2% noise limit and three-spread significance requirement remain unchanged. Longer work can reduce the relative effect of a short interruption; recurring contention and clock-frequency changes can still fail the gate. No automatic retry seeks a passing result. Reports do not pool different replay settings into rankings, search comparisons or predictor validation; historical records without R mean R=1.
+This example does not schedule another attempt. The same R must be used for E1, the knob sweep, all four search policies, drift checkpoints and interleaved confirmation. A new source or replay setting cannot resume an older study. The 2% noise limit and three-spread significance requirement remain unchanged. Longer work can reduce the relative effect of a short interruption; recurring contention and clock-frequency changes can still fail the gate. No automatic retry seeks a passing result. Reports do not pool different replay settings into rankings, search comparisons or predictor validation; historical records without R mean R=1.
 
 ## Check provider compatibility first
 
