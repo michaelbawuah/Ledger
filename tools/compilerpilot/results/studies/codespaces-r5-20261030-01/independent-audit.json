@@ -1,0 +1,267 @@
+{
+  "actual": {
+    "baseline_observations": 10,
+    "histogram_csv_rows": 103881,
+    "latency_samples": 750000000,
+    "output_directories": 10,
+    "runs_csv_rows": 150,
+    "throughput_block_rows": 750
+  },
+  "complete_E1_raw_evidence_verified": true,
+  "expected_complete_E1": {
+    "bitmap_reported_runs": 50,
+    "engine_run_rows": 150,
+    "latency_commands_per_engine_run": 5000000,
+    "latency_samples_all_engines": 750000000,
+    "observations": 10,
+    "throughput_blocks_all_engines": 750,
+    "throughput_blocks_bitmap": 250,
+    "throughput_commands_per_engine_run": 25000000
+  },
+  "outputs": [
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-0",
+      "histogram_csv_rows": 10705,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "2.16919739696",
+          "bitmap_linear_p99_reduction_percent": "8.79765395894",
+          "bitmap_linear_throughput_improvement_percent": "0.383094101303",
+          "bitmap_reference_throughput_ratio": "2.19365050571"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-1",
+      "histogram_csv_rows": 10956,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.0151843818",
+          "bitmap_linear_p99_reduction_percent": "12.0845921450",
+          "bitmap_linear_throughput_improvement_percent": "2.25251686051",
+          "bitmap_reference_throughput_ratio": "2.27524399232"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-2",
+      "histogram_csv_rows": 10284,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "-1.99556541020",
+          "bitmap_linear_p99_reduction_percent": "8.52941176471",
+          "bitmap_linear_throughput_improvement_percent": "3.04774229497",
+          "bitmap_reference_throughput_ratio": "2.25184857549"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-3",
+      "histogram_csv_rows": 10408,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "2.26757369615",
+          "bitmap_linear_p99_reduction_percent": "9.09090909091",
+          "bitmap_linear_throughput_improvement_percent": "2.34691455979",
+          "bitmap_reference_throughput_ratio": "2.29079879630"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-4",
+      "histogram_csv_rows": 10264,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.87361419069",
+          "bitmap_linear_p99_reduction_percent": "12.0845921450",
+          "bitmap_linear_throughput_improvement_percent": "2.48076018911",
+          "bitmap_reference_throughput_ratio": "2.26113751546"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-5",
+      "histogram_csv_rows": 10717,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "12.4740124740",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "3.39064615705",
+          "bitmap_reference_throughput_ratio": "2.24201458358"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-6",
+      "histogram_csv_rows": 10503,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.65188470067",
+          "bitmap_linear_p99_reduction_percent": "9.36555891239",
+          "bitmap_linear_throughput_improvement_percent": "2.35904408831",
+          "bitmap_reference_throughput_ratio": "2.26458799036"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-7",
+      "histogram_csv_rows": 10140,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "6.80272108844",
+          "bitmap_linear_p99_reduction_percent": "11.4705882353",
+          "bitmap_linear_throughput_improvement_percent": "4.15041720177",
+          "bitmap_reference_throughput_ratio": "2.27948226469"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-8",
+      "histogram_csv_rows": 9907,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "7.02947845805",
+          "bitmap_linear_p99_reduction_percent": "12.0845921450",
+          "bitmap_linear_throughput_improvement_percent": "1.88460468146",
+          "bitmap_reference_throughput_ratio": "2.26732586740"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    },
+    {
+      "correctness_evidence_matches": true,
+      "directory": "build-evidence/codespaces-r5-20261030-01-E1/be180963747c4559/baseline-9",
+      "histogram_csv_rows": 9997,
+      "histogram_samples": 75000000,
+      "independent_verifier": {
+        "derived": {
+          "bitmap_linear_p999_reduction_percent": "13.0151843818",
+          "bitmap_linear_p99_reduction_percent": "11.7302052786",
+          "bitmap_linear_throughput_improvement_percent": "2.71128039506",
+          "bitmap_reference_throughput_ratio": "2.29082197705"
+        },
+        "verified_commands_per_run": 5000000,
+        "verified_engine_runs": 15,
+        "verified_latency_samples": 75000000,
+        "verified_throughput_blocks": 75,
+        "verified_throughput_commands_per_run": 25000000,
+        "verified_throughput_replays_per_run": 5
+      },
+      "protocol_matches": true,
+      "runs_csv_rows": 15,
+      "throughput_block_rows": 75,
+      "verified": true
+    }
+  ],
+  "post_measurement_audit_only": true,
+  "schema_version": 1,
+  "verifier_path": "tools/verify_results.py",
+  "verifier_sha256": "34a481058c22f7568b55817c75a83f54a3d0236e3762a3b98e8b788c93e9861c"
+}

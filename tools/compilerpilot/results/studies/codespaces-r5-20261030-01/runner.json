@@ -1,0 +1,24 @@
+{
+  "study_id": "codespaces-r5-20261030-01",
+  "commit": "c298117bd0a429fefd130bb45d45a83f84cebec1",
+  "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+  "allowed_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "fixed_cpu": 0,
+  "commands": 5000000,
+  "throughput_replays": 5,
+  "jobs": 2,
+  "automatic_retries": 0,
+  "phase": "baseline",
+  "runner_class": "GitHub Codespaces included allowance; shared four-core VM; physical exclusivity is not assumed",
+  "compiler_versions": {
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "clang++": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+    "cmake": "cmake version 3.28.3",
+    "llvm-profdata": "Ubuntu LLVM version 18.1.3"
+  }
+}
