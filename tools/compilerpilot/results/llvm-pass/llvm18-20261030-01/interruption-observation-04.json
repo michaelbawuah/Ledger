@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-30T23:53:08.919515+00:00",
+  "status": "interrupted_without_final_result",
+  "last_event": "baseline/build.log started",
+  "retained_files": {
+    "baseline/book-object-launcher.json": "bc56ede7c5d0486e4744a58e9048899bc1720d1db2485a8ee0cd0c16bd8a71c0",
+    "baseline/book.optimized.ll": "8cb33a37032ead3479a18628d95a1fca4abd3c663cfcc07ad7ad43e495608629",
+    "baseline/build.log": "baf3b8c9eba54a0b21dbaa7e14db1964f781474bb52ebed94fc8639cbe5d968c",
+    "baseline/configure.log": "3d4374ceeb37a166250ec8ab0daa0ab73b6f4dcb2ed4220beff44a231d31a706",
+    "baseline/opt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "book.frontend.ll": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "commands.jsonl": "f1be025c77d82c166288610f6faffb8d77853e8da75e19d9389f14718caf842d",
+    "frontend.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "protocol.json": "da3e4058dd42b2a44a5c6c5d4a22bb60c587e6e34cf53bd6a945c4e01ddc03ee"
+  },
+  "final_result_present": false,
+  "observation": "Execution session disappeared during compilation; no completed validation claimed. No out-of-memory kill recorded. Cause unknown."
+}

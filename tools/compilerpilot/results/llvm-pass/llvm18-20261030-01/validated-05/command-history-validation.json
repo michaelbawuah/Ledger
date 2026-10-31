@@ -1,0 +1,30 @@
+{
+  "commands": 22,
+  "commands_sha256": "efce16dedb51aeaf3d225673bfbc16bb55cfb48b6f5483de49310fd3d838e273",
+  "complete": true,
+  "events": 44,
+  "expected_logs": [
+    "frontend.log",
+    "baseline/opt.log",
+    "baseline/configure.log",
+    "baseline/build.log",
+    "baseline/archive-book-object.bin",
+    "baseline/ctest-plan.json",
+    "baseline/ctest.log",
+    "baseline/differential.log",
+    "early/opt.log",
+    "early/configure.log",
+    "early/build.log",
+    "early/archive-book-object.bin",
+    "early/ctest-plan.json",
+    "early/ctest.log",
+    "early/differential.log",
+    "late/opt.log",
+    "late/configure.log",
+    "late/build.log",
+    "late/archive-book-object.bin",
+    "late/ctest-plan.json",
+    "late/ctest.log",
+    "late/differential.log"
+  ]
+}

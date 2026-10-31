@@ -1,0 +1,19 @@
+Start testing: Oct 30 19:37 EDT
+----------------------------------------------------------
+1/1 Testing: llvm_load_elim
+1/1 Test: llvm_load_elim
+Command: "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3" "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/tests/check_pass.py" "--plugin" "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-plugin/LedgerLoadElim.so" "--opt" "/usr/lib/llvm-18/bin/opt" "--lli" "/usr/lib/llvm-18/bin/lli" "--filecheck" "/usr/lib/llvm-18/bin/FileCheck"
+Directory: /workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-plugin
+"llvm_load_elim" start time: Oct 30 19:37 EDT
+Output:
+----------------------------------------------------------
+{"idempotence": true, "memoryssa_recomputation": true, "semantic_checks_per_value": 4, "semantic_executions": 2, "semantic_values": 4096, "status": "pass", "structural_functions": 25, "structural_loads_removed": 4}
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"llvm_load_elim" end time: Oct 30 19:37 EDT
+"llvm_load_elim" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 30 19:37 EDT

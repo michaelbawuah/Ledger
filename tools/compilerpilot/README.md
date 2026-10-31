@@ -6,6 +6,8 @@ The same Python harness runs random, genetic, surrogate-guided and LLM-guided se
 
 ## Current evidence
 
+The [authored LLVM 18 pass](llvm/README.md) adds compiler-internals work: a C++ new-pass-manager plugin, MemorySSA-based redundant-load elimination, IR regression/equivalence tests and an explicit pass-placement experiment on `src/book.cpp`. This correctness experiment is separate from performance claims below.
+
 The latest [conditioned runtime qualification](results/replications/runtime-20261030-01-review.md) stopped before any nominee build. After 12 fixed-time conditioning groups, the second baseline qualification group had **2.7915% within-group CV**, above the unchanged 2% limit. Both completed qualification groups passed correctness; all raw evidence is retained separately from conditioning. This was one declared attempt with no model calls, retry or confirmation.
 
 The [first live agent search and its confirmation packet](results/studies/codespaces-agent-r5-20261030-01/review.md) used `gpt-4.1-mini-2025-04-14` against frozen Ledger source `7c43ec7`. E1 and the live semantic-mutation correctness check passed. The agent built 20 unique candidates and obtained 19 correct measurements, then a tool-use loop and provider HTTP 429 stopped the requested 40-build search. The original study remains explicitly failed/incomplete.
@@ -201,7 +203,7 @@ Each candidate uses a clean directory and bounded subprocess execution without a
 | Function alignment | default, 32, 64 bytes |
 | Semantic interposition | default, disabled |
 
-Unsafe math, free-form flags, arbitrary executables and source rewrites are excluded. `space.py` maps typed values to fixed flags. GCC and Clang PGO use distinct compiler-specific pipelines, with training seed 20261012 and evaluation seed 20261011 by default. Training profiles must exist, and the measured hot-path profiles must be consumed. LLVM pass reordering is an unimplemented stretch goal.
+Unsafe math, free-form flags, arbitrary executables and source rewrites are excluded. `space.py` maps typed values to fixed flags. GCC and Clang PGO use distinct compiler-specific pipelines, with training seed 20261012 and evaluation seed 20261011 by default. Training profiles must exist, and the measured hot-path profiles must be consumed. The separate [authored LLVM pass experiment](llvm/README.md) implements a MemorySSA-based redundant-load elimination pass and compares placement before and after LLVM's standard pipeline on the live matching engine. It does not add arbitrary pass strings to the agent's search space. Unrestricted pass-order search and MLIR remain future work.
 
 Random search samples the allow-list. Genetic search uses population eight, tournament selection, one-point crossover and 0.2 mutation rate. Surrogate search starts with eight measured trials, then ranks an unseen candidate pool with a random forest. Training uses one-hot compiler choices and log measured speedup, excluding failed or invalid measurements. Predictor validation deduplicates repeated candidates before out-of-fold evaluation; it reports MAE in speedup percentage points and Spearman correlation.
 

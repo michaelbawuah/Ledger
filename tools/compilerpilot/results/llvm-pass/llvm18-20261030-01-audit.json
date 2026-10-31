@@ -1,0 +1,117 @@
+{
+  "agent_win_claim_supported": false,
+  "audit_helper_sha256": "a3ce4f06cfa0dd62b33a0d9b53e1e927ada82a902be9b5f0f283f1e6ae960290",
+  "audit_passed": true,
+  "audited_at": "2026-10-30T23:55:43.157886+00:00",
+  "command_events_verified": 44,
+  "command_trace_complete": true,
+  "command_trace_gaps": {
+    "missing_finished": [],
+    "missing_started": []
+  },
+  "earlier_setup_failure": {
+    "manifest_hashes_verified": 9,
+    "phase": "baseline",
+    "protocol_sha256": "a2c35daf22cb709ccc8d9012b2fcc0464b3deef1e4d6b880356f30a3e56b0bf7",
+    "recorded_implementation_sha256": {
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/CMakeLists.txt": "6342bf23346f35549921216bdca91423982a453a56e5a2aff057c717bc773623",
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/LedgerLoadElim.cpp": "3613b78642002ca619d1bc1996bea33515d646ba7ebe3dbc07d69d992b9c08b5",
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/run_experiment.py": "7893d84c604b9b34342f2fa2c9a3cfab976ed2facf225689ec88bf5281456c23"
+    },
+    "status": "failed",
+    "variants": 0
+  },
+  "expected_command_events": 44,
+  "fresh_context": {
+    "implementation_files_rehashed": 4,
+    "plugin_rehashed": true,
+    "source": {
+      "files_rehashed": 55,
+      "head": "7d64b49f51b0c5a18bec5289d96add655a1c36f3",
+      "source_sha256": "732800d1f8c2268e706b421d93d7896819bb1b91ae18e40b42ae21afc368fd9c"
+    },
+    "tool_binaries_rehashed": 6
+  },
+  "fresh_context_verified": true,
+  "frontend": {
+    "function_definitions": 371,
+    "load_instructions": 1710,
+    "sha256": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "store_instructions": 1363
+  },
+  "limitations": "Sealed hashes bind retained bytes. Live mode rehashes original artifacts; offline mode cannot re-establish them.",
+  "llvm_version": "18.1.3",
+  "manifest_hashes_verified": 48,
+  "mlir_claim_supported": false,
+  "packet_integrity_verified": true,
+  "protocol_sha256": "c800cbaa2ba4ff545932860c957464332cb3ae373cef882cac839dabc9a327a8",
+  "scope": "Endpoint IR counts and retained plugin reports are separate static measurements; no timing or compiler replay.",
+  "semantic_validation_passed": true,
+  "speedup_claim_supported": false,
+  "variants": {
+    "baseline": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "4a8b31775e01ad2ce937882ec470abb18620559c4349177ff2013ef37179513a",
+        "passed": true,
+        "plan_sha256": "fa5914dc08a0e57257e6f1ec400aa2b807038c21b9b5861897a8ea11a8c85ebc",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "47b8eb963cbd7d81a3fd632b4b09554e98b0f434f1f0858731f465aaee905a6b",
+        "seeds": 100
+      },
+      "function_definitions": 32,
+      "function_reports_verified": 0,
+      "load_instructions": 377,
+      "plugin_reported_loads_removed": 0,
+      "store_instructions": 214
+    },
+    "early": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "d66b3c6b58a088b12a68adcc276f3922f99238d85f8ddf00742e41500b1b8d66",
+        "passed": true,
+        "plan_sha256": "29b384f1cddf91ce50d40dc68a92d32d211851251773bfd5203ee830ab0044f1",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "1b874eff8136a1fc653744bbc7fc9378c5f46f34e77546610c70ad33f0a1984e",
+        "seeds": 100
+      },
+      "function_definitions": 31,
+      "function_reports_verified": 371,
+      "load_instructions": 378,
+      "plugin_reported_loads_removed": 1,
+      "store_instructions": 236
+    },
+    "late": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "a6288ce0ee3a62e253f5101915c29b8b99088b9d0b57d0764b5919132b0c7126",
+        "passed": true,
+        "plan_sha256": "adb6bbfeb6e7c7f8b4d249e2114346eedac61ff516c2027b8012e49d8a4e9696",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "5d12fadaf8a9e11d1fce7d9cdae8a10501a78546ba7e289d1bafbb9bbfcbeaa0",
+        "seeds": 100
+      },
+      "function_definitions": 32,
+      "function_reports_verified": 32,
+      "load_instructions": 377,
+      "plugin_reported_loads_removed": 0,
+      "store_instructions": 214
+    }
+  },
+  "warnings": []
+}

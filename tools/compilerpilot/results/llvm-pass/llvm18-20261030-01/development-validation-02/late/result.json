@@ -1,0 +1,277 @@
+{
+  "archive_book_object_sha256": "693bf361cd702a66e7ed53c3935d6af6ea75ec5f4de48d49fbf903b84b1a6dde",
+  "correctness_passed": true,
+  "ctest": {
+    "completed": 15,
+    "junit_sha256": "c4ceb3d3afc86f6b62df1e52cdc3cfddbd43098523c04ff1d296c84aec4815a0",
+    "passed": true,
+    "plan_sha256": "c21cdaffa63a4ba291b3482b4bd44ffa59b8edc513c4ce98f2945d265886167d",
+    "planned": 15
+  },
+  "custom_pass_executions": 32,
+  "differential": {
+    "commands_compared": 100000000,
+    "commands_per_seed": 1000000,
+    "passed": true,
+    "report_sha256": "bdef0004ffcb74306756a6dc6adeecf1481b73ff18340472994194ca89c62a1d",
+    "seeds": 100
+  },
+  "executable_sha256": {
+    "ledger_allocation_tests": "501b465c4c685ffce56367457f6058729a2783b1723ee75af9692c3200f78edb",
+    "ledger_bench": "bac6bfc4dff6ebfe304bbc0de25b036eb5ac722ec6f2f28e48a71e1f395b548f",
+    "ledger_differential": "f28a57a88f1a1bd481e844bdcd1c8ed29b6050a673997e181c661132970644d9",
+    "ledger_feed_tests": "f743113e48bb2c5d5ab742798e1c7a07bbe80908b3502dad9fbaf2aa1f744e12",
+    "ledger_feed_view_tests": "85cd87e768a6c5d4388f01aeb2ec80a2cb597e3d9eb6403974e4ae336f9168a0",
+    "ledger_fok_tests": "995ac9d1d37d00c6d8f06331892e6535c540e0397ca85974d4907a71007e158b",
+    "ledger_generate": "c3428eab60c2838d5853bec842d80e1cb9fc16dfe728a698b3f6bfcd814272f7",
+    "ledger_index_tests": "578c409222ec84bd9c93ddceab46bdb2482b8e448e9bb26d3d850ac8299bfca7",
+    "ledger_market_maker": "44f27376986a48ac7d896f23f57003255dfcdaa623905d76aa2cb4f08d0f0492",
+    "ledger_pool_tests": "e1273fae99b6c8bfbf8b284d3ae172c547367cc05f2f37580c10e52d32a08eb1",
+    "ledger_replay": "1172dfdc385715764f4ba7dca62614aa71feff138ca4c7ba136bf990b14c7677",
+    "ledger_risk_demo": "3a5fbde2242348f09a4213960a59c7489cffc37d8ce3170271bfdb96d976c369",
+    "ledger_risk_tests": "bb13dec11246d92c0553eab1eb800ba6bf01b165229e597567d2c444f9ac62fa",
+    "ledger_spsc_bench": "a5519ed99264d3304f7add6025a846f1d5c1a075106957eeb53f683cecd5606a",
+    "ledger_spsc_tests": "bbd454e59afdf23eef3c6c0adf09a64abc020d9914065ab9a112ff36840b6dd9",
+    "ledger_study": "8a0634e6657c7b46376588cb130f1b78c1c88cf5d19dee462bfa16b98d8bf67f",
+    "ledger_study_observer_tests": "7861c992b92997db0056b5325cd08deed1f3b9faea158c55bfada75ee373545d",
+    "ledger_study_workload_tests": "1cd44d55932d7c0eabda8b81155b982aa3410e7bbbb206444d5adcc7d91fe129",
+    "ledger_tests": "79c01530302b33c014e7b4b5936b8de17ecbde826be9af2659cc6563f05cdaf7"
+  },
+  "function_definitions": 32,
+  "ir_sha256": "beca568f124ca97e6038e4410dfd4260d42a1cafb137f744dd93c874f031dede",
+  "launcher_record_sha256": "53189175c6e64b618d647bc64a89294f6fedd3e37d203bd328f07be6e307d835",
+  "linked_book_object_sha256": "693bf361cd702a66e7ed53c3935d6af6ea75ec5f4de48d49fbf903b84b1a6dde",
+  "load_instructions": 377,
+  "loads_removed_by_custom_pass": 0,
+  "normal_book_object_sha256": "a07d7ecb3e4926eb905770504ea03706197830e79721031c41cd8748542443d2",
+  "pass_reports": [
+    {
+      "function": "_ZN6ledger8FastBook15validate_configENS_6ConfigE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook11level_countENS_6ConfigE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBookC2ENS_6ConfigEbb",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 12,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndexC2Ej",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6offsetEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8price_atEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6levelsENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6levelsENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6bitmapENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6bitmapENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook4bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook4bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8best_bidEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8best_askEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook9find_bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook9find_nextENS_4SideEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 13,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook16find_next_bitmapENS_4SideEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 7,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook7crossesERKNS_7CommandEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8can_fillERKNS_7CommandE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 35,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook11add_restingERKNS_7CommandEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 32,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6unlinkEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 22,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndex5eraseEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 8,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6cancelEjmRNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 9,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6rejectERKNS_7CommandENS_12RejectReasonERNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 10,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook7processERKNS_7CommandERNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 95,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex4findEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8snapshotEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 42,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8SnapshotD2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook16check_invariantsEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 54,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPool16check_invariantsEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 9,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    }
+  ],
+  "pipeline": "default<O2>,function(ledger-load-elim)",
+  "static_library_sha256": "f19fe3b7ea8ed25c66d7853f107c4ced1965f903661b3f26b26d87c887c11607",
+  "store_instructions": 214,
+  "transformed_book_object_sha256": "693bf361cd702a66e7ed53c3935d6af6ea75ec5f4de48d49fbf903b84b1a6dde"
+}

@@ -1,0 +1,27 @@
+{
+  "after_custom_sha256": "da16f295675ec97ed6eb3870f5768d7b06174afbcbc3f44a2bb8490b3e13d54b",
+  "audit_passed": true,
+  "audited_at": "2026-10-30T23:56:49.141675+00:00",
+  "before_custom_sha256": "59b26cf1ab5950eca99e468dc5223fa5a81a9320a54b1a8eb4aa48a910c9d375",
+  "frontend_and_plugin_match_final05": true,
+  "function_diff_exactly_reconstructed": true,
+  "function_diff_sha256": "a3324c18c09952c028003a8c69100c7d72eb5f66564c117c4921711aeb361972",
+  "inspection_manifest_sha256": "edcaf949fb508aef7e1a2fcbaeef9f7197a3a1c3810eafef2af42e3ead3eece8",
+  "interpretation": "Direct custom-pass rewrite evidence. Final O2 pipeline differences also include early mem2reg placement and cannot be attributed to this pass alone.",
+  "loads_after": 80,
+  "loads_before": 81,
+  "plugin_test_log_sha256": "53895ba54bca8abe4767973e1db0854170bc8159d7699b43b66d716a08f95374",
+  "plugin_test_report": {
+    "idempotence": true,
+    "memoryssa_recomputation": true,
+    "semantic_checks_per_value": 4,
+    "semantic_executions": 2,
+    "semantic_values": 4096,
+    "status": "pass",
+    "structural_functions": 25,
+    "structural_loads_removed": 4
+  },
+  "scope": "Read-only raw plugin-test-log and static IR inspection audit; no new test, compilation or timing run.",
+  "speedup_claim_supported": false,
+  "target_function": "ledger::FastBook::process(ledger::Command const&, ledger::EventBuffer&)"
+}

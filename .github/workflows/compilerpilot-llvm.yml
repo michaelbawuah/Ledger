@@ -1,0 +1,62 @@
+name: CompilerPilot LLVM pass experiment
+
+on:
+  push:
+    paths:
+      - '.github/workflows/compilerpilot-llvm.yml'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'src/**'
+      - 'include/**'
+      - 'bench/**'
+      - 'tests/**'
+      - 'examples/**'
+      - 'tools/compilerpilot/llvm/**'
+  pull_request:
+    paths:
+      - '.github/workflows/compilerpilot-llvm.yml'
+      - 'CMakeLists.txt'
+      - 'CMakePresets.json'
+      - 'src/**'
+      - 'include/**'
+      - 'bench/**'
+      - 'tests/**'
+      - 'examples/**'
+      - 'tools/compilerpilot/llvm/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  llvm18:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enable the complete Python tooling checks
+        run: python -m pip install matplotlib==3.10.8
+      - name: Install matched LLVM 18 development tools
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build clang-18 llvm-18 llvm-18-dev llvm-18-tools
+      - name: Build the authored new-pass-manager plugin
+        run: cmake -S tools/compilerpilot/llvm -B tools/compilerpilot/builds/llvm-plugin -G Ninja -DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm -DCMAKE_CXX_COMPILER=clang++-18 -DCMAKE_BUILD_TYPE=Release && cmake --build tools/compilerpilot/builds/llvm-plugin --parallel 2
+      - name: Require IR safety cases and executable equivalence
+        run: |
+          ctest --test-dir tools/compilerpilot/builds/llvm-plugin --output-on-failure
+          python tools/compilerpilot/llvm/test_experiment.py -v
+      - name: Compare three fixed pipelines on real Ledger code
+        run: python tools/compilerpilot/llvm/run_experiment.py --repo . --plugin tools/compilerpilot/builds/llvm-plugin/LedgerLoadElim.so --out tools/compilerpilot/builds/llvm-experiment --jobs 2
+      - name: Upload IR, commands and full correctness evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compilerpilot-llvm18-experiment
+          path: |
+            tools/compilerpilot/builds/llvm-experiment
+            !tools/compilerpilot/builds/llvm-experiment/_builds/**
+            tools/compilerpilot/builds/llvm-plugin/Testing/Temporary/LastTest.log
+          if-no-files-found: warn
+          retention-days: 7

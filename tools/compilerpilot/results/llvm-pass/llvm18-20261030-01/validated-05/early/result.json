@@ -1,0 +1,2650 @@
+{
+  "archive_book_object_sha256": "5249511c957ca302b96e18a893816b006e0eece653abfdc7724c1b8958f952a7",
+  "correctness_passed": true,
+  "ctest": {
+    "completed": 15,
+    "junit_sha256": "d66b3c6b58a088b12a68adcc276f3922f99238d85f8ddf00742e41500b1b8d66",
+    "passed": true,
+    "plan_sha256": "29b384f1cddf91ce50d40dc68a92d32d211851251773bfd5203ee830ab0044f1",
+    "planned": 15
+  },
+  "custom_pass_executions": 371,
+  "differential": {
+    "commands_compared": 100000000,
+    "commands_per_seed": 1000000,
+    "passed": true,
+    "report_sha256": "1b874eff8136a1fc653744bbc7fc9378c5f46f34e77546610c70ad33f0a1984e",
+    "seeds": 100
+  },
+  "executable_sha256": {
+    "ledger_allocation_tests": "a8af2a5195c224c8d9070db2a1e0bd0121c316f47075b70d2376e39365f5f559",
+    "ledger_bench": "091864e41314ff77a3a827373fa3aa4a38c982188ef9363873c0f55c0f3c64cf",
+    "ledger_differential": "89aded018876919042b6c5e1dab55d737a2f21faeb351259650cd18e989b3847",
+    "ledger_feed_tests": "f743113e48bb2c5d5ab742798e1c7a07bbe80908b3502dad9fbaf2aa1f744e12",
+    "ledger_feed_view_tests": "85cd87e768a6c5d4388f01aeb2ec80a2cb597e3d9eb6403974e4ae336f9168a0",
+    "ledger_fok_tests": "8464dc70d681a85a97b01630a3596f269330eef937db26f68a22e55f52b4a4df",
+    "ledger_generate": "c3428eab60c2838d5853bec842d80e1cb9fc16dfe728a698b3f6bfcd814272f7",
+    "ledger_index_tests": "578c409222ec84bd9c93ddceab46bdb2482b8e448e9bb26d3d850ac8299bfca7",
+    "ledger_market_maker": "138ddbaf117f74f6bcaed78902ba68b03ab692cca720568ad1554c728fa31cb8",
+    "ledger_pool_tests": "e1273fae99b6c8bfbf8b284d3ae172c547367cc05f2f37580c10e52d32a08eb1",
+    "ledger_replay": "6bf7bf4dac7bb521f60a3b662109d53668d3c706779f3582d50b24f8fae4027c",
+    "ledger_risk_demo": "3a5fbde2242348f09a4213960a59c7489cffc37d8ce3170271bfdb96d976c369",
+    "ledger_risk_tests": "bb13dec11246d92c0553eab1eb800ba6bf01b165229e597567d2c444f9ac62fa",
+    "ledger_spsc_bench": "4f43942d3dea01e59075b2679e998be1f56886fe30a4bece5f54da05d720d894",
+    "ledger_spsc_tests": "bbd454e59afdf23eef3c6c0adf09a64abc020d9914065ab9a112ff36840b6dd9",
+    "ledger_study": "1357deb785480d0c45fb576317600a319058c0c6b68cb5ae144b4438dc6a034d",
+    "ledger_study_observer_tests": "cd47a699bbfc624684570a270bd704916008a10c5b5864dce37963b084785e05",
+    "ledger_study_workload_tests": "94866b84d1654f4bd43ee754a4a5ca6ef37ff594e76a09a3bce8a90a9f5785d0",
+    "ledger_tests": "a2d17d025de4b03dccf32cc6fd714cdba2057a78481973e0d3418964f9527d8a"
+  },
+  "function_definitions": 31,
+  "ir_sha256": "af50a8cda9a43cef75b19a27648421a3425fc804f91071886b5224f780d5f63f",
+  "launcher_record_sha256": "3a6f04b3355e6bf807c0d719a840185365cfe457cbed5d804551ce29c4e113dc",
+  "linked_book_object_sha256": "5249511c957ca302b96e18a893816b006e0eece653abfdc7724c1b8958f952a7",
+  "load_instructions": 378,
+  "loads_removed_by_custom_pass": 1,
+  "normal_book_object_sha256": "a07d7ecb3e4926eb905770504ea03706197830e79721031c41cd8748542443d2",
+  "pass_reports": [
+    {
+      "function": "_ZN6ledger8FastBook15validate_configENS_6ConfigE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 4,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook11level_countENS_6ConfigE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger8FastBook5LevelESaIS2_EE8max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBookC2ENS_6ConfigEbb",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPoolC2Ej",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndexC2Ej",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger8FastBook5LevelEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EEC2EmRKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger8FastBook5LevelEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger8FastBook5LevelESaIS2_EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEEC2EmRKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorImSaImEE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndexD2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPoolD2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6offsetEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8price_atEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6levelsENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6levelsENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6bitmapENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook6bitmapENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook4bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook4bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8best_bidEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8best_askEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook9find_bestENS_4SideE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook9find_nextENS_4SideEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger8FastBook5LevelESaIS2_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook16find_next_bitmapENS_4SideEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 6,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorImSaImEEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt11countl_zeroImENSt9enable_ifIXsr21__is_unsigned_integerIT_EE5valueEiE4typeES1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt11countr_zeroImENSt9enable_ifIXsr21__is_unsigned_integerIT_EE5valueEiE4typeES1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook7crossesERKNS_7CommandEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 4,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8can_fillERKNS_7CommandE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 8,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook11add_restingERKNS_7CommandEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 20,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPool7acquireEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 4,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPoolixEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndex6insertEmj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6unlinkEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 23,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndex5eraseEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 11,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPool7releaseEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6cancelEjmRNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 6,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger11EventBuffer4pushERKNS_5EventE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook6rejectERKNS_7CommandENS_12RejectReasonERNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 7,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook7processERKNS_7CommandERNS_11EventBufferE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 1,
+      "loads_seen": 81,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger11EventBuffer5clearEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger11EventBuffer8capacityEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger23required_event_capacityEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex4findEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 4,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPool4fullEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt3minIjERKT_S2_S2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "__clang_call_terminate",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook8snapshotEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8SnapshotC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE7reserveEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 6,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPool4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZZNK6ledger8FastBook8snapshotEvENK3$_0clENS_4SideEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 12,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8SnapshotD2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger8FastBook16check_invariantsEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 36,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPool16check_invariantsEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex16check_invariantsEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 6,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPool8capacityEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIbEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIbSaIbEEC2EmRKbRKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIbED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt16initializer_listIN6ledger4SideEE5beginEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt16initializer_listIN6ledger4SideEE3endEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIbSaIbEEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt14_Bit_referencecvbEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail9OrderPoolixEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt14_Bit_referenceaSEb",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 6,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorImSaImEE4backEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex7entriesEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE5beginEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE3endEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxxeqIPKN6ledger6detail7IdIndex5EntryESt6vectorIS4_SaIS4_EEEEbRKNS_17__normal_iteratorIT_T0_EESF_QrqXeqcldtfp_4baseEcldtfp0_4baseERSt14convertible_toIbEE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPKN6ledger6detail7IdIndex5EntryESt6vectorIS4_SaIS4_EEEdeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxx17__normal_iteratorIPKN6ledger6detail7IdIndex5EntryESt6vectorIS4_SaIS4_EEEppEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE12_Vector_implC2EvQ26is_default_constructible_vIN9__gnu_cxx14__alloc_traitsIT0_NS8_10value_typeEE6rebindIT_E5otherEE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger8FastBook5LevelEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EE11_S_max_sizeERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger8FastBook5LevelEEE8max_sizeERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt3minImERKT_S2_S2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger8FastBook5LevelES2_EvT_S4_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger8FastBook5LevelEEvT_S4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPN6ledger8FastBook5LevelEEEvT_S6_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE13_M_deallocateEPS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger8FastBook5LevelEEE10deallocateERS3_PS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger8FastBook5LevelEE10deallocateEPS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger8FastBook5LevelEE10deallocateEPS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail9OrderPool4NodeEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EEC2EmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail9OrderPool4NodeEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail9OrderPool4NodeEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EE17_S_check_init_lenEmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EEC2EmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EE21_M_default_initializeEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EE11_S_max_sizeERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail9OrderPool4NodeEEC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail9OrderPool4NodeEEE8max_sizeERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail9OrderPool4NodeEEC2ERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE12_Vector_implC2ERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE17_M_create_storageEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail9OrderPool4NodeEEE8allocateERS4_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail9OrderPool4NodeEE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail9OrderPool4NodeEE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorIN6ledger6detail9OrderPool4NodeEE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt27__uninitialized_default_n_aIPN6ledger6detail9OrderPool4NodeEmS3_ET_S5_T0_RSaIT1_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt25__uninitialized_default_nIPN6ledger6detail9OrderPool4NodeEmET_S5_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt27__uninitialized_default_n_1ILb0EE18__uninit_default_nIPN6ledger6detail9OrderPool4NodeEmEET_S7_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10_ConstructIN6ledger6detail9OrderPool4NodeEJEEvPT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger6detail9OrderPool4NodeEEvT_S5_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail9OrderPool4NodeC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPN6ledger6detail9OrderPool4NodeEEEvT_S7_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail9OrderPool4NodeESaIS3_EE13_M_deallocateEPS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail9OrderPool4NodeEEE10deallocateERS4_PS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail9OrderPool4NodeEE10deallocateEPS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail9OrderPool4NodeEE10deallocateEPS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndex14table_capacityEj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail7IdIndex5EntryEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EEC2EmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail7IdIndex5EntryEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE8max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE12_Vector_implC2EvQ26is_default_constructible_vIN9__gnu_cxx14__alloc_traitsIT0_NS9_10value_typeEE6rebindIT_E5otherEE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail7IdIndex5EntryEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE11_S_max_sizeERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail7IdIndex5EntryEEE8max_sizeERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger6detail7IdIndex5EntryES3_EvT_S5_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger6detail7IdIndex5EntryEEvT_S5_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPN6ledger6detail7IdIndex5EntryEEEvT_S7_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE13_M_deallocateEPS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail7IdIndex5EntryEEE10deallocateERS4_PS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail7IdIndex5EntryEE10deallocateEPS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail7IdIndex5EntryEE10deallocateEPS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE17_S_check_init_lenEmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EEC2EmRKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EE21_M_default_initializeEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail7IdIndex5EntryEEC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail7IdIndex5EntryEEC2ERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE12_Vector_implC2ERKS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE17_M_create_storageEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger6detail7IdIndex5EntryESaIS3_EE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger6detail7IdIndex5EntryEEE8allocateERS4_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger6detail7IdIndex5EntryEE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger6detail7IdIndex5EntryEE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorIN6ledger6detail7IdIndex5EntryEE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt27__uninitialized_default_n_aIPN6ledger6detail7IdIndex5EntryEmS3_ET_S5_T0_RSaIT1_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt25__uninitialized_default_nIPN6ledger6detail7IdIndex5EntryEmET_S5_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt27__uninitialized_default_n_1ILb0EE18__uninit_default_nIPN6ledger6detail7IdIndex5EntryEmEET_S7_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10_ConstructIN6ledger6detail7IdIndex5EntryEJEEvPT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger6detail7IdIndex5EntryC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EE17_S_check_init_lenEmRKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EEC2EmRKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger8FastBook5LevelESaIS2_EE21_M_default_initializeEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger8FastBook5LevelEEC2ERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger8FastBook5LevelEEC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE12_Vector_implC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE17_M_create_storageEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger8FastBook5LevelESaIS2_EE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger8FastBook5LevelEEE8allocateERS3_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger8FastBook5LevelEE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger8FastBook5LevelEE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorIN6ledger8FastBook5LevelEE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt27__uninitialized_default_n_aIPN6ledger8FastBook5LevelEmS2_ET_S4_T0_RSaIT1_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt25__uninitialized_default_nIPN6ledger8FastBook5LevelEmET_S4_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt27__uninitialized_default_n_1ILb0EE18__uninit_default_nIPN6ledger8FastBook5LevelEmEET_S6_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10_ConstructIN6ledger8FastBook5LevelEJEEvPT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger8FastBook5LevelC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorImEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEE17_S_check_init_lenEmRKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEEC2EmRKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEE21_M_default_initializeEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorImSaImEE11_S_max_sizeERKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImEC2ERKS_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaImEE8max_sizeERKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorImEC2ERKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE12_Vector_implC2ERKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE17_M_create_storageEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaImEE8allocateERS0_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorImE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorImE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt27__uninitialized_default_n_aIPmmmET_S1_T0_RSaIT1_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt25__uninitialized_default_nIPmmET_S1_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt27__uninitialized_default_n_1ILb1EE18__uninit_default_nIPmmEET_S3_T0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10_ConstructImJEEvPT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt6fill_nIPmmmET_S1_T0_RKT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10__fill_n_aIPmmmET_S1_T0_RKT1_St26random_access_iterator_tag",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt17__size_to_integerm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt19__iterator_categoryIPmENSt15iterator_traitsIT_E17iterator_categoryERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8__fill_aIPmmEvT_S1_RKT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt9__fill_a1IPmmEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT0_EE7__valueEvE6__typeET_S6_RKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseImSaImEE13_M_deallocateEPmm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaImEE10deallocateERS0_Pmm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImE10deallocateEPmm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorImE10deallocateEPmm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPmmEvT_S1_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPmEvT_S1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPmEEvT_S3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger6detail9OrderPool4NodeES3_EvT_S5_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt13__countl_zeroImEiT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt13__countr_zeroImEiT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK6ledger6detail7IdIndex6bucketEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt4spanIN6ledger5EventELm18446744073709551615EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt4spanIN6ledger5EventELm18446744073709551615EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt8__detail16__extent_storageILm18446744073709551615EE9_M_extentEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail7IdIndex5EntryESaIS3_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN6ledger10StatisticsC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE12_Vector_implC2EvQ26is_default_constructible_vIN9__gnu_cxx14__alloc_traitsIT0_NS7_10value_typeEE6rebindIT_E5otherEE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger12RestingOrderEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger12RestingOrderEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE12_Vector_implC2EvQ26is_default_constructible_vIN9__gnu_cxx14__alloc_traitsIT0_NS7_10value_typeEE6rebindIT_E5otherEE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger13LevelSnapshotEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE17_Vector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger13LevelSnapshotEEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger12RestingOrderESaIS1_EE8max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger12RestingOrderESaIS1_EE8capacityEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger12RestingOrderESaIS1_EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE11_S_relocateEPS1_S4_S4_RS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE13_M_deallocateEPS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE11_S_max_sizeERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger12RestingOrderEEE8max_sizeERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger12RestingOrderEEE8allocateERS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger12RestingOrderEE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger12RestingOrderEE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorIN6ledger12RestingOrderEE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12__relocate_aIPN6ledger12RestingOrderES2_SaIS1_EET0_T_S5_S4_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt14__relocate_a_1IPN6ledger12RestingOrderES2_SaIS1_EET0_T_S5_S4_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12__niter_baseIPN6ledger12RestingOrderEET_S3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt19__relocate_object_aIN6ledger12RestingOrderES1_SaIS1_EEvPT_PT0_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger12RestingOrderEEE9constructIS1_JS1_EEEvRS2_PT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger12RestingOrderEEE7destroyIS1_EEvRS2_PT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12construct_atIN6ledger12RestingOrderEJS1_EEDTgsnwcvPvLi0E_T_pispclsr3stdE7declvalIT0_EEEEPS3_DpOS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10destroy_atIN6ledger12RestingOrderEEvPT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger12RestingOrderEEE10deallocateERS2_PS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger12RestingOrderEE10deallocateEPS0_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger12RestingOrderEE10deallocateEPS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE9push_backEOS1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE9push_backEOS1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE12emplace_backIJS1_EEERS1_DpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger13LevelSnapshotEEE9constructIS1_JS1_EEEvRS2_PT_DpOT0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE3endEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE4backEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12construct_atIN6ledger13LevelSnapshotEJS1_EEDTgsnwcvPvLi0E_T_pispclsr3stdE7declvalIT0_EEEEPS3_DpOS4_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger13LevelSnapshotESaIS1_EE12_M_check_lenEmPKc",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxxmiIPN6ledger13LevelSnapshotESt6vectorIS2_SaIS2_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKSA_SD_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE5beginEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE11_S_relocateEPS1_S4_S4_RS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger13LevelSnapshotESt6vectorIS2_SaIS2_EEE4baseEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE13_M_deallocateEPS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger13LevelSnapshotESaIS1_EE8max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger13LevelSnapshotESaIS1_EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt3maxImERKT_S2_S2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EE11_S_max_sizeERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EE19_M_get_Tp_allocatorEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger13LevelSnapshotEEE8max_sizeERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxx17__normal_iteratorIPN6ledger13LevelSnapshotESt6vectorIS2_SaIS2_EEEC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger13LevelSnapshotEEE8allocateERS2_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger13LevelSnapshotEE8allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger13LevelSnapshotEE8allocateEmPKv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt15__new_allocatorIN6ledger13LevelSnapshotEE11_M_max_sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12__relocate_aIPN6ledger13LevelSnapshotES2_SaIS1_EET0_T_S5_S4_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt14__relocate_a_1IPN6ledger13LevelSnapshotES2_SaIS1_EET0_T_S5_S4_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt12__niter_baseIPN6ledger13LevelSnapshotEET_S3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt19__relocate_object_aIN6ledger13LevelSnapshotES1_SaIS1_EEvPT_PT0_RT1_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger13LevelSnapshotEEE7destroyIS1_EEvRS2_PT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt10destroy_atIN6ledger13LevelSnapshotEEvPT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt16allocator_traitsISaIN6ledger13LevelSnapshotEEE10deallocateERS2_PS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger13LevelSnapshotEE10deallocateEPS0_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIN6ledger13LevelSnapshotEE10deallocateEPS1_m",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger13LevelSnapshotESt6vectorIS2_SaIS2_EEEmiEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger13LevelSnapshotESt6vectorIS2_SaIS2_EEEdeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE12emplace_backIJS1_EEERS1_DpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 5,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE3endEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE4backEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger12RestingOrderESaIS1_EE12_M_check_lenEmPKc",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxxmiIPN6ledger12RestingOrderESt6vectorIS2_SaIS2_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKSA_SD_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EE5beginEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger12RestingOrderESt6vectorIS2_SaIS2_EEE4baseEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxx17__normal_iteratorIPN6ledger12RestingOrderESt6vectorIS2_SaIS2_EEEC2ERKS3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger12RestingOrderESt6vectorIS2_SaIS2_EEEmiEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPN6ledger12RestingOrderESt6vectorIS2_SaIS2_EEEdeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger13LevelSnapshotESaIS1_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIN6ledger12RestingOrderESaIS1_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger13LevelSnapshotES1_EvT_S3_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger13LevelSnapshotESaIS1_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger13LevelSnapshotEEvT_S3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPN6ledger13LevelSnapshotEEEvT_S5_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger13LevelSnapshotEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger12RestingOrderES1_EvT_S3_RSaIT0_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Vector_baseIN6ledger12RestingOrderESaIS1_EED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt8_DestroyIPN6ledger12RestingOrderEEvT_S3_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt12_Destroy_auxILb1EE9__destroyIPN6ledger12RestingOrderEEEvT_S5_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaIN6ledger12RestingOrderEED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorIN6ledger6detail9OrderPool4NodeESaIS3_EEixEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt15__new_allocatorIbEC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEEC2ERKS0_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIbSaIbEE13_M_initializeEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIbSaIbEE19_M_initialize_valueEb",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImEC2IbEERKSaIT_E",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE13_Bvector_implC2ERKSaImE",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bit_iteratorC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt18_Bit_iterator_baseC2EPmj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE11_M_allocateEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE8_S_nwordEm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bit_iteratorC2EPmj",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZStplRKSt13_Bit_iteratorl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bit_iteratorpLEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt18_Bit_iterator_base7_M_incrEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt18_Bit_iterator_base20_M_assume_normalizedEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZSt16__fill_bvector_nPmmb",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt13_Bvector_baseISaIbEE13_Bvector_impl11_M_end_addrEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE13_M_deallocateEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSaImED2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE18_Bvector_impl_data8_M_resetEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt13_Bvector_baseISaIbEE18_Bvector_impl_dataC2Ev",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt16initializer_listIN6ledger4SideEE4sizeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt6vectorIbSaIbEE5beginEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt13_Bit_iteratorixEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt13_Bit_iteratordeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 3,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNSt14_Bit_referenceC2EPmm",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNKSt6vectorImSaImEE3endEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPKmSt6vectorImSaImEEEmiEl",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 2,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPKmSt6vectorImSaImEEEdeEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxx17__normal_iteratorIPKmSt6vectorImSaImEEEC2ERKS2_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZN9__gnu_cxx17__normal_iteratorIPKN6ledger6detail7IdIndex5EntryESt6vectorIS4_SaIS4_EEEC2ERKS6_",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 1,
+      "pass": "ledger-load-elim"
+    },
+    {
+      "function": "_ZNK9__gnu_cxx17__normal_iteratorIPKN6ledger6detail7IdIndex5EntryESt6vectorIS4_SaIS4_EEE4baseEv",
+      "llvm_version": "18.1.3",
+      "loads_removed": 0,
+      "loads_seen": 0,
+      "pass": "ledger-load-elim"
+    }
+  ],
+  "pipeline": "function(mem2reg,ledger-load-elim),default<O2>",
+  "static_library_sha256": "436e2e6d4ac1a4326c316eb32858781c26acab877e1ae534ef6338be4960cb5e",
+  "store_instructions": 236,
+  "transformed_book_object_sha256": "5249511c957ca302b96e18a893816b006e0eece653abfdc7724c1b8958f952a7"
+}

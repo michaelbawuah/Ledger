@@ -1,0 +1,27 @@
+{
+  "build_tree_policy": "Build trees are local intermediates; report binds measured object and executable hashes",
+  "excludes": [
+    "evidence-manifest.json",
+    "_builds/**"
+  ],
+  "files": {
+    "baseline/CMakeCache.txt": "ed4cd0ba411438c7a05001abd84eb31aa787d5bcf49cc3625894b6a29cec0871",
+    "baseline/archive-book-object.bin": "693bf361cd702a66e7ed53c3935d6af6ea75ec5f4de48d49fbf903b84b1a6dde",
+    "baseline/book-object-launcher.json": "446ff93a3f3551e6db7413a07f5776f2c5899e769d5ffb80ba3df664bf64447f",
+    "baseline/book.optimized.ll": "1996ba6a9799f6629d7b809a7f9d977bd81ce8d3d2c2b931ad8ee57aaf2ff8e7",
+    "baseline/build.log": "ac9a9f41148b33b869b34aa3691523238eaa8b632903bda980ca9a3f25ff4a72",
+    "baseline/compile_commands.json": "98931b59642e7d83c1c160e76648cd745c842737dfa7acf3af068d0cd2321a31",
+    "baseline/configure.log": "52aed3f1dad0eaec142cbec432c871137414a187942eb7d73e108fed14afc103",
+    "baseline/ctest-plan.json": "ff7ec8d1d83be61824bb9e2b83035edba928d343de96f0ae3638d2c7faa5fa70",
+    "baseline/ctest.log": "8e6bf848bb7c3922e9df75983be95c8576d1120f4537feb4cd0653c9cc08fa45",
+    "baseline/ctest.xml": "1a178ee23a6ce2a8377c0095a15743d5165b58b41117ee6541efc3d72678e100",
+    "baseline/opt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline/result.json": "318a3c9b03e8401a8e6a5800b56ead3f750a39b7b6b584696a555e2df4368bcd",
+    "book.frontend.ll": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "commands.jsonl": "2762d7f893b5d72ca5aca50d88d3a421ea5f6981c52595bc8132c836c267a42a",
+    "frontend.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "protocol.json": "97f73b4a8d35a2e390531332f22c3b6cc50c81438242359c2c1e523b389679a6",
+    "result.json": "535633b495fb256e7ad4b562cf8e81188853929d50e56b6df088efdac1cc4a0c"
+  },
+  "hash_algorithm": "sha256"
+}

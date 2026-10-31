@@ -1,0 +1,236 @@
+Internal ctest changing into directory: /workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline
+Test project /workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline
+      Start  1: engine_semantics
+ 1/15 Test  #1: engine_semantics .................   Passed    0.00 sec
+      Start  2: allocation_free
+ 2/15 Test  #2: allocation_free ..................   Passed    0.03 sec
+      Start  3: spsc_stress
+ 3/15 Test  #3: spsc_stress ......................   Passed    0.01 sec
+      Start  4: feed_roundtrip
+ 4/15 Test  #4: feed_roundtrip ...................   Passed    0.01 sec
+      Start  5: differential_smoke
+ 5/15 Test  #5: differential_smoke ...............   Passed    0.01 sec
+      Start  6: pool_verification
+ 6/15 Test  #6: pool_verification ................   Passed    0.01 sec
+      Start  7: index_verification
+ 7/15 Test  #7: index_verification ...............   Passed    0.08 sec
+      Start  8: feed_view_verification
+ 8/15 Test  #8: feed_view_verification ...........   Passed    0.00 sec
+      Start  9: risk_verification
+ 9/15 Test  #9: risk_verification ................   Passed    0.00 sec
+      Start 10: fok_verification
+10/15 Test #10: fok_verification .................   Passed    0.04 sec
+      Start 11: study_workload_verification
+11/15 Test #11: study_workload_verification ......   Passed    0.19 sec
+      Start 12: study_observer_verification
+12/15 Test #12: study_observer_verification ......   Passed    0.00 sec
+      Start 13: evidence_validation
+13/15 Test #13: evidence_validation ..............   Passed    0.08 sec
+      Start 14: documentation_links
+14/15 Test #14: documentation_links ..............   Passed    0.06 sec
+      Start 15: tooling_tamper_tests
+15/15 Test #15: tooling_tamper_tests .............***Failed    5.20 sec
+EEEEEEEEEE......................................................................................................................
+======================================================================
+ERROR: test_default_one_and_explicit_three_keep_single_input_correctness_and_latency (test_bench_replays.BuiltBenchmarkReplayTests.test_default_one_and_explicit_three_keep_single_input_correctness_and_latency)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 118, in test_default_one_and_explicit_three_keep_single_input_correctness_and_latency
+    result = self.invoke(*args)
+             ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_explicit_upper_bound_keeps_every_tiny_replay (test_bench_replays.BuiltBenchmarkReplayTests.test_explicit_upper_bound_keeps_every_tiny_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 128, in test_explicit_upper_bound_keeps_every_tiny_replay
+    result = self.invoke("--commands", 2000, "--runs", 1, "--throughput-replays", 20, "--outdir", output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '0'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '21'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '-1'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '1.5'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', 'nan'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '4294967296'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays', '1', '--throughput-replays', '3'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+======================================================================
+ERROR: test_invalid_replay_count_rejected_before_writing_evidence (test_bench_replays.BuiltBenchmarkReplayTests.test_invalid_replay_count_rejected_before_writing_evidence) (arguments=('--throughput-replays',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 142, in test_invalid_replay_count_rejected_before_writing_evidence
+    result = self.invoke("--outdir", output, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tests/tooling/test_bench_replays.py", line 49, in invoke
+    return subprocess.run([str(BINARY), *map(str, arguments)], capture_output=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-03/_builds/baseline/ledger_bench'
+
+----------------------------------------------------------------------
+Ran 121 tests in 5.044s
+
+FAILED (errors=10)
+
+
+93% tests passed, 1 tests failed out of 15
+
+Total Test time (real) =   5.74 sec
+
+The following tests FAILED:
+	 15 - tooling_tamper_tests (Failed)
+Errors while running CTest

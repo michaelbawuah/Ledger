@@ -1,0 +1,18 @@
+{
+  "ended_at": "2026-10-30T23:32:06.471123+00:00",
+  "failure_class": "ValueError",
+  "frontend": {
+    "function_definitions": 371,
+    "load_instructions": 1710,
+    "sha256": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "store_instructions": 1363
+  },
+  "model_calls": 0,
+  "phase": "baseline",
+  "reason": "Command failed; inspect /workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/builds/llvm-experiment-local-01/baseline/build.log",
+  "schema_version": 1,
+  "speedup_claim_supported": false,
+  "started_at": "2026-10-30T23:31:58.619575+00:00",
+  "status": "failed",
+  "variants": {}
+}

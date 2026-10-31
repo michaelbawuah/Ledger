@@ -32,10 +32,18 @@ The model receives typed capabilities and compact feedback. Compiler flags are s
 
 PGO uses independent input bytes and seed. GCC generation/use stays in the same object directory. Clang raw profiles are merged with matching `llvm-profdata`; ThinLTO links with `lld`. Untrained helper executables can emit missing-profile warnings; missing profiles for the benchmark hot path invalidate PGO qualification. Unsafe math is not in the search space.
 
+## Authored LLVM pass experiment
+
+The [LLVM 18 plugin](../llvm/README.md) is a separate compiler-implementation and correctness experiment. Its new-pass-manager function pass uses MemorySSA clobber identity to eliminate a same-block scalar integer reload, with conservative barriers for calls, atomics, volatile accesses and metadata. It does not change the typed flag search or the E1–E5 performance gates.
+
+The [recorded comparison](../results/llvm-pass/llvm18-20261030-01-review.md) uses one fixed Clang frontend IR and three explicit `opt` pipelines: standard O2, an early custom pass with `mem2reg`, and the custom pass after O2. Each pipeline must pass the same 100-seed × 1M-command differential check and the same 15 CTest cases. The compiler launcher, archive-member hashes, full command history and independent audit bind the transformed object to the tested executables.
+
+Custom-pass rewrite counts and endpoint IR instruction counts are separate static observations. Early normalization is part of the early pipeline, so final IR differences cannot be attributed to the custom pass alone. No throughput benchmark is run. Neither load counts nor correctness checks establish a runtime speedup, an optimal pass order, an agent win or MLIR experience.
+
 ## Historical evidence and current measurement boundary
 
 The committed qualification packet was collected against Ledger commit `c0dbffd6a036feb27e225362a92df9792d8e844a` before CompilerPilot moved under `tools/compilerpilot`. Its raw JSON and benchmark files preserve that source identity. Moving the harness does not create a fresh performance measurement of the current checkout.
 
 E1 collected ten baseline observations, fifty raw throughput replays in total. Its conservative CV was 13.61%, above the 2% acceptance limit. E1 measurement is complete, and its noise gate failed. E2–E5 performance experiments were not performed; the GCC/Clang PGO timings are functional qualifications only. The baseline's 100 million differential commands and 15 completed CTest suites establish historical correctness, not confirmation of a compiler-tuned winner.
 
-Provider adapters and protocol tests exist, but no live LLM API experiment has run. The four-policy comparison and predictor-quality measurements remain pending a quiet host, valid noise gate, provider credential and pinned model. See [qualification status](../results/status.md) and the unchanged [measured report](../results/summary.md).
+A later live LLM search and separate confirmation attempts are preserved in the [current qualification status](../results/status.md). The four-policy comparison and predictor-quality measurements remain incomplete. The historical [measured report](../results/summary.md) below its current-status note retains the earlier qualification results.

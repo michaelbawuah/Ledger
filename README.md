@@ -39,6 +39,8 @@ build/release/ledger_bench --input orders.lob --runs 5 --outdir bench/results/lo
 
 A [live OpenAI-backed search](tools/compilerpilot/results/studies/codespaces-agent-r5-20261030-01/review.md) built 20 candidates and measured 19 before a tool-use loop and provider HTTP 429 left its 40-build budget incomplete. Both Codespaces confirmations and a complete [GitHub Actions replication](tools/compilerpilot/results/replications/gha-replication-41131249122-1-review.md) failed the unchanged **2% baseline variability limit**. A later [conditioned runtime qualification](tools/compilerpilot/results/replications/runtime-20261030-01-review.md) also stopped at E1: its second baseline group had **2.7915% within-group CV**, before any nominee build. All raw evidence remains available; no additional compiler speedup or agent-versus-search advantage is claimed. A stable Linux host remains the prerequisite; [Cornell exploratory compute](tools/compilerpilot/docs/cornell-exploratory-access.md) is a possible free route for eligible first-time users. See [setup and commands](tools/compilerpilot/README.md) or [current evidence status](tools/compilerpilot/results/status.md).
 
+CompilerPilot also includes an [authored LLVM 18 optimization pass](tools/compilerpilot/llvm/README.md): a new-pass-manager plugin using MemorySSA for conservative redundant-load elimination, with IR tests and a pass-placement experiment on Ledger's matching engine.
+
 ## Design
 
 | Component | Implementation | Cost / boundary |

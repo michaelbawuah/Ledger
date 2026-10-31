@@ -1,0 +1,114 @@
+--- FastBook.process.before
++++ FastBook.process.after
+@@ -458,13 +458,12 @@
+   %quantity191 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp176, i32 0, i32 7
+   store i32 %44, ptr %quantity191, align 8
+   %remaining192 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp176, i32 0, i32 8
+-  %73 = load i32, ptr %remaining107, align 4
+-  store i32 %73, ptr %remaining192, align 4
++  store i32 %67, ptr %remaining192, align 4
+   %call193 = call noundef zeroext i1 @_ZN6ledger11EventBuffer4pushERKNS_5EventE(ptr noundef nonnull align 8 dereferenceable(24) %output, ptr noundef nonnull align 8 dereferenceable(56) %ref.tmp176) #17
+   call void @llvm.lifetime.end.p0(i64 56, ptr %ref.tmp176) #17
+   %quantity194 = getelementptr inbounds %"struct.ledger::detail::OrderPool::Node", ptr %call123, i32 0, i32 2
+-  %74 = load i32, ptr %quantity194, align 8
+-  %tobool195 = icmp ne i32 %74, 0
++  %73 = load i32, ptr %quantity194, align 8
++  %tobool195 = icmp ne i32 %73, 0
+   br i1 %tobool195, label %if.end197, label %if.then196
+ 
+ if.then196:                                       ; preds = %invoke.cont
+@@ -475,59 +474,59 @@
+   br label %while.cond, !llvm.loop !20
+ 
+ while.end:                                        ; preds = %land.end
+-  %75 = load i32, ptr %remaining107, align 4
+-  %tobool198 = icmp ne i32 %75, 0
++  %74 = load i32, ptr %remaining107, align 4
++  %tobool198 = icmp ne i32 %74, 0
+   br i1 %tobool198, label %if.then199, label %if.end225
+ 
+ if.then199:                                       ; preds = %while.end
+   %action200 = getelementptr inbounds %"struct.ledger::Command", ptr %command, i32 0, i32 5
+-  %76 = load i8, ptr %action200, align 1
+-  %cmp201 = icmp ne i8 %76, 1
++  %75 = load i8, ptr %action200, align 1
++  %cmp201 = icmp ne i8 %75, 1
+   br i1 %cmp201, label %land.lhs.true202, label %if.else206
+ 
+ land.lhs.true202:                                 ; preds = %if.then199
+   %tif203 = getelementptr inbounds %"struct.ledger::Command", ptr %command, i32 0, i32 6
+-  %77 = load i8, ptr %tif203, align 2
+-  %cmp204 = icmp eq i8 %77, 0
++  %76 = load i8, ptr %tif203, align 2
++  %cmp204 = icmp eq i8 %76, 0
+   br i1 %cmp204, label %if.then205, label %if.else206
+ 
+ if.then205:                                       ; preds = %land.lhs.true202
++  %77 = load i32, ptr %remaining107, align 4
++  call void @_ZN6ledger8FastBook11add_restingERKNS_7CommandEj(ptr noundef nonnull align 8 dereferenceable(280) %this, ptr noundef nonnull align 8 dereferenceable(31) %command, i32 noundef %77) #17
++  br label %if.end224
++
++if.else206:                                       ; preds = %land.lhs.true202, %if.then199
+   %78 = load i32, ptr %remaining107, align 4
+-  call void @_ZN6ledger8FastBook11add_restingERKNS_7CommandEj(ptr noundef nonnull align 8 dereferenceable(280) %this, ptr noundef nonnull align 8 dereferenceable(31) %command, i32 noundef %78) #17
+-  br label %if.end224
+-
+-if.else206:                                       ; preds = %land.lhs.true202, %if.then199
+-  %79 = load i32, ptr %remaining107, align 4
+-  %conv207 = zext i32 %79 to i64
++  %conv207 = zext i32 %78 to i64
+   %statistics_208 = getelementptr inbounds %"class.ledger::FastBook", ptr %this, i32 0, i32 12
+   %expired = getelementptr inbounds %"struct.ledger::Statistics", ptr %statistics_208, i32 0, i32 3
+-  %80 = load i64, ptr %expired, align 8
+-  %add209 = add i64 %80, %conv207
++  %79 = load i64, ptr %expired, align 8
++  %add209 = add i64 %79, %conv207
+   store i64 %add209, ptr %expired, align 8
+   call void @llvm.lifetime.start.p0(i64 56, ptr %ref.tmp210) #17
+   %sequence211 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 0
+   %sequence212 = getelementptr inbounds %"struct.ledger::Command", ptr %command, i32 0, i32 0
+-  %81 = load i64, ptr %sequence212, align 8
+-  store i64 %81, ptr %sequence211, align 8
++  %80 = load i64, ptr %sequence212, align 8
++  store i64 %80, ptr %sequence211, align 8
+   %type213 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 1
+   store i8 5, ptr %type213, align 8
+   %reason214 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 2
+   store i8 0, ptr %reason214, align 1
+   %id215 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 3
+   %id216 = getelementptr inbounds %"struct.ledger::Command", ptr %command, i32 0, i32 1
+-  %82 = load i64, ptr %id216, align 8
+-  store i64 %82, ptr %id215, align 8
++  %81 = load i64, ptr %id216, align 8
++  store i64 %81, ptr %id215, align 8
+   %contra_id217 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 4
+   store i64 0, ptr %contra_id217, align 8
+   %side218 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 5
+   %side219 = getelementptr inbounds %"struct.ledger::Command", ptr %command, i32 0, i32 4
+-  %83 = load i8, ptr %side219, align 4
+-  store i8 %83, ptr %side218, align 8
++  %82 = load i8, ptr %side219, align 4
++  store i8 %82, ptr %side218, align 8
+   %price220 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 6
+   store i64 %cond, ptr %price220, align 8
+   %quantity221 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 7
+-  %84 = load i32, ptr %remaining107, align 4
+-  store i32 %84, ptr %quantity221, align 8
++  %83 = load i32, ptr %remaining107, align 4
++  store i32 %83, ptr %quantity221, align 8
+   %remaining222 = getelementptr inbounds %"struct.ledger::Event", ptr %ref.tmp210, i32 0, i32 8
+   store i32 0, ptr %remaining222, align 4
+   %call223 = call noundef zeroext i1 @_ZN6ledger11EventBuffer4pushERKNS_5EventE(ptr noundef nonnull align 8 dereferenceable(24) %output, ptr noundef nonnull align 8 dereferenceable(56) %ref.tmp210) #17
+@@ -550,9 +549,9 @@
+   ret i32 %retval.1
+ 
+ terminate.lpad:                                   ; preds = %while.body
+-  %85 = landingpad { ptr, i32 }
++  %84 = landingpad { ptr, i32 }
+           catch ptr null
+-  %86 = extractvalue { ptr, i32 } %85, 0
+-  call void @__clang_call_terminate(ptr %86) #19
++  %85 = extractvalue { ptr, i32 } %84, 0
++  call void @__clang_call_terminate(ptr %85) #19
+   unreachable
+ }

@@ -1,0 +1,19 @@
+{
+  "build_tree_policy": "Build trees are local intermediates; report binds measured object and executable hashes",
+  "excludes": [
+    "evidence-manifest.json",
+    "_builds/**"
+  ],
+  "files": {
+    "baseline/book.optimized.ll": "75fadf7aa5f261a109216b8dfde29ac87646f9e9278e413663a1b013801f6841",
+    "baseline/build.log": "2adcbbfe8ddd322493693fd138ca906eb8e0179af3ed0335832dd0d23d00e642",
+    "baseline/configure.log": "32a20274657d01f0f33251d7d848e561fd993fc89f4825dd6fcd975429762a77",
+    "baseline/opt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "book.frontend.ll": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "commands.jsonl": "017f1470e2f7ce3db88fb855959132ba20ff3214d41f993924969b6b687f3629",
+    "frontend.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "protocol.json": "a2c35daf22cb709ccc8d9012b2fcc0464b3deef1e4d6b880356f30a3e56b0bf7",
+    "result.json": "9c20fbc21fa0f3f0181f81cc4f04a1cad4b33f083e62798e1e8b23db567162c7"
+  },
+  "hash_algorithm": "sha256"
+}

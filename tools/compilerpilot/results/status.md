@@ -4,6 +4,7 @@ CompilerPilot lives under `tools/compilerpilot` in Ledger and has now run a real
 
 | Requirement | Evidence / status |
 |---|---|
+| Authored LLVM optimization pass | [LLVM 18 new-pass-manager plugin](../llvm/README.md) implements conservative integer-load elimination with MemorySSA. The [audited pipeline experiment](llvm-pass/llvm18-20261030-01-review.md) validates baseline, early and late pipelines on `src/book.cpp`: each passes the same 100M-command differential stream and all 15 CTest cases. IR tests cover 25 functions, four intended rewrites and executable equivalence. The early pass removes one real `FastBook::process` load; this is compiler-implementation evidence, with no runtime speedup or MLIR claim. |
 | Integrated component and provenance | [CompilerPilot in Ledger](https://github.com/michaelbawuah/Ledger/tree/main/tools/compilerpilot); new runs track the live Ledger commit, source/configuration fingerprint and dirty state |
 | Historical qualification source | Ledger commit c0dbffd6a036feb27e225362a92df9792d8e844a; original raw evidence preserved, with no new speedup claim |
 | Monorepo integration | 159 CompilerPilot tests pass; live-source replay, 5 × 100K differential and all 15 CTest suites pass; compiling semantic mutation rejected. Evidence: [tests](migration-python-tests.xml), [live validation](migration-validation.json), [mutation proof](migration-gate-check.json). The 88 historical result files remain byte-for-byte unchanged. |

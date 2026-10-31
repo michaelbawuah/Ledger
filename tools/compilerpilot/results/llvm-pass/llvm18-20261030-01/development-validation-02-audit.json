@@ -1,0 +1,123 @@
+{
+  "agent_win_claim_supported": false,
+  "audit_helper_sha256": "a3ce4f06cfa0dd62b33a0d9b53e1e927ada82a902be9b5f0f283f1e6ae960290",
+  "audit_passed": false,
+  "audited_at": "2026-10-30T23:44:29.311679+00:00",
+  "command_events_verified": 42,
+  "command_trace_complete": false,
+  "command_trace_gaps": {
+    "missing_finished": [
+      "early/configure.log"
+    ],
+    "missing_started": [
+      "early/build.log"
+    ]
+  },
+  "earlier_setup_failure": {
+    "manifest_hashes_verified": 9,
+    "phase": "baseline",
+    "protocol_sha256": "a2c35daf22cb709ccc8d9012b2fcc0464b3deef1e4d6b880356f30a3e56b0bf7",
+    "recorded_implementation_sha256": {
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/CMakeLists.txt": "6342bf23346f35549921216bdca91423982a453a56e5a2aff057c717bc773623",
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/LedgerLoadElim.cpp": "3613b78642002ca619d1bc1996bea33515d646ba7ebe3dbc07d69d992b9c08b5",
+      "/workspace/scratch/782b5db88681/Ledger-llvm-pass/tools/compilerpilot/llvm/run_experiment.py": "7893d84c604b9b34342f2fa2c9a3cfab976ed2facf225689ec88bf5281456c23"
+    },
+    "status": "failed",
+    "variants": 0
+  },
+  "expected_command_events": 44,
+  "fresh_context": {
+    "implementation_files_rehashed": 4,
+    "plugin_rehashed": true,
+    "source": {
+      "files_rehashed": 55,
+      "head": "7d64b49f51b0c5a18bec5289d96add655a1c36f3",
+      "source_sha256": "732800d1f8c2268e706b421d93d7896819bb1b91ae18e40b42ae21afc368fd9c"
+    },
+    "tool_binaries_rehashed": 6
+  },
+  "fresh_context_verified": true,
+  "frontend": {
+    "function_definitions": 371,
+    "load_instructions": 1710,
+    "sha256": "3081836b6a3a556e4e2d0e74e41f2691a78ec0a3fa6a8dcafc7caffc4ea0752a",
+    "store_instructions": 1363
+  },
+  "limitations": "Sealed hashes bind retained bytes. Live mode rehashes original artifacts; offline mode cannot re-establish them.",
+  "llvm_version": "18.1.3",
+  "manifest_hashes_verified": 47,
+  "mlir_claim_supported": false,
+  "packet_integrity_verified": true,
+  "protocol_sha256": "e62d8a9b27c9fa9544d2ac56ef6b15e56181208775453e3d932edad194e7dd4f",
+  "scope": "Endpoint IR counts and retained plugin reports are separate static measurements; no timing or compiler replay.",
+  "semantic_validation_passed": true,
+  "speedup_claim_supported": false,
+  "variants": {
+    "baseline": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "4cde049dc4d3e133600ed15a640cf5e6860cc07018574e73b181d40d805d3a5c",
+        "passed": true,
+        "plan_sha256": "51c04787684bb19b2ddb9caef07e0afc67dd8a55f4cb8f6c686d18938cf59dcc",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "90c95b68d6f04d96b30e91a4d01c1236a0d19acfd9e3ff9a9458ecafed77e03c",
+        "seeds": 100
+      },
+      "function_definitions": 32,
+      "function_reports_verified": 0,
+      "load_instructions": 377,
+      "plugin_reported_loads_removed": 0,
+      "store_instructions": 214
+    },
+    "early": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "377c1cfe18475014dc7c3a7d80395ad6be25c93f421bdaa9c2bc4377bc9ab13e",
+        "passed": true,
+        "plan_sha256": "c2ab5ef8c23120db797131e5d7a47a9fdf78bc1c699d38e67bad9232adea692c",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "7a499daa5a28800f4c55a463ccbd5b21926e63904709c6a5cdeab79bd2b8ac47",
+        "seeds": 100
+      },
+      "function_definitions": 31,
+      "function_reports_verified": 371,
+      "load_instructions": 378,
+      "plugin_reported_loads_removed": 1,
+      "store_instructions": 236
+    },
+    "late": {
+      "ctest": {
+        "completed": 15,
+        "junit_sha256": "c4ceb3d3afc86f6b62df1e52cdc3cfddbd43098523c04ff1d296c84aec4815a0",
+        "passed": true,
+        "plan_sha256": "c21cdaffa63a4ba291b3482b4bd44ffa59b8edc513c4ce98f2945d265886167d",
+        "planned": 15
+      },
+      "differential": {
+        "commands_compared": 100000000,
+        "commands_per_seed": 1000000,
+        "passed": true,
+        "report_sha256": "bdef0004ffcb74306756a6dc6adeecf1481b73ff18340472994194ca89c62a1d",
+        "seeds": 100
+      },
+      "function_definitions": 32,
+      "function_reports_verified": 32,
+      "load_instructions": 377,
+      "plugin_reported_loads_removed": 0,
+      "store_instructions": 214
+    }
+  },
+  "warnings": [
+    "Retained command history has missing start/completion events; no complete trace claim."
+  ]
+}
